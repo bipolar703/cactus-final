@@ -1,0 +1,235 @@
+export const translations = {
+  en: {
+    companyName: "Cactus Media Group",
+    tagline: "Premium digital solutions engineered for resilience and growth",
+    slogan: "In A World Full Of Flowers, Be A Cactus!",
+    
+    // Navigation
+    about: "About",
+    services: "Services",
+    portfolio: "Portfolio",
+    contact: "Contact",
+    
+    // About
+    aboutTitle: "About Cactus Media Group",
+    aboutSubtitle: "Your trusted partner in professional media production",
+    ourMission: "Our Mission",
+    ourVision: "Our Vision",
+    missionText: "At Cactus Media Group, we specialize in creating compelling visual content that tells your story. With over a decade of experience in the media industry, we combine creativity with cutting-edge technology to deliver exceptional results.",
+    visionText: "We envision a world where every brand has a powerful visual identity that resonates with their audience. Our goal is to be the leading media production company in the region, setting new standards for quality and innovation.",
+    whyChooseUs: "Why Choose Us?",
+    awardWinning: "Award Winning",
+    fastDelivery: "Fast Delivery",
+    trustedPartner: "Trusted Partner",
+    
+    // Services
+    servicesTitle: "Premium Digital Solutions",
+    servicesSubtitle: "Bespoke services engineered for exceptional results",
+    digitalStrategy: "Digital Strategy",
+    brandingDesign: "Branding & Design",
+    performanceMarketing: "Performance Marketing",
+    webDevelopment: "Web Development",
+    branding: "Branding",
+    socialMedia: "Social Media & Digital Marketing",
+    graphicDesign: "Graphic Design",
+    videography: "Videography",
+    photography: "Photography",
+    contentCreation: "Content Creation",
+    seoAnalysis: "SEO Analysis",
+    emailMarketing: "Email Marketing",
+    
+    // Service Descriptions
+    webDevDesc: "Transform your digital presence with custom websites that drive results and convert visitors into customers",
+    brandingDesc: "Build a memorable brand identity that resonates with your audience and sets you apart from competitors",
+    socialMediaDesc: "Comprehensive social media management and strategic advertising to grow your online presence",
+    graphicDesignDesc: "Professional visual content that captures attention and communicates your message effectively",
+    videographyDesc: "High-quality video content that tells your story and engages your audience across all platforms",
+    photographyDesc: "Professional photography that showcases your products, services, and brand identity",
+    contentCreationDesc: "Engaging content that drives traffic, builds authority, and converts visitors into loyal customers",
+    seoDesc: "Improve your search engine rankings and drive organic traffic with proven SEO strategies",
+    emailDesc: "Build and nurture customer relationships through strategic email campaigns that deliver results",
+
+    // Service Details
+    webDevFeatures: "Responsive design, CMS integration, E-commerce functionality, SEO optimization, Performance optimization, Security features",
+    webDevBenefits: "Increased online visibility, Better user experience, Higher conversion rates, Mobile-friendly design, Search engine friendly",
+    webDevProcess: "Discovery & Planning, Design & Development, Testing & Optimization, Launch & Training, Ongoing Support",
+    webDevCTA: "Ready to Launch Your Dream Website?",
+    
+    landingPages: "Landing Pages - Starting at 200 JD",
+    businessWebsites: "Business Websites - Starting at 550 JD",
+    ecommerce: "E-commerce Stores - Starting at 500 JD",
+    logoDesign: "Logo Design - Starting at 75 JD",
+    brandGuidelines: "Brand Guidelines - Starting at 100 JD",
+    fullBrandPackage: "Full Brand Identity Package - Starting at 800 JD",
+    basicSocialPackage: "Basic Package - Starting at 200 JD/month",
+    premiumSocialPackage: "Premium Package - Starting at 400 JD/month",
+    socialMediaPosts: "Social Media Posts - Starting at 15 JD/post",
+    marketingMaterials: "Marketing Materials - Starting at 50 JD/item",
+    productVideos: "Product Videos - Starting at 250 JD",
+    corporateVideos: "Corporate Videos - Starting at 500 JD",
+    productPhotography: "Product Photography - Starting at 85 JD/session",
+    corporateHeadshots: "Corporate Headshots - Starting at 150 JD/session",
+    websiteCopy: "Website Copy - Starting at 200 JD",
+    basicSEO: "Basic SEO Package - Starting at 200 JD/month",
+    advancedSEO: "Advanced SEO Package - Starting at 400 JD/month",
+    newsletterManagement: "Newsletter Management - Starting at 150 JD/month",
+    
+    packageDeals: "Package Deals Available",
+    packageDealsText: "Save up to 25% when you bundle multiple services. Contact us for custom pricing based on your specific needs.",
+    requestQuote: "Request Custom Quote",
+    
+    // Portfolio
+    portfolioTitle: "Our Portfolio",
+    portfolioSubtitle: "Showcasing our best work across various industries",
+    corporateVideoSeries: "Corporate Video Series",
+    fashionPhotography: "Fashion Photography",
+    documentaryFilm: "Documentary Film",
+    tvCommercial: "TV Commercial",
+    eventPhotography: "Event Photography",
+    socialMediaContent: "Social Media Content",
+    viewCompletePortfolio: "View Complete Portfolio",
+    
+    // Contact
+    contactTitle: "Get In Touch",
+    contactSubtitle: "Ready to bring your vision to life? Let's start the conversation.",
+    contactInfo: "Contact Information",
+    followUs: "Follow Us",
+    sendMessage: "Send Us a Message",
+    fullName: "Full Name",
+    emailAddress: "Email Address",
+    phoneNumber: "Phone Number",
+    serviceInterested: "Service Interested In",
+    message: "Message",
+    sendMessageBtn: "Send Message",
+    selectService: "Select a service",
+    
+    // Contact Details
+    address: "Amman, Jordan",
+    phone: "+962798737371",
+    email: "info@cactusmediajo.com",
+    workingHours: "Sun - Thu: 9:00 AM - 6:00 PM",
+    
+    // Form placeholders
+    fullNamePlaceholder: "Your full name",
+    emailPlaceholder: "your@email.com",
+    phonePlaceholder: "+962 XX XXX XXXX",
+    messagePlaceholder: "Tell us about your project...",
+  },
+  
+  ar: {
+    companyName: "مجموعة كاكتوس الإعلامية",
+    tagline: "حلول رقمية متميزة مصممة للمرونة والنمو",
+    slogan: "في عالم مليء بالورود، كن صبارة!",
+    
+    // Navigation
+    about: "من نحن",
+    services: "الخدمات",
+    portfolio: "أعمالنا",
+    contact: "تواصل معنا",
+    
+    // About
+    aboutTitle: "حول مجموعة كاكتوس الإعلامية",
+    aboutSubtitle: "شريكك الموثوق في الإنتاج الإعلامي المهني",
+    ourMission: "مهمتنا",
+    ourVision: "رؤيتنا",
+    missionText: "في مجموعة كاكتوس الإعلامية، نتخصص في إنشاء محتوى بصري مقنع يحكي قصتك. مع أكثر من عقد من الخبرة في صناعة الإعلام، نجمع بين الإبداع والتكنولوجيا المتطورة لتقديم نتائج استثنائية.",
+    visionText: "نتصور عالماً حيث لكل علامة تجارية هوية بصرية قوية تتردد صداها مع جمهورها. هدفنا هو أن نكون شركة الإنتاج الإعلامي الرائدة في المنطقة، ووضع معايير جديدة للجودة والابتكار.",
+    whyChooseUs: "لماذا تختارنا؟",
+    awardWinning: "حائز على جوائز",
+    fastDelivery: "تسليم سريع",
+    trustedPartner: "شريك موثوق",
+    
+    // Services
+    servicesTitle: "حلول رقمية متميزة",
+    servicesSubtitle: "خدمات مخصصة مصممة للحصول على نتائج استثنائية",
+    digitalStrategy: "الاستراتيجية الرقمية",
+    brandingDesign: "العلامة التجارية والتصميم",
+    performanceMarketing: "التسويق الأدائي",
+    webDevelopment: "تطوير المواقع",
+    branding: "الهوية التجارية",
+    socialMedia: "وسائل التواصل والتسويق الرقمي",
+    graphicDesign: "التصميم الجرافيكي",
+    videography: "التصوير المرئي",
+    photography: "التصوير الفوتوغرافي",
+    contentCreation: "إنشاء المحتوى",
+    seoAnalysis: "تحليل محركات البحث",
+    emailMarketing: "التسويق عبر البريد الإلكتروني",
+    
+    // Service Descriptions
+    webDevDesc: "حوّل حضورك الرقمي بمواقع مخصصة تحقق النتائج وتحوّل الزوار إلى عملاء",
+    brandingDesc: "ابنِ هوية تجارية لا تُنسى تتردد صداها مع جمهورك وتميزك عن المنافسين",
+    socialMediaDesc: "إدارة شاملة لوسائل التواصل والإعلان الاستراتيجي لتنمية حضورك الرقمي",
+    graphicDesignDesc: "محتوى بصري احترافي يلفت الانتباه وينقل رسالتك بفعالية",
+    videographyDesc: "محتوى فيديو عالي الجودة يحكي قصتك ويجذب جمهورك عبر جميع المنصات",
+    photographyDesc: "تصوير احترافي يعرض منتجاتك وخدماتك وهويتك التجارية",
+    contentCreationDesc: "محتوى جذاب يزيد الزيارات ويبني الثقة ويحوّل الزوار إلى عملاء مخلصين",
+    seoDesc: "حسّن ترتيبك في محركات البحث وزد الزيارات الطبيعية باستراتيجيات مثبتة",
+    emailDesc: "ابنِ علاقات مع العملاء من خلال حملات البريد الاستراتيجية التي تحقق النتائج",
+
+    // Service Details
+    webDevFeatures: "تصميم متجاوب، تكامل CMS، وظائف التجارة الإلكترونية، تحسين SEO، تحسين الأداء، ميزات الأمان",
+    webDevBenefits: "زيادة الرؤية عبر الإنترنت، تجربة مستخدم أفضل، معدلات تحويل أعلى، تصميم متوافق مع الهاتف، صديق لمحركات البحث",
+    webDevProcess: "الاستكشاف والتخطيط، التصميم والتطوير، الاختبار والتحسين، الإطلاق والتدريب، الدعم المستمر",
+    webDevCTA: "مستعد لإطلاق موقعك المثالي؟",
+    
+    landingPages: "صفحات الهبوط - ابتداءً من 200 دينار",
+    businessWebsites: "مواقع الأعمال - ابتداءً من 550 دينار",
+    ecommerce: "متاجر إلكترونية - ابتداءً من 500 دينار",
+    logoDesign: "تصميم الشعار - ابتداءً من 75 دينار",
+    brandGuidelines: "دليل الهوية - ابتداءً من 100 دينار",
+    fullBrandPackage: "حزمة الهوية الكاملة - ابتداءً من 800 دينار",
+    basicSocialPackage: "الحزمة الأساسية - ابتداءً من 200 دينار/شهر",
+    premiumSocialPackage: "الحزمة المتقدمة - ابتداءً من 400 دينار/شهر",
+    socialMediaPosts: "منشورات وسائل التواصل - ابتداءً من 15 دينار/منشور",
+    marketingMaterials: "مواد تسويقية - ابتداءً من 50 دينار/قطعة",
+    productVideos: "فيديوهات المنتجات - ابتداءً من 250 دينار",
+    corporateVideos: "فيديوهات الشركات - ابتداءً من 500 دينار",
+    productPhotography: "تصوير المنتجات - ابتداءً من 85 دينار/جلسة",
+    corporateHeadshots: "صور الموظفين - ابتداءً من 150 دينار/جلسة",
+    websiteCopy: "محتوى الموقع - ابتداءً من 200 دينار",
+    basicSEO: "حزمة السيو الأساسية - ابتداءً من 200 دينار/شهر",
+    advancedSEO: "حزمة السيو المتقدمة - ابتداءً من 400 دينار/شهر",
+    newsletterManagement: "إدارة النشرة الإخبارية - ابتداءً من 150 دينار/شهر",
+    
+    packageDeals: "باقات مجمعة متاحة",
+    packageDealsText: "وفر حتى 25% عندما تجمع عدة خدمات معاً. اتصل بنا للحصول على أسعار مخصصة حسب احتياجاتك المحددة.",
+    requestQuote: "طلب عرض سعر مخصص",
+    
+    // Portfolio
+    portfolioTitle: "أعمالنا",
+    portfolioSubtitle: "عرض أفضل أعمالنا عبر مختلف الصناعات",
+    corporateVideoSeries: "سلسلة فيديوهات الشركات",
+    fashionPhotography: "تصوير الأزياء",
+    documentaryFilm: "فيلم وثائقي",
+    tvCommercial: "إعلان تلفزيوني",
+    eventPhotography: "تصوير الفعاليات",
+    socialMediaContent: "محتوى وسائل التواصل",
+    viewCompletePortfolio: "عرض المحفظة الكاملة",
+    
+    // Contact
+    contactTitle: "تواصل معنا",
+    contactSubtitle: "مستعد لتحويل رؤيتك إلى واقع؟ دعنا نبدأ المحادثة.",
+    contactInfo: "معلومات التواصل",
+    followUs: "تابعنا",
+    sendMessage: "أرسل لنا رسالة",
+    fullName: "الاسم الكامل",
+    emailAddress: "البريد الإلكتروني",
+    phoneNumber: "رقم الهاتف",
+    serviceInterested: "الخدمة المهتم بها",
+    message: "الرسالة",
+    sendMessageBtn: "إرسال الرسالة",
+    selectService: "اختر خدمة",
+    
+    // Contact Details
+    address: "عمان، الأردن",
+    phone: "+962798737371",
+    email: "info@cactusmediajo.com",
+    workingHours: "الأحد - الخميس: 9:00 ص - 6:00 م",
+    
+    // Form placeholders
+    fullNamePlaceholder: "اسمك الكامل",
+    emailPlaceholder: "your@email.com",
+    phonePlaceholder: "+962 XX XXX XXXX",
+    messagePlaceholder: "أخبرنا عن مشروعك...",
+  }
+};
