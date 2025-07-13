@@ -3,10 +3,11 @@ import { Play, Pause, Volume2, VolumeX } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 
 interface VideoBackgroundProps {
+  src: string;
   className?: string;
 }
 
-export function VideoBackground({ className = "" }: VideoBackgroundProps) {
+export function VideoBackground({ src, className = '' }: VideoBackgroundProps) {
   const [isPlaying, setIsPlaying] = useState(true);
   const [isMuted, setIsMuted] = useState(true);
   const [showControls, setShowControls] = useState(false);
@@ -36,7 +37,7 @@ export function VideoBackground({ className = "" }: VideoBackgroundProps) {
   }, [showControls]);
 
   return (
-    <div 
+    <div
       className={`relative ${className}`}
       onMouseEnter={() => setShowControls(true)}
       onMouseLeave={() => setShowControls(false)}
@@ -53,54 +54,22 @@ export function VideoBackground({ className = "" }: VideoBackgroundProps) {
         onCanPlay={() => console.log('Video can play')}
         onLoadedData={() => console.log('Video loaded successfully')}
         onError={(e) => {
-          console.log('Video source failed, trying next...');
-          const video = e.currentTarget;
-          const sources = video.querySelectorAll('source');
-          const currentSource = Array.from(sources).find(s => s.src === video.currentSrc);
-          const currentIndex = currentSource ? Array.from(sources).indexOf(currentSource) : -1;
-          
-          if (currentIndex < sources.length - 1) {
-            video.src = sources[currentIndex + 1].src;
-            video.load();
-          } else {
-            console.log('All video sources failed, using fallback');
-            video.style.display = 'none';
-          }
+          console.error('Video playback error:', e);
         }}
       >
-        {/* Premium cactus/desert cinematic videos from free libraries */}
-        <source 
-          src="https://videos.pexels.com/video-files/3571264/3571264-uhd_2560_1440_25fps.mp4" 
-          type="video/mp4" 
-        />
-        <source 
-          src="https://videos.pexels.com/video-files/6894690/6894690-uhd_2560_1440_30fps.mp4" 
-          type="video/mp4" 
-        />
-        <source 
-          src="https://videos.pexels.com/video-files/4940467/4940467-uhd_2560_1440_25fps.mp4" 
-          type="video/mp4" 
-        />
-        <source 
-          src="https://videos.pexels.com/video-files/1851190/1851190-uhd_2560_1440_24fps.mp4" 
-          type="video/mp4" 
-        />
-        <source 
-          src="https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4" 
-          type="video/mp4" 
-        />
+        <source src={src} type="video/mp4" />
       </video>
 
       {/* Enhanced Video Controls */}
       <AnimatePresence>
         {showControls && (
-          <motion.div 
+          <motion.div
             initial={{ opacity: 0, y: 20, scale: 0.9 }}
             animate={{ opacity: 1, y: 0, scale: 1 }}
             exit={{ opacity: 0, y: 20, scale: 0.9 }}
-            transition={{ 
+            transition={{
               duration: 0.3,
-              ease: [0.16, 1, 0.3, 1]
+              ease: [0.16, 1, 0.3, 1],
             }}
             className="absolute bottom-8 right-8 flex space-x-3 glass-strong rounded-2xl p-4 backdrop-blur-xl"
           >
@@ -140,15 +109,15 @@ export function VideoBackground({ className = "" }: VideoBackgroundProps) {
       <div className="absolute inset-0 bg-gradient-to-br from-black/85 via-black/75 to-black/90 pointer-events-none"></div>
       <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-black/50 pointer-events-none"></div>
       <div className="absolute inset-0 bg-gradient-to-r from-[#3f7c6a]/15 via-transparent to-[#3f7c6a]/10 pointer-events-none"></div>
-      
+
       {/* Brand pattern overlay */}
-      <div 
+      <div
         className="absolute inset-0 opacity-5 pointer-events-none"
         style={{
           backgroundImage: `url('/assets/Webpage-Banner_1751779171234.png')`,
           backgroundSize: '400px',
           backgroundRepeat: 'repeat',
-          mixBlendMode: 'overlay'
+          mixBlendMode: 'overlay',
         }}
       />
     </div>

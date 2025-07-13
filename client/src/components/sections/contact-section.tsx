@@ -11,7 +11,7 @@ export function ContactSection() {
     name: '',
     email: '',
     subject: '',
-    message: ''
+    message: '',
   });
 
   const contactInfo = [
@@ -19,20 +19,20 @@ export function ContactSection() {
       icon: Mail,
       title: language === 'ar' ? 'البريد الإلكتروني' : 'Email',
       value: 'hello@cactusmediajo.com',
-      href: 'mailto:hello@cactusmediajo.com'
+      href: 'mailto:hello@cactusmediajo.com',
     },
     {
       icon: Phone,
       title: language === 'ar' ? 'الهاتف' : 'Phone',
       value: '+962 7 XXXX XXXX',
-      href: 'tel:+9627XXXXXXXX'
+      href: 'tel:+9627XXXXXXXX',
     },
     {
       icon: MapPin,
       title: language === 'ar' ? 'الموقع' : 'Location',
       value: language === 'ar' ? 'عمان، الأردن' : 'Amman, Jordan',
-      href: '#'
-    }
+      href: '#',
+    },
   ];
 
   const handleSubmit = (e: React.FormEvent) => {
@@ -42,14 +42,14 @@ export function ContactSection() {
   };
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
-    setFormData(prev => ({
+    setFormData((prev) => ({
       ...prev,
-      [e.target.name]: e.target.value
+      [e.target.name]: e.target.value,
     }));
   };
 
   return (
-    <section ref={ref} className="py-12 sm:py-20 px-4 sm:px-6 mobile-section">
+    <section ref={ref} className="py-12 sm:py-20 px-4 sm:px-6 border-b border-jaded-green-600/20 mobile-section">
       <div className="max-w-6xl mx-auto">
         <motion.div
           initial={{ opacity: 0, y: 50 }}
@@ -60,25 +60,26 @@ export function ContactSection() {
           <motion.div
             initial={{ scale: 0 }}
             animate={isIntersecting ? { scale: 1 } : { scale: 0 }}
-            transition={{ delay: 0.3, duration: 0.6, type: "spring" }}
+            transition={{ delay: 0.3, duration: 0.6, type: 'spring' }}
             className="w-20 h-20 bg-gradient-to-br from-[#3f7c6a] to-[#5a9b83] rounded-full flex items-center justify-center mx-auto mb-8"
           >
             <MessageCircle className="w-10 h-10 text-white" />
           </motion.div>
-          
-          <h2 className={`text-5xl md:text-6xl font-bold text-white mb-8 ${
-            language === 'ar' ? 'font-arabic' : 'font-poppins'
-          }`}>
+
+          <h2
+            className={`text-5xl md:text-6xl font-bold text-white mb-8 ${
+              language === 'ar' ? 'font-arabic' : 'font-poppins'
+            }`}
+          >
             {language === 'ar' ? 'لنبدأ معاً' : "Let's Start Together"}
           </h2>
-          
-          <p className={`text-2xl text-white/90 max-w-3xl mx-auto font-light ${
-            language === 'ar' ? 'font-arabic text-right' : ''
-          }`}>
-            {language === 'ar' 
-              ? 'مشروعك القادم ينتظرك'
-              : 'Your next project awaits'
-            }
+
+          <p
+            className={`text-2xl text-white/90 max-w-3xl mx-auto font-light ${
+              language === 'ar' ? 'font-arabic text-right' : ''
+            }`}
+          >
+            {language === 'ar' ? 'مشروعك القادم ينتظرك' : 'Your next project awaits'}
           </p>
         </motion.div>
 
@@ -94,18 +95,17 @@ export function ContactSection() {
                 <div className="inline-flex items-center justify-center w-16 h-16 bg-gradient-to-br from-[#3f7c6a] to-[#5a9b83] rounded-2xl mb-6">
                   <MessageCircle className="text-white w-8 h-8" />
                 </div>
-                <h3 className={`text-2xl font-semibold text-white mb-4 ${
-                  language === 'ar' ? 'font-arabic' : 'font-poppins'
-                }`}>
+                <h3
+                  className={`text-2xl font-semibold text-white mb-4 ${
+                    language === 'ar' ? 'font-arabic' : 'font-poppins'
+                  }`}
+                >
                   {language === 'ar' ? 'معلومات التواصل' : 'Contact Information'}
                 </h3>
-                <p className={`text-white/70 ${
-                  language === 'ar' ? 'font-arabic text-right' : ''
-                }`}>
-                  {language === 'ar' 
+                <p className={`text-white/70 ${language === 'ar' ? 'font-arabic text-right' : ''}`}>
+                  {language === 'ar'
                     ? 'نتطلع للتواصل معك ومناقشة مشروعك القادم'
-                    : 'We look forward to connecting with you and discussing your next project'
-                  }
+                    : 'We look forward to connecting with you and discussing your next project'}
                 </p>
               </div>
 
@@ -124,9 +124,11 @@ export function ContactSection() {
                       <info.icon className="w-5 h-5 text-[#5a9b83]" />
                     </div>
                     <div>
-                      <p className={`text-white/60 text-sm ${
-                        language === 'ar' ? 'font-arabic' : ''
-                      }`}>
+                      <p
+                        className={`text-white/60 text-sm ${
+                          language === 'ar' ? 'font-arabic' : ''
+                        }`}
+                      >
                         {info.title}
                       </p>
                       <p className="text-white group-hover:text-[#5a9b83] transition-colors duration-300">
@@ -149,9 +151,11 @@ export function ContactSection() {
               <form onSubmit={handleSubmit} className="space-y-6">
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                   <div>
-                    <label className={`block text-white/80 text-sm font-medium mb-2 ${
-                      language === 'ar' ? 'font-arabic text-right' : ''
-                    }`}>
+                    <label
+                      className={`block text-white/80 text-sm font-medium mb-2 ${
+                        language === 'ar' ? 'font-arabic text-right' : ''
+                      }`}
+                    >
                       {language === 'ar' ? 'الاسم' : 'Name'}
                     </label>
                     <input
@@ -165,9 +169,11 @@ export function ContactSection() {
                     />
                   </div>
                   <div>
-                    <label className={`block text-white/80 text-sm font-medium mb-2 ${
-                      language === 'ar' ? 'font-arabic text-right' : ''
-                    }`}>
+                    <label
+                      className={`block text-white/80 text-sm font-medium mb-2 ${
+                        language === 'ar' ? 'font-arabic text-right' : ''
+                      }`}
+                    >
                       {language === 'ar' ? 'البريد الإلكتروني' : 'Email'}
                     </label>
                     <input
@@ -183,9 +189,11 @@ export function ContactSection() {
                 </div>
 
                 <div>
-                  <label className={`block text-white/80 text-sm font-medium mb-2 ${
-                    language === 'ar' ? 'font-arabic text-right' : ''
-                  }`}>
+                  <label
+                    className={`block text-white/80 text-sm font-medium mb-2 ${
+                      language === 'ar' ? 'font-arabic text-right' : ''
+                    }`}
+                  >
                     {language === 'ar' ? 'الموضوع' : 'Subject'}
                   </label>
                   <input
@@ -200,9 +208,11 @@ export function ContactSection() {
                 </div>
 
                 <div>
-                  <label className={`block text-white/80 text-sm font-medium mb-2 ${
-                    language === 'ar' ? 'font-arabic text-right' : ''
-                  }`}>
+                  <label
+                    className={`block text-white/80 text-sm font-medium mb-2 ${
+                      language === 'ar' ? 'font-arabic text-right' : ''
+                    }`}
+                  >
                     {language === 'ar' ? 'الرسالة' : 'Message'}
                   </label>
                   <textarea
@@ -211,7 +221,9 @@ export function ContactSection() {
                     onChange={handleChange}
                     rows={4}
                     className="w-full px-4 py-3 bg-white/10 border border-white/20 rounded-xl text-white placeholder-white/50 focus:outline-none focus:border-[#3f7c6a] transition-colors duration-300 resize-none"
-                    placeholder={language === 'ar' ? 'اكتب رسالتك هنا...' : 'Write your message here...'}
+                    placeholder={
+                      language === 'ar' ? 'اكتب رسالتك هنا...' : 'Write your message here...'
+                    }
                     required
                   />
                 </div>

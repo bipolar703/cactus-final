@@ -27,36 +27,36 @@ export function LoadingScreen({ isVisible, onComplete }: LoadingScreenProps) {
         <div className="absolute bottom-1/3 right-1/3 w-24 h-24 bg-white/10 rounded-full blur-lg animate-pulse delay-300"></div>
         <div className="absolute top-1/2 right-1/4 w-16 h-16 bg-white/5 rounded-full blur-md animate-pulse delay-700"></div>
       </div>
-      
+
       <div className="text-center relative z-10">
         {/* Enhanced Logo Animation */}
         <motion.div
-          initial={{ 
-            scale: 0.3, 
-            opacity: 0, 
+          initial={{
+            scale: 0.3,
+            opacity: 0,
             rotateY: -180,
-            filter: "blur(20px)"
+            filter: 'blur(20px)',
           }}
-          animate={{ 
-            scale: 1, 
-            opacity: 1, 
+          animate={{
+            scale: 1,
+            opacity: 1,
             rotateY: 0,
-            filter: "blur(0px)"
+            filter: 'blur(0px)',
           }}
-          transition={{ 
-            duration: 1.5, 
+          transition={{
+            duration: 1.5,
             ease: [0.16, 1, 0.3, 1],
             scale: {
-              type: "spring",
+              type: 'spring',
               stiffness: 200,
-              damping: 15
-            }
+              damping: 15,
+            },
           }}
           className="mb-8"
         >
           <OptimizedImage
-            src="/assets/Logo-Whirte-Png_1751779171310.png" 
-            alt="Cactus Media Group" 
+            src="/assets/Logo-Whirte-Png_1751779171310.png"
+            alt="Cactus Media Group"
             className="w-64 h-auto mx-auto"
             priority={true}
           />
@@ -74,21 +74,21 @@ export function LoadingScreen({ isVisible, onComplete }: LoadingScreenProps) {
               <motion.div
                 key={i}
                 className="w-3 h-3 bg-white rounded-full"
-                animate={{ 
+                animate={{
                   scale: [1, 1.5, 1],
-                  opacity: [0.5, 1, 0.5]
+                  opacity: [0.5, 1, 0.5],
                 }}
                 transition={{
                   duration: 1.5,
                   repeat: Infinity,
                   delay: i * 0.2,
-                  ease: "easeInOut"
+                  ease: 'easeInOut',
                 }}
               />
             ))}
           </div>
-          
-          <motion.p 
+
+          <motion.p
             className={`text-white/80 text-lg ${language === 'ar' ? 'font-arabic' : ''}`}
             animate={{ opacity: [0.5, 1, 0.5] }}
             transition={{ duration: 2, repeat: Infinity }}

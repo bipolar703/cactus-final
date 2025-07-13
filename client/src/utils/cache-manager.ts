@@ -38,7 +38,7 @@ class CacheManager {
   // Preload critical resources
   preloadAssets(urls: string[]): Promise<void[]> {
     return Promise.all(
-      urls.map(url => {
+      urls.map((url) => {
         return new Promise<void>((resolve, reject) => {
           if (this.get(url)) {
             resolve();
@@ -56,7 +56,7 @@ class CacheManager {
           link.onerror = reject;
           document.head.appendChild(link);
         });
-      })
+      }),
     );
   }
 
@@ -82,24 +82,24 @@ export function useResourcePreload(resources: string[]) {
 
   useEffect(() => {
     let mounted = true;
-    
-    cacheManager.preloadAssets(resources)
+
+    cacheManager
+      .preloadAssets(resources)
       .then(() => {
         if (mounted) setIsLoaded(true);
       })
       .catch(console.warn);
 
-    return () => { mounted = false; };
+    return () => {
+      mounted = false;
+    };
   }, [resources]);
 
   return isLoaded;
 }
 
 // Intersection observer with caching
-export function useOptimizedIntersection(
-  threshold = 0.1,
-  rootMargin = '50px'
-) {
+export function useOptimizedIntersection(threshold = 0.1, rootMargin = '50px') {
   const [isIntersecting, setIsIntersecting] = useState(false);
   const [hasIntersected, setHasIntersected] = useState(false);
   const ref = useRef<HTMLElement>(null);
@@ -113,7 +113,7 @@ export function useOptimizedIntersection(
           observer.unobserve(entry.target);
         }
       },
-      { threshold, rootMargin }
+      { threshold, rootMargin },
     );
 
     const currentRef = ref.current;

@@ -4,21 +4,21 @@ import { ChevronLeft, ChevronRight, Play, Pause } from 'lucide-react';
 
 const cactusVideos = [
   {
-    src: "https://videos.pexels.com/video-files/8011361/8011361-uhd_2560_1440_25fps.mp4",
-    title: "Desert Resilience"
+    src: 'https://videos.pexels.com/video-files/8011361/8011361-uhd_2560_1440_25fps.mp4',
+    title: 'Desert Resilience',
   },
   {
-    src: "https://videos.pexels.com/video-files/4937841/4937841-uhd_2560_1440_25fps.mp4", 
-    title: "Natural Strength"
+    src: 'https://videos.pexels.com/video-files/4937841/4937841-uhd_2560_1440_25fps.mp4',
+    title: 'Natural Strength',
   },
   {
-    src: "https://videos.pexels.com/video-files/6567142/6567142-uhd_2560_1440_25fps.mp4",
-    title: "Growth Focus"
+    src: 'https://videos.pexels.com/video-files/6567142/6567142-uhd_2560_1440_25fps.mp4',
+    title: 'Growth Focus',
   },
   {
-    src: "https://videos.pexels.com/video-files/8618988/8618988-uhd_2560_1440_30fps.mp4",
-    title: "Creative Services"
-  }
+    src: 'https://videos.pexels.com/video-files/8618988/8618988-uhd_2560_1440_30fps.mp4',
+    title: 'Creative Services',
+  },
 ];
 
 export function VideoSlideshow() {
@@ -97,7 +97,7 @@ export function VideoSlideshow() {
       {/* Cinematic Overlays */}
       <div className="absolute inset-0 bg-gradient-to-br from-black/60 via-black/40 to-black/70 pointer-events-none"></div>
       <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-black/30 pointer-events-none"></div>
-      
+
       {/* Film Grain Effect */}
       <div className="absolute inset-0 opacity-30 mix-blend-multiply pointer-events-none film-grain"></div>
 
@@ -108,13 +108,13 @@ export function VideoSlideshow() {
             <motion.div
               key={index}
               initial={{ scale: 0.8, opacity: 0.5 }}
-              animate={{ 
+              animate={{
                 scale: index === currentIndex ? 1.2 : 0.8,
-                opacity: index === currentIndex ? 1 : 0.5
+                opacity: index === currentIndex ? 1 : 0.5,
               }}
               className={`w-2 h-2 rounded-full transition-all duration-500 ${
-                index === currentIndex 
-                  ? 'bg-[#3f7c6a] shadow-lg shadow-[#3f7c6a]/50' 
+                index === currentIndex
+                  ? 'bg-[#3f7c6a] shadow-lg shadow-[#3f7c6a]/50'
                   : 'bg-white/60'
               }`}
             />
@@ -131,7 +131,7 @@ export function VideoSlideshow() {
         transition={{ delay: 0.5, duration: 0.6 }}
         className="absolute top-4 sm:top-8 left-4 sm:left-8 z-20"
       >
-        {cactusVideos[currentIndex].title === "Creative Services" ? (
+        {cactusVideos[currentIndex].title === 'Creative Services' ? (
           <motion.button
             whileHover={{ scale: 1.05, y: -2 }}
             whileTap={{ scale: 0.98 }}

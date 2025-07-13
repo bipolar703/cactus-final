@@ -1,4 +1,15 @@
-import { Zap, Globe, TrendingUp, Palette, Camera, Film, PenTool, Search, Mail, ArrowRight } from 'lucide-react';
+import {
+  Zap,
+  Globe,
+  TrendingUp,
+  Palette,
+  Camera,
+  Film,
+  PenTool,
+  Search,
+  Mail,
+  ArrowRight,
+} from 'lucide-react';
 import { useLanguage } from '@/hooks/use-language';
 import { useState } from 'react';
 import { ServiceDetail } from '@/components/service-detail';
@@ -16,30 +27,21 @@ export function ServicesModal() {
           icon: Globe,
           title: t('webDevelopment'),
           description: t('webDevDesc'),
-          pricing: [
-            t('landingPages'),
-            t('businessWebsites'), 
-            t('ecommerce')
-          ]
+          pricing: [t('landingPages'), t('businessWebsites'), t('ecommerce')],
         },
         {
           icon: Search,
           title: t('seoAnalysis'),
           description: t('seoDesc'),
-          pricing: [
-            t('basicSEO'),
-            t('advancedSEO')
-          ]
+          pricing: [t('basicSEO'), t('advancedSEO')],
         },
         {
           icon: Mail,
           title: t('emailMarketing'),
           description: t('emailDesc'),
-          pricing: [
-            t('newsletterManagement')
-          ]
-        }
-      ]
+          pricing: [t('newsletterManagement')],
+        },
+      ],
     },
     {
       category: language === 'ar' ? 'العلامة التجارية والتصميم' : 'Branding & Design',
@@ -49,22 +51,15 @@ export function ServicesModal() {
           icon: Palette,
           title: t('branding'),
           description: t('brandingDesc'),
-          pricing: [
-            t('logoDesign'),
-            t('brandGuidelines'),
-            t('fullBrandPackage')
-          ]
+          pricing: [t('logoDesign'), t('brandGuidelines'), t('fullBrandPackage')],
         },
         {
           icon: PenTool,
           title: t('graphicDesign'),
           description: t('graphicDesignDesc'),
-          pricing: [
-            t('socialMediaPosts'),
-            t('marketingMaterials')
-          ]
-        }
-      ]
+          pricing: [t('socialMediaPosts'), t('marketingMaterials')],
+        },
+      ],
     },
     {
       category: language === 'ar' ? 'التسويق الأدائي' : 'Performance Marketing',
@@ -74,31 +69,22 @@ export function ServicesModal() {
           icon: TrendingUp,
           title: t('socialMedia'),
           description: t('socialMediaDesc'),
-          pricing: [
-            t('basicSocialPackage'),
-            t('premiumSocialPackage')
-          ]
+          pricing: [t('basicSocialPackage'), t('premiumSocialPackage')],
         },
         {
           icon: Film,
           title: t('videography'),
           description: t('videographyDesc'),
-          pricing: [
-            t('productVideos'),
-            t('corporateVideos')
-          ]
+          pricing: [t('productVideos'), t('corporateVideos')],
         },
         {
           icon: Camera,
           title: t('photography'),
           description: t('photographyDesc'),
-          pricing: [
-            t('productPhotography'),
-            t('corporateHeadshots')
-          ]
-        }
-      ]
-    }
+          pricing: [t('productPhotography'), t('corporateHeadshots')],
+        },
+      ],
+    },
   ];
 
   // Sample service details for demo
@@ -111,8 +97,8 @@ export function ServicesModal() {
       pricing: [t('landingPages'), t('businessWebsites'), t('ecommerce')],
       benefits: t('webDevBenefits').split(', '),
       process: t('webDevProcess').split(', '),
-      cta: t('webDevCTA')
-    }
+      cta: t('webDevCTA'),
+    },
   };
 
   if (selectedService && serviceDetails[selectedService]) {
@@ -134,13 +120,17 @@ export function ServicesModal() {
         <div className="inline-flex items-center justify-center w-20 h-20 bg-gradient-to-br from-[#3f7c6a] to-[#5a9b83] rounded-3xl mb-6">
           <Zap className="text-white w-8 h-8" />
         </div>
-        <h2 className={`text-3xl sm:text-4xl lg:text-5xl font-bold text-gray-800 mb-4 ${
-          language === 'ar' ? 'font-arabic' : 'font-poppins'
-        }`}>
+        <h2
+          className={`text-3xl sm:text-4xl lg:text-5xl font-bold text-gray-800 mb-4 ${
+            language === 'ar' ? 'font-arabic' : 'font-poppins'
+          }`}
+        >
           {t('servicesTitle')}
         </h2>
-        <p className="text-lg sm:text-xl text-gray-600 max-w-3xl mx-auto">{t('servicesSubtitle')}</p>
-        
+        <p className="text-lg sm:text-xl text-gray-600 max-w-3xl mx-auto">
+          {t('servicesSubtitle')}
+        </p>
+
         {/* Premium Badge */}
         <div className="inline-flex items-center px-4 py-2 bg-gradient-to-r from-[#3f7c6a] to-[#5a9b83] rounded-full text-white font-medium text-sm mt-4">
           <span className="mr-2">✨</span>
@@ -151,18 +141,23 @@ export function ServicesModal() {
       {/* Service Categories */}
       <div className="space-y-12">
         {serviceCategories.map((category, categoryIndex) => (
-          <div key={categoryIndex} className="bg-gradient-to-br from-gray-50 to-white rounded-3xl p-6 sm:p-8 shadow-lg border border-gray-100">
+          <div
+            key={categoryIndex}
+            className="bg-gradient-to-br from-gray-50 to-white rounded-3xl p-6 sm:p-8 shadow-lg border border-gray-100"
+          >
             <div className="flex items-center mb-8">
               <div className="flex items-center justify-center w-16 h-16 bg-gradient-to-br from-[#3f7c6a] to-[#5a9b83] rounded-2xl mr-4">
                 <category.icon className="text-white w-8 h-8" />
               </div>
-              <h3 className={`text-2xl sm:text-3xl font-bold text-gray-800 ${
-                language === 'ar' ? 'font-arabic' : 'font-poppins'
-              }`}>
+              <h3
+                className={`text-2xl sm:text-3xl font-bold text-gray-800 ${
+                  language === 'ar' ? 'font-arabic' : 'font-poppins'
+                }`}
+              >
                 {category.category}
               </h3>
             </div>
-            
+
             <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
               {category.services.map((service, serviceIndex) => (
                 <div
@@ -174,10 +169,15 @@ export function ServicesModal() {
                     <service.icon className="text-[#3f7c6a] w-6 h-6" />
                   </div>
                   <h4 className="text-lg font-semibold text-gray-800 mb-3">{service.title}</h4>
-                  <p className="text-gray-600 text-sm mb-4 leading-relaxed">{service.description}</p>
+                  <p className="text-gray-600 text-sm mb-4 leading-relaxed">
+                    {service.description}
+                  </p>
                   <div className="space-y-2 mb-4">
                     {service.pricing.slice(0, 2).map((price, idx) => (
-                      <div key={idx} className="text-sm text-[#3f7c6a] font-medium bg-[#3f7c6a]/5 rounded-lg px-3 py-2">
+                      <div
+                        key={idx}
+                        className="text-sm text-[#3f7c6a] font-medium bg-[#3f7c6a]/5 rounded-lg px-3 py-2"
+                      >
                         {price}
                       </div>
                     ))}
@@ -192,12 +192,14 @@ export function ServicesModal() {
           </div>
         ))}
       </div>
-      
+
       {/* Call to Action */}
       <div className="bg-gradient-to-br from-[#3f7c6a] to-[#5a9b83] rounded-3xl p-8 sm:p-10 text-white text-center mt-12">
-        <h3 className={`text-2xl sm:text-3xl font-bold mb-4 ${
-          language === 'ar' ? 'font-arabic' : 'font-poppins'
-        }`}>
+        <h3
+          className={`text-2xl sm:text-3xl font-bold mb-4 ${
+            language === 'ar' ? 'font-arabic' : 'font-poppins'
+          }`}
+        >
           {t('packageDeals')}
         </h3>
         <p className="text-white/90 mb-6 text-lg leading-relaxed max-w-2xl mx-auto">

@@ -4,7 +4,13 @@ import { useState } from 'react';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Textarea } from '@/components/ui/textarea';
-import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from '@/components/ui/select';
 import { useToast } from '@/hooks/use-toast';
 
 export function ContactModal() {
@@ -15,7 +21,7 @@ export function ContactModal() {
     email: '',
     phone: '',
     service: '',
-    message: ''
+    message: '',
   });
   const [isSubmitting, setIsSubmitting] = useState(false);
 
@@ -35,16 +41,14 @@ export function ContactModal() {
       if (response.ok) {
         toast({
           title: language === 'ar' ? 'تم الإرسال بنجاح' : 'Message Sent Successfully',
-          description: language === 'ar' 
-            ? 'سنتواصل معك قريباً' 
-            : 'We will get back to you soon',
+          description: language === 'ar' ? 'سنتواصل معك قريباً' : 'We will get back to you soon',
         });
         setFormData({
           fullName: '',
           email: '',
           phone: '',
           service: '',
-          message: ''
+          message: '',
         });
       } else {
         throw new Error('Failed to send message');
@@ -52,9 +56,10 @@ export function ContactModal() {
     } catch (error) {
       toast({
         title: language === 'ar' ? 'خطأ' : 'Error',
-        description: language === 'ar' 
-          ? 'فشل في إرسال الرسالة. حاول مرة أخرى.' 
-          : 'Failed to send message. Please try again.',
+        description:
+          language === 'ar'
+            ? 'فشل في إرسال الرسالة. حاول مرة أخرى.'
+            : 'Failed to send message. Please try again.',
         variant: 'destructive',
       });
     } finally {
@@ -71,76 +76,101 @@ export function ContactModal() {
     { value: 'photography', label: language === 'ar' ? 'التصوير الفوتوغرافي' : 'Photography' },
     { value: 'content-creation', label: language === 'ar' ? 'إنشاء المحتوى' : 'Content Creation' },
     { value: 'seo', label: language === 'ar' ? 'تحسين محركات البحث' : 'SEO' },
-    { value: 'email-marketing', label: language === 'ar' ? 'التسويق عبر البريد' : 'Email Marketing' },
+    {
+      value: 'email-marketing',
+      label: language === 'ar' ? 'التسويق عبر البريد' : 'Email Marketing',
+    },
   ];
 
   return (
     <div className={`p-8 md:p-12 ${language === 'ar' ? 'text-right font-arabic' : ''}`}>
       <div className="text-center mb-8">
         <div className="inline-flex items-center justify-center mb-4">
-          <img 
-            src="/assets/Logo-Png_1751779171296.png" 
-            alt="Cactus Media Group" 
+          <img
+            src="/assets/Logo-Png_1751779171296.png"
+            alt="Cactus Media Group"
             className="h-16 w-auto"
           />
         </div>
-        <h2 className={`text-3xl md:text-4xl font-bold text-gray-800 mb-4 ${
-          language === 'ar' ? 'font-arabic' : 'font-poppins'
-        }`}>
+        <h2
+          className={`text-3xl md:text-4xl font-bold text-gray-800 mb-4 ${
+            language === 'ar' ? 'font-arabic' : 'font-poppins'
+          }`}
+        >
           {t('contactTitle')}
         </h2>
         <p className="text-lg text-gray-600">{t('contactSubtitle')}</p>
       </div>
-      
+
       <div className="grid lg:grid-cols-2 gap-8">
         <div>
           <h3 className="text-xl font-semibold text-cactus-green mb-6">{t('contactInfo')}</h3>
-          
+
           <div className="space-y-4 mb-8">
             <div className={`flex items-center ${language === 'ar' ? 'flex-row-reverse' : ''}`}>
-              <MapPin className={`text-desert-orange w-6 h-6 ${language === 'ar' ? 'ml-3' : 'mr-3'}`} />
+              <MapPin
+                className={`text-desert-orange w-6 h-6 ${language === 'ar' ? 'ml-3' : 'mr-3'}`}
+              />
               <span className="text-gray-700">{t('address')}</span>
             </div>
             <div className={`flex items-center ${language === 'ar' ? 'flex-row-reverse' : ''}`}>
-              <Phone className={`text-desert-orange w-6 h-6 ${language === 'ar' ? 'ml-3' : 'mr-3'}`} />
-              <span className="text-gray-700" dir="ltr">{t('phone')}</span>
+              <Phone
+                className={`text-desert-orange w-6 h-6 ${language === 'ar' ? 'ml-3' : 'mr-3'}`}
+              />
+              <span className="text-gray-700" dir="ltr">
+                {t('phone')}
+              </span>
             </div>
             <div className={`flex items-center ${language === 'ar' ? 'flex-row-reverse' : ''}`}>
-              <Mail className={`text-desert-orange w-6 h-6 ${language === 'ar' ? 'ml-3' : 'mr-3'}`} />
+              <Mail
+                className={`text-desert-orange w-6 h-6 ${language === 'ar' ? 'ml-3' : 'mr-3'}`}
+              />
               <span className="text-gray-700">{t('email')}</span>
             </div>
             <div className={`flex items-center ${language === 'ar' ? 'flex-row-reverse' : ''}`}>
-              <Clock className={`text-desert-orange w-6 h-6 ${language === 'ar' ? 'ml-3' : 'mr-3'}`} />
+              <Clock
+                className={`text-desert-orange w-6 h-6 ${language === 'ar' ? 'ml-3' : 'mr-3'}`}
+              />
               <span className="text-gray-700">{t('workingHours')}</span>
             </div>
           </div>
-          
+
           <div>
             <h4 className="text-lg font-semibold text-gray-800 mb-4">{t('followUs')}</h4>
             <div className={`flex space-x-4 ${language === 'ar' ? 'space-x-reverse' : ''}`}>
-              <a href="#" className="bg-cactus-green text-white w-10 h-10 rounded-full flex items-center justify-center hover:opacity-80 transition-opacity">
+              <a
+                href="#"
+                className="bg-cactus-green text-white w-10 h-10 rounded-full flex items-center justify-center hover:opacity-80 transition-opacity"
+              >
                 <Facebook className="w-4 h-4" />
               </a>
-              <a href="#" className="bg-cactus-green text-white w-10 h-10 rounded-full flex items-center justify-center hover:opacity-80 transition-opacity">
+              <a
+                href="#"
+                className="bg-cactus-green text-white w-10 h-10 rounded-full flex items-center justify-center hover:opacity-80 transition-opacity"
+              >
                 <Twitter className="w-4 h-4" />
               </a>
-              <a href="#" className="bg-cactus-green text-white w-10 h-10 rounded-full flex items-center justify-center hover:opacity-80 transition-opacity">
+              <a
+                href="#"
+                className="bg-cactus-green text-white w-10 h-10 rounded-full flex items-center justify-center hover:opacity-80 transition-opacity"
+              >
                 <Instagram className="w-4 h-4" />
               </a>
-              <a href="#" className="bg-cactus-green text-white w-10 h-10 rounded-full flex items-center justify-center hover:opacity-80 transition-opacity">
+              <a
+                href="#"
+                className="bg-cactus-green text-white w-10 h-10 rounded-full flex items-center justify-center hover:opacity-80 transition-opacity"
+              >
                 <Linkedin className="w-4 h-4" />
               </a>
             </div>
           </div>
         </div>
-        
+
         <div className={language === 'ar' ? 'text-right' : ''}>
           <h3 className="text-xl font-semibold text-cactus-green mb-6">{t('sendMessage')}</h3>
           <form onSubmit={handleSubmit} className="space-y-4">
             <div>
-              <label className="block text-gray-700 font-medium mb-2">
-                {t('fullName')} *
-              </label>
+              <label className="block text-gray-700 font-medium mb-2">{t('fullName')} *</label>
               <Input
                 type="text"
                 required
@@ -150,11 +180,9 @@ export function ContactModal() {
                 className={language === 'ar' ? 'text-right' : ''}
               />
             </div>
-            
+
             <div>
-              <label className="block text-gray-700 font-medium mb-2">
-                {t('emailAddress')} *
-              </label>
+              <label className="block text-gray-700 font-medium mb-2">{t('emailAddress')} *</label>
               <Input
                 type="email"
                 required
@@ -164,11 +192,9 @@ export function ContactModal() {
                 dir="ltr"
               />
             </div>
-            
+
             <div>
-              <label className="block text-gray-700 font-medium mb-2">
-                {t('phoneNumber')}
-              </label>
+              <label className="block text-gray-700 font-medium mb-2">{t('phoneNumber')}</label>
               <Input
                 type="tel"
                 value={formData.phone}
@@ -177,12 +203,15 @@ export function ContactModal() {
                 dir="ltr"
               />
             </div>
-            
+
             <div>
               <label className="block text-gray-700 font-medium mb-2">
                 {t('serviceInterested')}
               </label>
-              <Select value={formData.service} onValueChange={(value) => setFormData({ ...formData, service: value })}>
+              <Select
+                value={formData.service}
+                onValueChange={(value) => setFormData({ ...formData, service: value })}
+              >
                 <SelectTrigger className={language === 'ar' ? 'text-right' : ''}>
                   <SelectValue placeholder={t('selectService')} />
                 </SelectTrigger>
@@ -195,11 +224,9 @@ export function ContactModal() {
                 </SelectContent>
               </Select>
             </div>
-            
+
             <div>
-              <label className="block text-gray-700 font-medium mb-2">
-                {t('message')} *
-              </label>
+              <label className="block text-gray-700 font-medium mb-2">{t('message')} *</label>
               <Textarea
                 required
                 rows={4}
@@ -209,16 +236,17 @@ export function ContactModal() {
                 className={`resize-none ${language === 'ar' ? 'text-right' : ''}`}
               />
             </div>
-            
-            <Button 
-              type="submit" 
+
+            <Button
+              type="submit"
               disabled={isSubmitting}
               className="w-full bg-cactus-green hover:bg-cactus-green/80"
             >
-              {isSubmitting 
-                ? (language === 'ar' ? 'جارٍ الإرسال...' : 'Sending...') 
-                : t('sendMessageBtn')
-              }
+              {isSubmitting
+                ? language === 'ar'
+                  ? 'جارٍ الإرسال...'
+                  : 'Sending...'
+                : t('sendMessageBtn')}
             </Button>
           </form>
         </div>

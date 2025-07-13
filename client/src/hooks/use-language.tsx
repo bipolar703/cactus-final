@@ -18,7 +18,7 @@ export function LanguageProvider({ children }: { children: ReactNode }) {
   const toggleLanguage = () => {
     const newLang = language === 'en' ? 'ar' : 'en';
     setLanguage(newLang);
-    
+
     // Update HTML attributes
     document.documentElement.setAttribute('lang', newLang);
     document.documentElement.setAttribute('dir', newLang === 'ar' ? 'rtl' : 'ltr');
@@ -27,11 +27,11 @@ export function LanguageProvider({ children }: { children: ReactNode }) {
   const t = (key: string): string => {
     const keys = key.split('.');
     let value: any = translations[language];
-    
+
     for (const k of keys) {
       value = value?.[k];
     }
-    
+
     return value || key;
   };
 

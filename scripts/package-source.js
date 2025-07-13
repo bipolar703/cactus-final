@@ -1,4 +1,3 @@
-
 import fs from 'fs';
 import path from 'path';
 import archiver from 'archiver';
@@ -29,7 +28,7 @@ fs.mkdirSync(tempDir, { recursive: true });
 // Define what to include in the source package
 const includePaths = [
   'client',
-  'server', 
+  'server',
   'scripts',
   'shared',
   'attached_assets',
@@ -42,14 +41,14 @@ const includePaths = [
   'components.json',
   'drizzle.config.ts',
   'vercel.json',
-  '.gitignore'
+  '.gitignore',
 ];
 
 // Copy included files/directories
 for (const includePath of includePaths) {
   const sourcePath = path.join(projectRoot, includePath);
   const destPath = path.join(tempDir, includePath);
-  
+
   if (fs.existsSync(sourcePath)) {
     const stat = fs.statSync(sourcePath);
     if (stat.isDirectory()) {
@@ -407,11 +406,12 @@ fs.writeFileSync(path.join(tempDir, 'DEVELOPMENT.md'), devGuideContent);
 const packageJson = JSON.parse(fs.readFileSync(path.join(projectRoot, 'package.json'), 'utf8'));
 packageJson.scripts = {
   ...packageJson.scripts,
-  "dev": "NODE_ENV=development tsx server/index.ts",
-  "build": "vite build && esbuild server/index.ts --platform=node --packages=external --bundle --format=esm --outdir=dist",
-  "start": "NODE_ENV=production node dist/index.js",
-  "check": "tsc",
-  "db:push": "drizzle-kit push"
+  dev: 'NODE_ENV=development tsx server/index.ts',
+  build:
+    'vite build && esbuild server/index.ts --platform=node --packages=external --bundle --format=esm --outdir=dist',
+  start: 'NODE_ENV=production node dist/index.js',
+  check: 'tsc',
+  'db:push': 'drizzle-kit push',
 };
 
 fs.writeFileSync(path.join(tempDir, 'package.json'), JSON.stringify(packageJson, null, 2));
@@ -432,10 +432,10 @@ fs.writeFileSync(path.join(tempDir, '.env.example'), envExample);
 // Step 7: Clean up unnecessary files from temp directory
 const filesToRemove = [
   path.join(tempDir, 'client/src/components/ui/robots.txt'),
-  path.join(tempDir, 'client/src/components/ui/sitemap.xml')
+  path.join(tempDir, 'client/src/components/ui/sitemap.xml'),
 ];
 
-filesToRemove.forEach(filePath => {
+filesToRemove.forEach((filePath) => {
   if (fs.existsSync(filePath)) {
     fs.unlinkSync(filePath);
   }
@@ -446,7 +446,7 @@ console.log('📦 Creating source code package...');
 
 const output = fs.createWriteStream(zipPath);
 const archive = archiver('zip', {
-  zlib: { level: 9 } // Maximum compression
+  zlib: { level: 9 }, // Maximum compression
 });
 
 output.on('close', () => {
@@ -455,7 +455,7 @@ output.on('close', () => {
   console.log(`📊 Package size: ${sizeInMB} MB`);
   console.log(`📁 Total files compressed`);
   console.log(`\n🎯 Ready for development!`);
-  
+
   // Clean up temp directory
   fs.rmSync(tempDir, { recursive: true, force: true });
 });

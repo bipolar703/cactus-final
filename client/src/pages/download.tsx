@@ -1,4 +1,3 @@
-
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
 import { Download, FileText, Code, GitBranch, Package, CheckCircle, Loader2 } from 'lucide-react';
@@ -14,7 +13,7 @@ export default function DownloadPage() {
 
   const handleDownload = async () => {
     setIsGenerating(true);
-    
+
     try {
       // Call the source package generation API
       const response = await fetch('/api/download-source', {
@@ -27,7 +26,7 @@ export default function DownloadPage() {
       if (response.ok) {
         // Create blob from response
         const blob = await response.blob();
-        
+
         // Create download link
         const url = window.URL.createObjectURL(blob);
         const a = document.createElement('a');
@@ -37,11 +36,11 @@ export default function DownloadPage() {
         a.click();
         window.URL.revokeObjectURL(url);
         document.body.removeChild(a);
-        
+
         setDownloadReady(true);
         toast({
-          title: "Download Started",
-          description: "Your source code package is being downloaded.",
+          title: 'Download Started',
+          description: 'Your source code package is being downloaded.',
         });
       } else {
         // Get error details from response
@@ -52,9 +51,10 @@ export default function DownloadPage() {
     } catch (error) {
       console.error('Download error:', error);
       toast({
-        title: "Download Failed",
-        description: error.message || "There was an error generating the source package. Please try again.",
-        variant: "destructive",
+        title: 'Download Failed',
+        description:
+          error.message || 'There was an error generating the source package. Please try again.',
+        variant: 'destructive',
       });
     } finally {
       setIsGenerating(false);
@@ -64,35 +64,35 @@ export default function DownloadPage() {
   const features = [
     {
       icon: <Code className="h-4 w-4" />,
-      title: "Complete Source Code",
-      description: "Full React + TypeScript frontend and Express.js backend"
+      title: 'Complete Source Code',
+      description: 'Full React + TypeScript frontend and Express.js backend',
     },
     {
       icon: <FileText className="h-4 w-4" />,
-      title: "Comprehensive Documentation",
-      description: "Detailed README, development guide, and inline comments"
+      title: 'Comprehensive Documentation',
+      description: 'Detailed README, development guide, and inline comments',
     },
     {
       icon: <Package className="h-4 w-4" />,
-      title: "Production Ready",
-      description: "Optimized build process and deployment configurations"
+      title: 'Production Ready',
+      description: 'Optimized build process and deployment configurations',
     },
     {
       icon: <GitBranch className="h-4 w-4" />,
-      title: "Version Control Ready",
-      description: "Git-friendly structure with proper .gitignore"
-    }
+      title: 'Version Control Ready',
+      description: 'Git-friendly structure with proper .gitignore',
+    },
   ];
 
   const techStack = [
-    { name: "React 18", color: "bg-blue-100 text-blue-800" },
-    { name: "TypeScript", color: "bg-blue-100 text-blue-800" },
-    { name: "Tailwind CSS", color: "bg-cyan-100 text-cyan-800" },
-    { name: "Framer Motion", color: "bg-purple-100 text-purple-800" },
-    { name: "Express.js", color: "bg-green-100 text-green-800" },
-    { name: "Vite", color: "bg-yellow-100 text-yellow-800" },
-    { name: "shadcn/ui", color: "bg-gray-100 text-gray-800" },
-    { name: "Drizzle ORM", color: "bg-emerald-100 text-emerald-800" }
+    { name: 'React 18', color: 'bg-blue-100 text-blue-800' },
+    { name: 'TypeScript', color: 'bg-blue-100 text-blue-800' },
+    { name: 'Tailwind CSS', color: 'bg-cyan-100 text-cyan-800' },
+    { name: 'Framer Motion', color: 'bg-purple-100 text-purple-800' },
+    { name: 'Express.js', color: 'bg-green-100 text-green-800' },
+    { name: 'Vite', color: 'bg-yellow-100 text-yellow-800' },
+    { name: 'shadcn/ui', color: 'bg-gray-100 text-gray-800' },
+    { name: 'Drizzle ORM', color: 'bg-emerald-100 text-emerald-800' },
   ];
 
   return (
@@ -108,14 +108,14 @@ export default function DownloadPage() {
             <Code className="h-4 w-4" />
             Source Code Download
           </div>
-          
+
           <h1 className="text-4xl font-bold text-gray-900 mb-4">
             Cactus Media Group
             <span className="text-emerald-600 block">Complete Source Code</span>
           </h1>
-          
+
           <p className="text-xl text-gray-600 max-w-2xl mx-auto">
-            Download the complete, production-ready source code with comprehensive documentation, 
+            Download the complete, production-ready source code with comprehensive documentation,
             clean architecture, and everything you need to continue development.
           </p>
         </motion.div>
@@ -139,9 +139,7 @@ export default function DownloadPage() {
               <CardContent className="space-y-4">
                 {features.map((feature, index) => (
                   <div key={index} className="flex items-start gap-3">
-                    <div className="text-emerald-600 mt-1">
-                      {feature.icon}
-                    </div>
+                    <div className="text-emerald-600 mt-1">{feature.icon}</div>
                     <div>
                       <h3 className="font-medium text-gray-900">{feature.title}</h3>
                       <p className="text-sm text-gray-600">{feature.description}</p>
@@ -200,9 +198,7 @@ export default function DownloadPage() {
           <Card className="max-w-md mx-auto">
             <CardHeader>
               <CardTitle>Ready to Download?</CardTitle>
-              <CardDescription>
-                Get the complete source code package instantly
-              </CardDescription>
+              <CardDescription>Get the complete source code package instantly</CardDescription>
             </CardHeader>
             <CardContent className="space-y-4">
               {downloadReady && (
@@ -215,8 +211,8 @@ export default function DownloadPage() {
                   <span className="text-sm font-medium">Download completed successfully!</span>
                 </motion.div>
               )}
-              
-              <Button 
+
+              <Button
                 onClick={handleDownload}
                 disabled={isGenerating}
                 size="lg"
@@ -234,9 +230,9 @@ export default function DownloadPage() {
                   </>
                 )}
               </Button>
-              
+
               <p className="text-xs text-gray-500 leading-relaxed">
-                By downloading, you agree to use this code for development and educational purposes. 
+                By downloading, you agree to use this code for development and educational purposes.
                 The Cactus Media Group brand and assets remain proprietary.
               </p>
             </CardContent>
@@ -257,7 +253,8 @@ export default function DownloadPage() {
               </div>
               <h3 className="font-semibold mb-2">Extract & Install</h3>
               <p className="text-sm text-gray-600">
-                Extract the ZIP file and run <code className="bg-gray-100 px-1 rounded">npm install</code>
+                Extract the ZIP file and run{' '}
+                <code className="bg-gray-100 px-1 rounded">npm install</code>
               </p>
             </div>
             <div className="bg-white p-6 rounded-lg shadow-sm border">
@@ -266,7 +263,8 @@ export default function DownloadPage() {
               </div>
               <h3 className="font-semibold mb-2">Start Development</h3>
               <p className="text-sm text-gray-600">
-                Run <code className="bg-gray-100 px-1 rounded">npm run dev</code> to start the development server
+                Run <code className="bg-gray-100 px-1 rounded">npm run dev</code> to start the
+                development server
               </p>
             </div>
             <div className="bg-white p-6 rounded-lg shadow-sm border">
@@ -275,7 +273,8 @@ export default function DownloadPage() {
               </div>
               <h3 className="font-semibold mb-2">Build & Deploy</h3>
               <p className="text-sm text-gray-600">
-                Use <code className="bg-gray-100 px-1 rounded">npm run build</code> for production builds
+                Use <code className="bg-gray-100 px-1 rounded">npm run build</code> for production
+                builds
               </p>
             </div>
           </div>

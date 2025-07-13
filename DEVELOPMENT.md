@@ -5,10 +5,11 @@
 ### First Time Setup
 
 1. **Clone and Install**
+
    ```bash
    # Install dependencies
    npm install
-   
+
    # Start development server
    npm run dev
    ```
@@ -41,16 +42,19 @@
 ### Common Tasks
 
 #### Adding a New Section
+
 1. Create component in `client/src/components/sections/`
 2. Add to `client/src/pages/home.tsx`
 3. Update navigation if needed
 
 #### Modifying Styles
+
 - Use Tailwind CSS classes
 - Brand colors: emerald (green), orange, yellow
 - Responsive: mobile-first approach
 
 #### Adding API Endpoints
+
 1. Add route in `server/routes.ts`
 2. Define types in `shared/schema.ts`
 3. Use in frontend with TanStack Query
@@ -58,11 +62,13 @@
 ### Troubleshooting
 
 #### Common Issues
+
 1. **Port already in use**: Change port in server config
 2. **TypeScript errors**: Run `npm run check`
 3. **Build fails**: Check for missing dependencies
 
 #### Getting Help
+
 - Check console for error messages
 - Review network tab for API issues
 - Use React DevTools for component debugging

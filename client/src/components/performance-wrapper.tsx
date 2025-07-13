@@ -8,22 +8,15 @@ interface PerformanceWrapperProps {
 }
 
 // Memoized wrapper for performance optimization
-export const PerformanceWrapper = memo(({ 
-  children, 
-  className = '', 
-  useGPU = true 
-}: PerformanceWrapperProps) => {
-  
-  const optimizedClassName = useMemo(() => {
-    return `${className} ${useGPU ? 'gpu-accelerated' : ''}`.trim();
-  }, [className, useGPU]);
+export const PerformanceWrapper = memo(
+  ({ children, className = '', useGPU = true }: PerformanceWrapperProps) => {
+    const optimizedClassName = useMemo(() => {
+      return `${className} ${useGPU ? 'gpu-accelerated' : ''}`.trim();
+    }, [className, useGPU]);
 
-  return (
-    <div className={optimizedClassName}>
-      {children}
-    </div>
-  );
-});
+    return <div className={optimizedClassName}>{children}</div>;
+  },
+);
 
 PerformanceWrapper.displayName = 'PerformanceWrapper';
 
@@ -36,39 +29,35 @@ interface OptimizedImageProps {
   priority?: boolean;
 }
 
-export const OptimizedImage = memo(({ 
-  src, 
-  alt, 
-  className = '', 
-  loading = 'lazy',
-  priority = false 
-}: OptimizedImageProps) => {
-  const [isLoaded, setIsLoaded] = useState(false);
-  const [error, setError] = useState(false);
+export const OptimizedImage = memo(
+  ({ src, alt, className = '', loading = 'lazy', priority = false }: OptimizedImageProps) => {
+    const [isLoaded, setIsLoaded] = useState(false);
+    const [error, setError] = useState(false);
 
-  useEffect(() => {
-    if (priority) {
-      cacheManager.preloadAssets([src]).catch(() => setError(true));
-    }
-  }, [src, priority]);
+    useEffect(() => {
+      if (priority) {
+        cacheManager.preloadAssets([src]).catch(() => setError(true));
+      }
+    }, [src, priority]);
 
-  return (
-    <img 
-      src={src}
-      alt={alt}
-      className={`${className} gpu-accelerated transition-opacity duration-500 ${
-        isLoaded ? 'opacity-100' : 'opacity-0'
-      }`}
-      loading={priority ? 'eager' : loading}
-      decoding="async"
-      onLoad={() => setIsLoaded(true)}
-      onError={() => setError(true)}
-      style={{
-        contentVisibility: 'auto',
-        containIntrinsicSize: '1px 400px'
-      }}
-    />
-  );
-});
+    return (
+      <img
+        src={src}
+        alt={alt}
+        className={`${className} gpu-accelerated transition-opacity duration-500 ${
+          isLoaded ? 'opacity-100' : 'opacity-0'
+        }`}
+        loading={priority ? 'eager' : loading}
+        decoding="async"
+        onLoad={() => setIsLoaded(true)}
+        onError={() => setError(true)}
+        style={{
+          contentVisibility: 'auto',
+          containIntrinsicSize: '1px 400px',
+        }}
+      />
+    );
+  },
+);
 
 OptimizedImage.displayName = 'OptimizedImage';

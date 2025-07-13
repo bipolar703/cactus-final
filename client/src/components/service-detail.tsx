@@ -119,7 +119,10 @@ export function ServiceDetail({ service, onBack, onContact }: ServiceDetailProps
               </h3>
               <div className="space-y-3">
                 {service.pricing.map((price, index) => (
-                  <div key={index} className="bg-white rounded-lg p-4 shadow-sm border border-[#3f7c6a]/10">
+                  <div
+                    key={index}
+                    className="bg-white rounded-lg p-4 shadow-sm border border-[#3f7c6a]/10"
+                  >
                     <span className="text-[#3f7c6a] font-semibold">{price}</span>
                   </div>
                 ))}
@@ -156,14 +159,15 @@ export function ServiceDetail({ service, onBack, onContact }: ServiceDetailProps
           transition={{ delay: 0.7 }}
           className="bg-gradient-to-r from-[#3f7c6a] to-[#5a9b83] rounded-2xl p-8 text-white text-center mt-12"
         >
-          <h3 className={`text-2xl font-bold mb-4 ${language === 'ar' ? 'font-arabic' : 'font-poppins'}`}>
+          <h3
+            className={`text-2xl font-bold mb-4 ${language === 'ar' ? 'font-arabic' : 'font-poppins'}`}
+          >
             {service.cta}
           </h3>
           <p className="text-white/90 mb-6 text-lg">
-            {language === 'ar' 
+            {language === 'ar'
               ? 'مستعد للبدء؟ دعنا نناقش مشروعك ونحوله إلى واقع.'
-              : 'Ready to get started? Let\'s discuss your project and bring it to life.'
-            }
+              : "Ready to get started? Let's discuss your project and bring it to life."}
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Button

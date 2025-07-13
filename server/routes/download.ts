@@ -1,4 +1,3 @@
-
 import { Router } from 'express';
 import { execSync } from 'child_process';
 import fs from 'fs';
@@ -10,19 +9,19 @@ router.post('/api/download-source', async (req, res) => {
   try {
     const projectRoot = process.cwd();
     const zipPath = path.join(projectRoot, 'cactus-media-source-code.zip');
-    
+
     // Clean up any existing zip
     if (fs.existsSync(zipPath)) {
       fs.unlinkSync(zipPath);
     }
-    
+
     // Run the source code packaging script using Node.js directly
-    execSync('node scripts/package-source.js', { 
+    execSync('node scripts/package-source.js', {
       stdio: 'inherit',
       cwd: projectRoot,
-      env: { ...process.env }
+      env: { ...process.env },
     });
-    
+
     // Send the zip file
     if (fs.existsSync(zipPath)) {
       res.download(zipPath, 'cactus-media-source-code.zip', (err) => {

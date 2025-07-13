@@ -1,4 +1,3 @@
-
 import React from 'react';
 import { Download } from 'lucide-react';
 import { Button } from '@/components/ui/button';
@@ -8,9 +7,9 @@ interface DownloadButtonProps {
   className?: string;
 }
 
-export function DownloadButton({ className = "" }: DownloadButtonProps) {
+export function DownloadButton({ className = '' }: DownloadButtonProps) {
   const { language } = useLanguage();
-  
+
   const handleDownload = () => {
     window.open('/download', '_blank');
   };
