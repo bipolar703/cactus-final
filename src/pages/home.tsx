@@ -4,7 +4,7 @@ import { ModalOverlay } from '@/components/modal-overlay';
 import { LoadingScreen } from '@/components/loading-screen';
 import { HeroSection } from '@/components/sections/hero-section';
 import { ServicesSection } from '@/components/sections/services-section';
-import { PortfolioSection } from '@/components/sections/portfolio-section';
+import { WebsiteShowcase } from '@/components/website-showcase';
 import { AboutSection } from '@/components/sections/about-section';
 import { ContactSection } from '@/components/sections/contact-section';
 import { useResourcePreload } from '@/utils/cache-manager';
@@ -160,8 +160,8 @@ export default function Home() {
           </motion.div>
           <motion.div 
             ref={aboutRef}
-            initial={{ opacity: 0, y: 60 }}
-            whileInView={{ opacity: 1, y: 0 }}
+            initial={{ opacity: 0, y: 60, scale: 0.95 }}
+            whileInView={{ opacity: 1, y: 0, scale: 1 }}
             viewport={{ once: true, margin: "-150px" }}
             transition={{ duration: 1.5, ease: [0.16, 1, 0.3, 1] }}
           >
@@ -169,8 +169,8 @@ export default function Home() {
           </motion.div>
           <motion.div 
             ref={servicesRef}
-            initial={{ opacity: 0, y: 60 }}
-            whileInView={{ opacity: 1, y: 0 }}
+            initial={{ opacity: 0, y: 60, rotateY: -5 }}
+            whileInView={{ opacity: 1, y: 0, rotateY: 0 }}
             viewport={{ once: true, margin: "-150px" }}
             transition={{ duration: 1.5, ease: [0.16, 1, 0.3, 1] }}
           >
@@ -178,17 +178,17 @@ export default function Home() {
           </motion.div>
           <motion.div 
             ref={portfolioRef}
-            initial={{ opacity: 0, y: 60 }}
-            whileInView={{ opacity: 1, y: 0 }}
+            initial={{ opacity: 0, y: 60, rotateX: -10 }}
+            whileInView={{ opacity: 1, y: 0, rotateX: 0 }}
             viewport={{ once: true, margin: "-150px" }}
             transition={{ duration: 1.5, ease: [0.16, 1, 0.3, 1] }}
           >
-            <PortfolioSection />
+            <WebsiteShowcase onViewPortfolio={() => setActiveModal('portfolio')} />
           </motion.div>
           <motion.div 
             ref={contactRef}
-            initial={{ opacity: 0, y: 60 }}
-            whileInView={{ opacity: 1, y: 0 }}
+            initial={{ opacity: 0, y: 60, filter: 'blur(10px)' }}
+            whileInView={{ opacity: 1, y: 0, filter: 'blur(0px)' }}
             viewport={{ once: true, margin: "-150px" }}
             transition={{ duration: 1.5, ease: [0.16, 1, 0.3, 1] }}
           >

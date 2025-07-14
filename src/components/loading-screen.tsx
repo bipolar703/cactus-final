@@ -52,8 +52,62 @@ export function LoadingScreen({ isVisible, onComplete }: LoadingScreenProps) {
         filter: 'blur(8px)'
       }}
       transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
-      className="fixed inset-0 z-[100] bg-gradient-to-br from-slate-900 via-jaded-green-950/30 to-slate-800 flex items-center justify-center overflow-hidden"
+      className="fixed inset-0 z-[100] overflow-hidden"
     >
+      {/* Oblique animated background */}
+      <div className="absolute inset-0 bg-gradient-to-br from-slate-900 via-jaded-green-950/40 to-slate-800">
+        <div className="absolute inset-0 opacity-30">
+          {[...Array(8)].map((_, i) => (
+            <motion.div
+              key={i}
+              className="absolute h-full w-2 bg-gradient-to-b from-jaded-green-400/20 to-transparent"
+              style={{
+                left: `${i * 15}%`,
+                transform: 'skewX(-15deg)',
+              }}
+              initial={{ x: -100, opacity: 0 }}
+              animate={{ 
+                x: [null, window.innerWidth + 100],
+                opacity: [0, 0.6, 0]
+              }}
+              transition={{
+                duration: 3,
+                repeat: Infinity,
+                delay: i * 0.4,
+                ease: 'easeInOut'
+              }}
+            />
+          ))}
+        </div>
+        
+        {/* Geometric patterns */}
+        <div className="absolute inset-0 opacity-10">
+          {[...Array(12)].map((_, i) => (
+            <motion.div
+              key={i}
+              className="absolute w-32 h-32 border border-jaded-green-400/30 rounded-lg"
+              style={{
+                left: `${Math.random() * 100}%`,
+                top: `${Math.random() * 100}%`,
+                transform: 'rotate(45deg)',
+              }}
+              animate={{
+                rotate: [45, 405],
+                scale: [1, 1.2, 1],
+                opacity: [0.1, 0.3, 0.1]
+              }}
+              transition={{
+                duration: 8,
+                repeat: Infinity,
+                delay: i * 0.5,
+                ease: 'easeInOut'
+              }}
+            />
+          ))}
+        </div>
+      </div>
+
+      <div className="relative z-10 flex items-center justify-center h-full">
       {/* Animated particles */}
       <div className="absolute inset-0">
         {[...Array(15)].map((_, i) => (

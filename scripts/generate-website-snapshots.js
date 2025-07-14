@@ -1,9 +1,13 @@
 // Website Snapshot Generator
 // This script can be used to generate website snapshots using Puppeteer
 
-const puppeteer = require('puppeteer');
-const fs = require('fs');
-const path = require('path');
+import puppeteer from 'puppeteer';
+import fs from 'fs';
+import path from 'path';
+import { fileURLToPath } from 'url';
+
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
 
 const websites = [
   { name: 'vonoy', url: 'https://vonoy.co' },
@@ -54,8 +58,6 @@ async function generateSnapshots() {
 }
 
 // Run the script
-if (require.main === module) {
-  generateSnapshots().catch(console.error);
-}
+generateSnapshots().catch(console.error);
 
-module.exports = { generateSnapshots };
+export { generateSnapshots };

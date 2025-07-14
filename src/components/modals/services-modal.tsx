@@ -27,19 +27,19 @@ export function ServicesModal() {
           icon: Globe,
           title: t('webDevelopment'),
           description: t('webDevDesc'),
-          pricing: [t('landingPages'), t('businessWebsites'), t('ecommerce')],
+          features: [t('webDevFeatures').split(', ')[0], t('webDevFeatures').split(', ')[1], t('webDevFeatures').split(', ')[2]],
         },
         {
           icon: Search,
           title: t('seoAnalysis'),
           description: t('seoDesc'),
-          pricing: [t('basicSEO'), t('advancedSEO')],
+          features: [language === 'ar' ? 'تحليل الكلمات المفتاحية' : 'Keyword Analysis', language === 'ar' ? 'تحسين المحتوى' : 'Content Optimization'],
         },
         {
           icon: Mail,
           title: t('emailMarketing'),
           description: t('emailDesc'),
-          pricing: [t('newsletterManagement')],
+          features: [language === 'ar' ? 'تصميم النشرات' : 'Newsletter Design', language === 'ar' ? 'إدارة القوائم' : 'List Management'],
         },
       ],
     },
@@ -51,13 +51,13 @@ export function ServicesModal() {
           icon: Palette,
           title: t('branding'),
           description: t('brandingDesc'),
-          pricing: [t('logoDesign'), t('brandGuidelines'), t('fullBrandPackage')],
+          features: [language === 'ar' ? 'تصميم الشعار' : 'Logo Design', language === 'ar' ? 'دليل الهوية' : 'Brand Guidelines', language === 'ar' ? 'الهوية المتكاملة' : 'Complete Identity'],
         },
         {
           icon: PenTool,
           title: t('graphicDesign'),
           description: t('graphicDesignDesc'),
-          pricing: [t('socialMediaPosts'), t('marketingMaterials')],
+          features: [language === 'ar' ? 'تصاميم إبداعية' : 'Creative Designs', language === 'ar' ? 'مواد تسويقية' : 'Marketing Materials'],
         },
       ],
     },
@@ -69,19 +69,19 @@ export function ServicesModal() {
           icon: TrendingUp,
           title: t('socialMedia'),
           description: t('socialMediaDesc'),
-          pricing: [t('basicSocialPackage'), t('premiumSocialPackage')],
+          features: [language === 'ar' ? 'إدارة المحتوى' : 'Content Management', language === 'ar' ? 'تحليل الأداء' : 'Performance Analytics'],
         },
         {
           icon: Film,
           title: t('videography'),
           description: t('videographyDesc'),
-          pricing: [t('productVideos'), t('corporateVideos')],
+          features: [language === 'ar' ? 'إنتاج احترافي' : 'Professional Production', language === 'ar' ? 'مونتاج متقدم' : 'Advanced Editing'],
         },
         {
           icon: Camera,
           title: t('photography'),
           description: t('photographyDesc'),
-          pricing: [t('productPhotography'), t('corporateHeadshots')],
+          features: [language === 'ar' ? 'تصوير احترافي' : 'Professional Photography', language === 'ar' ? 'معالجة متقدمة' : 'Advanced Processing'],
         },
       ],
     },
@@ -94,7 +94,7 @@ export function ServicesModal() {
       title: t('webDevelopment'),
       description: t('webDevDesc'),
       features: t('webDevFeatures').split(', '),
-      pricing: [t('landingPages'), t('businessWebsites'), t('ecommerce')],
+      features: t('webDevFeatures').split(', '),
       benefits: t('webDevBenefits').split(', '),
       process: t('webDevProcess').split(', '),
       cta: t('webDevCTA'),
@@ -173,12 +173,13 @@ export function ServicesModal() {
                     {service.description}
                   </p>
                   <div className="space-y-2 mb-4">
-                    {service.pricing.slice(0, 2).map((price, idx) => (
+                    {service.features.slice(0, 2).map((feature, idx) => (
                       <div
                         key={idx}
-                        className="text-sm text-[#3f7c6a] font-medium bg-[#3f7c6a]/5 rounded-lg px-3 py-2"
+                        className="text-sm text-[#3f7c6a] font-medium bg-[#3f7c6a]/5 rounded-lg px-3 py-2 flex items-center"
                       >
-                        {price}
+                        <div className="w-2 h-2 bg-[#3f7c6a] rounded-full mr-2"></div>
+                        {feature}
                       </div>
                     ))}
                   </div>

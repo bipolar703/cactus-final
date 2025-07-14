@@ -9,7 +9,6 @@ interface ServiceDetailProps {
     title: string;
     description: string;
     features: string[];
-    pricing: string[];
     benefits: string[];
     process: string[];
     cta: string;
@@ -107,7 +106,7 @@ export function ServiceDetail({ service, onBack, onContact }: ServiceDetailProps
 
           {/* Right Column */}
           <div className="space-y-8">
-            {/* Pricing */}
+            {/* Key Features */}
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
@@ -115,15 +114,16 @@ export function ServiceDetail({ service, onBack, onContact }: ServiceDetailProps
               className="bg-gradient-to-br from-[#3f7c6a]/5 to-[#5a9b83]/5 rounded-2xl p-6"
             >
               <h3 className="text-2xl font-bold text-gray-800 mb-4">
-                {language === 'ar' ? 'الأسعار' : 'Pricing'}
+                {language === 'ar' ? 'الميزات الرئيسية' : 'Key Features'}
               </h3>
               <div className="space-y-3">
-                {service.pricing.map((price, index) => (
+                {service.features.map((feature, index) => (
                   <div
                     key={index}
-                    className="bg-white rounded-lg p-4 shadow-sm border border-[#3f7c6a]/10"
+                    className="bg-white rounded-lg p-4 shadow-sm border border-[#3f7c6a]/10 flex items-center"
                   >
-                    <span className="text-[#3f7c6a] font-semibold">{price}</span>
+                    <div className="w-3 h-3 bg-[#3f7c6a] rounded-full mr-3"></div>
+                    <span className="text-gray-700 font-medium">{feature}</span>
                   </div>
                 ))}
               </div>

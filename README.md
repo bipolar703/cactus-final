@@ -1,28 +1,34 @@
-# Cactus Media Group - Complete Source Code
+# Cactus Media Group - Premium Digital Solutions
 
-## 🌵 Welcome to Cactus Media Group Development Package
+## 🌵 "In a world full of flowers, be a cactus!"
 
-"In a world full of flowers, be a cactus!" - Premium digital solutions engineered for resilience and growth.
+Premium digital solutions engineered for resilience and growth. This is the complete source code for Cactus Media Group's modern, bilingual website featuring cinematic animations, live website showcases, and comprehensive digital services.
 
-This package contains the complete, production-ready source code for the Cactus Media Group website, a modern full-stack application built with React, TypeScript, and Express.js.
+## ✨ Key Features
 
-## 📁 Project Structure
+- **Cinematic Hero Experience** - Immersive video backgrounds with parallax effects
+- **Bilingual Support** - Full Arabic and English localization
+- **Live Website Snapshots** - Real-time portfolio showcases using Puppeteer
+- **Performance Optimized** - Advanced caching and lazy loading
+- **Modern Tech Stack** - React 18, TypeScript, Framer Motion, Tailwind CSS
+- **Responsive Design** - Mobile-first approach with glass morphism effects
+
+## 🚀 Project Structure
 
 ```
-cactus-media-source/
-├── client/                 # Frontend React application
-│   ├── src/
-│   │   ├── components/     # Reusable UI components
-│   │   │   ├── sections/   # Page sections (hero, about, etc.)
-│   │   │   ├── modals/     # Modal components
-│   │   │   └── ui/         # Base UI components (shadcn/ui)
-│   │   ├── hooks/          # Custom React hooks
-│   │   ├── lib/            # Utility libraries and configurations
-│   │   ├── pages/          # Page components
-│   │   └── utils/          # Helper utilities
-│   ├── public/             # Static assets
-│   └── index.html          # Main HTML template
-├── server/                 # Backend Express.js application
+cactus-media-group/
+├── src/
+│   ├── components/         # React components
+│   │   ├── sections/       # Page sections
+│   │   ├── modals/         # Modal dialogs
+│   │   └── ui/             # Base UI components
+│   ├── hooks/              # Custom React hooks
+│   ├── lib/                # Utilities and configurations
+│   ├── pages/              # Page components
+│   └── data/               # Static data and content
+├── server/                 # Express.js backend
+├── scripts/                # Build and utility scripts
+└── public/                 # Static assets
 │   ├── index.ts            # Main server entry point
 │   ├── routes.ts           # API route definitions
 │   └── vite.ts             # Vite development server setup

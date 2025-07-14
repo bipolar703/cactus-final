@@ -20,6 +20,18 @@ export function CinematicHero({ onModalOpen }: CinematicHeroProps) {
     offset: ['start start', 'end start'],
   });
 
+  // Prevent overscroll to top
+  useEffect(() => {
+    const preventOverscroll = (e: WheelEvent) => {
+      if (window.scrollY <= 0 && e.deltaY < 0) {
+        e.preventDefault();
+      }
+    };
+
+    window.addEventListener('wheel', preventOverscroll, { passive: false });
+    return () => window.removeEventListener('wheel', preventOverscroll);
+  }, []);
+
   // Enhanced parallax transforms with cinematic motion
   const y = useTransform(scrollYProgress, [0, 1], ['0%', '30%']);
   const opacity = useTransform(scrollYProgress, [0, 0.3, 0.7, 1], [1, 0.95, 0.8, 0]);
