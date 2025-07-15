@@ -2,6 +2,8 @@ import type { Express } from 'express';
 import { createServer, type Server } from 'http';
 import { z } from 'zod';
 import { Router } from 'express';
+import fs from 'fs';
+import path from 'path';
 import downloadRoutes from './routes/download.js';
 
 const router = Router();
@@ -16,6 +18,27 @@ const contactSchema = z.object({
 
 export async function registerRoutes(app: Express): Promise<Server> {
   app.use(downloadRoutes);
+  
+  // Error logging endpoint
+  app.post('/log-error', (req, res) => {
+    try {
+      const { error, timestamp } = req.body;
+      const logEntry = `${timestamp} - ${error}\n`;
+      
+      // Append to progress.log
+      fs.appendFileSync(
+        path.resolve(process.cwd(), 'progress.log'),
+        logEntry,
+        { encoding: 'utf8' }
+      );
+      
+      console.log('Error logged:', error);
+      res.status(200).json({ success: true });
+    } catch (err) {
+      console.error('Failed to log error:', err);
+      res.status(500).json({ success: false, message: 'Failed to log error' });
+    }
+  });
   // Contact form submission endpoint
   app.post('/api/contact', async (req, res) => {
     try {

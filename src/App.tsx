@@ -34,9 +34,11 @@ function App() {
     <QueryClientProvider client={queryClient}>
       <LanguageProvider>
         <TooltipProvider>
-          <Toaster />
-          <ScrollToTop />
-          <Router />
+          <div className="relative min-h-screen" data-scroll-container>
+            <Toaster />
+            <ScrollToTop />
+            <Router />
+          </div>
         </TooltipProvider>
       </LanguageProvider>
     </QueryClientProvider>

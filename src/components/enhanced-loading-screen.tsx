@@ -8,7 +8,7 @@ interface LoadingScreenProps {
   onComplete: () => void;
 }
 
-export function LoadingScreen({ isVisible, onComplete }: LoadingScreenProps) {
+export function EnhancedLoadingScreen({ isVisible, onComplete }: LoadingScreenProps) {
   const { language } = useLanguage();
   const [progress, setProgress] = useState(0);
   const [loadingText, setLoadingText] = useState('');
@@ -53,22 +53,55 @@ export function LoadingScreen({ isVisible, onComplete }: LoadingScreenProps) {
       }}
       transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
       className="fixed inset-0 z-[100] overflow-hidden"
+      data-scroll-container
     >
-      {/* Oblique animated background */}
-      <div className="absolute inset-0 loading-background">
-        <div className="absolute inset-0 opacity-30">
-          {[...Array(8)].map((_, i) => (
+      {/* Enhanced oblique animated background */}
+      <div className="absolute inset-0 bg-gradient-to-br from-slate-900 via-jaded-green-950/40 to-slate-800 overflow-hidden">
+        {/* Diagonal animated stripes */}
+        <div className="absolute inset-0 opacity-40">
+          {[...Array(12)].map((_, i) => (
             <motion.div
               key={i}
-              className="absolute h-full w-2 bg-gradient-to-b from-jaded-green-400/20 to-transparent"
+              className="absolute bg-gradient-to-r from-transparent via-jaded-green-500/30 to-transparent"
               style={{
-                left: `${i * 15}%`,
-                transform: 'skewX(-15deg)',
+                width: '300%',
+                height: '3px',
+                top: `${i * 8}%`,
+                left: '-100%',
+                transform: 'rotate(-25deg) skewY(-2deg)',
+                transformOrigin: 'center',
               }}
-              initial={{ x: -100, opacity: 0 }}
-              animate={{ 
-                x: [null, 2000],
-                opacity: [0, 0.6, 0]
+              animate={{
+                x: ['0%', '150%'],
+                opacity: [0, 0.8, 0],
+                scaleX: [0.5, 1, 0.5]
+              }}
+              transition={{
+                duration: 4,
+                repeat: Infinity,
+                delay: i * 0.3,
+                ease: [0.25, 0.46, 0.45, 0.94]
+              }}
+            />
+          ))}
+        </div>
+        
+        {/* Geometric oblique patterns */}
+        <div className="absolute inset-0 opacity-20">
+          {[...Array(6)].map((_, i) => (
+            <motion.div
+              key={`geo-${i}`}
+              className="absolute border-l border-jaded-green-400/40"
+              style={{
+                height: '200%',
+                width: '1px',
+                left: `${15 + i * 15}%`,
+                top: '-50%',
+                transform: 'rotate(-20deg)',
+              }}
+              animate={{
+                opacity: [0.2, 0.6, 0.2],
+                scaleY: [0.8, 1.2, 0.8]
               }}
               transition={{
                 duration: 3,
@@ -80,26 +113,29 @@ export function LoadingScreen({ isVisible, onComplete }: LoadingScreenProps) {
           ))}
         </div>
         
-        {/* Geometric patterns */}
-        <div className="absolute inset-0 opacity-10">
-          {[...Array(12)].map((_, i) => (
+        {/* Additional oblique mesh pattern */}
+        <div className="absolute inset-0 opacity-15">
+          {[...Array(8)].map((_, i) => (
             <motion.div
-              key={i}
-              className="absolute w-32 h-32 border border-jaded-green-400/30 rounded-lg"
+              key={`mesh-${i}`}
+              className="absolute bg-gradient-to-br from-jaded-green-600/20 to-transparent"
               style={{
-                left: `${Math.random() * 100}%`,
-                top: `${Math.random() * 100}%`,
-                transform: 'rotate(45deg)',
+                width: '150px',
+                height: '150px',
+                left: `${i * 12}%`,
+                top: `${(i % 3) * 30}%`,
+                transform: 'rotate(-30deg) skew(-10deg, -5deg)',
+                clipPath: 'polygon(0 0, 100% 20%, 80% 100%, 20% 80%)',
               }}
               animate={{
-                rotate: [45, 405],
-                scale: [1, 1.2, 1],
+                rotate: [-30, -10, -30],
+                scale: [0.8, 1.1, 0.8],
                 opacity: [0.1, 0.3, 0.1]
               }}
               transition={{
-                duration: 8,
+                duration: 6,
                 repeat: Infinity,
-                delay: i * 0.5,
+                delay: i * 0.6,
                 ease: 'easeInOut'
               }}
             />
@@ -189,7 +225,7 @@ export function LoadingScreen({ isVisible, onComplete }: LoadingScreenProps) {
               initial={{ opacity: 0, y: 8 }}
               animate={{ opacity: 1, y: 0 }}
               className={`text-white/90 text-lg font-medium ${
-                language === 'ar' ? 'font-arabic' : 'font-poppins'
+                language === 'ar' ? 'font-arabic dubai-arabic' : 'font-poppins'
               }`}
             >
               {loadingText}
@@ -209,7 +245,7 @@ export function LoadingScreen({ isVisible, onComplete }: LoadingScreenProps) {
             animate={{ opacity: 1 }}
             transition={{ delay: 1.2, duration: 0.8 }}
             className={`text-white/50 text-sm mt-8 ${
-              language === 'ar' ? 'font-arabic' : ''
+              language === 'ar' ? 'font-arabic dubai-arabic' : ''
             }`}
           >
             {language === 'ar' 

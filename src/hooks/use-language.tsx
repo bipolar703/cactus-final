@@ -6,6 +6,7 @@ interface LanguageContextType {
   language: Language;
   toggleLanguage: () => void;
   t: (key: string) => string;
+  isLoading: boolean;
 }
 
 const LanguageContext = createContext<LanguageContextType | undefined>(undefined);
@@ -14,23 +15,43 @@ import { translations } from '@/lib/translations';
 
 export function LanguageProvider({ children }: { children: ReactNode }) {
   const [language, setLanguage] = useState<Language>('en');
+  const [isLoading, setIsLoading] = useState(false);
 
   const toggleLanguage = () => {
-    const newLang = language === 'en' ? 'ar' : 'en';
+    if (isLoading) return; // Prevent multiple clicks during loading
     
-    // Smooth transition
+    const newLang = language === 'en' ? 'ar' : 'en';
+    setIsLoading(true);
+    
+    // Add loading class to body
+    document.body.classList.add('language-switching');
+    
+    // Smooth transition with loading delay
     document.documentElement.style.transition = 'all 0.3s ease';
     
-    setLanguage(newLang);
-
-    // Update HTML attributes with smooth transition
-    document.documentElement.setAttribute('lang', newLang);
-    document.documentElement.setAttribute('dir', newLang === 'ar' ? 'rtl' : 'ltr');
-    
-    // Reset transition after completion
     setTimeout(() => {
-      document.documentElement.style.transition = '';
-    }, 300);
+      setLanguage(newLang);
+
+      // Update HTML attributes with smooth transition
+      document.documentElement.setAttribute('lang', newLang);
+      document.documentElement.setAttribute('dir', newLang === 'ar' ? 'rtl' : 'ltr');
+      
+      // Apply Dubai-style Arabic font
+      if (newLang === 'ar') {
+        document.body.classList.add('font-arabic', 'dubai-arabic');
+        document.body.classList.remove('font-sans');
+      } else {
+        document.body.classList.remove('font-arabic', 'dubai-arabic');
+        document.body.classList.add('font-sans');
+      }
+      
+      // Reset transition and loading state
+      setTimeout(() => {
+        document.documentElement.style.transition = '';
+        document.body.classList.remove('language-switching');
+        setIsLoading(false);
+      }, 300);
+    }, 150);
   };
 
   const t = (key: string): string => {
@@ -50,7 +71,7 @@ export function LanguageProvider({ children }: { children: ReactNode }) {
   }, [language]);
 
   return (
-    <LanguageContext.Provider value={{ language, toggleLanguage, t }}>
+    <LanguageContext.Provider value={{ language, toggleLanguage, t, isLoading }}>
       {children}
     </LanguageContext.Provider>
   );

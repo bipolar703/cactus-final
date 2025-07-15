@@ -1,23 +1,27 @@
 import { useState, useEffect, useRef } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { ChevronLeft, ChevronRight, Play, Pause } from 'lucide-react';
+import { ChevronLeft, ChevronRight, Play, Pause, Image as ImageIcon } from 'lucide-react';
 
 const cactusVideos = [
   {
-    src: 'https://videos.pexels.com/video-files/8011361/8011361-uhd_2560_1440_25fps.mp4',
+    src: '/hero.mp4', // Using local hero.mp4 file from public directory
     title: 'Desert Resilience',
+    fallbackImage: '/placeholder.svg'
   },
   {
-    src: 'https://videos.pexels.com/video-files/4937841/4937841-uhd_2560_1440_25fps.mp4',
+    src: '/hero.mp4', // Using local hero.mp4 file from public directory
     title: 'Natural Strength',
+    fallbackImage: '/placeholder.svg'
   },
   {
-    src: 'https://videos.pexels.com/video-files/6567142/6567142-uhd_2560_1440_25fps.mp4',
+    src: '/hero.mp4', // Using local hero.mp4 file from public directory
     title: 'Growth Focus',
+    fallbackImage: '/placeholder.svg'
   },
   {
-    src: 'https://videos.pexels.com/video-files/8618988/8618988-uhd_2560_1440_30fps.mp4',
+    src: '/hero.mp4', // Using local hero.mp4 file from public directory
     title: 'Creative Services',
+    fallbackImage: '/placeholder.svg'
   },
 ];
 
@@ -25,6 +29,7 @@ export function VideoSlideshow() {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [isPlaying, setIsPlaying] = useState(true);
   const [isAutoPlay, setIsAutoPlay] = useState(true);
+  const [videoError, setVideoError] = useState(false);
   const videoRef = useRef<HTMLVideoElement>(null);
   const intervalRef = useRef<NodeJS.Timeout>();
 
@@ -74,23 +79,34 @@ export function VideoSlideshow() {
           transition={{ duration: 1.8, ease: [0.25, 0.46, 0.45, 0.94] }}
           className="absolute inset-0"
         >
-          <video
-            ref={videoRef}
-            autoPlay
-            muted
-            loop
-            playsInline
-            preload="metadata"
-            className="w-full h-full object-cover gpu-accelerated"
-            style={{ filter: 'brightness(0.8) contrast(1.1)' }}
-            onLoadedData={() => console.log(`Video ${currentIndex + 1} loaded`)}
-            onError={(e) => {
-              console.warn(`Video ${currentIndex + 1} failed to load`);
-              nextSlide();
-            }}
-          >
-            <source src={cactusVideos[currentIndex].src} type="video/mp4" />
-          </video>
+          {videoError ? (
+            <img 
+              src={cactusVideos[currentIndex].fallbackImage} 
+              alt={cactusVideos[currentIndex].title}
+              className="w-full h-full object-cover"
+            />
+          ) : (
+            <video
+              ref={videoRef}
+              autoPlay
+              muted
+              loop
+              playsInline
+              preload="metadata"
+              className="w-full h-full object-cover gpu-accelerated"
+              style={{ filter: 'brightness(0.8) contrast(1.1)' }}
+              onLoadedData={() => {
+                console.log(`Video ${currentIndex + 1} loaded`);
+                setVideoError(false);
+              }}
+              onError={(e) => {
+                console.warn(`Video ${currentIndex + 1} failed to load`);
+                setVideoError(true);
+              }}
+            >
+              <source src={cactusVideos[currentIndex].src} type="video/mp4" />
+            </video>
+          )}
         </motion.div>
       </AnimatePresence>
 

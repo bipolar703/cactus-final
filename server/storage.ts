@@ -1,4 +1,14 @@
-import { users, type User, type InsertUser } from '@shared/schema';
+// Simple user types for demo purposes
+export interface User {
+  id: number;
+  username: string;
+  email?: string;
+}
+
+export interface InsertUser {
+  username: string;
+  email?: string;
+}
 
 // modify the interface with any CRUD methods
 // you might need

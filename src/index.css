@@ -1,9 +1,388 @@
-@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;500;600;700&family=Poppins:wght@300;400;500;600;700&family=Rubik:wght@300..900&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Dubai:wght@300;400;500;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Barlow:wght@100;200;300;400;500;600;700;800;900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Amiri:wght@400;700&display=swap');
 
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+/* Container positioning fix for scroll offset calculation */
+.scroll-container, 
+.modal-container,
+.navigation-container,
+[data-scroll-container] {
+  position: relative !important;
+}
+
+/* Ensure proper positioning for scroll calculations */
+body, html {
+  position: relative;
+}
+
+html, body {
+  position: relative;
+  scroll-behavior: smooth;
+}
+
+#root {
+  position: relative;
+  min-height: 100vh;
+}
+
+/* Enhanced Arabic font classes with RTL optimization */
+.font-arabic {
+  font-family: 'Cairo', 'Amiri', sans-serif;
+  direction: rtl;
+  text-align: right;
+  unicode-bidi: isolate;
+  font-feature-settings: 'liga' 1, 'kern' 1;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* RTL Layout Utilities */
+.rtl-container {
+  direction: rtl;
+}
+
+.rtl-container .flex-row-reverse {
+  flex-direction: row-reverse;
+}
+
+.rtl-container .text-right {
+  text-align: right;
+}
+
+.rtl-container .mr-auto {
+  margin-right: auto;
+  margin-left: 0;
+}
+
+.rtl-container .ml-auto {
+  margin-left: auto;
+  margin-right: 0;
+}
+
+/* Arabic Typography Enhancements */
+.arabic-heading {
+  font-family: 'Cairo', sans-serif;
+  font-weight: 600;
+  line-height: 1.3;
+  letter-spacing: 0.01em;
+}
+
+.arabic-body {
+  font-family: 'Cairo', sans-serif;
+  font-weight: 400;
+  line-height: 1.7;
+  letter-spacing: 0.005em;
+}
+
+/* Hide scrollbar for horizontal scroll */
+.scrollbar-hide {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+.scrollbar-hide::-webkit-scrollbar {
+  display: none;
+}
+
+.font-poppins {
+  font-family: 'Poppins', sans-serif;
+}
+
+.font-barlow {
+  font-family: 'Barlow', sans-serif;
+}
+
+/* Dubai-style Arabic typography */
+.dubai-arabic {
+  font-family: 'Dubai', 'Cairo', sans-serif;
+  font-weight: 500;
+  letter-spacing: 0.02em;
+  line-height: 1.6;
+  text-rendering: optimizeLegibility;
+}
+
+/* Enhanced Arabic sections */
+.arabic-section {
+  font-family: 'Dubai', 'Cairo', sans-serif;
+  direction: rtl;
+  text-align: right;
+}
+
+.arabic-section h1, .arabic-section h2, .arabic-section h3 {
+  font-weight: 600;
+  line-height: 1.4;
+}
+
+.arabic-section p {
+  line-height: 1.8;
+  font-weight: 400;
+}
+
+/* Language switching loading */
+.language-switching {
+  opacity: 0.7;
+  transition: opacity 0.3s ease;
+  pointer-events: none;
+}
+
+/* Enhanced hover effects */
+.hover-scale {
+  transition: transform 0.2s ease, box-shadow 0.2s ease, filter 0.2s ease;
+}
+
+/* Oblique gradient loading background with shimmer */
+.loading-background {
+  background: linear-gradient(135deg, #1e293b 0%, #334155 50%, #475569 100%);
+  position: relative;
+  overflow: hidden;
+}
+
+.loading-background::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 200%;
+  height: 100%;
+  background: linear-gradient(
+    90deg,
+    transparent 0%,
+    rgba(255, 255, 255, 0.1) 20%,
+    rgba(255, 255, 255, 0.3) 50%,
+    rgba(255, 255, 255, 0.1) 80%,
+    transparent 100%
+  );
+  animation: shimmer 2.5s ease-in-out infinite;
+  pointer-events: none;
+}
+
+@keyframes shimmer {
+  0% {
+    transform: translateX(-100%);
+  }
+  100% {
+    transform: translateX(100%);
+  }
+}
+
+/* Premium glass morphism effects */
+.glass-premium {
+  background: rgba(255, 255, 255, 0.08);
+  backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  box-shadow: 
+    0 8px 32px rgba(0, 0, 0, 0.3),
+    inset 0 1px 0 rgba(255, 255, 255, 0.2);
+}
+
+/* Modern card effects */
+.modern-card {
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(16px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 24px;
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.modern-card:hover {
+  background: rgba(255, 255, 255, 0.1);
+  border-color: rgba(0, 150, 125, 0.3);
+  transform: translateY(-8px);
+  box-shadow: 
+    0 20px 40px rgba(0, 0, 0, 0.4),
+    0 0 20px rgba(0, 150, 125, 0.2);
+}
+
+/* Gradient text effects */
+.gradient-text {
+  background: linear-gradient(135deg, #ffffff 0%, #00967d 50%, #ffffff 100%);
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-size: 200% 200%;
+  animation: gradient-shift 3s ease infinite;
+}
+
+@keyframes gradient-shift {
+  0%, 100% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+}
+
+/* Subtle glow effects */
+.subtle-glow {
+  box-shadow: 0 0 20px rgba(0, 150, 125, 0.1);
+  transition: box-shadow 0.3s ease;
+}
+
+.subtle-glow:hover {
+  box-shadow: 0 0 30px rgba(0, 150, 125, 0.2);
+}
+
+/* Modern button with micro-interactions */
+.modern-btn {
+  position: relative;
+  overflow: hidden;
+  background: linear-gradient(135deg, #00967d, #007361);
+  border: none;
+  border-radius: 16px;
+  padding: 12px 24px;
+  color: white;
+  font-weight: 600;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  cursor: pointer;
+}
+
+.modern-btn::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+  transition: left 0.5s;
+}
+
+.modern-btn:hover::before {
+  left: 100%;
+}
+
+.modern-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 25px rgba(0, 150, 125, 0.3);
+}
+
+.glass-premium:hover {
+  background: rgba(255, 255, 255, 0.12);
+  border-color: rgba(0, 150, 125, 0.4);
+  box-shadow: 
+    0 12px 48px rgba(0, 0, 0, 0.4),
+    0 0 24px rgba(0, 150, 125, 0.2),
+    inset 0 1px 0 rgba(255, 255, 255, 0.3);
+}
+
+/* Cinematic text effects */
+.cinematic-text {
+  background: linear-gradient(135deg, #ffffff 0%, #e0e0e0 50%, #ffffff 100%);
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  text-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+}
+
+/* Enhanced button styles */
+.btn-premium {
+  background: linear-gradient(135deg, #00967d 0%, #007361 50%, #00856f 100%);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  box-shadow: 
+    0 8px 32px rgba(0, 150, 125, 0.4),
+    0 4px 16px rgba(0, 0, 0, 0.2),
+    inset 0 1px 0 rgba(255, 255, 255, 0.2);
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  position: relative;
+  overflow: hidden;
+}
+
+.btn-premium::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+  transition: left 0.6s;
+}
+
+.btn-premium:hover::before {
+  left: 100%;
+}
+
+.btn-premium:hover {
+  background: linear-gradient(135deg, #00a589 0%, #00856f 50%, #007361 100%);
+  box-shadow: 
+    0 12px 48px rgba(0, 150, 125, 0.5),
+    0 8px 24px rgba(0, 150, 125, 0.3),
+    0 0 20px rgba(0, 150, 125, 0.4),
+    inset 0 1px 0 rgba(255, 255, 255, 0.3);
+  transform: translateY(-3px);
+}
+
+/* Floating animation */
+@keyframes float {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-10px); }
+}
+
+.float-animation {
+  animation: float 6s ease-in-out infinite;
+}
+
+/* Pulse glow effect */
+@keyframes pulse-glow {
+  0%, 100% { 
+    box-shadow: 0 0 20px rgba(0, 150, 125, 0.3);
+  }
+  50% { 
+    box-shadow: 0 0 40px rgba(0, 150, 125, 0.6);
+  }
+}
+
+.pulse-glow {
+  animation: pulse-glow 3s ease-in-out infinite;
+}
+
+.hover-scale:hover {
+  transform: scale(1.05);
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+  filter: brightness(1.1);
+}
+
+/* Language toggle hover effects */
+.language-toggle {
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  position: relative;
+  overflow: hidden;
+}
+
+.language-toggle:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 25px rgba(90, 155, 131, 0.3);
+}
+
+.language-toggle:hover::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+  animation: shimmer 0.6s ease-out;
+}
+
+@keyframes shimmer {
+  0% { left: -100%; }
+  100% { left: 100%; }
+}
+
+/* Loading state for language switching */
+.language-toggle.loading {
+  opacity: 0.7;
+  pointer-events: none;
+  animation: pulse 1s infinite;
+}
+
+@keyframes pulse {
+  0%, 100% { opacity: 0.7; }
+  50% { opacity: 0.9; }
+}
 
 :root {
   --background: hsl(0, 0%, 100%);

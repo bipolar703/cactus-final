@@ -1,36 +1,34 @@
 import { useState, useRef, useEffect } from 'react';
-import { LanguageToggle } from '@/components/language-toggle';
-import { ModalOverlay } from '@/components/modal-overlay';
+import { ScrollAwareLanguageToggle } from '@/components/scroll-aware-language-toggle';
+import { EnhancedModalSystem } from '@/components/enhanced-modal-system';
 import { LoadingScreen } from '@/components/loading-screen';
-import { HeroSection } from '@/components/sections/hero-section';
-import { ServicesSection } from '@/components/sections/services-section';
-import { WebsiteShowcase } from '@/components/website-showcase';
-import { AboutSection } from '@/components/sections/about-section';
-import { ContactSection } from '@/components/sections/contact-section';
+import { EnhancedHeroSection } from '@/components/enhanced-hero-section';
+import { ModernAboutSection } from '@/components/sections/modern-about-section';
+import { ModernServicesSection } from '@/components/sections/modern-services-section';
+import { ModernPortfolioSection } from '@/components/sections/modern-portfolio-section';
+import { ModernContactSection } from '@/components/sections/modern-contact-section';
+import { ClientShowcase } from '@/components/client-showcase';
 import { useResourcePreload } from '@/utils/cache-manager';
-import { AboutModal } from '@/components/modals/about-modal';
-import { ServicesModal } from '@/components/modals/services-modal';
-import { PortfolioModal } from '@/components/modals/portfolio-modal';
-import { ContactModal } from '@/components/modals/contact-modal';
+import { EnhancedFooter } from '@/components/enhanced-footer';
 import { motion, AnimatePresence } from 'framer-motion';
 
 const sectionVideos = [
   { id: 'hero', src: '/hero.mp4' },
   {
     id: 'about',
-    src: 'Video by 8Percent Media from Pexels: https://www.pexels.com/video/abstract-artistic-blur-with-cinematic-effect-31391872/',
+    src: '/hero.mp4', // Using local hero.mp4 file from public directory
   },
   {
     id: 'services',
-    src: 'Video by 8Percent Media from Pexels: https://www.pexels.com/video/abstract-artistic-blur-with-cinematic-effect-31391872/',
+    src: '/hero.mp4', // Using local hero.mp4 file from public directory
   },
   {
     id: 'portfolio',
-    src: 'Video by 8Percent Media from Pexels: https://www.pexels.com/video/abstract-artistic-blur-with-cinematic-effect-31391872/',
+    src: '/hero.mp4', // Using local hero.mp4 file from public directory
   },
   {
     id: 'contact',
-    src: 'Video by 8Percent Media from Pexels: https://www.pexels.com/video/abstract-artistic-blur-with-cinematic-effect-31391872/',
+    src: '/hero.mp4', // Using local hero.mp4 file from public directory
   },
 ];
 
@@ -147,7 +145,7 @@ export default function Home() {
           </AnimatePresence>
         </div>
         {/* Language Toggle */}
-        <LanguageToggle />
+        <ScrollAwareLanguageToggle />
         {/* Main Sectioned Content */}
         <main className="relative z-10">
           <motion.div 
@@ -156,7 +154,7 @@ export default function Home() {
             animate={{ opacity: 1 }}
             transition={{ duration: 1.8, ease: [0.16, 1, 0.3, 1] }}
           >
-            <HeroSection onModalOpen={setActiveModal} />
+            <EnhancedHeroSection onModalOpen={setActiveModal} />
           </motion.div>
           <motion.div 
             ref={aboutRef}
@@ -164,8 +162,9 @@ export default function Home() {
             whileInView={{ opacity: 1, y: 0, scale: 1 }}
             viewport={{ once: true, margin: "-150px" }}
             transition={{ duration: 1.5, ease: [0.16, 1, 0.3, 1] }}
+            className="-mt-1"
           >
-            <AboutSection />
+            <ModernAboutSection />
           </motion.div>
           <motion.div 
             ref={servicesRef}
@@ -174,7 +173,7 @@ export default function Home() {
             viewport={{ once: true, margin: "-150px" }}
             transition={{ duration: 1.5, ease: [0.16, 1, 0.3, 1] }}
           >
-            <ServicesSection />
+            <ModernServicesSection />
           </motion.div>
           <motion.div 
             ref={portfolioRef}
@@ -183,7 +182,15 @@ export default function Home() {
             viewport={{ once: true, margin: "-150px" }}
             transition={{ duration: 1.5, ease: [0.16, 1, 0.3, 1] }}
           >
-            <WebsiteShowcase onViewPortfolio={() => setActiveModal('portfolio')} />
+            <ModernPortfolioSection onViewPortfolio={() => setActiveModal('portfolio')} />
+          </motion.div>
+          <motion.div 
+            initial={{ opacity: 0, y: 60, scale: 0.95 }}
+            whileInView={{ opacity: 1, y: 0, scale: 1 }}
+            viewport={{ once: true, margin: "-150px" }}
+            transition={{ duration: 1.5, ease: [0.16, 1, 0.3, 1] }}
+          >
+            <ClientShowcase />
           </motion.div>
           <motion.div 
             ref={contactRef}
@@ -192,13 +199,19 @@ export default function Home() {
             viewport={{ once: true, margin: "-150px" }}
             transition={{ duration: 1.5, ease: [0.16, 1, 0.3, 1] }}
           >
-            <ContactSection />
+            <ModernContactSection />
           </motion.div>
+          
+          {/* Enhanced Footer */}
+          <EnhancedFooter />
         </main>
         {/* Modal */}
-        <ModalOverlay isOpen={!!activeModal} onClose={() => setActiveModal(null)}>
-          {renderModalContent()}
-        </ModalOverlay>
+        <EnhancedModalSystem
+          isOpen={!!activeModal}
+          onClose={() => setActiveModal(null)}
+          activeModal={activeModal}
+          onModalChange={setActiveModal}
+        />
       </div>
     </>
   );

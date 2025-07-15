@@ -94,7 +94,6 @@ export function ServicesModal() {
       title: t('webDevelopment'),
       description: t('webDevDesc'),
       features: t('webDevFeatures').split(', '),
-      features: t('webDevFeatures').split(', '),
       benefits: t('webDevBenefits').split(', '),
       process: t('webDevProcess').split(', '),
       cta: t('webDevCTA'),
