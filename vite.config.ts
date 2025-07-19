@@ -26,7 +26,7 @@ export default defineConfig({
     sourcemap: false,
     cssCodeSplit: true,
     rollupOptions: {
-      external: ['@vercel/analytics'],
+      external: ['@vercel/analytics', 'react-error-boundary'],
       output: {
         manualChunks: {
           vendor: ['react', 'react-dom'],
