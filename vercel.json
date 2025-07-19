@@ -4,10 +4,6 @@
   "framework": "vite",
   "rewrites": [
     {
-      "source": "/api/(.*)",
-      "destination": "/server/index.ts"
-    },
-    {
       "source": "/(.*)",
       "destination": "/index.html"
     }
@@ -74,10 +70,5 @@
         }
       ]
     }
-  ],
-  "functions": {
-    "server/index.ts": {
-      "memory": 1024
-    }
-  }
+  ]
 }

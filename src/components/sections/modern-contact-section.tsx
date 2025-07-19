@@ -16,8 +16,23 @@ export function ModernContactSection() {
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    // Handle form submission
-    console.log('Form submitted:', formData);
+    fetch('/api/contact', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(formData),
+    })
+      .then(async (res) => {
+        if (res.ok) {
+          alert(language === 'ar' ? 'تم إرسال رسالتك بنجاح!' : 'Your message has been sent!');
+          setFormData({ name: '', email: '', subject: '', message: '' });
+        } else {
+          const data = await res.json();
+          alert((language === 'ar' ? 'حدث خطأ أثناء الإرسال: ' : 'Error sending message: ') + (data.error || ''));
+        }
+      })
+      .catch(() => {
+        alert(language === 'ar' ? 'تعذر الاتصال بالخادم.' : 'Could not connect to server.');
+      });
   };
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {

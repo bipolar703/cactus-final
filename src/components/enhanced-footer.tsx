@@ -1,9 +1,12 @@
 import { motion } from 'framer-motion';
 import { useLanguage } from '@/hooks/use-language';
 import { Mail, Phone, MapPin, Facebook, Instagram, Linkedin, Twitter, Heart } from 'lucide-react';
+import { useState } from 'react';
 
 export function EnhancedFooter() {
   const { language } = useLanguage();
+  const [phone, setPhone] = useState('');
+  const [loading, setLoading] = useState(false);
 
   const socialLinks = [
     { icon: Facebook, href: 'https://facebook.com/cactusmediajo', label: 'Facebook' },
@@ -211,13 +214,40 @@ export function EnhancedFooter() {
             <div className="flex items-center gap-3">
               <input
                 type="tel"
+                value={phone}
+                onChange={e => setPhone(e.target.value)}
                 placeholder={language === 'ar' ? 'اترك رقمك للاتصال السريع' : 'Leave Number For Quick Call'}
                 className={`glass-premium px-4 py-2 rounded-lg bg-white/5 border border-white/10 text-white placeholder-white/50 focus:border-jaded-green-500/40 focus:outline-none transition-all duration-300 w-64 ${
                   language === 'ar' ? 'text-center font-arabic' : ''
                 }`}
               />
-              <button className="btn-premium px-6 py-2 rounded-lg font-medium whitespace-nowrap">
-                {language === 'ar' ? 'إرسال' : 'Submit'}
+              <button
+                className="btn-premium px-6 py-2 rounded-lg font-medium whitespace-nowrap"
+                disabled={loading || !phone}
+                onClick={async () => {
+                  setLoading(true);
+                  try {
+                    const res = await fetch('/api/quick-call', {
+                      method: 'POST',
+                      headers: { 'Content-Type': 'application/json' },
+                      body: JSON.stringify({ phone }),
+                    });
+                    if (res.ok) {
+                      alert(language === 'ar' ? 'تم إرسال رقمك بنجاح!' : 'Your number has been sent!');
+                      setPhone('');
+                    } else {
+                      const data = await res.json();
+                      alert((language === 'ar' ? 'حدث خطأ أثناء الإرسال: ' : 'Error sending number: ') + (data.error || ''));
+                    }
+                  } catch {
+                    alert(language === 'ar' ? 'تعذر الاتصال بالخادم.' : 'Could not connect to server.');
+                  }
+                  setLoading(false);
+                }}
+              >
+                {loading
+                  ? (language === 'ar' ? 'جاري الإرسال...' : 'Sending...')
+                  : (language === 'ar' ? 'إرسال' : 'Submit')}
               </button>
             </div>
           </div>
