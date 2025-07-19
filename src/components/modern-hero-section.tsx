@@ -96,7 +96,6 @@ export function ModernHeroSection() {
             language === "ar" ? "font-arabic" : "font-barlow"
           }`}
         >
-          {language === "ar" ? "مجموعة كاكتوس الإعلامية" : "Cactus Media Group"}
         </motion.p>
 
         {/* Subtitle */}

@@ -1,12 +1,20 @@
 import { useLanguage } from "@/hooks/use-language";
-import { useOptimizedIntersection } from "@/utils/cache-manager";
+import { usePerformantIntersection } from "@/hooks/use-performance";
 import { motion } from "framer-motion";
 import { Send } from "lucide-react";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 export function ModernContactSection() {
   const { language } = useLanguage();
-  const { ref, isIntersecting } = useOptimizedIntersection();
+  const { ref, observe } = usePerformantIntersection();
+  const [isIntersecting, setIsIntersecting] = useState(false);
+
+  useEffect(() => {
+    const disconnect = observe((entries) => {
+      setIsIntersecting(entries[0]?.isIntersecting ?? false);
+    });
+    return disconnect;
+  }, [observe]);
   const [formData, setFormData] = useState({
     name: "",
     email: "",

@@ -136,14 +136,7 @@ export function CinematicHero() {
             transition: { duration: 0.6, ease: "easeOut" },
           }}
           className="mb-16 perspective-1000"
-        >
-          <OptimizedImage
-            src="/assets/Logo-Whirte-Png_1751779171310.png"
-            alt="Cactus Media Group"
-            className="w-80 sm:w-96 lg:w-[32rem] h-auto mx-auto drop-shadow-2xl"
-            priority={true}
-          />
-        </motion.div>
+   
 
         {/* Tagline with Cinematic Typography */}
         <motion.div

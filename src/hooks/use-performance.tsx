@@ -1,5 +1,5 @@
 import { useCallback, useEffect, useRef } from "react";
-import { debounce, throttle } from "../utils/performance";
+import { debounce, throttle } from "../lib/performance";
 
 /**
  * Hook for performance-optimized scroll handling
@@ -41,8 +41,10 @@ export const usePerformantIntersection = (
   const observerRef = useRef<IntersectionObserver | null>(null);
 
   const observe = useCallback(
-    (callback: IntersectionObserverCallback) => {
-      if (!ref.current) return;
+    (callback: IntersectionObserverCallback): (() => void) => {
+      if (!ref.current) {
+        return () => {}; // Return empty cleanup function if no ref
+      }
 
       const defaultOptions: IntersectionObserverInit = {
         rootMargin: "50px",
@@ -50,12 +52,20 @@ export const usePerformantIntersection = (
         ...options,
       };
 
+      // Disconnect any existing observer
+      if (observerRef.current) {
+        observerRef.current.disconnect();
+      }
+
+      // Create new observer
       observerRef.current = new IntersectionObserver(callback, defaultOptions);
       observerRef.current.observe(ref.current);
 
+      // Return cleanup function
       return () => {
         if (observerRef.current) {
           observerRef.current.disconnect();
+          observerRef.current = null;
         }
       };
     },

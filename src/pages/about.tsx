@@ -129,7 +129,7 @@ export default function About() {
               initial={{ opacity: 0, y: 40 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8 }}
-              className={`text-5xl md:text-6xl lg:text-7xl font-bold mb-6 bg-gradient-to-r from-gray-900 via-jaded-green-800 to-gray-900 bg-clip-text text-transparent ${
+              className={`text-5xl md:text-6xl lg:text-7xl font-bold mb-6 bg-gradient-to-r from-white via-jaded-green-800 to-white bg-clip-text text-transparent ${
                 language === "ar" ? "font-arabic" : "font-barlow"
               }`}
             >
@@ -140,7 +140,7 @@ export default function About() {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.2 }}
-              className={`text-xl md:text-2xl text-gray-600 max-w-4xl mx-auto leading-relaxed mb-12 ${
+              className={`text-xl md:text-2xl text-jaded-green-600 max-w-4xl mx-auto leading-relaxed mb-12 ${
                 language === "ar" ? "font-arabic" : ""
               }`}
             >
@@ -162,7 +162,7 @@ export default function About() {
                     {stat.number}
                   </div>
                   <div
-                    className={`text-gray-600 font-medium ${language === "ar" ? "font-arabic" : ""}`}
+                    className={`text-jaded-green-600 font-medium ${language === "ar" ? "font-arabic" : ""}`}
                   >
                     {stat.label[language]}
                   </div>
@@ -180,7 +180,7 @@ export default function About() {
           >
             <div className="bg-white/80 backdrop-blur-xl rounded-3xl p-12 shadow-xl border border-gray-100/50">
               <h2
-                className={`text-3xl md:text-4xl font-bold mb-8 text-center text-gray-900 ${
+                className={`text-3xl md:text-4xl font-bold mb-8 text-center text-white ${
                   language === "ar" ? "font-arabic" : "font-barlow"
                 }`}
               >
@@ -190,7 +190,7 @@ export default function About() {
               <div className="grid md:grid-cols-2 gap-12 items-center">
                 <div>
                   <p
-                    className={`text-lg text-gray-700 leading-relaxed mb-6 ${
+                    className={`text-lg text-jaded-green-600 leading-relaxed mb-6 ${
                       language === "ar" ? "font-arabic" : ""
                     }`}
                   >
@@ -199,7 +199,7 @@ export default function About() {
                       : "Our journey began with a simple vision: helping businesses excel in the digital world. Since our founding, we have grown to become a trusted partner for many companies in the region."}
                   </p>
                   <p
-                    className={`text-lg text-gray-700 leading-relaxed ${
+                    className={`text-lg text-jaded-green-600 leading-relaxed ${
                       language === "ar" ? "font-arabic" : ""
                     }`}
                   >
@@ -212,14 +212,14 @@ export default function About() {
                   <div className="bg-gradient-to-br from-jaded-green-100 to-jaded-green-50 rounded-2xl p-8 text-center">
                     <Target className="w-16 h-16 text-jaded-green-600 mx-auto mb-4" />
                     <h3
-                      className={`text-xl font-bold text-gray-900 mb-2 ${
+                      className={`text-xl font-bold text-white mb-2 ${
                         language === "ar" ? "font-arabic" : "font-barlow"
                       }`}
                     >
                       {language === "ar" ? "رؤيتنا" : "Our Vision"}
                     </h3>
                     <p
-                      className={`text-gray-700 ${language === "ar" ? "font-arabic" : ""}`}
+                      className={`text-jaded-green-600 ${language === "ar" ? "font-arabic" : ""}`}
                     >
                       {language === "ar"
                         ? "أن نكون الشريك الأول للشركات في رحلتها الرقمية"
@@ -239,7 +239,7 @@ export default function About() {
             className="max-w-6xl mx-auto mb-20"
           >
             <h2
-              className={`text-3xl md:text-4xl font-bold mb-12 text-center text-gray-900 ${
+              className={`text-3xl md:text-4xl font-bold mb-12 text-center text-white ${
                 language === "ar" ? "font-arabic" : "font-barlow"
               }`}
             >
@@ -251,20 +251,20 @@ export default function About() {
                 <motion.div
                   key={index}
                   whileHover={{ y: -8 }}
-                  className="bg-white/80 backdrop-blur-xl rounded-2xl p-8 text-center shadow-xl border border-gray-100/50 hover:shadow-2xl transition-all duration-300"
+                  className="bg-white/80 backdrop-blur-xl rounded-2xl p-8 text-center shadow-xl border border-gray-100/50 hover:shadow-2xl hover:bg-jaded-green-600 hover:text-white transition-all duration-300"
                 >
                   <div className="w-16 h-16 bg-jaded-green-100 rounded-2xl flex items-center justify-center mx-auto mb-6">
                     <value.icon className="w-8 h-8 text-jaded-green-600" />
                   </div>
                   <h3
-                    className={`text-xl font-bold text-gray-900 mb-4 ${
+                    className={`text-xl font-bold text-white mb-4 ${
                       language === "ar" ? "font-arabic" : "font-barlow"
                     }`}
                   >
                     {value.title[language]}
                   </h3>
                   <p
-                    className={`text-gray-600 leading-relaxed ${
+                    className={`text-jaded-green-600 leading-relaxed hover:text-white ${
                       language === "ar" ? "font-arabic" : ""
                     }`}
                   >
@@ -283,7 +283,7 @@ export default function About() {
             className="max-w-6xl mx-auto mb-20"
           >
             <h2
-              className={`text-3xl md:text-4xl font-bold mb-12 text-center text-gray-900 ${
+              className={`text-3xl md:text-4xl font-bold mb-12 text-center text-white ${
                 language === "ar" ? "font-arabic" : "font-barlow"
               }`}
             >
@@ -295,27 +295,27 @@ export default function About() {
                 <motion.div
                   key={index}
                   whileHover={{ y: -8 }}
-                  className="bg-white/80 backdrop-blur-xl rounded-2xl p-8 text-center shadow-xl border border-gray-100/50 hover:shadow-2xl transition-all duration-300"
+                  className="bg-white/80 backdrop-blur-xl rounded-2xl p-8 text-center shadow-xl border border-gray-100/50 hover:shadow-2xl hover:bg-jaded-green-600 hover:text-white transition-all duration-300"
                 >
                   <div className="w-24 h-24 bg-gradient-to-br from-jaded-green-100 to-jaded-green-50 rounded-full mx-auto mb-6 flex items-center justify-center">
                     <Users className="w-12 h-12 text-jaded-green-600" />
                   </div>
                   <h3
-                    className={`text-xl font-bold text-gray-900 mb-2 ${
+                    className={`text-xl font-bold text-white mb-2 ${
                       language === "ar" ? "font-arabic" : "font-barlow"
                     }`}
                   >
                     {member.name[language]}
                   </h3>
                   <p
-                    className={`text-jaded-green-600 font-semibold mb-4 ${
+                    className={`text-jaded-green-600 font-semibold mb-4 hover:text-white ${
                       language === "ar" ? "font-arabic" : ""
                     }`}
                   >
                     {member.role[language]}
                   </p>
                   <p
-                    className={`text-gray-600 ${
+                    className={`text-jaded-green-600 hover:text-white ${
                       language === "ar" ? "font-arabic" : ""
                     }`}
                   >

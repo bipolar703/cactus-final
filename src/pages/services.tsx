@@ -55,9 +55,6 @@ export default function Services() {
               transition={{ duration: 0.6 }}
               className="flex justify-center mb-6"
             >
-              <div className="p-3 rounded-2xl bg-jaded-green-100/50 backdrop-blur-sm">
-                <Sparkles className="w-8 h-8 text-jaded-green-600" />
-              </div>
             </motion.div>
 
             <motion.h1

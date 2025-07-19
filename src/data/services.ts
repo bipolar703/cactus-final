@@ -317,7 +317,7 @@ export const services = [
   },
   {
     slug: "ecommerce-solutions",
-    icon: "/assets/animated/services/laptop.gif",
+    icon: "/assets/animated/services/ecommerce.gif",
     title: { en: "E-commerce Solutions", ar: "حلول التجارة الإلكترونية" },
     desc: {
       en: "Complete e-commerce solutions that drive sales and enhance customer experience. From custom online stores to payment integration and inventory management, we build powerful platforms that scale with your business.",
