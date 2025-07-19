@@ -8,11 +8,18 @@ interface EnhancedHeroSectionProps {
   onModalOpen: (modal: string) => void;
 }
 
-export function EnhancedHeroSection({ onModalOpen }: EnhancedHeroSectionProps) {
+export function EnhancedHeroSection() {
   const { language } = useLanguage();
   const containerRef = useRef<HTMLDivElement>(null);
-  const videoRef = useRef<HTMLVideoElement>(null);
   const [isVideoLoaded, setIsVideoLoaded] = useState(false);
+
+  // Scroll to section by id
+  const scrollToSection = (id: string) => {
+    const el = document.getElementById(id);
+    if (el) {
+      el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
+  };
 
   const { scrollYProgress } = useScroll({
     target: containerRef,
@@ -26,11 +33,7 @@ export function EnhancedHeroSection({ onModalOpen }: EnhancedHeroSectionProps) {
   const smoothY = useSpring(y, { stiffness: 100, damping: 30 });
 
   useEffect(() => {
-    const video = videoRef.current;
-    if (video) {
-      video.addEventListener('loadeddata', () => setIsVideoLoaded(true));
-      video.play().catch(console.error);
-    }
+    // No video logic to remove
   }, []);
 
   return (
@@ -40,18 +43,6 @@ export function EnhancedHeroSection({ onModalOpen }: EnhancedHeroSectionProps) {
         style={{ y: smoothY, scale }}
         className="absolute inset-0 w-full h-full"
       >
-        <video
-          ref={videoRef}
-          autoPlay
-          muted
-          loop
-          playsInline
-          className="absolute inset-0 w-full h-full object-cover"
-          style={{ filter: 'brightness(0.7) contrast(1.1)' }}
-        >
-          <source src="/hero.mp4" type="video/mp4" />
-        </video>
-        
         {/* Enhanced Gradient Overlays */}
         <div className="absolute inset-0 bg-gradient-to-b from-black/40 via-transparent to-black/60" />
         <div className="absolute inset-0 bg-gradient-to-r from-jaded-green-900/20 via-transparent to-jaded-green-900/20" />
@@ -67,8 +58,8 @@ export function EnhancedHeroSection({ onModalOpen }: EnhancedHeroSectionProps) {
           <motion.div
             initial={{ opacity: 0, y: -50, scale: 0.8 }}
             animate={{ opacity: 1, y: 0, scale: 1 }}
-            transition={{ 
-              duration: 1.2, 
+            transition={{
+              duration: 1.2,
               delay: 0.5,
               type: "spring",
               stiffness: 100,
@@ -81,7 +72,7 @@ export function EnhancedHeroSection({ onModalOpen }: EnhancedHeroSectionProps) {
                 src="/assets/wLogo.png"
                 alt="Cactus Media Group"
                 className="h-40 md:h-52 lg:h-64 xl:h-72 w-auto drop-shadow-2xl"
-                whileHover={{ 
+                whileHover={{
                   scale: 1.05,
                   transition: { duration: 0.3 }
                 }}
@@ -110,7 +101,7 @@ export function EnhancedHeroSection({ onModalOpen }: EnhancedHeroSectionProps) {
                 {language === 'ar' ? 'في عالم مليء بالورود، كن صبارة!' : 'In a world full of flowers, be a cactus!'}
               </span>
             </motion.div>
-            
+
             {/* Main Description */}
             <motion.p
               initial={{ opacity: 0, y: 20 }}
@@ -140,7 +131,7 @@ export function EnhancedHeroSection({ onModalOpen }: EnhancedHeroSectionProps) {
               transition={{ type: "spring", stiffness: 400, damping: 17 }}
             >
               <Button
-                onClick={() => onModalOpen('portfolio')}
+                onClick={() => scrollToSection('portfolio-section')}
                 className={`btn-premium text-white px-10 py-5 text-lg md:text-xl font-semibold rounded-full group shadow-2xl hover:shadow-jaded-green-500/25 transition-all duration-300 ${
                   language === 'ar' ? 'font-arabic' : 'font-barlow'
                 }`}
@@ -154,7 +145,7 @@ export function EnhancedHeroSection({ onModalOpen }: EnhancedHeroSectionProps) {
                 {language === 'ar' ? 'استكشف أعمالنا' : 'Explore Our Work'}
               </Button>
             </motion.div>
-            
+
             {/* Secondary CTA */}
             <motion.div
               whileHover={{ scale: 1.05 }}
@@ -162,7 +153,7 @@ export function EnhancedHeroSection({ onModalOpen }: EnhancedHeroSectionProps) {
               transition={{ type: "spring", stiffness: 400, damping: 17 }}
             >
               <Button
-                onClick={() => onModalOpen('contact')}
+                onClick={() => scrollToSection('contact-section')}
                 variant="outline"
                 className={`glass-premium text-white border-2 border-white/40 hover:border-white/80 hover:bg-white/10 px-10 py-5 text-lg md:text-xl font-semibold rounded-full backdrop-blur-xl transition-all duration-300 group ${
                   language === 'ar' ? 'font-arabic' : 'font-barlow'

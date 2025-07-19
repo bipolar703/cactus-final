@@ -4,14 +4,6 @@
  * Preload critical resources for better performance
  */
 export const preloadCriticalResources = () => {
-  // Preload hero video
-  const videoLink = document.createElement('link');
-  videoLink.rel = 'preload';
-  videoLink.as = 'video';
-  videoLink.href = '/hero.mp4';
-  videoLink.type = 'video/mp4';
-  document.head.appendChild(videoLink);
-
   // Preload critical fonts
   const fontLinks = [
     'https://fonts.googleapis.com/css2?family=Barlow:wght@100;200;300;400;500;600;700;800;900&display=swap',
@@ -24,7 +16,7 @@ export const preloadCriticalResources = () => {
     link.as = 'style';
     link.href = href;
     document.head.appendChild(link);
-    
+
     // Also add the actual stylesheet
     const styleLink = document.createElement('link');
     styleLink.rel = 'stylesheet';
@@ -38,7 +30,7 @@ export const preloadCriticalResources = () => {
  */
 export const optimizeImage = (src: string, alt: string, className?: string) => {
   const img = new Image();
-  
+
   // Check WebP support
   const supportsWebP = (() => {
     const canvas = document.createElement('canvas');
@@ -57,7 +49,7 @@ export const optimizeImage = (src: string, alt: string, className?: string) => {
   img.alt = alt;
   img.loading = 'lazy';
   img.decoding = 'async';
-  
+
   if (className) {
     img.className = className;
   }
@@ -89,7 +81,7 @@ export const debounce = <T extends (...args: any[]) => any>(
   wait: number
 ): ((...args: Parameters<T>) => void) => {
   let timeout: NodeJS.Timeout;
-  
+
   return (...args: Parameters<T>) => {
     clearTimeout(timeout);
     timeout = setTimeout(() => func(...args), wait);
@@ -104,7 +96,7 @@ export const throttle = <T extends (...args: any[]) => any>(
   limit: number
 ): ((...args: Parameters<T>) => void) => {
   let inThrottle: boolean;
-  
+
   return (...args: Parameters<T>) => {
     if (!inThrottle) {
       func(...args);

@@ -4,6 +4,6 @@ interface HeroSectionProps {
   onModalOpen: (modal: string) => void;
 }
 
-export function HeroSection({ onModalOpen }: HeroSectionProps) {
-  return <CinematicHero onModalOpen={onModalOpen} />;
+export function HeroSection() {
+  return <CinematicHero />;
 }

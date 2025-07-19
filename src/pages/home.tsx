@@ -12,28 +12,7 @@ import { useResourcePreload } from '@/utils/cache-manager';
 import { EnhancedFooter } from '@/components/enhanced-footer';
 import { motion, AnimatePresence } from 'framer-motion';
 
-const sectionVideos = [
-  { id: 'hero', src: '/hero.mp4' },
-  {
-    id: 'about',
-    src: '/hero.mp4', // Using local hero.mp4 file from public directory
-  },
-  {
-    id: 'services',
-    src: '/hero.mp4', // Using local hero.mp4 file from public directory
-  },
-  {
-    id: 'portfolio',
-    src: '/hero.mp4', // Using local hero.mp4 file from public directory
-  },
-  {
-    id: 'contact',
-    src: '/hero.mp4', // Using local hero.mp4 file from public directory
-  },
-];
-
 export default function Home() {
-  const [activeModal, setActiveModal] = useState<string | null>(null);
   const [isLoading, setIsLoading] = useState(true);
   const [activeSection, setActiveSection] = useState('hero');
 
@@ -43,12 +22,6 @@ export default function Home() {
   const servicesRef = useRef<HTMLDivElement>(null);
   const portfolioRef = useRef<HTMLDivElement>(null);
   const contactRef = useRef<HTMLDivElement>(null);
-
-  // Preload critical assets
-  const criticalAssets = [
-    '/hero.mp4',
-  ];
-  const assetsLoaded = useResourcePreload(criticalAssets);
 
   // Intersection Observer logic
   useEffect(() => {
@@ -80,9 +53,7 @@ export default function Home() {
 
   useEffect(() => {
     const timer = setTimeout(() => {
-      if (assetsLoaded) {
-        setIsLoading(false);
-      }
+      setIsLoading(false);
     }, 3000);
     const fallbackTimer = setTimeout(() => {
       setIsLoading(false);
@@ -91,7 +62,7 @@ export default function Home() {
       clearTimeout(timer);
       clearTimeout(fallbackTimer);
     };
-  }, [assetsLoaded]);
+  }, []);
 
   const getSectionBackground = (section: string) => {
     switch (section) {
@@ -105,21 +76,6 @@ export default function Home() {
         return 'bg-gradient-to-br from-slate-900/90 via-jaded-green-900/75 to-jaded-green-950/85 cinematic-gradient';
       default:
         return 'bg-slate-900/90';
-    }
-  };
-
-  const renderModalContent = () => {
-    switch (activeModal) {
-      case 'about':
-        return <AboutModal />;
-      case 'services':
-        return <ServicesModal />;
-      case 'portfolio':
-        return <PortfolioModal />;
-      case 'contact':
-        return <ContactModal />;
-      default:
-        return null;
     }
   };
 
@@ -146,15 +102,15 @@ export default function Home() {
         <ScrollAwareLanguageToggle />
         {/* Main Sectioned Content */}
         <main className="relative z-10">
-          <motion.div 
+          <motion.div
             ref={heroRef}
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ duration: 1.8, ease: [0.16, 1, 0.3, 1] }}
           >
-            <EnhancedHeroSection onModalOpen={setActiveModal} />
+            <EnhancedHeroSection />
           </motion.div>
-          <motion.div 
+          <motion.div
             ref={aboutRef}
             initial={{ opacity: 0, y: 60, scale: 0.95 }}
             whileInView={{ opacity: 1, y: 0, scale: 1 }}
@@ -164,7 +120,7 @@ export default function Home() {
           >
             <ModernAboutSection />
           </motion.div>
-          <motion.div 
+          <motion.div
             ref={servicesRef}
             initial={{ opacity: 0, y: 60, rotateY: -5 }}
             whileInView={{ opacity: 1, y: 0, rotateY: 0 }}
@@ -173,16 +129,16 @@ export default function Home() {
           >
             <ModernServicesSection />
           </motion.div>
-          <motion.div 
+          <motion.div
             ref={portfolioRef}
             initial={{ opacity: 0, y: 60, rotateX: -10 }}
             whileInView={{ opacity: 1, y: 0, rotateX: 0 }}
             viewport={{ once: true, margin: "-150px" }}
             transition={{ duration: 1.5, ease: [0.16, 1, 0.3, 1] }}
           >
-            <ModernPortfolioSection onViewPortfolio={() => setActiveModal('portfolio')} />
+            <ModernPortfolioSection />
           </motion.div>
-          <motion.div 
+          <motion.div
             initial={{ opacity: 0, y: 60, scale: 0.95 }}
             whileInView={{ opacity: 1, y: 0, scale: 1 }}
             viewport={{ once: true, margin: "-150px" }}
@@ -190,7 +146,7 @@ export default function Home() {
           >
             <ClientShowcase />
           </motion.div>
-          <motion.div 
+          <motion.div
             ref={contactRef}
             initial={{ opacity: 0, y: 60, filter: 'blur(10px)' }}
             whileInView={{ opacity: 1, y: 0, filter: 'blur(0px)' }}
@@ -199,17 +155,10 @@ export default function Home() {
           >
             <ModernContactSection />
           </motion.div>
-          
+
           {/* Enhanced Footer */}
           <EnhancedFooter />
         </main>
-        {/* Modal */}
-        <EnhancedModalSystem
-          isOpen={!!activeModal}
-          onClose={() => setActiveModal(null)}
-          activeModal={activeModal}
-          onModalChange={setActiveModal}
-        />
       </div>
     </>
   );

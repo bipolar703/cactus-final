@@ -14,7 +14,7 @@ export function EnhancedFooter() {
     { icon: Linkedin, href: 'https://www.linkedin.com/company/cactusmediajo', label: 'LinkedIn' },
   ];
 
-  const quickLinks = language === 'ar' 
+  const quickLinks = language === 'ar'
     ? [
         { label: 'من نحن', href: '#about' },
         { label: 'خدماتنا', href: '#services' },
@@ -47,13 +47,13 @@ export function EnhancedFooter() {
       {/* Enhanced Background with Noise and Subtle Movement */}
       <div className="absolute inset-0">
         {/* Noise Overlay */}
-        <div 
+        <div
           className="absolute inset-0 opacity-[0.02] mix-blend-overlay"
           style={{
             backgroundImage: `url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E")`,
           }}
         />
-        
+
         {/* Subtle Moving Glows - Restored Original Positions */}
         <motion.div
           animate={{
@@ -84,7 +84,7 @@ export function EnhancedFooter() {
           className="absolute -bottom-1/2 -right-1/2 w-full h-full bg-gradient-to-tl from-gold-500/10 to-transparent rounded-full blur-3xl"
         />
       </div>
-      
+
       {/* Gradient Overlay */}
       <div className="absolute inset-0 bg-gradient-to-t from-jaded-green-900/10 via-transparent to-transparent" />
 
@@ -101,8 +101,8 @@ export function EnhancedFooter() {
           >
             <div className="flex items-center gap-3 mb-6">
               <img
-                src="/assets/Logo.png"
-                alt="Cactus Media Group"
+                src="/assets/Icon.png"
+                alt="Cactus Media Group Icon"
                 className="w-12 h-12 object-contain"
               />
               <div>
@@ -114,7 +114,7 @@ export function EnhancedFooter() {
                 </p>
               </div>
             </div>
-            
+
             <p className={`text-white/70 leading-relaxed mb-6 max-w-md ${language === 'ar' ? 'font-arabic text-center' : ''}`}>
               {language === 'ar'
                 ? 'نحن نقدم حلولاً رقمية متميزة مصممة للصمود والنمو. نحول الأفكار الجريئة إلى تجارب رقمية استثنائية تدفع نمو الأعمال.'
@@ -125,8 +125,8 @@ export function EnhancedFooter() {
             <div className="space-y-3">
               <div className="flex items-center gap-3">
                 <Mail className="w-5 h-5 text-jaded-green-400" />
-                <a 
-                  href="mailto:info@cactusmediajo.com" 
+                <a
+                  href="mailto:info@cactusmediajo.com"
                   className="text-white/80 hover:text-jaded-green-400 transition-colors duration-300"
                 >
                   info@cactusmediajo.com
@@ -267,7 +267,7 @@ export function EnhancedFooter() {
                 ? `© ${new Date().getFullYear()} مجموعة كاكتوس الإعلامية. جميع الحقوق محفوظة.`
                 : `© ${new Date().getFullYear()} Cactus Media Group. All rights reserved.`}
             </p>
-            
+
           </div>
         </motion.div>
       </div>

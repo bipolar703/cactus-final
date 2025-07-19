@@ -7,7 +7,6 @@ export default defineConfig({
     react({
       // Use SWC for faster builds in Vite 7
       jsxRuntime: 'automatic',
-      babel: false, // Use SWC instead of Babel for better performance
     }),
   ],
   resolve: {
@@ -26,7 +25,7 @@ export default defineConfig({
     sourcemap: false,
     cssCodeSplit: true,
     rollupOptions: {
-      external: ['@vercel/analytics', 'react-error-boundary'],
+      external: ['@vercel/analytics'],
       output: {
         manualChunks: {
           vendor: ['react', 'react-dom'],

@@ -47,7 +47,25 @@ class CacheManager {
 
           const link = document.createElement('link');
           link.rel = 'preload';
-          link.as = url.includes('.mp4') ? 'video' : 'image';
+          // Only use valid 'as' values
+          if (url.match(/\.(jpg|jpeg|png|webp|avif|svg)$/)) {
+            link.as = 'image';
+          } else if (url.endsWith('.css')) {
+            link.as = 'style';
+          } else if (url.endsWith('.js')) {
+            link.as = 'script';
+          } else if (url.endsWith('.woff2') || url.endsWith('.woff') || url.endsWith('.ttf') || url.endsWith('.eot')) {
+            link.as = 'font';
+            link.crossOrigin = 'anonymous';
+          } else if (url.endsWith('.mp3') || url.endsWith('.wav') || url.endsWith('.ogg')) {
+            link.as = 'audio';
+          } else if (url.endsWith('.html')) {
+            link.as = 'document';
+          } else {
+            // Fallback to fetch for unknown/unsupported types
+            link.as = 'fetch';
+            console.warn(`<link rel=preload> uses an unsupported 'as' value for ${url}, falling back to 'fetch'.`);
+          }
           link.href = url;
           link.onload = () => {
             this.set(url, true, 600000); // 10 minutes for preloaded assets

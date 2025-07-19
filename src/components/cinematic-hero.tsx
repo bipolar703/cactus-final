@@ -3,15 +3,11 @@ import { useEffect, useRef, useState } from 'react';
 import { useLanguage } from '@/hooks/use-language';
 import { OptimizedImage } from './performance-wrapper';
 
-interface CinematicHeroProps {
-  onModalOpen: (modal: string) => void;
-}
+interface CinematicHeroProps {}
 
-export function CinematicHero({ onModalOpen }: CinematicHeroProps) {
+export function CinematicHero() {
   const { language } = useLanguage();
   const containerRef = useRef<HTMLDivElement>(null);
-  const videoRef = useRef<HTMLVideoElement>(null);
-  const [isVideoLoaded, setIsVideoLoaded] = useState(false);
   const mouseX = useMotionValue(0);
   const mouseY = useMotionValue(0);
 
@@ -37,7 +33,7 @@ export function CinematicHero({ onModalOpen }: CinematicHeroProps) {
   const opacity = useTransform(scrollYProgress, [0, 0.3, 0.7, 1], [1, 0.95, 0.8, 0]);
   const scale = useTransform(scrollYProgress, [0, 1], [1, 1.15]);
   const blur = useTransform(scrollYProgress, [0, 0.5, 1], [0, 2, 8]);
-  
+
   // Ultra-smooth spring animations
   const smoothY = useSpring(y, { stiffness: 60, damping: 40, restDelta: 0.001 });
   const smoothOpacity = useSpring(opacity, { stiffness: 80, damping: 35 });
@@ -56,26 +52,6 @@ export function CinematicHero({ onModalOpen }: CinematicHeroProps) {
     }
   };
 
-  useEffect(() => {
-    const video = videoRef.current;
-    if (video) {
-      const handleLoadedData = () => {
-        setIsVideoLoaded(true);
-        // Slow down video for cinematic effect
-        video.playbackRate = 0.75;
-      };
-      const handleError = () => console.warn('Hero video failed to load');
-      
-      video.addEventListener('loadeddata', handleLoadedData);
-      video.addEventListener('error', handleError);
-      
-      return () => {
-        video.removeEventListener('loadeddata', handleLoadedData);
-        video.removeEventListener('error', handleError);
-      };
-    }
-  }, []);
-
   return (
     <section
       ref={containerRef}
@@ -84,45 +60,26 @@ export function CinematicHero({ onModalOpen }: CinematicHeroProps) {
     >
       {/* Cinematic Video Background */}
       <motion.div
-        style={{ 
-          y: smoothY, 
+        style={{
+          y: smoothY,
           scale: smoothScale,
           filter: `blur(${smoothBlur}px) contrast(1.1) saturate(1.2)`,
         }}
         className="absolute inset-0 w-full h-full"
       >
-        <video
-          ref={videoRef}
-          autoPlay
-          loop
-          muted
-          playsInline
-          preload="auto"
-          className="absolute inset-0 w-full h-full object-cover cinematic-video"
-          style={{
-            filter: 'contrast(1.15) saturate(0.9) brightness(0.85) sepia(0.1)',
-          }}
-          onLoadedData={() => setIsVideoLoaded(true)}
-          onError={() => console.warn('Hero video failed to load')}
-          poster="/assets/Webpage-Banner_1751779171234.png"
-        >
-          <source src="/hero.mp4" type="video/mp4" />
-          <source src="/hero.webm" type="video/webm" />
-        </video>
-        
         {/* Enhanced Cinematic Overlays */}
         <div className="absolute inset-0 bg-gradient-to-b from-black/70 via-black/30 to-black/80" />
         <div className="absolute inset-0 bg-gradient-to-r from-jaded-green-950/40 via-transparent to-jaded-green-950/40" />
         <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-transparent to-black/60" />
-        
+
         {/* Color Grading Overlay */}
         <div className="absolute inset-0 bg-gradient-to-br from-orange-900/10 via-transparent to-blue-900/10 mix-blend-overlay" />
-        
+
         {/* Enhanced Film Grain */}
         <div className="absolute inset-0 opacity-30 mix-blend-overlay">
           <div className="absolute inset-0 bg-noise animate-grain" />
         </div>
-        
+
         {/* Vignette Effect */}
         <div className="absolute inset-0 bg-radial-gradient from-transparent via-transparent to-black/50" />
       </motion.div>
@@ -130,7 +87,7 @@ export function CinematicHero({ onModalOpen }: CinematicHeroProps) {
 
       {/* Hero Content */}
       <motion.div
-        style={{ 
+        style={{
           opacity: smoothOpacity,
           rotateX,
           rotateY,
@@ -139,10 +96,10 @@ export function CinematicHero({ onModalOpen }: CinematicHeroProps) {
       >
         {/* Logo with Advanced Animation */}
         <motion.div
-          initial={{ 
-            scale: 0.3, 
-            opacity: 0, 
-            y: -100, 
+          initial={{
+            scale: 0.3,
+            opacity: 0,
+            y: -100,
             rotateX: -45,
             filter: 'blur(20px)'
           }}
@@ -200,7 +157,7 @@ export function CinematicHero({ onModalOpen }: CinematicHeroProps) {
               {language === 'ar' ? 'حلول رقمية متميزة' : 'Premium Digital Solutions'}
             </motion.span>
           </h1>
-          
+
           <motion.p
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
@@ -223,8 +180,8 @@ export function CinematicHero({ onModalOpen }: CinematicHeroProps) {
           className="flex flex-col sm:flex-row gap-6 justify-center items-center"
         >
           <motion.button
-            whileHover={{ 
-              scale: 1.08, 
+            whileHover={{
+              scale: 1.08,
               y: -4,
               boxShadow: '0 20px 40px rgba(90, 155, 131, 0.4)',
             }}
@@ -239,8 +196,8 @@ export function CinematicHero({ onModalOpen }: CinematicHeroProps) {
           </motion.button>
 
           <motion.button
-            whileHover={{ 
-              scale: 1.08, 
+            whileHover={{
+              scale: 1.08,
               y: -4,
               backgroundColor: 'rgba(255, 255, 255, 0.15)',
             }}

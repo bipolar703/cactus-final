@@ -5,14 +5,17 @@ import { motion } from 'framer-motion';
 export function EnhancedLanguageToggle() {
   const { language, toggleLanguage, isLoading } = useLanguage();
 
+  // Determine label and font for the switcher
+  const isArabic = language === 'ar';
+  const label = isArabic ? 'EN' : 'العربية';
+  const fontClass = isArabic ? 'font-barlow' : 'tajawal-arabic';
+
   return (
     <div className="fixed top-6 right-6 z-50">
       <motion.button
         onClick={toggleLanguage}
         disabled={isLoading}
-        className={`language-toggle glass-strong text-white px-4 py-2 rounded-xl font-medium text-sm group relative overflow-hidden ${
-          isLoading ? 'loading' : ''
-        } ${language === 'ar' ? 'tajawal-arabic' : ''}`}
+        className={`language-toggle glass-strong text-white px-4 py-2 rounded-xl font-medium text-sm group relative overflow-hidden ${isLoading ? 'loading' : ''} ${fontClass}`}
         whileHover={{ scale: 1.05 }}
         whileTap={{ scale: 0.95 }}
         data-scroll-container
@@ -23,14 +26,10 @@ export function EnhancedLanguageToggle() {
           ) : (
             <Globe className="w-4 h-4 group-hover:rotate-12 transition-transform duration-300" />
           )}
-          <span className="font-semibold">
-            {language === 'ar' ? 'AR' : 'EN'}
-          </span>
+          <span className={`font-semibold ${fontClass}`}>{label}</span>
         </div>
-        
         {/* Shimmer effect overlay */}
         <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 -translate-x-full group-hover:translate-x-full transform transition-transform duration-700" />
-        
         {/* Loading overlay */}
         {isLoading && (
           <motion.div

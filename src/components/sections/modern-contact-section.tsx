@@ -44,8 +44,9 @@ export function ModernContactSection() {
 
   return (
     <section
+      id="contact-section"
       ref={ref}
-      className="py-24 px-6 sm:px-8 bg-white relative overflow-hidden"
+      className="py-16 sm:py-24 px-6 sm:px-8 mobile-section relative"
     >
       {/* Minimal background */}
       <div className="absolute inset-0 bg-gradient-to-br from-gray-50 via-white to-gray-50" />

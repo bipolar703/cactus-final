@@ -10,7 +10,6 @@ const STATIC_ASSETS = [
   '/',
   '/assets/wLogo.png',
   '/assets/Logo.png',
-  '/hero.mp4',
   'https://fonts.googleapis.com/css2?family=Barlow:wght@100;200;300;400;500;600;700;800;900&display=swap',
   'https://fonts.googleapis.com/css2?family=Tajawal:wght@200;300;400;500;700;800;900&display=swap'
 ];
@@ -106,10 +105,10 @@ self.addEventListener('fetch', (event) => {
 
 // Helper function to determine if asset should be statically cached
 function isStaticAsset(url) {
-  return url.includes('/assets/') || 
-         url.includes('.css') || 
-         url.includes('.js') || 
-         url.includes('.woff') || 
+  return url.includes('/assets/') ||
+         url.includes('.css') ||
+         url.includes('.js') ||
+         url.includes('.woff') ||
          url.includes('.woff2') ||
          url.includes('fonts.googleapis.com') ||
          url.includes('fonts.gstatic.com');
@@ -129,7 +128,7 @@ self.addEventListener('sync', (event) => {
 self.addEventListener('push', (event) => {
   if (event.data) {
     const data = event.data.json();
-    
+
     event.waitUntil(
       self.registration.showNotification(data.title, {
         body: data.body,
@@ -144,7 +143,7 @@ self.addEventListener('push', (event) => {
 // Notification click handling
 self.addEventListener('notificationclick', (event) => {
   event.notification.close();
-  
+
   if (event.notification.data) {
     event.waitUntil(
       clients.openWindow(event.notification.data)
