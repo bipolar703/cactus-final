@@ -1,176 +1,47 @@
 // Premium Digital Solutions & AI Services
-export const premiumServices = [
-  {
-    slug: 'data-driven-digital-strategy',
-    icon: '/assets/animated/services/laptop.gif',
-    title: { en: 'Data-Driven Digital Strategy', ar: 'استراتيجية رقمية مدفوعة بالبيانات' },
-    desc: {
-      en: 'Transform your business with evidence-based decisions. Our comprehensive analytics and data insights ensure every strategy delivers measurable ROI and sustainable growth for your enterprise.',
-      ar: 'حول أعمالك بقرارات مبنية على الأدلة. تحليلاتنا الشاملة ورؤى البيانات تضمن أن كل استراتيجية تحقق عائد استثمار قابل للقياس ونمو مستدام لمؤسستك.'
-    },
-    features: {
-      en: ['Advanced Analytics & KPI Tracking', 'ROI Optimization Strategies', 'Market Intelligence Reports', 'Performance Dashboards'],
-      ar: ['تحليلات متقدمة وتتبع مؤشرات الأداء', 'استراتيجيات تحسين العائد على الاستثمار', 'تقارير ذكاء السوق', 'لوحات معلومات الأداء']
-    },
-    details: {
-      en: 'Our data scientists and strategists work together to create evidence-based digital strategies that drive measurable business growth.',
-      ar: 'يعمل علماء البيانات والاستراتيجيون لدينا معًا لإنشاء استراتيجيات رقمية مبنية على الأدلة تدفع نمو الأعمال القابل للقياس.'
-    },
-    category: 'premium',
-    meta: {
-      en: {
-        title: 'Data-Driven Digital Strategy | Cactus Media Group',
-        description: 'Transform your business with evidence-based decisions and comprehensive analytics.'
-      },
-      ar: {
-        title: 'استراتيجية رقمية مدفوعة بالبيانات | مجموعة كاكتوس الإعلامية',
-        description: 'حول أعمالك بقرارات مبنية على الأدلة وتحليلات شاملة.'
-      }
-    }
-  },
-  {
-    slug: 'bespoke-enterprise-solutions',
-    icon: '/assets/animated/services/branding.gif',
-    title: { en: 'Bespoke Enterprise Solutions', ar: 'حلول مؤسسية مخصصة' },
-    desc: {
-      en: 'Custom-engineered digital solutions tailored to your specific business requirements. From concept to deployment, we create high-end solutions that align perfectly with your organizational goals.',
-      ar: 'حلول رقمية مهندسة خصيصًا لمتطلبات أعمالك المحددة. من المفهوم إلى النشر، نصنع حلول راقية تتماشى تمامًا مع أهداف مؤسستك.'
-    },
-    features: {
-      en: ['Custom Software Architecture', 'Enterprise Integration', 'Scalable Cloud Solutions', 'Advanced Security Protocols'],
-      ar: ['هندسة برمجيات مخصصة', 'تكامل مؤسسي', 'حلول سحابية قابلة للتوسع', 'بروتوكولات أمان متقدمة']
-    },
-    details: {
-      en: 'We design and build enterprise-grade solutions that transform how your organization operates and scales.',
-      ar: 'نصمم ونبني حلول على مستوى المؤسسات تحول طريقة عمل وتوسع مؤسستك.'
-    },
-    category: 'premium',
-    meta: {
-      en: {
-        title: 'Bespoke Enterprise Solutions | Cactus Media Group',
-        description: 'Custom-engineered digital solutions tailored to your specific business requirements.'
-      },
-      ar: {
-        title: 'حلول مؤسسية مخصصة | مجموعة كاكتوس الإعلامية',
-        description: 'حلول رقمية مهندسة خصيصًا لمتطلبات أعمالك المحددة.'
-      }
-    }
-  },
+export const services = [
   {
     slug: 'ai-integration-automation',
     icon: '/assets/animated/services/laptop.gif',
     title: { en: 'AI Integration & Automation', ar: 'تكامل الذكاء الاصطناعي والأتمتة' },
     desc: {
-      en: 'Smart AI Agents & Machine Learning Solutions. Custom AI agents trained on your business knowledge base with intelligent workflow automation and predictive analytics.',
-      ar: 'وكلاء ذكاء اصطناعي ذكيون وحلول تعلم آلة. وكلاء ذكاء اصطناعي مخصصون مدربون على قاعدة معرفة أعمالك مع أتمتة سير العمل الذكية والتحليلات التنبؤية.'
+      en: 'Automate, optimize, and innovate with custom AI agents, workflow automation, and predictive analytics tailored to your business.',
+      ar: 'أتمتة وتحسين وابتكار مع وكلاء الذكاء الاصطناعي المخصصين وأتمتة سير العمل والتحليلات التنبؤية المصممة لأعمالك.'
     },
     features: {
-      en: ['Custom AI Agents', 'Workflow Automation', 'Predictive Analytics', '24/7 AI Customer Support'],
-      ar: ['وكلاء ذكاء اصطناعي مخصصون', 'أتمتة سير العمل', 'تحليلات تنبؤية', 'دعم عملاء ذكي على مدار الساعة']
+      en: [
+        'Custom AI Agents',
+        'Workflow Automation',
+        'Predictive Analytics',
+        '24/7 AI Customer Support',
+        'Data-Driven Insights',
+        'Enterprise Integration'
+      ],
+      ar: [
+        'وكلاء ذكاء اصطناعي مخصصون',
+        'أتمتة سير العمل',
+        'تحليلات تنبؤية',
+        'دعم عملاء ذكي على مدار الساعة',
+        'رؤى قائمة على البيانات',
+        'تكامل مؤسسي'
+      ]
     },
     details: {
-      en: 'Harness the power of AI to automate processes, enhance decision-making, and provide intelligent customer experiences.',
-      ar: 'استغل قوة الذكاء الاصطناعي لأتمتة العمليات وتعزيز اتخاذ القرارات وتوفير تجارب عملاء ذكية.'
+      en: 'Leverage the latest in AI and automation to streamline operations, boost efficiency, and unlock new growth opportunities.',
+      ar: 'استفد من أحدث تقنيات الذكاء الاصطناعي والأتمتة لتبسيط العمليات وزيادة الكفاءة وفتح آفاق نمو جديدة.'
     },
-    category: 'ai',
     meta: {
       en: {
         title: 'AI Integration & Automation | Cactus Media Group',
-        description: 'Smart AI Agents & Machine Learning Solutions for business automation.'
+        description: 'Automate, optimize, and innovate with custom AI and workflow solutions.'
       },
       ar: {
         title: 'تكامل الذكاء الاصطناعي والأتمتة | مجموعة كاكتوس الإعلامية',
-        description: 'وكلاء ذكاء اصطناعي ذكيون وحلول تعلم آلة لأتمتة الأعمال.'
+        description: 'أتمتة وتحسين وابتكار مع حلول الذكاء الاصطناعي وسير العمل المخصصة.'
       }
-    }
+    },
+    label: 'latest'
   },
-  {
-    slug: 'custom-mobile-applications',
-    icon: '/assets/animated/services/content.gif',
-    title: { en: 'Custom Mobile Applications', ar: 'تطبيقات موبايل مخصصة' },
-    desc: {
-      en: 'High-performance native mobile applications with cross-platform compatibility, App Store optimization, and real-time performance monitoring.',
-      ar: 'تطبيقات موبايل أصلية عالية الأداء مع توافق متعدد المنصات وتحسين متجر التطبيقات ومراقبة الأداء في الوقت الفعلي.'
-    },
-    features: {
-      en: ['Native iOS & Android', 'Cross-platform Optimization', 'App Store Optimization', 'Real-time Analytics'],
-      ar: ['iOS وAndroid أصلي', 'تحسين متعدد المنصات', 'تحسين متجر التطبيقات', 'تحليلات في الوقت الفعلي']
-    },
-    details: {
-      en: 'We create powerful mobile applications that deliver exceptional user experiences across all devices and platforms.',
-      ar: 'نصنع تطبيقات موبايل قوية تقدم تجارب مستخدم استثنائية عبر جميع الأجهزة والمنصات.'
-    },
-    category: 'development',
-    meta: {
-      en: {
-        title: 'Custom Mobile Applications | Cactus Media Group',
-        description: 'High-performance native mobile applications with cross-platform compatibility.'
-      },
-      ar: {
-        title: 'تطبيقات موبايل مخصصة | مجموعة كاكتوس الإعلامية',
-        description: 'تطبيقات موبايل أصلية عالية الأداء مع توافق متعدد المنصات.'
-      }
-    }
-  },
-  {
-    slug: 'enterprise-software-development',
-    icon: '/assets/animated/services/marketing.gif',
-    title: { en: 'Enterprise Software Development', ar: 'تطوير برمجيات المؤسسات' },
-    desc: {
-      en: 'Custom applications & system integration. Bespoke software solutions for complex business needs with API development and cloud infrastructure.',
-      ar: 'تطبيقات مخصصة وتكامل الأنظمة. حلول برمجيات مخصصة لاحتياجات الأعمال المعقدة مع تطوير API والبنية التحتية السحابية.'
-    },
-    features: {
-      en: ['Custom Software Solutions', 'API Development', 'Database Management', 'Cloud Architecture'],
-      ar: ['حلول برمجيات مخصصة', 'تطوير API', 'إدارة قواعد البيانات', 'هندسة سحابية']
-    },
-    details: {
-      en: 'Enterprise-grade software solutions designed to handle complex business processes and scale with your organization.',
-      ar: 'حلول برمجيات على مستوى المؤسسات مصممة للتعامل مع العمليات التجارية المعقدة والتوسع مع مؤسستك.'
-    },
-    category: 'development',
-    meta: {
-      en: {
-        title: 'Enterprise Software Development | Cactus Media Group',
-        description: 'Custom applications & system integration for complex business needs.'
-      },
-      ar: {
-        title: 'تطوير برمجيات المؤسسات | مجموعة كاكتوس الإعلامية',
-        description: 'تطبيقات مخصصة وتكامل الأنظمة لاحتياجات الأعمال المعقدة.'
-      }
-    }
-  },
-  {
-    slug: 'automation-custom-tools',
-    icon: '/assets/animated/services/photography.gif',
-    title: { en: 'Automation & Custom Tools', ar: 'الأتمتة والأدوات المخصصة' },
-    desc: {
-      en: 'Custom automation scripts, data processing tools, interactive dashboards, and process optimization solutions to enhance business efficiency.',
-      ar: 'نصوص أتمتة مخصصة وأدوات معالجة البيانات ولوحات معلومات تفاعلية وحلول تحسين العمليات لتعزيز كفاءة الأعمال.'
-    },
-    features: {
-      en: ['Custom Automation Scripts', 'Data Processing Tools', 'Interactive Dashboards', 'Process Optimization'],
-      ar: ['نصوص أتمتة مخصصة', 'أدوات معالجة البيانات', 'لوحات معلومات تفاعلية', 'تحسين العمليات']
-    },
-    details: {
-      en: 'Streamline your operations with custom automation tools and intelligent process optimization solutions.',
-      ar: 'بسّط عملياتك بأدوات أتمتة مخصصة وحلول تحسين العمليات الذكية.'
-    },
-    category: 'automation',
-    meta: {
-      en: {
-        title: 'Automation & Custom Tools | Cactus Media Group',
-        description: 'Custom automation scripts and tools for business process optimization.'
-      },
-      ar: {
-        title: 'الأتمتة والأدوات المخصصة | مجموعة كاكتوس الإعلامية',
-        description: 'نصوص أتمتة مخصصة وأدوات لتحسين العمليات التجارية.'
-      }
-    }
-  }
-];
-
-export const services = [
   {
     slug: 'web-development',
     icon: '/assets/animated/services/laptop.gif',

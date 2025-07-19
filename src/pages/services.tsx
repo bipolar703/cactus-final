@@ -2,14 +2,14 @@ import { useLanguage } from '@/hooks/use-language';
 import { motion } from 'framer-motion';
 import { Link } from 'wouter';
 import { ArrowRight, Sparkles } from 'lucide-react';
-import { services, premiumServices, allServices } from '@/data/services';
+import { services, allServices } from '@/data/services';
 
 export default function Services() {
   const { language } = useLanguage();
-  
+
   // SEO and meta data
   const pageTitle = language === 'ar' ? 'خدماتنا المتخصصة | مجموعة كاكتوس الإعلامية' : 'Our Specialized Services | Cactus Media Group';
-  const pageDescription = language === 'ar' 
+  const pageDescription = language === 'ar'
     ? 'خدمات رقمية متكاملة من تطوير المواقع إلى التسويق الرقمي والتصميم. حلول مبتكرة مصممة خصيصاً لنمو أعمالك وتحقيق أهدافك الرقمية.'
     : 'Comprehensive digital services from web development to digital marketing and design. Innovative solutions crafted specifically for your business growth and digital goals.';
 
@@ -74,127 +74,9 @@ export default function Services() {
             </motion.p>
           </div>
 
-          {/* Premium Services Section */}
-          <div className=\"max-w-7xl mx-auto mb-20\">
-            <motion.div
-              initial={{ opacity: 0, y: 40 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8, delay: 0.6 }}
-              className=\"text-center mb-16\"
-            >
-              <div className=\"inline-flex items-center gap-3 bg-gradient-to-r from-jaded-green-600 to-jaded-green-500 text-white px-6 py-3 rounded-full font-semibold mb-6\">
-                <span className=\"w-2 h-2 bg-white rounded-full animate-pulse\" />
-                {language === 'ar' ? 'الحلول المتقدمة والذكاء الاصطناعي' : 'Premium Digital Solutions & AI Services'}
-              </div>
-              <h2 className={`text-4xl md:text-5xl font-bold text-gray-900 mb-4 ${
-                language === 'ar' ? 'font-arabic' : 'font-barlow'
-              }`}>
-                {language === 'ar' ? 'حلول متطورة للمؤسسات' : 'Advanced Enterprise Solutions'}
-              </h2>
-              <p className={`text-lg text-gray-600 max-w-3xl mx-auto ${
-                language === 'ar' ? 'font-arabic' : ''
-              }`}>
-                {language === 'ar'
-                  ? 'حلول رقمية متقدمة مدعومة بالذكاء الاصطناعي وتحليل البيانات لتحويل أعمالك وتحقيق نمو استثنائي'
-                  : 'Advanced digital solutions powered by AI and data analytics to transform your business and achieve exceptional growth'}
-              </p>
-            </motion.div>
-
-            <div className=\"grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-20\">
-              {premiumServices.map((service, idx) => (
-                <motion.div
-                  key={service.slug}
-                  initial={{ opacity: 0, y: 60 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ delay: 0.1 * idx, duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
-                  whileHover={{ y: -8, transition: { duration: 0.3 } }}
-                  className=\"group\"
-                >
-                  <div className=\"relative bg-gradient-to-br from-gray-900 via-gray-800 to-black backdrop-blur-xl rounded-3xl p-8 shadow-2xl border border-jaded-green-500/20 hover:shadow-2xl hover:border-jaded-green-400/40 transition-all duration-500 h-full flex flex-col\">
-                    {/* Premium Badge */}
-                    <div className=\"absolute -top-3 -right-3 bg-gradient-to-r from-gold-500 to-gold-400 text-black text-xs font-bold px-3 py-1 rounded-full\">
-                      {language === 'ar' ? 'متميز' : 'PREMIUM'}
-                    </div>
-                    
-                    {/* Hover Glow Effect */}
-                    <div className=\"absolute inset-0 bg-gradient-to-br from-jaded-green-500/10 via-transparent to-gold-500/10 rounded-3xl opacity-0 group-hover:opacity-100 transition-opacity duration-500\" />
-                    
-                    {/* Service Icon */}
-                    <div className=\"relative z-10 mb-6\">
-                      <div className=\"w-20 h-20 mx-auto bg-gradient-to-br from-jaded-green-600 to-jaded-green-400 rounded-2xl flex items-center justify-center group-hover:scale-110 transition-transform duration-300 shadow-lg\">
-                        <img src={service.icon} alt={service.title[language]} className=\"w-12 h-12\" loading=\"lazy\" />
-                      </div>
-                    </div>
-
-                    {/* Content */}
-                    <div className=\"relative z-10 flex-1 flex flex-col\">
-                      <h3 className={`text-2xl font-bold mb-4 text-white group-hover:text-jaded-green-400 transition-colors duration-300 ${
-                        language === 'ar' ? 'font-arabic text-center' : 'font-barlow text-center'
-                      }`}>
-                        {service.title[language]}
-                      </h3>
-
-                      <p className={`text-gray-300 mb-6 leading-relaxed flex-1 ${
-                        language === 'ar' ? 'font-arabic text-center' : 'text-center'
-                      }`}>
-                        {service.desc[language]}
-                      </p>
-
-                      {/* Features */}
-                      <div className=\"space-y-3 mb-8\">
-                        {service.features[language].map((feature, i) => (
-                          <div key={i} className={`flex items-center gap-3 text-sm text-gray-400 ${
-                            language === 'ar' ? 'flex-row-reverse' : ''
-                          }`}>
-                            <div className=\"w-2 h-2 bg-jaded-green-400 rounded-full flex-shrink-0\" />
-                            <span className={language === 'ar' ? 'font-arabic' : ''}>{feature}</span>
-                          </div>
-                        ))}
-                      </div>
-
-                      {/* CTA Button */}
-                      <Link 
-                        href={`/services/${service.slug}`}
-                        className=\"mt-auto group/btn\"
-                      >
-                        <motion.div
-                          whileHover={{ scale: 1.02 }}
-                          whileTap={{ scale: 0.98 }}
-                          className=\"w-full bg-gradient-to-r from-jaded-green-600 to-jaded-green-400 text-white font-semibold py-4 px-6 rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 flex items-center justify-center gap-3 group-hover/btn:from-jaded-green-700 group-hover/btn:to-jaded-green-500\"
-                        >
-                          <span className={language === 'ar' ? 'font-arabic' : 'font-barlow'}>
-                            {language === 'ar' ? 'اكتشف المزيد' : 'Learn More'}
-                          </span>
-                          <ArrowRight className=\"w-5 h-5 group-hover/btn:translate-x-1 transition-transform duration-300\" />
-                        </motion.div>
-                      </Link>
-                    </div>
-                  </div>
-                </motion.div>
-              ))}
-            </div>
-          </div>
-
           {/* Core Services Section */}
-          <div className=\"max-w-7xl mx-auto\">
-            <motion.div
-              initial={{ opacity: 0, y: 40 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8, delay: 1.2 }}
-              className=\"text-center mb-16\"
-            >
-              <div className=\"inline-flex items-center gap-3 bg-gradient-to-r from-gray-700 to-gray-600 text-white px-6 py-3 rounded-full font-semibold mb-6\">
-                <span className=\"w-2 h-2 bg-white rounded-full\" />
-                {language === 'ar' ? 'الخدمات الأساسية' : 'Core Services'}
-              </div>
-              <h2 className={`text-4xl md:text-5xl font-bold text-gray-900 mb-4 ${
-                language === 'ar' ? 'font-arabic' : 'font-barlow'
-              }`}>
-                {language === 'ar' ? 'خدماتنا الأساسية' : 'Our Foundation Services'}
-              </h2>
-            </motion.div>
-
-            <div className=\"grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8\">
+          <div className="max-w-7xl mx-auto">
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
               {services.map((service, idx) => (
                 <motion.div
                   key={service.slug}
@@ -204,52 +86,42 @@ export default function Services() {
                   whileHover={{ y: -8, transition: { duration: 0.3 } }}
                   className="group"
                 >
-                  <div className="relative bg-white/80 backdrop-blur-xl rounded-3xl p-8 shadow-xl border border-gray-100/50 hover:shadow-2xl hover:border-jaded-green-200/50 transition-all duration-500 h-full flex flex-col">
-                    {/* Hover Glow Effect */}
-                    <div className="absolute inset-0 bg-gradient-to-br from-jaded-green-500/5 via-transparent to-gold-500/5 rounded-3xl opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
-                    
+                  <div className={`relative rounded-3xl p-8 shadow-xl border transition-all duration-500 h-full flex flex-col ${service.label === 'latest' ? 'bg-jaded-green-700 text-white border-jaded-green-400/40 hover:shadow-2xl' : 'bg-white/80 backdrop-blur-xl border-gray-100/50 hover:shadow-2xl hover:border-jaded-green-200/50'}`}>
+                    {/* Latest Badge for AI & Automations */}
+                    {service.label === 'latest' && (
+                      <span className="absolute top-4 left-4 bg-gold-500 text-white text-xs font-bold px-4 py-2 rounded-full shadow-lg z-10">
+                        {language === 'ar' ? 'الأحدث' : 'LATEST'}
+                      </span>
+                    )}
                     {/* Service Icon */}
                     <div className="relative z-10 mb-6">
-                      <div className="w-20 h-20 mx-auto bg-gradient-to-br from-jaded-green-100 to-jaded-green-50 rounded-2xl flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
-                        <img src={service.icon} alt={service.title[language]} className="w-12 h-12" loading="lazy" />
+                      <div className={`w-20 h-20 mx-auto rounded-2xl flex items-center justify-center group-hover:scale-110 transition-transform duration-300 shadow-lg ring-4 ring-jaded-green-500/30 ${service.label === 'latest' ? 'bg-white' : 'bg-gradient-to-br from-jaded-green-100 to-jaded-green-50'}`}>
+                        {service.label === 'latest' ? (
+                          <img src="/assets/animated/services/ai.gif" alt={service.title[language]} className="w-full h-full object-contain rounded-2xl" />
+                        ) : (
+                          <img src={service.icon} alt={service.title[language]} className="w-full h-full object-contain rounded-2xl" />
+                        )}
                       </div>
                     </div>
-
                     {/* Content */}
                     <div className="relative z-10 flex-1 flex flex-col">
-                      <h2 className={`text-2xl font-bold mb-4 text-gray-900 group-hover:text-jaded-green-800 transition-colors duration-300 ${
-                        language === 'ar' ? 'font-arabic text-center' : 'font-barlow text-center'
-                      }`}>
-                        {service.title[language]}
-                      </h2>
-
-                      <p className={`text-gray-600 mb-6 leading-relaxed flex-1 ${
-                        language === 'ar' ? 'font-arabic text-center' : 'text-center'
-                      }`}>
-                        {service.desc[language]}
-                      </p>
-
+                      <h2 className={`text-2xl font-bold mb-4 ${service.label === 'latest' ? 'text-white group-hover:text-gold-400' : 'text-gray-900 group-hover:text-jaded-green-800'} transition-colors duration-300 ${language === 'ar' ? 'font-arabic text-center' : 'font-barlow text-center'}`}>{service.title[language]}</h2>
+                      <p className={`mb-6 leading-relaxed flex-1 ${service.label === 'latest' ? 'text-white/90' : 'text-gray-600'} ${language === 'ar' ? 'font-arabic text-center' : 'text-center'}`}>{service.desc[language]}</p>
                       {/* Features */}
                       <div className="space-y-3 mb-8">
                         {service.features[language].map((feature, i) => (
-                          <div key={i} className={`flex items-center gap-3 text-sm text-gray-700 ${
-                            language === 'ar' ? 'flex-row-reverse' : ''
-                          }`}>
-                            <div className="w-2 h-2 bg-jaded-green-500 rounded-full flex-shrink-0" />
+                          <div key={i} className={`flex items-center gap-3 text-sm ${service.label === 'latest' ? 'text-white/80' : 'text-gray-700'} ${language === 'ar' ? 'flex-row-reverse' : ''}`}>
+                            <div className={`w-2 h-2 rounded-full flex-shrink-0 ${service.label === 'latest' ? 'bg-gold-400' : 'bg-jaded-green-500'}`} />
                             <span className={language === 'ar' ? 'font-arabic' : ''}>{feature}</span>
                           </div>
                         ))}
                       </div>
-
                       {/* CTA Button */}
-                      <Link 
-                        href={`/services/${service.slug}`}
-                        className="mt-auto group/btn"
-                      >
+                      <Link href={`/services/${service.slug}`} className="mt-auto group/btn">
                         <motion.div
                           whileHover={{ scale: 1.02 }}
                           whileTap={{ scale: 0.98 }}
-                          className="w-full bg-gradient-to-r from-jaded-green-600 to-jaded-green-500 text-white font-semibold py-4 px-6 rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 flex items-center justify-center gap-3 group-hover/btn:from-jaded-green-700 group-hover/btn:to-jaded-green-600"
+                          className={`w-full font-semibold py-4 px-6 rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 flex items-center justify-center gap-3 group-hover/btn:from-jaded-green-700 group-hover/btn:to-jaded-green-600 ${service.label === 'latest' ? 'bg-white text-jaded-green-600' : 'bg-gradient-to-r from-jaded-green-600 to-jaded-green-500 text-white'}`}
                         >
                           <span className={language === 'ar' ? 'font-arabic' : 'font-barlow'}>
                             {language === 'ar' ? 'اكتشف المزيد' : 'Learn More'}

@@ -1,0 +1,79 @@
+---
+alwaysApply: true
+---
+---
+name: react-best-practices.mdc
+description: Best practices for React applications with TypeScript
+globs: **/*.{ts,tsx}
+---
+
+- Use functional components and hooks for state management.
+- Implement PropTypes or TypeScript interfaces for component props.
+- Optimize performance with React.memo and useCallback.
+- Structure components for reusability and maintainability.
+
+---
+name: typescript-best-practices.mdc
+description: TypeScript coding standards and type safety guidelines
+globs: **/*.{ts,tsx}
+---
+
+- Use strict null checks to avoid runtime errors.
+- Prefer interface over type for object shapes.
+- Utilize type guards and assertions for better type safety.
+- Implement proper type inference to reduce redundancy.
+
+---
+name: tailwindcss-best-practices.mdc
+description: Guidelines for styling with Tailwind CSS
+globs: **/*.{ts,tsx,css}
+---
+
+- Use utility-first classes for rapid styling.
+- Create reusable components with Tailwind's @apply directive.
+- Maintain a consistent design system with Tailwind's configuration.
+- Ensure responsive design by utilizing Tailwind's responsive utilities.
+
+---
+name: vite-best-practices.mdc
+description: Best practices for Vite configuration and usage
+globs: **/*.{ts,js}
+---
+
+- Leverage Vite's hot module replacement for faster development.
+- Optimize build performance with code splitting and lazy loading.
+- Use environment variables for configuration management.
+- Keep dependencies updated to benefit from Vite's latest features.
+
+---
+name: express-best-practices.mdc
+description: Best practices for building APIs with Express
+globs: **/*.{ts,js}
+---
+
+- Use middleware for error handling and request logging.
+- Structure routes logically and modularly for maintainability.
+- Implement input validation and sanitization for security.
+- Use async/await for handling asynchronous operations.
+
+---
+name: pwa-best-practices.mdc
+description: Guidelines for Progressive Web App (PWA) implementation
+globs: **/*.js
+---
+
+- Ensure service worker is registered correctly for offline support.
+- Cache essential assets and API responses for better performance.
+- Implement a web app manifest for a native app-like experience.
+- Test PWA features across different devices and browsers.
+
+---
+name: vercel-best-practices.mdc
+description: Best practices for deploying applications on Vercel
+globs: **/*.json
+---
+
+- Use vercel.json for custom routing and environment variables.
+- Optimize build settings for faster deployments.
+- Monitor performance and error logs through Vercel's dashboard.
+- Ensure proper caching strategies are in place for static assets.
