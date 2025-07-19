@@ -54,7 +54,7 @@ export function PortfolioModal() {
   ];
 
   return (
-    <div className={`p-8 md:p-12 ${language === 'ar' ? 'text-right font-arabic' : ''}`}>
+    <div className={`p-8 md:p-12 ${language === 'ar' ? 'text-center font-arabic' : ''}`}>
       <div className="text-center mb-8">
         <div className="inline-flex items-center justify-center mb-4">
           <img
@@ -65,7 +65,7 @@ export function PortfolioModal() {
         </div>
         <h2
           className={`text-3xl md:text-4xl font-bold text-gray-800 mb-4 ${
-            language === 'ar' ? 'font-arabic' : 'font-poppins'
+            language === 'ar' ? 'font-arabic' : 'font-barlow'
           }`}
         >
           {t('portfolioTitle')}

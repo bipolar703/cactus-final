@@ -100,15 +100,15 @@ export function ModernServicesSection() {
 
           <h2
             className={`text-4xl md:text-5xl lg:text-6xl font-light text-white mb-6 ${
-              language === 'ar' ? 'font-arabic leading-tight' : 'font-poppins leading-tight'
+              language === 'ar' ? 'font-arabic leading-tight' : 'font-barlow leading-tight'
             }`}
           >
             {language === 'ar' ? 'خدماتنا المتخصصة' : 'Our Specialized Services'}
           </h2>
 
           <p
-            className={`text-lg md:text-xl text-gray-300 max-w-3xl mx-auto leading-relaxed ${
-              language === 'ar' ? 'font-arabic text-right' : ''
+            className={`text-lg md:text-xl text-gray-300 max-w-3xl mx-auto leading-relaxed text-center ${
+              language === 'ar' ? 'font-arabic' : ''
             }`}
           >
             {language === 'ar'
@@ -155,7 +155,7 @@ export function ModernServicesSection() {
                 <div className="relative z-10 space-y-4">
                   <h3
                     className={`text-xl font-semibold text-white group-hover:text-jaded-green-400 transition-colors duration-300 ${
-                      language === 'ar' ? 'font-arabic text-right' : 'font-poppins'
+                      language === 'ar' ? 'font-arabic text-center' : 'font-barlow'
                     }`}
                   >
                     {service.title}
@@ -163,7 +163,7 @@ export function ModernServicesSection() {
 
                   <p
                     className={`text-gray-300 text-sm leading-relaxed group-hover:text-gray-200 transition-colors duration-300 ${
-                      language === 'ar' ? 'font-arabic text-right' : ''
+                      language === 'ar' ? 'font-arabic text-center' : 'text-left'
                     }`}
                   >
                     {service.desc}

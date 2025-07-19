@@ -188,7 +188,7 @@ export function CinematicHero({ onModalOpen }: CinematicHeroProps) {
         >
           <h1
             className={`text-3xl md:text-4xl lg:text-5xl font-light text-white mb-6 ${
-              language === 'ar' ? 'font-arabic' : 'font-poppins'
+              language === 'ar' ? 'font-arabic' : 'font-barlow'
             } text-shadow-strong leading-tight tracking-wide`}
           >
             <motion.span

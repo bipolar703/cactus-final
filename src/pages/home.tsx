@@ -46,9 +46,7 @@ export default function Home() {
 
   // Preload critical assets
   const criticalAssets = [
-    '/assets/Logo.png',
-    '/assets/wLogo.png',
-    '/assets/Webpage-Banner.png',
+    '/hero.mp4',
   ];
   const assetsLoaded = useResourcePreload(criticalAssets);
 

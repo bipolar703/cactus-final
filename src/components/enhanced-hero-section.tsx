@@ -117,7 +117,7 @@ export function EnhancedHeroSection({ onModalOpen }: EnhancedHeroSectionProps) {
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 1, delay: 1.3 }}
               className={`text-xl md:text-2xl lg:text-3xl xl:text-4xl text-white/95 leading-relaxed font-light max-w-5xl mx-auto ${
-                language === 'ar' ? 'font-arabic text-right' : 'font-barlow'
+                language === 'ar' ? 'font-arabic text-center' : 'font-barlow'
               }`}
             >
               {language === 'ar'

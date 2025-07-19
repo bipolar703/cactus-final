@@ -26,7 +26,7 @@ export function ServiceDetail({ service, onBack, onContact }: ServiceDetailProps
       animate={{ opacity: 1, x: 0 }}
       exit={{ opacity: 0, x: -50 }}
       transition={{ duration: 0.5 }}
-      className={`p-6 sm:p-8 lg:p-12 ${language === 'ar' ? 'text-right font-arabic' : ''}`}
+      className={`p-6 sm:p-8 lg:p-12 ${language === 'ar' ? 'text-center font-arabic' : ''}`}
     >
       {/* Header */}
       <div className="flex items-center mb-8">
@@ -46,7 +46,7 @@ export function ServiceDetail({ service, onBack, onContact }: ServiceDetailProps
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.1 }}
           className={`text-3xl sm:text-4xl lg:text-5xl font-bold text-gray-800 mb-6 ${
-            language === 'ar' ? 'font-arabic' : 'font-poppins'
+            language === 'ar' ? 'font-arabic' : 'font-barlow'
           }`}
         >
           {service.title}
@@ -160,7 +160,7 @@ export function ServiceDetail({ service, onBack, onContact }: ServiceDetailProps
           className="bg-gradient-to-r from-[#3f7c6a] to-[#5a9b83] rounded-2xl p-8 text-white text-center mt-12"
         >
           <h3
-            className={`text-2xl font-bold mb-4 ${language === 'ar' ? 'font-arabic' : 'font-poppins'}`}
+            className={`text-2xl font-bold mb-4 ${language === 'ar' ? 'font-arabic' : 'font-barlow'}`}
           >
             {service.cta}
           </h3>

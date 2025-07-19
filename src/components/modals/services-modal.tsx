@@ -114,14 +114,14 @@ export function ServicesModal() {
   }
 
   return (
-    <div className={`p-6 sm:p-8 lg:p-12 ${language === 'ar' ? 'text-right font-arabic' : ''}`}>
+    <div className={`p-6 sm:p-8 lg:p-12 ${language === 'ar' ? 'text-center font-arabic' : ''}`}>
       <div className="text-center mb-12">
         <div className="inline-flex items-center justify-center w-20 h-20 bg-gradient-to-br from-[#3f7c6a] to-[#5a9b83] rounded-3xl mb-6">
           <Zap className="text-white w-8 h-8" />
         </div>
         <h2
           className={`text-3xl sm:text-4xl lg:text-5xl font-bold text-gray-800 mb-4 ${
-            language === 'ar' ? 'font-arabic' : 'font-poppins'
+            language === 'ar' ? 'font-arabic' : 'font-barlow'
           }`}
         >
           {t('servicesTitle')}
@@ -150,7 +150,7 @@ export function ServicesModal() {
               </div>
               <h3
                 className={`text-2xl sm:text-3xl font-bold text-gray-800 ${
-                  language === 'ar' ? 'font-arabic' : 'font-poppins'
+                  language === 'ar' ? 'font-arabic' : 'font-barlow'
                 }`}
               >
                 {category.category}
@@ -197,7 +197,7 @@ export function ServicesModal() {
       <div className="bg-gradient-to-br from-[#3f7c6a] to-[#5a9b83] rounded-3xl p-8 sm:p-10 text-white text-center mt-12">
         <h3
           className={`text-2xl sm:text-3xl font-bold mb-4 ${
-            language === 'ar' ? 'font-arabic' : 'font-poppins'
+            language === 'ar' ? 'font-arabic' : 'font-barlow'
           }`}
         >
           {t('packageDeals')}

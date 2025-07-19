@@ -69,7 +69,7 @@ export function EnhancedNavigation({ onModalOpen }: EnhancedNavigationProps) {
           
           <h2
             className={`text-4xl md:text-5xl lg:text-6xl font-bold cinematic-text mb-6 ${
-              language === 'ar' ? 'font-arabic leading-tight' : 'font-poppins leading-tight'
+              language === 'ar' ? 'font-arabic leading-tight' : 'font-barlow leading-tight'
             }`}
           >
             {language === 'ar' ? 'رحلة الإبداع' : 'Journey of Innovation'}
@@ -126,7 +126,7 @@ export function EnhancedNavigation({ onModalOpen }: EnhancedNavigationProps) {
                 <div className="relative z-10">
                   <h3
                     className={`text-xl font-bold text-white mb-3 group-hover:text-white transition-colors duration-300 ${
-                      language === 'ar' ? 'font-arabic text-right' : 'font-poppins'
+                      language === 'ar' ? 'font-arabic text-center' : 'font-barlow'
                     }`}
                   >
                     {t(item.titleKey)}
@@ -134,7 +134,7 @@ export function EnhancedNavigation({ onModalOpen }: EnhancedNavigationProps) {
                   
                   <p
                     className={`text-white/70 text-sm leading-relaxed group-hover:text-white/90 transition-colors duration-300 mb-4 ${
-                      language === 'ar' ? 'font-arabic text-right' : ''
+                      language === 'ar' ? 'font-arabic text-center' : ''
                     }`}
                   >
                     {language === 'ar' 

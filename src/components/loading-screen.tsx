@@ -52,7 +52,7 @@ export function LoadingScreen({ isVisible, onComplete }: LoadingScreenProps) {
         filter: 'blur(8px)'
       }}
       transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
-      className="fixed inset-0 z-[100] overflow-hidden"
+      className="fixed inset-0 z-[9999] overflow-hidden bg-slate-900"
     >
       {/* Oblique animated background */}
       <div className="absolute inset-0 loading-background">
@@ -188,8 +188,8 @@ export function LoadingScreen({ isVisible, onComplete }: LoadingScreenProps) {
               key={loadingText}
               initial={{ opacity: 0, y: 8 }}
               animate={{ opacity: 1, y: 0 }}
-              className={`text-white/90 text-lg font-medium ${
-                language === 'ar' ? 'font-arabic' : 'font-poppins'
+              className={`text-white/90 text-lg font-medium text-center ${
+                language === 'ar' ? 'font-arabic' : 'font-barlow'
               }`}
             >
               {loadingText}
@@ -208,7 +208,7 @@ export function LoadingScreen({ isVisible, onComplete }: LoadingScreenProps) {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ delay: 1.2, duration: 0.8 }}
-            className={`text-white/50 text-sm mt-8 ${
+            className={`text-white/50 text-sm mt-8 text-center ${
               language === 'ar' ? 'font-arabic' : ''
             }`}
           >

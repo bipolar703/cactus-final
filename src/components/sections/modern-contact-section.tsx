@@ -52,15 +52,15 @@ export function ModernContactSection() {
 
           <h2
             className={`text-4xl md:text-5xl lg:text-6xl font-light text-gray-900 mb-6 ${
-              language === 'ar' ? 'font-arabic leading-tight' : 'font-poppins leading-tight'
+              language === 'ar' ? 'font-arabic leading-tight' : 'font-barlow leading-tight'
             }`}
           >
             {language === 'ar' ? 'ابدأ مشروعك' : 'Start Your Project'}
           </h2>
 
           <p
-            className={`text-lg md:text-xl text-gray-600 max-w-2xl mx-auto leading-relaxed ${
-              language === 'ar' ? 'font-arabic text-right' : ''
+            className={`text-lg md:text-xl text-gray-600 max-w-2xl mx-auto leading-relaxed text-center ${
+              language === 'ar' ? 'font-arabic' : ''
             }`}
           >
             {language === 'ar'
@@ -83,7 +83,7 @@ export function ModernContactSection() {
                 <label
                   htmlFor="name"
                   className={`block text-sm font-medium text-gray-700 ${
-                    language === 'ar' ? 'font-arabic text-right' : ''
+                    language === 'ar' ? 'font-arabic text-center' : ''
                   }`}
                 >
                   {language === 'ar' ? 'الاسم' : 'Name'}
@@ -95,7 +95,7 @@ export function ModernContactSection() {
                   value={formData.name}
                   onChange={handleChange}
                   className={`w-full px-4 py-3 border border-gray-200 rounded-lg focus:ring-2 focus:ring-jaded-green-500 focus:border-transparent transition-all duration-300 bg-white/50 backdrop-blur-sm ${
-                    language === 'ar' ? 'text-right font-arabic' : ''
+                    language === 'ar' ? 'text-center font-arabic' : ''
                   }`}
                   placeholder={language === 'ar' ? 'اسمك الكامل' : 'Your full name'}
                   required
@@ -106,7 +106,7 @@ export function ModernContactSection() {
                 <label
                   htmlFor="email"
                   className={`block text-sm font-medium text-gray-700 ${
-                    language === 'ar' ? 'font-arabic text-right' : ''
+                    language === 'ar' ? 'font-arabic text-center' : ''
                   }`}
                 >
                   {language === 'ar' ? 'البريد الإلكتروني' : 'Email'}
@@ -118,7 +118,7 @@ export function ModernContactSection() {
                   value={formData.email}
                   onChange={handleChange}
                   className={`w-full px-4 py-3 border border-gray-200 rounded-lg focus:ring-2 focus:ring-jaded-green-500 focus:border-transparent transition-all duration-300 bg-white/50 backdrop-blur-sm ${
-                    language === 'ar' ? 'text-right font-arabic' : ''
+                    language === 'ar' ? 'text-center font-arabic' : ''
                   }`}
                   placeholder={language === 'ar' ? 'بريدك الإلكتروني' : 'Your email address'}
                   required
@@ -131,7 +131,7 @@ export function ModernContactSection() {
               <label
                 htmlFor="subject"
                 className={`block text-sm font-medium text-gray-700 ${
-                  language === 'ar' ? 'font-arabic text-right' : ''
+                  language === 'ar' ? 'font-arabic text-center' : ''
                 }`}
               >
                 {language === 'ar' ? 'الموضوع' : 'Subject'}
@@ -143,7 +143,7 @@ export function ModernContactSection() {
                 value={formData.subject}
                 onChange={handleChange}
                 className={`w-full px-4 py-3 border border-gray-200 rounded-lg focus:ring-2 focus:ring-jaded-green-500 focus:border-transparent transition-all duration-300 bg-white/50 backdrop-blur-sm ${
-                  language === 'ar' ? 'text-right font-arabic' : ''
+                  language === 'ar' ? 'text-center font-arabic' : ''
                 }`}
                 placeholder={language === 'ar' ? 'موضوع رسالتك' : 'Subject of your message'}
                 required
@@ -155,7 +155,7 @@ export function ModernContactSection() {
               <label
                 htmlFor="message"
                 className={`block text-sm font-medium text-gray-700 ${
-                  language === 'ar' ? 'font-arabic text-right' : ''
+                  language === 'ar' ? 'font-arabic text-center' : ''
                 }`}
               >
                 {language === 'ar' ? 'الرسالة' : 'Message'}
@@ -167,7 +167,7 @@ export function ModernContactSection() {
                 value={formData.message}
                 onChange={handleChange}
                 className={`w-full px-4 py-3 border border-gray-200 rounded-lg focus:ring-2 focus:ring-jaded-green-500 focus:border-transparent transition-all duration-300 bg-white/50 backdrop-blur-sm resize-none ${
-                  language === 'ar' ? 'text-right font-arabic' : ''
+                  language === 'ar' ? 'text-center font-arabic' : ''
                 }`}
                 placeholder={language === 'ar' ? 'اكتب رسالتك هنا...' : 'Write your message here...'}
                 required
@@ -191,55 +191,6 @@ export function ModernContactSection() {
           </form>
         </motion.div>
 
-        {/* Contact Information */}
-        <motion.div
-          initial={{ opacity: 0, y: 40 }}
-          animate={isIntersecting ? { opacity: 1, y: 0 } : { opacity: 0, y: 40 }}
-          transition={{ duration: 0.8, delay: 0.6 }}
-          className="mt-20 pt-16 border-t border-gray-200"
-        >
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 text-center">
-            {[
-              {
-                icon: Mail,
-                title: language === 'ar' ? 'البريد الإلكتروني' : 'Email',
-                value: 'info@cactusmediagroup.com',
-              },
-              {
-                icon: Phone,
-                title: language === 'ar' ? 'الهاتف' : 'Phone',
-                value: '+966 50 123 4567',
-              },
-              {
-                icon: MapPin,
-                title: language === 'ar' ? 'الموقع' : 'Location',
-                value: language === 'ar' ? 'الرياض، السعودية' : 'Riyadh, Saudi Arabia',
-              },
-            ].map((contact, index) => (
-              <div key={index} className="space-y-4">
-                <div className="inline-flex items-center justify-center w-12 h-12 bg-jaded-green-100 rounded-full">
-                  <contact.icon className="w-6 h-6 text-jaded-green-600" />
-                </div>
-                <div>
-                  <h3
-                    className={`text-lg font-semibold text-gray-900 mb-2 ${
-                      language === 'ar' ? 'font-arabic' : ''
-                    }`}
-                  >
-                    {contact.title}
-                  </h3>
-                  <p
-                    className={`text-gray-600 ${
-                      language === 'ar' ? 'font-arabic' : ''
-                    }`}
-                  >
-                    {contact.value}
-                  </p>
-                </div>
-              </div>
-            ))}
-          </div>
-        </motion.div>
       </div>
     </section>
   );

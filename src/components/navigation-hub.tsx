@@ -72,7 +72,7 @@ export function NavigationHub({ onModalOpen }: NavigationHubProps) {
           >
             <p
               className={`text-lg sm:text-xl lg:text-2xl font-light text-white/90 mb-3 text-shadow-soft ${
-                language === 'ar' ? 'font-arabic' : 'font-poppins'
+                language === 'ar' ? 'font-arabic' : 'font-barlow'
               }`}
             >
               {t('slogan')}
@@ -158,7 +158,7 @@ export function NavigationHub({ onModalOpen }: NavigationHubProps) {
 
                 <h3
                   className={`text-white font-semibold text-lg mb-2 text-shadow-soft ${
-                    language === 'ar' ? 'font-arabic' : 'font-poppins'
+                    language === 'ar' ? 'font-arabic' : 'font-barlow'
                   }`}
                 >
                   {t(item.titleKey)}

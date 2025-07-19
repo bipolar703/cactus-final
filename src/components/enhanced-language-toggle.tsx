@@ -12,7 +12,7 @@ export function EnhancedLanguageToggle() {
         disabled={isLoading}
         className={`language-toggle glass-strong text-white px-4 py-2 rounded-xl font-medium text-sm group relative overflow-hidden ${
           isLoading ? 'loading' : ''
-        } ${language === 'ar' ? 'dubai-arabic' : ''}`}
+        } ${language === 'ar' ? 'tajawal-arabic' : ''}`}
         whileHover={{ scale: 1.05 }}
         whileTap={{ scale: 0.95 }}
         data-scroll-container

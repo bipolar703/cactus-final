@@ -16,12 +16,6 @@ export function ModernAboutSection() {
   const y = useTransform(scrollYProgress, [0, 1], [100, -100]);
   const opacity = useTransform(scrollYProgress, [0, 0.2, 0.8, 1], [0, 1, 1, 0]);
 
-  const stats = [
-    { number: '500+', label: language === 'ar' ? 'مشروع مكتمل' : 'Projects Completed' },
-    { number: '98%', label: language === 'ar' ? 'رضا العملاء' : 'Client Satisfaction' },
-    { number: '50+', label: language === 'ar' ? 'عميل سعيد' : 'Happy Clients' },
-    { number: '5+', label: language === 'ar' ? 'سنوات خبرة' : 'Years Experience' }
-  ];
 
   const values = [
     {
@@ -74,16 +68,16 @@ export function ModernAboutSection() {
             initial={{ width: 0 }}
             animate={isInView ? { width: 120 } : { width: 0 }}
             transition={{ delay: 0.5, duration: 1 }}
-            className="h-1 bg-gradient-to-r from-jaded-green-500 to-gold-500 rounded-full mx-auto mb-8"
+            className="h-1 bg-jaded-green-500 rounded-full mx-auto mb-8"
           />
           
-          <h2 className={`text-5xl md:text-6xl lg:text-7xl font-bold gradient-text-dark mb-6 ${
-            language === 'ar' ? 'font-arabic' : 'font-poppins'
+          <h2 className={`text-5xl md:text-6xl lg:text-7xl font-bold text-black mb-6 ${
+            language === 'ar' ? 'font-arabic' : 'font-barlow'
           }`}>
             {language === 'ar' ? 'من نحن' : 'About Us'}
           </h2>
           
-          <p className={`text-xl md:text-2xl text-gray-700 max-w-4xl mx-auto leading-relaxed ${
+          <p className={`text-xl md:text-2xl text-gray-700 max-w-4xl mx-auto leading-relaxed text-center ${
             language === 'ar' ? 'font-arabic' : ''
           }`}>
             {language === 'ar'
@@ -92,35 +86,6 @@ export function ModernAboutSection() {
           </p>
         </motion.div>
 
-        {/* Stats Grid */}
-        <motion.div
-          initial={{ opacity: 0, y: 40 }}
-          animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 40 }}
-          transition={{ duration: 0.8, delay: 0.2 }}
-          className="grid grid-cols-2 md:grid-cols-4 gap-8 mb-24"
-        >
-          {stats.map((stat, index) => (
-            <motion.div
-              key={index}
-              initial={{ opacity: 0, scale: 0.8 }}
-              animate={isInView ? { opacity: 1, scale: 1 } : { opacity: 0, scale: 0.8 }}
-              transition={{ duration: 0.6, delay: 0.3 + index * 0.1 }}
-              className="text-center modern-card p-8 subtle-glow"
-            >
-              <motion.div
-                initial={{ scale: 0 }}
-                animate={isInView ? { scale: 1 } : { scale: 0 }}
-                transition={{ duration: 0.8, delay: 0.5 + index * 0.1, type: "spring" }}
-                className="text-4xl md:text-5xl font-bold gradient-text-dark mb-2"
-              >
-                {stat.number}
-              </motion.div>
-              <p className={`text-gray-600 font-medium ${language === 'ar' ? 'font-arabic' : ''}`}>
-                {stat.label}
-              </p>
-            </motion.div>
-          ))}
-        </motion.div>
 
         {/* Main Content Grid */}
         <div className="grid lg:grid-cols-2 gap-16 items-center">
@@ -134,13 +99,13 @@ export function ModernAboutSection() {
             <div className="space-y-8">
               <div>
                 <h3 className={`text-3xl md:text-4xl font-bold text-gray-900 mb-6 ${
-                  language === 'ar' ? 'font-arabic text-right' : 'font-poppins'
+                  language === 'ar' ? 'font-arabic text-center' : 'font-barlow'
                 }`}>
                   {language === 'ar' ? 'رؤيتنا للمستقبل الرقمي' : 'Our Vision for Digital Future'}
                 </h3>
                 
                 <p className={`text-lg text-gray-700 leading-relaxed mb-8 ${
-                  language === 'ar' ? 'font-arabic text-right' : ''
+                  language === 'ar' ? 'font-arabic text-center' : ''
                 }`}>
                   {language === 'ar'
                     ? 'نؤمن بأن التكنولوجيا يجب أن تكون جسراً يربط بين الأحلام والواقع. نحن نصمم تجارب رقمية تتجاوز التوقعات وتترك أثراً إيجابياً في حياة المستخدمين.'
@@ -199,18 +164,18 @@ export function ModernAboutSection() {
                   className="modern-card p-8 group cursor-pointer"
                 >
                   <div className="flex items-start gap-4">
-                    <div className="w-14 h-14 bg-gradient-to-br from-jaded-green-500 to-jaded-green-600 rounded-2xl flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
+                    <div className="w-14 h-14 bg-jaded-green-500 rounded-2xl flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
                       <value.icon className="w-7 h-7 text-white" />
                     </div>
                     
                     <div className="flex-1">
                       <h4 className={`text-xl font-bold text-gray-900 mb-3 group-hover:text-jaded-green-400 transition-colors ${
-                        language === 'ar' ? 'font-arabic text-right' : 'font-poppins'
+                        language === 'ar' ? 'font-arabic text-center' : 'font-barlow'
                       }`}>
                         {value.title}
                       </h4>
                       <p className={`text-gray-600 leading-relaxed ${
-                        language === 'ar' ? 'font-arabic text-right' : ''
+                        language === 'ar' ? 'font-arabic text-center' : ''
                       }`}>
                         {value.desc}
                       </p>

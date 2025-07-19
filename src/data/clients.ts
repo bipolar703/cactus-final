@@ -2,74 +2,80 @@ export const clientLogos = [
   {
     id: 1,
     name: 'Orange Jordan',
-    logo: 'https://upload.wikimedia.org/wikipedia/commons/thumb/c/c8/Orange_logo.svg/200px-Orange_logo.svg.png',
+    logo: '/assets/clients/orange.png',
     category: 'Telecommunications'
   },
   {
     id: 2,
     name: 'Zain Jordan',
-    logo: 'https://upload.wikimedia.org/wikipedia/commons/thumb/6/6f/Zain_logo.svg/200px-Zain_logo.svg.png',
+    logo: '/assets/clients/zainjo.png',
     category: 'Telecommunications'
   },
   {
     id: 3,
     name: 'Bank of Jordan',
-    logo: 'https://upload.wikimedia.org/wikipedia/commons/thumb/a/a4/Bank_of_Jordan_logo.svg/200px-Bank_of_Jordan_logo.svg.png',
+    logo: '/assets/clients/bankofjordan.png',
     category: 'Banking'
   },
   {
     id: 4,
     name: 'Jordan Tourism Board',
-    logo: 'https://upload.wikimedia.org/wikipedia/commons/thumb/d/dd/Jordan_Tourism_Board_logo.svg/200px-Jordan_Tourism_Board_logo.svg.png',
+    logo: '/assets/clients/jordantourism.png',
     category: 'Tourism'
   },
   {
     id: 5,
     name: 'Royal Jordanian',
-    logo: 'https://upload.wikimedia.org/wikipedia/commons/thumb/0/0c/Royal_Jordanian_Logo.svg/200px-Royal_Jordanian_Logo.svg.png',
+    logo: '/assets/clients/royaljordanian.png',
     category: 'Aviation'
   },
   {
     id: 6,
     name: 'Aramex',
-    logo: 'https://upload.wikimedia.org/wikipedia/commons/thumb/0/05/Aramex_logo.svg/200px-Aramex_logo.svg.png',
+    logo: '/assets/clients/aramex.png',
     category: 'Logistics'
   },
   {
     id: 7,
     name: 'Talabat',
-    logo: 'https://corporate.talabat.com/images/talabat-logo.svg',
+    logo: '/assets/clients/talabat.png',
     category: 'Food Delivery'
   },
   {
     id: 8,
     name: 'Careem',
-    logo: 'https://upload.wikimedia.org/wikipedia/commons/thumb/8/8c/Careem_logo.svg/200px-Careem_logo.svg.png',
+    logo: '/assets/clients/careem.png',
     category: 'Transportation'
   },
   {
     id: 9,
     name: 'Majid Al Futtaim',
-    logo: 'https://www.majidalfuttaim.com/-/media/project/maf/mafcom/logo/maf-logo.png',
+    logo: '/assets/clients/majidalfutaim.png',
     category: 'Retail'
   },
   {
     id: 10,
-    name: 'IKEA Jordan',
-    logo: 'https://upload.wikimedia.org/wikipedia/commons/thumb/c/c5/Ikea_logo.svg/200px-Ikea_logo.svg.png',
-    category: 'Furniture'
-  },
-  {
-    id: 11,
     name: 'Abdali Mall',
-    logo: 'https://upload.wikimedia.org/wikipedia/commons/thumb/2/2a/Abdali_Mall_logo.svg/200px-Abdali_Mall_logo.svg.png',
+    logo: '/assets/clients/abdallimall.png',
     category: 'Shopping'
   },
   {
-    id: 12,
-    name: 'Jordan University',
-    logo: 'https://upload.wikimedia.org/wikipedia/commons/thumb/1/1a/University_of_Jordan_logo.svg/200px-University_of_Jordan_logo.svg.png',
+    id: 11,
+    name: 'University of Jordan',
+    logo: '/assets/clients/universityofjordan.png',
     category: 'Education'
+  },
+  {
+    id: 12,
+    name: 'CLC Jordan',
+    logo: '/assets/clients/clcjo.png',
+    category: 'Education'
+  },
+  {
+    id: 13,
+    name: 'The Signature Jordan',
+    logo: '/assets/clients/thesignaturejordan.png',
+    category: 'Hospitality'
   }
 ];
 

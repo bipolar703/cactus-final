@@ -36,7 +36,7 @@ export function WebsiteShowcase({ onViewPortfolio }: WebsiteShowcaseProps) {
 
           <h2
             className={`text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-6 ${
-              language === 'ar' ? 'font-arabic leading-tight' : 'font-poppins leading-tight'
+              language === 'ar' ? 'font-arabic leading-tight' : 'font-barlow leading-tight'
             }`}
           >
             {language === 'ar' ? 'معرض مواقعنا المباشر' : 'Live Website Showcase'}
@@ -45,7 +45,7 @@ export function WebsiteShowcase({ onViewPortfolio }: WebsiteShowcaseProps) {
           <div className="max-w-4xl mx-auto">
             <p
               className={`text-lg md:text-xl text-white/90 leading-relaxed font-light ${
-                language === 'ar' ? 'font-arabic text-right' : ''
+                language === 'ar' ? 'font-arabic text-center' : ''
               }`}
             >
               {language === 'ar'
@@ -153,7 +153,7 @@ export function WebsiteShowcase({ onViewPortfolio }: WebsiteShowcaseProps) {
 
                   <h3
                     className={`text-xl font-semibold text-white mb-3 group-hover:text-jaded-green-400 transition-colors duration-300 ${
-                      language === 'ar' ? 'font-arabic' : 'font-poppins'
+                      language === 'ar' ? 'font-arabic' : 'font-barlow'
                     }`}
                   >
                     {project.title}
@@ -161,7 +161,7 @@ export function WebsiteShowcase({ onViewPortfolio }: WebsiteShowcaseProps) {
 
                   <p
                     className={`text-white/70 mb-4 text-sm leading-relaxed ${
-                      language === 'ar' ? 'font-arabic text-right' : ''
+                      language === 'ar' ? 'font-arabic text-center' : ''
                     }`}
                   >
                     {language === 'ar' 

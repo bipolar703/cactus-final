@@ -56,7 +56,7 @@ export function ContactSection() {
 
           <h2
             className={`text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-6 ${
-              language === 'ar' ? 'font-arabic leading-tight' : 'font-poppins leading-tight'
+              language === 'ar' ? 'font-arabic leading-tight' : 'font-barlow leading-tight'
             }`}
           >
             {language === 'ar' ? 'ابدأ رحلتك الرقمية' : 'Start Your Digital Journey'}
@@ -64,7 +64,7 @@ export function ContactSection() {
 
           <p
             className={`text-lg md:text-xl lg:text-2xl text-white/90 max-w-5xl mx-auto font-light leading-relaxed ${
-              language === 'ar' ? 'font-arabic text-right' : ''
+              language === 'ar' ? 'font-arabic text-center' : ''
             }`}
           >
             {language === 'ar' 
@@ -87,12 +87,12 @@ export function ContactSection() {
                 </div>
                 <h3
                   className={`text-2xl font-semibold text-white mb-4 ${
-                    language === 'ar' ? 'font-arabic' : 'font-poppins'
+                    language === 'ar' ? 'font-arabic' : 'font-barlow'
                   }`}
                 >
                   {language === 'ar' ? 'معلومات التواصل' : 'Contact Information'}
                 </h3>
-                <p className={`text-white/70 leading-relaxed ${language === 'ar' ? 'font-arabic text-right' : ''}`}>
+                <p className={`text-white/70 leading-relaxed ${language === 'ar' ? 'font-arabic text-center' : ''}`}>
                   {language === 'ar'
                     ? 'نتطلع للتواصل معك ومناقشة مشروعك القادم. فريقنا المتخصص جاهز لتقديم استشارة مجانية وتطوير حلول مخصصة تناسب احتياجاتك'
                     : 'We look forward to connecting with you and discussing your next project. Our specialized team is ready to provide free consultation and develop customized solutions that meet your needs'}
@@ -143,7 +143,7 @@ export function ContactSection() {
                   <div>
                     <label
                       className={`block text-white/80 text-sm font-medium mb-2 ${
-                        language === 'ar' ? 'font-arabic text-right' : ''
+                        language === 'ar' ? 'font-arabic text-center' : ''
                       }`}
                     >
                       {language === 'ar' ? 'الاسم' : 'Name'}
@@ -161,7 +161,7 @@ export function ContactSection() {
                   <div>
                     <label
                       className={`block text-white/80 text-sm font-medium mb-2 ${
-                        language === 'ar' ? 'font-arabic text-right' : ''
+                        language === 'ar' ? 'font-arabic text-center' : ''
                       }`}
                     >
                       {language === 'ar' ? 'البريد الإلكتروني' : 'Email'}
@@ -181,7 +181,7 @@ export function ContactSection() {
                 <div>
                   <label
                     className={`block text-white/80 text-sm font-medium mb-2 ${
-                      language === 'ar' ? 'font-arabic text-right' : ''
+                      language === 'ar' ? 'font-arabic text-center' : ''
                     }`}
                   >
                     {language === 'ar' ? 'الموضوع' : 'Subject'}
@@ -200,7 +200,7 @@ export function ContactSection() {
                 <div>
                   <label
                     className={`block text-white/80 text-sm font-medium mb-2 ${
-                      language === 'ar' ? 'font-arabic text-right' : ''
+                      language === 'ar' ? 'font-arabic text-center' : ''
                     }`}
                   >
                     {language === 'ar' ? 'الرسالة' : 'Message'}

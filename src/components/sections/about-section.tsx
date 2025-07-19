@@ -65,7 +65,7 @@ export function AboutSection() {
 
           <h2
             className={`text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-6 ${
-              language === 'ar' ? 'font-arabic leading-tight' : 'font-poppins leading-tight'
+              language === 'ar' ? 'font-arabic leading-tight' : 'font-barlow leading-tight'
             }`}
           >
             {language === 'ar' ? 'قوة الإبداع' : 'Creative Excellence'}
@@ -73,7 +73,7 @@ export function AboutSection() {
 
           <p
             className={`text-lg md:text-xl lg:text-2xl text-white/90 max-w-5xl mx-auto leading-relaxed font-light ${
-              language === 'ar' ? 'font-arabic text-right' : ''
+              language === 'ar' ? 'font-arabic text-center' : ''
             }`}
           >
             {language === 'ar'
@@ -123,7 +123,7 @@ export function AboutSection() {
                   <div className="flex-1 min-w-0">
                     <h3
                       className={`text-xl font-bold text-white mb-3 group-hover:text-jaded-green-400 transition-colors duration-300 ${
-                        language === 'ar' ? 'font-arabic text-right' : 'font-poppins'
+                        language === 'ar' ? 'font-arabic text-center' : 'font-barlow'
                       }`}
                     >
                       {feature.title}
@@ -131,7 +131,7 @@ export function AboutSection() {
 
                     <p
                       className={`text-white/80 text-base leading-relaxed group-hover:text-white/90 transition-colors duration-300 ${
-                        language === 'ar' ? 'font-arabic text-right' : ''
+                        language === 'ar' ? 'font-arabic text-center' : ''
                       }`}
                     >
                       {feature.desc}

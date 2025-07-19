@@ -94,7 +94,7 @@ export function EnhancedModalSystem({
                 {/* Modal Title */}
                 <div className="text-center flex-1">
                   <h2 className={`text-2xl md:text-3xl font-bold text-white ${
-                    language === 'ar' ? 'font-arabic' : 'font-poppins'
+                    language === 'ar' ? 'font-arabic' : 'font-barlow'
                   }`}>
                     {currentModal?.title}
                   </h2>

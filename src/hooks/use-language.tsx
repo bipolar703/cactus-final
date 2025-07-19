@@ -36,12 +36,12 @@ export function LanguageProvider({ children }: { children: ReactNode }) {
       document.documentElement.setAttribute('lang', newLang);
       document.documentElement.setAttribute('dir', newLang === 'ar' ? 'rtl' : 'ltr');
       
-      // Apply Dubai-style Arabic font
+      // Apply Tajawal-style Arabic font
       if (newLang === 'ar') {
-        document.body.classList.add('font-arabic', 'dubai-arabic');
+        document.body.classList.add('font-arabic', 'tajawal-arabic');
         document.body.classList.remove('font-sans');
       } else {
-        document.body.classList.remove('font-arabic', 'dubai-arabic');
+        document.body.classList.remove('font-arabic', 'tajawal-arabic');
         document.body.classList.add('font-sans');
       }
       

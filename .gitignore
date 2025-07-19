@@ -5,3 +5,5 @@ vite.config.ts.*
 *.tar.gz
 acli.exe
 .md
+.rovodev
+.agent.md

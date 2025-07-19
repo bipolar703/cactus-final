@@ -6,10 +6,9 @@ export function EnhancedFooter() {
   const { language } = useLanguage();
 
   const socialLinks = [
-    { icon: Facebook, href: '#', label: 'Facebook' },
-    { icon: Instagram, href: '#', label: 'Instagram' },
-    { icon: Linkedin, href: '#', label: 'LinkedIn' },
-    { icon: Twitter, href: '#', label: 'Twitter' },
+    { icon: Facebook, href: 'https://facebook.com/cactusmediajo', label: 'Facebook' },
+    { icon: Instagram, href: 'https://instagram.com/cactusmediajo', label: 'Instagram' },
+    { icon: Linkedin, href: 'https://www.linkedin.com/company/cactusmediajo', label: 'LinkedIn' },
   ];
 
   const quickLinks = language === 'ar' 
@@ -42,11 +41,45 @@ export function EnhancedFooter() {
 
   return (
     <footer className="relative bg-gradient-to-br from-gray-900 via-black to-gray-900 text-white overflow-hidden">
-      {/* Background Pattern */}
-      <div className="absolute inset-0 opacity-50">
-        <div className="absolute inset-0" style={{
-          backgroundImage: `url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.02'%3E%3Ccircle cx='30' cy='30' r='1'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E")`
-        }} />
+      {/* Enhanced Background with Noise and Subtle Movement */}
+      <div className="absolute inset-0">
+        {/* Noise Overlay */}
+        <div 
+          className="absolute inset-0 opacity-[0.02] mix-blend-overlay"
+          style={{
+            backgroundImage: `url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E")`,
+          }}
+        />
+        
+        {/* Subtle Moving Glows - Restored Original Positions */}
+        <motion.div
+          animate={{
+            scale: [1, 1.02, 1],
+            rotate: [0, 0.5, 0],
+            x: [0, 2, 0],
+            y: [0, -1, 0],
+          }}
+          transition={{
+            duration: 45,
+            repeat: Infinity,
+            ease: "easeInOut"
+          }}
+          className="absolute -top-1/2 -left-1/2 w-full h-full bg-gradient-to-br from-jaded-green-500/10 to-transparent rounded-full blur-3xl"
+        />
+        <motion.div
+          animate={{
+            scale: [1.02, 1, 1.02],
+            rotate: [0, -0.5, 0],
+            x: [0, -2, 0],
+            y: [0, 1, 0],
+          }}
+          transition={{
+            duration: 50,
+            repeat: Infinity,
+            ease: "easeInOut"
+          }}
+          className="absolute -bottom-1/2 -right-1/2 w-full h-full bg-gradient-to-tl from-gold-500/10 to-transparent rounded-full blur-3xl"
+        />
       </div>
       
       {/* Gradient Overlay */}
@@ -64,24 +97,22 @@ export function EnhancedFooter() {
             className="lg:col-span-2"
           >
             <div className="flex items-center gap-3 mb-6">
-              <div className="w-12 h-12 glass-premium rounded-xl flex items-center justify-center">
-                <img
-                  src="/assets/Logo.png"
-                  alt="Cactus Media Group"
-                  className="h-8 w-auto"
-                />
-              </div>
+              <img
+                src="/assets/Logo.png"
+                alt="Cactus Media Group"
+                className="w-12 h-12 object-contain"
+              />
               <div>
-                <h3 className={`text-xl font-bold ${language === 'ar' ? 'font-arabic' : 'font-poppins'}`}>
+                <h3 className={`text-xl font-bold ${language === 'ar' ? 'font-arabic' : 'font-barlow'}`}>
                   {language === 'ar' ? 'مجموعة كاكتوس الإعلامية' : 'Cactus Media Group'}
                 </h3>
-                <p className="text-gold-400 text-sm font-medium">
+                <p className="text-jaded-green-400 text-sm font-medium">
                   {language === 'ar' ? 'في عالم مليء بالورود، كن صبارة!' : 'In a world full of flowers, be a cactus!'}
                 </p>
               </div>
             </div>
             
-            <p className={`text-white/70 leading-relaxed mb-6 max-w-md ${language === 'ar' ? 'font-arabic text-right' : ''}`}>
+            <p className={`text-white/70 leading-relaxed mb-6 max-w-md ${language === 'ar' ? 'font-arabic text-center' : ''}`}>
               {language === 'ar'
                 ? 'نحن نقدم حلولاً رقمية متميزة مصممة للصمود والنمو. نحول الأفكار الجريئة إلى تجارب رقمية استثنائية تدفع نمو الأعمال.'
                 : 'We provide premium digital solutions engineered for resilience and growth. Transforming bold ideas into exceptional digital experiences that drive business success.'}
@@ -108,7 +139,7 @@ export function EnhancedFooter() {
             viewport={{ once: true }}
             transition={{ duration: 0.6, delay: 0.1 }}
           >
-            <h4 className={`text-lg font-semibold mb-6 ${language === 'ar' ? 'font-arabic text-right' : ''}`}>
+            <h4 className={`text-lg font-semibold mb-6 ${language === 'ar' ? 'font-arabic text-center' : ''}`}>
               {language === 'ar' ? 'روابط سريعة' : 'Quick Links'}
             </h4>
             <ul className="space-y-3">
@@ -134,7 +165,7 @@ export function EnhancedFooter() {
             viewport={{ once: true }}
             transition={{ duration: 0.6, delay: 0.2 }}
           >
-            <h4 className={`text-lg font-semibold mb-6 ${language === 'ar' ? 'font-arabic text-right' : ''}`}>
+            <h4 className={`text-lg font-semibold mb-6 ${language === 'ar' ? 'font-arabic text-center' : ''}`}>
               {language === 'ar' ? 'خدماتنا' : 'Our Services'}
             </h4>
             <ul className="space-y-3">
@@ -149,7 +180,7 @@ export function EnhancedFooter() {
           </motion.div>
         </div>
 
-        {/* Social Links & Newsletter */}
+        {/* Social Links & Quick Call */}
         <motion.div
           initial={{ opacity: 0, y: 40 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -158,9 +189,9 @@ export function EnhancedFooter() {
           className="border-t border-white/10 pt-8"
         >
           <div className="flex flex-col md:flex-row justify-between items-center gap-6">
-            {/* Social Links */}
+            {/* Social Links - Left Side */}
             <div className="flex items-center gap-4">
-              <span className={`text-white/70 mr-4 ${language === 'ar' ? 'font-arabic' : ''}`}>
+              <span className={`text-white/70 mr-2 ${language === 'ar' ? 'font-arabic' : 'font-barlow'}`}>
                 {language === 'ar' ? 'تابعنا:' : 'Follow us:'}
               </span>
               {socialLinks.map((social, index) => (
@@ -176,17 +207,17 @@ export function EnhancedFooter() {
               ))}
             </div>
 
-            {/* Newsletter */}
+            {/* Quick Call - Right Side */}
             <div className="flex items-center gap-3">
               <input
-                type="email"
-                placeholder={language === 'ar' ? 'اشترك في النشرة الإخبارية' : 'Subscribe to newsletter'}
-                className={`glass-premium px-4 py-2 rounded-lg bg-white/5 border border-white/10 text-white placeholder-white/50 focus:border-jaded-green-500/40 focus:outline-none transition-all duration-300 ${
-                  language === 'ar' ? 'text-right font-arabic' : ''
+                type="tel"
+                placeholder={language === 'ar' ? 'اترك رقمك للاتصال السريع' : 'Leave Number For Quick Call'}
+                className={`glass-premium px-4 py-2 rounded-lg bg-white/5 border border-white/10 text-white placeholder-white/50 focus:border-jaded-green-500/40 focus:outline-none transition-all duration-300 w-64 ${
+                  language === 'ar' ? 'text-center font-arabic' : ''
                 }`}
               />
-              <button className="btn-premium px-6 py-2 rounded-lg font-medium">
-                {language === 'ar' ? 'اشتراك' : 'Subscribe'}
+              <button className="btn-premium px-6 py-2 rounded-lg font-medium whitespace-nowrap">
+                {language === 'ar' ? 'إرسال' : 'Submit'}
               </button>
             </div>
           </div>
@@ -201,7 +232,7 @@ export function EnhancedFooter() {
           className="border-t border-white/10 mt-8 pt-6 text-center"
         >
           <div className="flex flex-col md:flex-row justify-between items-center gap-4">
-            <p className={`text-white/60 text-sm ${language === 'ar' ? 'font-arabic' : ''}`}>
+            <p className={`text-white/60 text-sm text-center ${language === 'ar' ? 'font-arabic' : 'font-barlow'}`}>
               {language === 'ar'
                 ? `© ${new Date().getFullYear()} مجموعة كاكتوس الإعلامية. جميع الحقوق محفوظة.`
                 : `© ${new Date().getFullYear()} Cactus Media Group. All rights reserved.`}

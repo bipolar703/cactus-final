@@ -44,7 +44,7 @@ export function ClientShowcase() {
 
           <p
             className={`text-lg md:text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed ${
-              language === 'ar' ? 'font-arabic text-right arabic-body' : 'font-barlow'
+              language === 'ar' ? 'font-arabic text-center arabic-body' : 'font-barlow'
             }`}
           >
             {language === 'ar'
@@ -53,45 +53,91 @@ export function ClientShowcase() {
           </p>
         </motion.div>
 
-        {/* Client Logos Grid */}
+        {/* Enhanced Client Logos Showcase */}
         <motion.div
           initial={{ opacity: 0 }}
           animate={isIntersecting ? { opacity: 1 } : { opacity: 0 }}
           transition={{ duration: 1, delay: 0.3 }}
-          className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-6 gap-8 mb-16"
+          className="mb-16 relative"
         >
-          {clientLogos.map((client, index) => (
-            <motion.div
-              key={client.id}
-              initial={{ opacity: 0, y: 30 }}
-              animate={isIntersecting ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
-              transition={{
-                delay: index * 0.1,
-                duration: 0.6,
-                ease: [0.16, 1, 0.3, 1],
-              }}
-              whileHover={{ 
-                scale: 1.05, 
-                y: -5,
-                transition: { duration: 0.3 }
-              }}
-              className="group"
-            >
-              <div className="bg-white rounded-2xl p-6 shadow-sm hover:shadow-lg transition-all duration-300 border border-gray-100 hover:border-jaded-green-200 h-24 flex items-center justify-center">
-                <img
-                  src={client.logo}
-                  alt={client.name}
-                  className="max-h-12 max-w-full object-contain grayscale group-hover:grayscale-0 transition-all duration-300 opacity-70 group-hover:opacity-100"
-                  loading="lazy"
-                />
-              </div>
-              <p className={`text-xs text-gray-500 text-center mt-2 ${
-                language === 'ar' ? 'font-arabic' : 'font-barlow'
-              }`}>
-                {client.category}
-              </p>
-            </motion.div>
-          ))}
+          {/* Automatic + Manual Scroll Container */}
+          <div className="relative overflow-hidden">
+            {/* First Row - Moving Right with Manual Scroll */}
+            <div className="relative group mb-8">
+              <motion.div
+                animate={{ x: [0, -50] }}
+                transition={{
+                  duration: 40,
+                  repeat: Infinity,
+                  ease: "linear"
+                }}
+                className="flex gap-6 whitespace-nowrap overflow-x-auto scrollbar-hide touch-pan-x"
+                style={{ width: 'calc(200% + 2rem)' }}
+              >
+                {[...clientLogos.slice(0, 7), ...clientLogos.slice(0, 7)].map((client, index) => (
+                  <div
+                    key={`row1-${index}`}
+                    className="bg-white rounded-2xl p-4 shadow-sm hover:shadow-lg transition-all duration-300 border border-gray-100 hover:border-jaded-green-200 h-20 flex items-center justify-center min-w-[160px] group/card cursor-pointer flex-shrink-0"
+                  >
+                    <div className="flex flex-col items-center justify-center w-full h-full">
+                      <img
+                        src={client.logo}
+                        alt={client.name}
+                        className="max-h-10 max-w-[120px] w-full object-contain grayscale group-hover/card:grayscale-0 transition-all duration-300 opacity-70 group-hover/card:opacity-100"
+                        loading="lazy"
+                        onError={(e) => {
+                          e.currentTarget.src = `https://via.placeholder.com/120x40/e5e7eb/6b7280?text=${encodeURIComponent(client.name)}`;
+                        }}
+                      />
+                      <span className={`text-xs text-gray-600 group-hover/card:text-jaded-green-600 transition-colors duration-300 text-center font-medium mt-1 ${
+                        language === 'ar' ? 'font-arabic' : 'font-barlow'
+                      }`}>
+                        {client.name}
+                      </span>
+                    </div>
+                  </div>
+                ))}
+              </motion.div>
+            </div>
+
+            {/* Second Row - Moving Left with Manual Scroll */}
+            <div className="relative group">
+              <motion.div
+                animate={{ x: [-50, 0] }}
+                transition={{
+                  duration: 40,
+                  repeat: Infinity,
+                  ease: "linear"
+                }}
+                className="flex gap-6 whitespace-nowrap overflow-x-auto scrollbar-hide touch-pan-x"
+                style={{ width: 'calc(200% + 2rem)' }}
+              >
+                {[...clientLogos.slice(7), ...clientLogos.slice(7)].map((client, index) => (
+                  <div
+                    key={`row2-${index}`}
+                    className="bg-white rounded-2xl p-4 shadow-sm hover:shadow-lg transition-all duration-300 border border-gray-100 hover:border-jaded-green-200 h-20 flex items-center justify-center min-w-[160px] group/card cursor-pointer flex-shrink-0"
+                  >
+                    <div className="flex flex-col items-center justify-center w-full h-full">
+                      <img
+                        src={client.logo}
+                        alt={client.name}
+                        className="max-h-10 max-w-[120px] w-full object-contain grayscale group-hover/card:grayscale-0 transition-all duration-300 opacity-70 group-hover/card:opacity-100"
+                        loading="lazy"
+                        onError={(e) => {
+                          e.currentTarget.src = `https://via.placeholder.com/120x40/e5e7eb/6b7280?text=${encodeURIComponent(client.name)}`;
+                        }}
+                      />
+                      <span className={`text-xs text-gray-600 group-hover/card:text-jaded-green-600 transition-colors duration-300 text-center font-medium mt-1 ${
+                        language === 'ar' ? 'font-arabic' : 'font-barlow'
+                      }`}>
+                        {client.name}
+                      </span>
+                    </div>
+                  </div>
+                ))}
+              </motion.div>
+            </div>
+          </div>
         </motion.div>
 
         {/* Trust Indicators */}

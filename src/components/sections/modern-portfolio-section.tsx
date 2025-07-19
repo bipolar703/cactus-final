@@ -1,13 +1,18 @@
-import { motion, useScroll, useTransform } from 'framer-motion';
+import { motion, useScroll, useTransform, useMotionValue, useSpring } from 'framer-motion';
 import { useLanguage } from '@/hooks/use-language';
 import { useOptimizedIntersection } from '@/utils/cache-manager';
-import { ExternalLink, Eye, Calendar } from 'lucide-react';
-import { useRef } from 'react';
+import { ExternalLink, ChevronLeft, ChevronRight, ArrowUpRight } from 'lucide-react';
+import { useRef, useState, useEffect, useCallback } from 'react';
+import { portfolioProjects } from '@/data/portfolio';
 
 export function ModernPortfolioSection({ onViewPortfolio }: { onViewPortfolio: () => void }) {
   const { language } = useLanguage();
   const { ref, isIntersecting } = useOptimizedIntersection();
   const containerRef = useRef<HTMLDivElement>(null);
+  const scrollContainerRef = useRef<HTMLDivElement>(null);
+  const [currentIndex, setCurrentIndex] = useState(0);
+  const [canScrollLeft, setCanScrollLeft] = useState(false);
+  const [canScrollRight, setCanScrollRight] = useState(true);
 
   const { scrollYProgress } = useScroll({
     target: containerRef,
@@ -16,58 +21,61 @@ export function ModernPortfolioSection({ onViewPortfolio }: { onViewPortfolio: (
 
   const y = useTransform(scrollYProgress, [0, 1], ['0%', '-20%']);
 
-  const projects = [
-    {
-      id: 1,
-      title: language === 'ar' ? 'موقع تجارة إلكترونية' : 'E-commerce Platform',
-      category: language === 'ar' ? 'تطوير ويب' : 'Web Development',
-      image: 'https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&h=600',
-      year: '2024',
-      description: language === 'ar' 
-        ? 'منصة تجارة إلكترونية متكاملة مع نظام إدارة متقدم'
-        : 'Complete e-commerce platform with advanced management system'
-    },
-    {
-      id: 2,
-      title: language === 'ar' ? 'تطبيق موبايل' : 'Mobile Application',
-      category: language === 'ar' ? 'تطبيقات الجوال' : 'Mobile Development',
-      image: 'https://images.unsplash.com/photo-1512941937669-90a1b58e7e9c?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&h=600',
-      year: '2024',
-      description: language === 'ar'
-        ? 'تطبيق جوال ذكي لإدارة المهام والمشاريع'
-        : 'Smart mobile app for task and project management'
-    },
-    {
-      id: 3,
-      title: language === 'ar' ? 'هوية بصرية' : 'Brand Identity',
-      category: language === 'ar' ? 'تصميم العلامة التجارية' : 'Brand Design',
-      image: 'https://images.unsplash.com/photo-1558655146-d09347e92766?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&h=600',
-      year: '2024',
-      description: language === 'ar'
-        ? 'هوية بصرية شاملة لشركة تقنية ناشئة'
-        : 'Complete visual identity for tech startup'
-    },
-    {
-      id: 4,
-      title: language === 'ar' ? 'حملة تسويقية' : 'Marketing Campaign',
-      category: language === 'ar' ? 'التسويق الرقمي' : 'Digital Marketing',
-      image: 'https://images.unsplash.com/photo-1460925895917-afdab827c52f?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&h=600',
-      year: '2023',
-      description: language === 'ar'
-        ? 'حملة تسويقية متكاملة عبر منصات متعددة'
-        : 'Integrated marketing campaign across multiple platforms'
-    },
-    {
-      id: 5,
-      title: language === 'ar' ? 'موقع شركة' : 'Corporate Website',
-      category: language === 'ar' ? 'تطوير ويب' : 'Web Development',
-      image: 'https://images.unsplash.com/photo-1467232004584-a241de8bcf5d?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&h=600',
-      year: '2023',
-      description: language === 'ar'
-        ? 'موقع شركة احترافي مع نظام إدارة المحتوى'
-        : 'Professional corporate website with CMS'
-    },
-  ];
+  // Use actual portfolio projects
+  const projects = portfolioProjects;
+
+  // Enhanced scroll handling with better sync
+  const handleScroll = useCallback(() => {
+    if (!scrollContainerRef.current) return;
+    
+    const container = scrollContainerRef.current;
+    const scrollLeft = container.scrollLeft;
+    const maxScroll = container.scrollWidth - container.clientWidth;
+    const containerWidth = container.clientWidth;
+    const cardWidth = 320; // Card width + gap
+    
+    // More accurate index calculation
+    const visibleIndex = Math.round(scrollLeft / cardWidth);
+    const newIndex = Math.max(0, Math.min(visibleIndex, projects.length - 1));
+    
+    setCurrentIndex(newIndex);
+    setCanScrollLeft(scrollLeft > 10);
+    setCanScrollRight(scrollLeft < maxScroll - 10);
+  }, [projects.length]);
+
+  // Scroll to specific project
+  const scrollToProject = (index: number) => {
+    if (!scrollContainerRef.current) return;
+    
+    const container = scrollContainerRef.current;
+    const cardWidth = 320;
+    const targetScroll = index * cardWidth;
+    
+    container.scrollTo({
+      left: targetScroll,
+      behavior: 'smooth'
+    });
+  };
+
+  // Navigation functions
+  const scrollLeft = () => {
+    const newIndex = Math.max(0, currentIndex - 1);
+    scrollToProject(newIndex);
+  };
+
+  const scrollRight = () => {
+    const newIndex = Math.min(projects.length - 1, currentIndex + 1);
+    scrollToProject(newIndex);
+  };
+
+  useEffect(() => {
+    const container = scrollContainerRef.current;
+    if (container) {
+      container.addEventListener('scroll', handleScroll);
+      handleScroll(); // Initial check
+      return () => container.removeEventListener('scroll', handleScroll);
+    }
+  }, [handleScroll]);
 
   return (
     <section
@@ -103,15 +111,15 @@ export function ModernPortfolioSection({ onViewPortfolio }: { onViewPortfolio: (
 
           <h2
             className={`text-4xl md:text-5xl lg:text-6xl font-light text-gray-900 mb-6 ${
-              language === 'ar' ? 'font-arabic leading-tight' : 'font-poppins leading-tight'
+              language === 'ar' ? 'font-arabic leading-tight' : 'font-barlow leading-tight'
             }`}
           >
             {language === 'ar' ? 'معرض أعمالنا' : 'Our Portfolio'}
           </h2>
 
           <p
-            className={`text-lg md:text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed ${
-              language === 'ar' ? 'font-arabic text-right' : ''
+            className={`text-lg md:text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed text-center ${
+              language === 'ar' ? 'font-arabic' : ''
             }`}
           >
             {language === 'ar'
@@ -120,97 +128,149 @@ export function ModernPortfolioSection({ onViewPortfolio }: { onViewPortfolio: (
           </p>
         </motion.div>
 
-        {/* Horizontal Scrolling Container */}
+        {/* Enhanced Portfolio Carousel */}
         <motion.div
           initial={{ opacity: 0 }}
           animate={isIntersecting ? { opacity: 1 } : { opacity: 0 }}
           transition={{ duration: 1, delay: 0.3 }}
-          className="relative"
+          className="relative group"
         >
-          <div className="flex gap-8 overflow-x-auto pb-8 scrollbar-hide" style={{ scrollbarWidth: 'none' }}>
+          {/* Navigation Arrows */}
+          <button
+            onClick={scrollLeft}
+            disabled={!canScrollLeft}
+            className={`absolute left-2 top-1/2 -translate-y-1/2 z-10 w-12 h-12 bg-white/90 backdrop-blur-sm rounded-full shadow-lg border border-gray-200 flex items-center justify-center transition-all duration-300 ${
+              canScrollLeft 
+                ? 'hover:bg-white hover:shadow-xl opacity-100' 
+                : 'opacity-50 cursor-not-allowed'
+            }`}
+            aria-label="Previous project"
+          >
+            <ChevronLeft className="w-6 h-6 text-gray-700" />
+          </button>
+          
+          <button
+            onClick={scrollRight}
+            disabled={!canScrollRight}
+            className={`absolute right-2 top-1/2 -translate-y-1/2 z-10 w-12 h-12 bg-white/90 backdrop-blur-sm rounded-full shadow-lg border border-gray-200 flex items-center justify-center transition-all duration-300 ${
+              canScrollRight 
+                ? 'hover:bg-white hover:shadow-xl opacity-100' 
+                : 'opacity-50 cursor-not-allowed'
+            }`}
+            aria-label="Next project"
+          >
+            <ChevronRight className="w-6 h-6 text-gray-700" />
+          </button>
+
+          <div 
+            ref={scrollContainerRef}
+            className="flex gap-6 md:gap-8 overflow-x-auto pb-8 scrollbar-hide touch-pan-x px-4 scroll-smooth snap-x snap-mandatory" 
+            style={{ scrollbarWidth: 'none' }}
+          >
             {projects.map((project, index) => (
               <motion.div
                 key={project.id}
-                initial={{ opacity: 0, x: 100 }}
-                animate={isIntersecting ? { opacity: 1, x: 0 } : { opacity: 0, x: 100 }}
+                initial={{ opacity: 0, y: 60 }}
+                animate={isIntersecting ? { opacity: 1, y: 0 } : { opacity: 0, y: 60 }}
                 transition={{
-                  delay: index * 0.1,
+                  delay: index * 0.15,
                   duration: 0.8,
                   ease: [0.16, 1, 0.3, 1],
                 }}
-                whileHover={{ y: -12, scale: 1.02 }}
-                className="group cursor-pointer flex-shrink-0 w-80"
+                className="group cursor-pointer flex-shrink-0 snap-start"
+                onClick={() => window.open(project.url, '_blank')}
               >
-                <div className="bg-white rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-500 border border-gray-100">
+                <div className="relative bg-white rounded-3xl overflow-hidden shadow-xl hover:shadow-2xl transition-all duration-700 border border-gray-100/50 w-80 sm:w-96 group-hover:scale-[1.02] group-hover:-translate-y-2">
                   {/* Project Image */}
-                  <div className="relative h-48 overflow-hidden">
+                  <div className="relative h-56 sm:h-64 overflow-hidden">
                     <img
                       src={project.image}
                       alt={project.title}
-                      className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
+                      className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-1000"
+                      loading="lazy"
                     />
                     
-                    {/* Overlay on Hover */}
-                    <motion.div
-                      initial={{ opacity: 0 }}
-                      whileHover={{ opacity: 1 }}
-                      transition={{ duration: 0.3 }}
-                      className="absolute inset-0 bg-black/60 flex items-center justify-center"
-                    >
-                      <div className="flex gap-4">
-                        <button className="w-12 h-12 bg-white/20 backdrop-blur-sm rounded-full flex items-center justify-center hover:bg-white/30 transition-colors">
-                          <Eye className="w-5 h-5 text-white" />
-                        </button>
-                        <button className="w-12 h-12 bg-white/20 backdrop-blur-sm rounded-full flex items-center justify-center hover:bg-white/30 transition-colors">
-                          <ExternalLink className="w-5 h-5 text-white" />
-                        </button>
-                      </div>
-                    </motion.div>
-                  </div>
-
-                  {/* Project Info */}
-                  <div className="p-6 space-y-4">
-                    <div className="flex items-center justify-between">
-                      <span className="text-xs text-jaded-green-600 font-medium uppercase tracking-wide">
+                    {/* Gradient Overlay */}
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/20 to-transparent" />
+                    
+                    {/* Category Badge */}
+                    <div className="absolute top-4 left-4">
+                      <span className="bg-white/90 backdrop-blur-sm text-jaded-green-700 text-xs font-semibold px-3 py-1.5 rounded-full border border-white/20">
                         {project.category}
                       </span>
-                      <div className="flex items-center text-xs text-gray-500">
-                        <Calendar className="w-3 h-3 mr-1" />
-                        {project.year}
+                    </div>
+                    
+                    {/* Visit Website Button */}
+                    <div className="absolute top-4 right-4 opacity-0 group-hover:opacity-100 transition-all duration-300 transform translate-y-2 group-hover:translate-y-0">
+                      <div className="bg-jaded-green-600 hover:bg-jaded-green-700 text-white p-2.5 rounded-full shadow-lg backdrop-blur-sm">
+                        <ArrowUpRight className="w-4 h-4" />
                       </div>
                     </div>
+                    
+                    {/* Bottom Overlay with Title */}
+                    <div className="absolute bottom-0 left-0 right-0 p-6">
+                      <h3 className={`text-white text-2xl font-bold mb-2 ${
+                        language === 'ar' ? 'font-arabic' : 'font-barlow'
+                      }`}>
+                        {project.title}
+                      </h3>
+                      <p className={`text-white/90 text-sm leading-relaxed line-clamp-2 ${
+                        language === 'ar' ? 'font-arabic' : ''
+                      }`}>
+                        {project.description}
+                      </p>
+                    </div>
+                  </div>
 
-                    <h3
-                      className={`text-xl font-semibold text-gray-900 group-hover:text-jaded-green-600 transition-colors duration-300 ${
-                        language === 'ar' ? 'font-arabic text-right' : ''
-                      }`}
-                    >
-                      {project.title}
-                    </h3>
-
-                    <p
-                      className={`text-gray-600 text-sm leading-relaxed ${
-                        language === 'ar' ? 'font-arabic text-right' : ''
-                      }`}
-                    >
-                      {project.description}
-                    </p>
+                  {/* Tags Section */}
+                  <div className="p-6">
+                    <div className="flex flex-wrap gap-2">
+                      {project.tags.map((tag, tagIndex) => (
+                        <span
+                          key={tagIndex}
+                          className="text-xs font-medium text-gray-600 bg-gray-50 hover:bg-jaded-green-50 hover:text-jaded-green-700 px-3 py-1.5 rounded-full transition-colors duration-200"
+                        >
+                          {tag}
+                        </span>
+                      ))}
+                    </div>
                   </div>
                 </div>
               </motion.div>
             ))}
           </div>
 
-          {/* Scroll Indicator */}
-          <div className="flex justify-center mt-8">
-            <div className="flex gap-2">
+          {/* Modern Navigation Dots */}
+          <div className="flex justify-center mt-12">
+            <div className="flex items-center gap-3 bg-white/80 backdrop-blur-sm rounded-full px-6 py-3 shadow-lg border border-gray-100">
               {projects.map((_, index) => (
-                <div
+                <button
                   key={index}
-                  className="w-2 h-2 bg-gray-300 rounded-full"
-                />
+                  onClick={() => scrollToProject(index)}
+                  className={`relative transition-all duration-300 focus:outline-none ${
+                    index === currentIndex
+                      ? 'w-8 h-2 bg-jaded-green-500 rounded-full'
+                      : 'w-2 h-2 bg-gray-300 hover:bg-gray-400 rounded-full hover:scale-125'
+                  }`}
+                  aria-label={`Go to project ${index + 1}: ${projects[index].title}`}
+                >
+                  {index === currentIndex && (
+                    <motion.div
+                      layoutId="activeIndicator"
+                      className="absolute inset-0 bg-jaded-green-500 rounded-full"
+                      transition={{ type: "spring", stiffness: 300, damping: 30 }}
+                    />
+                  )}
+                </button>
               ))}
             </div>
+          </div>
+          
+          {/* Scroll Hint */}
+          <div className="text-center mt-4">
+            <p className={`text-sm text-gray-400 ${language === 'ar' ? 'font-arabic' : 'font-barlow'}`}>
+              {language === 'ar' ? 'اسحب أو استخدم الأسهم للتنقل' : 'Scroll or use arrows to navigate'}
+            </p>
           </div>
         </motion.div>
 

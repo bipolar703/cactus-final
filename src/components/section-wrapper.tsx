@@ -11,7 +11,7 @@ export function SectionWrapper({ children, className = '' }: SectionWrapperProps
 
   return (
     <div 
-      className={`${language === 'ar' ? 'arabic-section dubai-arabic' : ''} ${className}`}
+      className={`${language === 'ar' ? 'arabic-section tajawal-arabic' : ''} ${className}`}
       data-scroll-container
     >
       {children}
