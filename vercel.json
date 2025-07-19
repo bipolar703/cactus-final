@@ -77,7 +77,6 @@
   ],
   "functions": {
     "server/index.ts": {
-      "runtime": "nodejs20",
       "memory": 1024
     }
   }
