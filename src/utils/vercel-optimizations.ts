@@ -34,7 +34,7 @@ export const optimizeImageForVercel = (src: string, width?: number, quality = 75
  * Preload critical routes for better navigation
  */
 export const preloadCriticalRoutes = () => {
-  const routes = ['/', '/download'];
+  const routes = ['/'];
   
   routes.forEach(route => {
     const link = document.createElement('link');

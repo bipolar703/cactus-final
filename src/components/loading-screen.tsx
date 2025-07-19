@@ -4,8 +4,8 @@ import { useLanguage } from '@/hooks/use-language';
 import { OptimizedImage } from './performance-wrapper';
 
 interface LoadingScreenProps {
-  isVisible: boolean;
-  onComplete: () => void;
+  isVisible?: boolean;
+  onComplete?: () => void;
 }
 
 export function LoadingScreen({ isVisible, onComplete }: LoadingScreenProps) {
@@ -13,35 +13,34 @@ export function LoadingScreen({ isVisible, onComplete }: LoadingScreenProps) {
   const [progress, setProgress] = useState(0);
   const [loadingText, setLoadingText] = useState('');
 
-  const loadingSteps = language === 'ar' 
+  const loadingSteps = language === 'ar'
     ? ['تحميل الموارد...', 'إعداد التجربة...', 'تحسين الأداء...', 'جاهز للانطلاق!']
     : ['Loading assets...', 'Preparing experience...', 'Optimizing performance...', 'Ready to launch!'];
 
   useEffect(() => {
-    if (isVisible) {
+    // Always show when used as Suspense fallback
+    const visible = isVisible !== undefined ? isVisible : true;
+    if (visible) {
       const timer = setInterval(() => {
         setProgress((prev) => {
           const newProgress = prev + 1.2;
-          
           if (newProgress < 25) setLoadingText(loadingSteps[0]);
           else if (newProgress < 50) setLoadingText(loadingSteps[1]);
           else if (newProgress < 75) setLoadingText(loadingSteps[2]);
           else if (newProgress < 100) setLoadingText(loadingSteps[3]);
-          
           if (newProgress >= 100) {
             clearInterval(timer);
-            setTimeout(onComplete, 600);
+            if (onComplete) setTimeout(onComplete, 600);
             return 100;
           }
           return newProgress;
         });
       }, 35);
-
       return () => clearInterval(timer);
     }
   }, [isVisible, onComplete, loadingSteps]);
 
-  if (!isVisible) return null;
+  if (isVisible === false) return null;
 
   return (
     <motion.div

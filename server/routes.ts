@@ -4,7 +4,6 @@ import { z } from 'zod';
 import { Router } from 'express';
 import fs from 'fs';
 import path from 'path';
-import downloadRoutes from './routes/download.js';
 
 const router = Router();
 
@@ -17,7 +16,6 @@ const contactSchema = z.object({
 });
 
 export async function registerRoutes(app: Express): Promise<Server> {
-  app.use(downloadRoutes);
   
   // Error logging endpoint
   app.post('/log-error', (req, res) => {

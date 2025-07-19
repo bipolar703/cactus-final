@@ -11,14 +11,12 @@ import { useWebVitals } from '@/hooks/use-performance';
 
 // Lazy load pages for better performance
 const Home = lazy(() => import('@/pages/home'));
-const Download = lazy(() => import('@/pages/download'));
 const NotFound = lazy(() => import('@/pages/not-found'));
 
 function Router() {
   return (
     <Switch>
       <Route path="/" component={Home} />
-      <Route path="/download" component={Download} />
       <Route component={NotFound} />
     </Switch>
   );
