@@ -6,15 +6,11 @@
 export const initializeVercelAnalytics = async () => {
   if (import.meta.env.PROD) {
     try {
-      // Dynamically import Vercel Analytics
-      const { inject } = await import('@vercel/analytics');
-      inject();
-      
-      // Dynamically import Speed Insights
+      // Only import Speed Insights for analytics
       const { injectSpeedInsights } = await import('@vercel/speed-insights');
       injectSpeedInsights();
     } catch (error) {
-      console.warn('Vercel analytics not available:', error);
+      console.warn('Vercel Speed Insights not available:', error);
     }
   }
 };
