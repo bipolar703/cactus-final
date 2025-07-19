@@ -1,13 +1,18 @@
 import { Switch, Route, useLocation } from 'wouter';
-import { useEffect } from 'react';
+import { useEffect, Suspense, lazy } from 'react';
+import { ErrorBoundary } from 'react-error-boundary';
 import { queryClient } from './lib/queryClient';
 import { QueryClientProvider } from '@tanstack/react-query';
 import { Toaster } from '@/components/ui/toaster';
 import { TooltipProvider } from '@/components/ui/tooltip';
 import { LanguageProvider } from '@/hooks/use-language';
-import NotFound from '@/pages/not-found';
-import Home from '@/pages/home';
-import Download from '@/pages/download';
+import { LoadingScreen } from '@/components/loading-screen';
+import { useWebVitals } from '@/hooks/use-performance';
+
+// Lazy load pages for better performance
+const Home = lazy(() => import('@/pages/home'));
+const Download = lazy(() => import('@/pages/download'));
+const NotFound = lazy(() => import('@/pages/not-found'));
 
 function Router() {
   return (
@@ -29,19 +34,50 @@ function ScrollToTop() {
   return null;
 }
 
+// Error fallback component
+const ErrorFallback = ({ error, resetErrorBoundary }: { error: Error; resetErrorBoundary: () => void }) => (
+  <div className="min-h-screen flex items-center justify-center bg-slate-900 text-white">
+    <div className="text-center p-8 max-w-md">
+      <h2 className="text-2xl font-bold mb-4">Something went wrong</h2>
+      <p className="text-gray-300 mb-6 text-sm">{error.message}</p>
+      <button
+        onClick={resetErrorBoundary}
+        className="bg-jaded-green-600 hover:bg-jaded-green-700 px-6 py-3 rounded-lg font-medium transition-colors"
+      >
+        Try again
+      </button>
+    </div>
+  </div>
+);
+
 function App() {
+  // Monitor Core Web Vitals in development
+  useWebVitals();
+
   return (
-    <QueryClientProvider client={queryClient}>
-      <LanguageProvider>
-        <TooltipProvider>
-          <div className="relative min-h-screen" data-scroll-container>
-            <Toaster />
-            <ScrollToTop />
-            <Router />
-          </div>
-        </TooltipProvider>
-      </LanguageProvider>
-    </QueryClientProvider>
+    <ErrorBoundary
+      FallbackComponent={ErrorFallback}
+      onError={(error, errorInfo) => {
+        // Log error to monitoring service in production
+        if (import.meta.env.PROD) {
+          console.error('Application Error:', error, errorInfo);
+        }
+      }}
+    >
+      <QueryClientProvider client={queryClient}>
+        <LanguageProvider>
+          <TooltipProvider>
+            <div className="relative min-h-screen" data-scroll-container>
+              <Toaster />
+              <ScrollToTop />
+              <Suspense fallback={<LoadingScreen />}>
+                <Router />
+              </Suspense>
+            </div>
+          </TooltipProvider>
+        </LanguageProvider>
+      </QueryClientProvider>
+    </ErrorBoundary>
   );
 }
 

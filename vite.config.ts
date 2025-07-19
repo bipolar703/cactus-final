@@ -20,17 +20,28 @@ export default defineConfig({
   build: {
     outDir: path.resolve(import.meta.dirname, 'dist'),
     emptyOutDir: true,
-    // Vite 7 optimizations
+    // Vite 7 optimizations for production
     target: 'esnext',
     minify: 'esbuild',
+    sourcemap: false,
+    cssCodeSplit: true,
     rollupOptions: {
       output: {
         manualChunks: {
           vendor: ['react', 'react-dom'],
-          ui: ['@radix-ui/react-dialog', '@radix-ui/react-dropdown-menu'],
+          motion: ['framer-motion'],
+          ui: ['@radix-ui/react-dialog', '@radix-ui/react-dropdown-menu', '@radix-ui/react-toast'],
+          utils: ['lucide-react', 'clsx', 'tailwind-merge'],
+          query: ['@tanstack/react-query']
         },
-      },
+        chunkFileNames: 'assets/[name]-[hash].js',
+        entryFileNames: 'assets/[name]-[hash].js',
+        assetFileNames: 'assets/[name]-[hash].[ext]'
+      }
     },
+    // Optimize for production
+    chunkSizeWarningLimit: 1000,
+    assetsInlineLimit: 4096
   },
   server: {
     port: 5173,
