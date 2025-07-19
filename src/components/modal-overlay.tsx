@@ -1,6 +1,6 @@
-import { ReactNode, useEffect } from 'react';
-import { X } from 'lucide-react';
-import { motion, AnimatePresence } from 'framer-motion';
+import { AnimatePresence, motion } from "framer-motion";
+import { X } from "lucide-react";
+import { ReactNode, useEffect } from "react";
 
 interface ModalOverlayProps {
   isOpen: boolean;
@@ -11,13 +11,13 @@ interface ModalOverlayProps {
 export function ModalOverlay({ isOpen, onClose, children }: ModalOverlayProps) {
   useEffect(() => {
     const handleEscape = (e: KeyboardEvent) => {
-      if (e.key === 'Escape' && isOpen) {
+      if (e.key === "Escape" && isOpen) {
         onClose();
       }
     };
 
-    document.addEventListener('keydown', handleEscape);
-    return () => document.removeEventListener('keydown', handleEscape);
+    document.addEventListener("keydown", handleEscape);
+    return () => document.removeEventListener("keydown", handleEscape);
   }, [isOpen, onClose]);
 
   return (
@@ -25,9 +25,9 @@ export function ModalOverlay({ isOpen, onClose, children }: ModalOverlayProps) {
       {isOpen && (
         <>
           <motion.div
-            initial={{ opacity: 0, backdropFilter: 'blur(0px)' }}
-            animate={{ opacity: 1, backdropFilter: 'blur(20px)' }}
-            exit={{ opacity: 0, backdropFilter: 'blur(0px)' }}
+            initial={{ opacity: 0, backdropFilter: "blur(0px)" }}
+            animate={{ opacity: 1, backdropFilter: "blur(20px)" }}
+            exit={{ opacity: 0, backdropFilter: "blur(0px)" }}
             transition={{
               duration: 0.5,
               ease: [0.16, 1, 0.3, 1],
@@ -53,24 +53,24 @@ export function ModalOverlay({ isOpen, onClose, children }: ModalOverlayProps) {
                 opacity: 0,
                 y: 80,
                 rotateX: -15,
-                filter: 'blur(10px)',
+                filter: "blur(10px)",
               }}
               animate={{
                 scale: 1,
                 opacity: 1,
                 y: 0,
                 rotateX: 0,
-                filter: 'blur(0px)',
+                filter: "blur(0px)",
               }}
               exit={{
                 scale: 0.9,
                 opacity: 0,
                 y: 50,
                 rotateX: -10,
-                filter: 'blur(5px)',
+                filter: "blur(5px)",
               }}
               transition={{
-                type: 'spring',
+                type: "spring",
                 stiffness: 280,
                 damping: 25,
                 duration: 0.6,

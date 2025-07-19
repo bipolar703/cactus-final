@@ -1,41 +1,55 @@
-import { motion } from 'framer-motion';
-import { useLanguage } from '@/hooks/use-language';
-import { useOptimizedIntersection } from '@/utils/cache-manager';
-import { Send, Mail, Phone, MapPin } from 'lucide-react';
-import { useState } from 'react';
+import { useLanguage } from "@/hooks/use-language";
+import { useOptimizedIntersection } from "@/utils/cache-manager";
+import { motion } from "framer-motion";
+import { Send } from "lucide-react";
+import { useState } from "react";
 
 export function ModernContactSection() {
   const { language } = useLanguage();
   const { ref, isIntersecting } = useOptimizedIntersection();
   const [formData, setFormData] = useState({
-    name: '',
-    email: '',
-    subject: '',
-    message: '',
+    name: "",
+    email: "",
+    subject: "",
+    message: "",
   });
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    fetch('/api/contact', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
+    fetch("/api/contact", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
       body: JSON.stringify(formData),
     })
       .then(async (res) => {
         if (res.ok) {
-          alert(language === 'ar' ? 'تم إرسال رسالتك بنجاح!' : 'Your message has been sent!');
-          setFormData({ name: '', email: '', subject: '', message: '' });
+          alert(
+            language === "ar"
+              ? "تم إرسال رسالتك بنجاح!"
+              : "Your message has been sent!",
+          );
+          setFormData({ name: "", email: "", subject: "", message: "" });
         } else {
           const data = await res.json();
-          alert((language === 'ar' ? 'حدث خطأ أثناء الإرسال: ' : 'Error sending message: ') + (data.error || ''));
+          alert(
+            (language === "ar"
+              ? "حدث خطأ أثناء الإرسال: "
+              : "Error sending message: ") + (data.error || ""),
+          );
         }
       })
       .catch(() => {
-        alert(language === 'ar' ? 'تعذر الاتصال بالخادم.' : 'Could not connect to server.');
+        alert(
+          language === "ar"
+            ? "تعذر الاتصال بالخادم."
+            : "Could not connect to server.",
+        );
       });
   };
 
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+  const handleChange = (
+    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>,
+  ) => {
     setFormData({
       ...formData,
       [e.target.name]: e.target.value,
@@ -55,7 +69,9 @@ export function ModernContactSection() {
         {/* Section Header */}
         <motion.div
           initial={{ opacity: 0, y: 40 }}
-          animate={isIntersecting ? { opacity: 1, y: 0 } : { opacity: 0, y: 40 }}
+          animate={
+            isIntersecting ? { opacity: 1, y: 0 } : { opacity: 0, y: 40 }
+          }
           transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
           className="text-center mb-16"
         >
@@ -68,27 +84,31 @@ export function ModernContactSection() {
 
           <h2
             className={`text-4xl md:text-5xl lg:text-6xl font-light text-gray-900 mb-6 ${
-              language === 'ar' ? 'font-arabic leading-tight' : 'font-barlow leading-tight'
+              language === "ar"
+                ? "font-arabic leading-tight"
+                : "font-barlow leading-tight"
             }`}
           >
-            {language === 'ar' ? 'ابدأ مشروعك' : 'Start Your Project'}
+            {language === "ar" ? "ابدأ مشروعك" : "Start Your Project"}
           </h2>
 
           <p
             className={`text-lg md:text-xl text-gray-600 max-w-2xl mx-auto leading-relaxed text-center ${
-              language === 'ar' ? 'font-arabic' : ''
+              language === "ar" ? "font-arabic" : ""
             }`}
           >
-            {language === 'ar'
-              ? 'دعنا نحول فكرتك إلى واقع رقمي متميز. تواصل معنا اليوم لبدء رحلتك'
-              : 'Let us transform your idea into exceptional digital reality. Contact us today to start your journey'}
+            {language === "ar"
+              ? "دعنا نحول فكرتك إلى واقع رقمي متميز. تواصل معنا اليوم لبدء رحلتك"
+              : "Let us transform your idea into exceptional digital reality. Contact us today to start your journey"}
           </p>
         </motion.div>
 
         {/* Contact Form - Single Centered Column */}
         <motion.div
           initial={{ opacity: 0, y: 60 }}
-          animate={isIntersecting ? { opacity: 1, y: 0 } : { opacity: 0, y: 60 }}
+          animate={
+            isIntersecting ? { opacity: 1, y: 0 } : { opacity: 0, y: 60 }
+          }
           transition={{ duration: 1, delay: 0.3, ease: [0.16, 1, 0.3, 1] }}
           className="max-w-2xl mx-auto"
         >
@@ -99,10 +119,10 @@ export function ModernContactSection() {
                 <label
                   htmlFor="name"
                   className={`block text-sm font-medium text-gray-700 ${
-                    language === 'ar' ? 'font-arabic text-center' : ''
+                    language === "ar" ? "font-arabic text-center" : ""
                   }`}
                 >
-                  {language === 'ar' ? 'الاسم' : 'Name'}
+                  {language === "ar" ? "الاسم" : "Name"}
                 </label>
                 <input
                   type="text"
@@ -111,9 +131,11 @@ export function ModernContactSection() {
                   value={formData.name}
                   onChange={handleChange}
                   className={`w-full px-4 py-3 border border-gray-200 rounded-lg focus:ring-2 focus:ring-jaded-green-500 focus:border-transparent transition-all duration-300 bg-white/50 backdrop-blur-sm ${
-                    language === 'ar' ? 'text-center font-arabic' : ''
+                    language === "ar" ? "text-center font-arabic" : ""
                   }`}
-                  placeholder={language === 'ar' ? 'اسمك الكامل' : 'Your full name'}
+                  placeholder={
+                    language === "ar" ? "اسمك الكامل" : "Your full name"
+                  }
                   required
                 />
               </div>
@@ -122,10 +144,10 @@ export function ModernContactSection() {
                 <label
                   htmlFor="email"
                   className={`block text-sm font-medium text-gray-700 ${
-                    language === 'ar' ? 'font-arabic text-center' : ''
+                    language === "ar" ? "font-arabic text-center" : ""
                   }`}
                 >
-                  {language === 'ar' ? 'البريد الإلكتروني' : 'Email'}
+                  {language === "ar" ? "البريد الإلكتروني" : "Email"}
                 </label>
                 <input
                   type="email"
@@ -134,9 +156,13 @@ export function ModernContactSection() {
                   value={formData.email}
                   onChange={handleChange}
                   className={`w-full px-4 py-3 border border-gray-200 rounded-lg focus:ring-2 focus:ring-jaded-green-500 focus:border-transparent transition-all duration-300 bg-white/50 backdrop-blur-sm ${
-                    language === 'ar' ? 'text-center font-arabic' : ''
+                    language === "ar" ? "text-center font-arabic" : ""
                   }`}
-                  placeholder={language === 'ar' ? 'بريدك الإلكتروني' : 'Your email address'}
+                  placeholder={
+                    language === "ar"
+                      ? "بريدك الإلكتروني"
+                      : "Your email address"
+                  }
                   required
                 />
               </div>
@@ -147,10 +173,10 @@ export function ModernContactSection() {
               <label
                 htmlFor="subject"
                 className={`block text-sm font-medium text-gray-700 ${
-                  language === 'ar' ? 'font-arabic text-center' : ''
+                  language === "ar" ? "font-arabic text-center" : ""
                 }`}
               >
-                {language === 'ar' ? 'الموضوع' : 'Subject'}
+                {language === "ar" ? "الموضوع" : "Subject"}
               </label>
               <input
                 type="text"
@@ -159,9 +185,11 @@ export function ModernContactSection() {
                 value={formData.subject}
                 onChange={handleChange}
                 className={`w-full px-4 py-3 border border-gray-200 rounded-lg focus:ring-2 focus:ring-jaded-green-500 focus:border-transparent transition-all duration-300 bg-white/50 backdrop-blur-sm ${
-                  language === 'ar' ? 'text-center font-arabic' : ''
+                  language === "ar" ? "text-center font-arabic" : ""
                 }`}
-                placeholder={language === 'ar' ? 'موضوع رسالتك' : 'Subject of your message'}
+                placeholder={
+                  language === "ar" ? "موضوع رسالتك" : "Subject of your message"
+                }
                 required
               />
             </div>
@@ -171,10 +199,10 @@ export function ModernContactSection() {
               <label
                 htmlFor="message"
                 className={`block text-sm font-medium text-gray-700 ${
-                  language === 'ar' ? 'font-arabic text-center' : ''
+                  language === "ar" ? "font-arabic text-center" : ""
                 }`}
               >
-                {language === 'ar' ? 'الرسالة' : 'Message'}
+                {language === "ar" ? "الرسالة" : "Message"}
               </label>
               <textarea
                 id="message"
@@ -183,9 +211,13 @@ export function ModernContactSection() {
                 value={formData.message}
                 onChange={handleChange}
                 className={`w-full px-4 py-3 border border-gray-200 rounded-lg focus:ring-2 focus:ring-jaded-green-500 focus:border-transparent transition-all duration-300 bg-white/50 backdrop-blur-sm resize-none ${
-                  language === 'ar' ? 'text-center font-arabic' : ''
+                  language === "ar" ? "text-center font-arabic" : ""
                 }`}
-                placeholder={language === 'ar' ? 'اكتب رسالتك هنا...' : 'Write your message here...'}
+                placeholder={
+                  language === "ar"
+                    ? "اكتب رسالتك هنا..."
+                    : "Write your message here..."
+                }
                 required
               />
             </div>
@@ -201,12 +233,11 @@ export function ModernContactSection() {
                 className="bg-jaded-green-600 hover:bg-jaded-green-700 text-white px-12 py-4 rounded-full font-semibold text-lg shadow-lg hover:shadow-xl transform hover:scale-105 transition-all duration-300 flex items-center justify-center mx-auto group"
               >
                 <Send className="w-5 h-5 mr-3 group-hover:translate-x-1 transition-transform" />
-                {language === 'ar' ? 'إرسال الرسالة' : 'Send Message'}
+                {language === "ar" ? "إرسال الرسالة" : "Send Message"}
               </button>
             </motion.div>
           </form>
         </motion.div>
-
       </div>
     </section>
   );

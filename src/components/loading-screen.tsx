@@ -1,12 +1,15 @@
-import { motion, AnimatePresence } from 'framer-motion';
-import { useEffect, useState } from 'react';
+import { AnimatePresence, motion } from "framer-motion";
+import { useEffect, useState } from "react";
 
 interface LoadingScreenProps {
   isVisible?: boolean;
   onComplete?: () => void;
 }
 
-export function LoadingScreen({ isVisible = true, onComplete }: LoadingScreenProps) {
+export function LoadingScreen({
+  isVisible = true,
+  onComplete,
+}: LoadingScreenProps) {
   const [isLoaded, setIsLoaded] = useState(false);
 
   useEffect(() => {
@@ -14,16 +17,16 @@ export function LoadingScreen({ isVisible = true, onComplete }: LoadingScreenPro
 
     // Preload critical resources
     const preloadResources = [
-      '/assets/Icon.png',
-      '/assets/Logo.png',
-      '/assets/animated/services/laptop.gif',
-      '/assets/animated/services/branding.gif',
-      '/assets/animated/services/marketing.gif',
-      '/assets/animated/services/content.gif',
-      '/assets/animated/services/photography.gif'
+      "/assets/Icon.png",
+      "/assets/Logo.png",
+      "/assets/animated/services/laptop.gif",
+      "/assets/animated/services/branding.gif",
+      "/assets/animated/services/marketing.gif",
+      "/assets/animated/services/content.gif",
+      "/assets/animated/services/photography.gif",
     ];
 
-    const loadPromises = preloadResources.map(src => {
+    const loadPromises = preloadResources.map((src) => {
       return new Promise((resolve, reject) => {
         const img = new Image();
         img.onload = resolve;
@@ -33,7 +36,7 @@ export function LoadingScreen({ isVisible = true, onComplete }: LoadingScreenPro
     });
 
     // Minimum loading time of 1.5 seconds for smooth experience
-    const minLoadTime = new Promise(resolve => setTimeout(resolve, 1500));
+    const minLoadTime = new Promise((resolve) => setTimeout(resolve, 1500));
 
     Promise.all([...loadPromises, minLoadTime])
       .then(() => {
@@ -60,7 +63,7 @@ export function LoadingScreen({ isVisible = true, onComplete }: LoadingScreenPro
         >
           {/* Full Opacity Background - Completely Opaque */}
           <div className="absolute inset-0 bg-slate-900" />
-          
+
           {/* Subtle ambient glow */}
           <div className="absolute inset-0">
             <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-jaded-green-500/8 rounded-full blur-3xl" />
@@ -85,7 +88,7 @@ export function LoadingScreen({ isVisible = true, onComplete }: LoadingScreenPro
                   transition={{
                     duration: 2.5,
                     repeat: Infinity,
-                    ease: "easeInOut"
+                    ease: "easeInOut",
                   }}
                 >
                   {/* Outer glow */}
@@ -97,18 +100,19 @@ export function LoadingScreen({ isVisible = true, onComplete }: LoadingScreenPro
                   {/* Core glow */}
                   <div className="absolute inset-0 bg-jaded-green-700/25 rounded-full blur-md scale-110" />
                 </motion.div>
-                
-                <img 
-                  src="/assets/Icon.png" 
-                  alt="Cactus Media Group" 
+
+                <img
+                  src="/assets/Icon.png"
+                  alt="Cactus Media Group"
                   className="relative w-24 h-24 mx-auto object-contain"
                   style={{
-                    filter: 'drop-shadow(0 0 15px rgba(0, 150, 125, 0.8)) drop-shadow(0 0 30px rgba(0, 150, 125, 0.5)) drop-shadow(0 0 45px rgba(0, 150, 125, 0.3))'
+                    filter:
+                      "drop-shadow(0 0 15px rgba(0, 150, 125, 0.8)) drop-shadow(0 0 30px rgba(0, 150, 125, 0.5)) drop-shadow(0 0 45px rgba(0, 150, 125, 0.3))",
                   }}
                 />
               </div>
-              
-              <motion.h1 
+
+              <motion.h1
                 className="text-2xl font-bold text-white mb-2 font-barlow"
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
@@ -116,19 +120,19 @@ export function LoadingScreen({ isVisible = true, onComplete }: LoadingScreenPro
               >
                 Cactus Media Group
               </motion.h1>
-              
-              <motion.p 
+
+              <motion.p
                 className="text-gray-300 text-lg"
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 0.5, duration: 0.6 }}
               >
-                {isLoaded ? 'Ready!' : 'Optimizing your experience...'}
+                {isLoaded ? "Ready!" : "Optimizing your experience..."}
               </motion.p>
             </motion.div>
 
             {/* Pulsing dots */}
-            <motion.div 
+            <motion.div
               className="flex justify-center space-x-2 mt-8"
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}

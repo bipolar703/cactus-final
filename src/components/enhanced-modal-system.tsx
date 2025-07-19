@@ -1,7 +1,7 @@
-import { useState, useEffect } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
-import { X } from 'lucide-react';
-import { useLanguage } from '@/hooks/use-language';
+import { useLanguage } from "@/hooks/use-language";
+import { AnimatePresence, motion } from "framer-motion";
+import { X } from "lucide-react";
+import { useEffect, useState } from "react";
 
 interface ModalProps {
   isOpen: boolean;
@@ -15,13 +15,13 @@ function Modal({ isOpen, onClose, title, children }: ModalProps) {
 
   useEffect(() => {
     if (isOpen) {
-      document.body.style.overflow = 'hidden';
+      document.body.style.overflow = "hidden";
     } else {
-      document.body.style.overflow = 'unset';
+      document.body.style.overflow = "unset";
     }
 
     return () => {
-      document.body.style.overflow = 'unset';
+      document.body.style.overflow = "unset";
     };
   }, [isOpen]);
 
@@ -52,9 +52,11 @@ function Modal({ isOpen, onClose, title, children }: ModalProps) {
           >
             {/* Header */}
             <div className="flex items-center justify-between p-6 border-b border-gray-200 dark:border-gray-700">
-              <h2 className={`text-2xl font-semibold text-gray-900 dark:text-white ${
-                language === 'ar' ? 'font-arabic' : 'font-barlow'
-              }`}>
+              <h2
+                className={`text-2xl font-semibold text-gray-900 dark:text-white ${
+                  language === "ar" ? "font-arabic" : "font-barlow"
+                }`}
+              >
                 {title}
               </h2>
               <button
@@ -80,57 +82,74 @@ export function EnhancedModalSystem() {
   const [activeModal, setActiveModal] = useState<string | null>(null);
   const { language } = useLanguage();
 
+  useEffect(() => {
+    const handleOpenModal = (event: Event) => {
+      const customEvent = event as CustomEvent;
+      setActiveModal(customEvent.detail);
+    };
+
+    window.addEventListener('open-modal', handleOpenModal);
+
+    return () => {
+      window.removeEventListener('open-modal', handleOpenModal);
+    };
+  }, []);
+
   const closeModal = () => setActiveModal(null);
 
   const modalContent = {
     portfolio: {
-      title: language === 'ar' ? 'معرض أعمالنا' : 'Our Portfolio',
+      title: language === "ar" ? "معرض أعمالنا" : "Our Portfolio",
       content: (
         <div className="space-y-6">
-          <p className={`text-gray-600 dark:text-gray-300 ${
-            language === 'ar' ? 'font-arabic text-center' : ''
-          }`}>
-            {language === 'ar' 
-              ? 'استكشف مجموعة من أعمالنا المتميزة التي نفخر بتقديمها لعملائنا'
-              : 'Explore our collection of outstanding work that we proudly deliver to our clients'
-            }
+          <p
+            className={`text-gray-600 dark:text-gray-300 ${
+              language === "ar" ? "font-arabic text-center" : ""
+            }`}
+          >
+            {language === "ar"
+              ? "استكشف مجموعة من أعمالنا المتميزة التي نفخر بتقديمها لعملائنا"
+              : "Explore our collection of outstanding work that we proudly deliver to our clients"}
           </p>
           {/* Portfolio content would go here */}
         </div>
-      )
+      ),
     },
     services: {
-      title: language === 'ar' ? 'خدماتنا المتخصصة' : 'Our Specialized Services',
+      title:
+        language === "ar" ? "خدماتنا المتخصصة" : "Our Specialized Services",
       content: (
         <div className="space-y-6">
-          <p className={`text-gray-600 dark:text-gray-300 ${
-            language === 'ar' ? 'font-arabic text-center' : ''
-          }`}>
-            {language === 'ar'
-              ? 'نقدم مجموعة شاملة من الخدمات الرقمية المصممة لتحقيق أهدافك التجارية'
-              : 'We offer a comprehensive suite of digital services designed to achieve your business goals'
-            }
+          <p
+            className={`text-gray-600 dark:text-gray-300 ${
+              language === "ar" ? "font-arabic text-center" : ""
+            }`}
+          >
+            {language === "ar"
+              ? "نقدم مجموعة شاملة من الخدمات الرقمية المصممة لتحقيق أهدافك التجارية"
+              : "We offer a comprehensive suite of digital services designed to achieve your business goals"}
           </p>
           {/* Services content would go here */}
         </div>
-      )
+      ),
     },
     contact: {
-      title: language === 'ar' ? 'تواصل معنا' : 'Contact Us',
+      title: language === "ar" ? "تواصل معنا" : "Contact Us",
       content: (
         <div className="space-y-6">
-          <p className={`text-gray-600 dark:text-gray-300 ${
-            language === 'ar' ? 'font-arabic text-center' : ''
-          }`}>
-            {language === 'ar'
-              ? 'نحن هنا لمساعدتك في تحقيق أهدافك الرقمية'
-              : 'We are here to help you achieve your digital goals'
-            }
+          <p
+            className={`text-gray-600 dark:text-gray-300 ${
+              language === "ar" ? "font-arabic text-center" : ""
+            }`}
+          >
+            {language === "ar"
+              ? "نحن هنا لمساعدتك في تحقيق أهدافك الرقمية"
+              : "We are here to help you achieve your digital goals"}
           </p>
           {/* Contact form would go here */}
         </div>
-      )
-    }
+      ),
+    },
   };
 
   return (

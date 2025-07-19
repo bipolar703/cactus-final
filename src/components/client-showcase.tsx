@@ -1,8 +1,8 @@
-import { motion } from 'framer-motion';
-import { useLanguage } from '@/hooks/use-language';
-import { useOptimizedIntersection } from '@/utils/cache-manager';
-import { clientLogos } from '@/data/clients';
-import { Star, Quote } from 'lucide-react';
+import { clientLogos } from "@/data/clients";
+import { useLanguage } from "@/hooks/use-language";
+import { useOptimizedIntersection } from "@/utils/cache-manager";
+import { motion } from "framer-motion";
+import { Quote, Star } from "lucide-react";
 
 export function ClientShowcase() {
   const { language } = useLanguage();
@@ -23,7 +23,9 @@ export function ClientShowcase() {
         {/* Section Header */}
         <motion.div
           initial={{ opacity: 0, y: 40 }}
-          animate={isIntersecting ? { opacity: 1, y: 0 } : { opacity: 0, y: 40 }}
+          animate={
+            isIntersecting ? { opacity: 1, y: 0 } : { opacity: 0, y: 40 }
+          }
           transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
           className="text-center mb-16"
         >
@@ -36,20 +38,26 @@ export function ClientShowcase() {
 
           <h2
             className={`text-3xl md:text-4xl lg:text-5xl font-light text-gray-900 mb-6 ${
-              language === 'ar' ? 'font-arabic leading-tight arabic-heading' : 'font-barlow leading-tight'
+              language === "ar"
+                ? "font-arabic leading-tight arabic-heading"
+                : "font-barlow leading-tight"
             }`}
           >
-            {language === 'ar' ? 'عملاؤنا المميزون' : 'Our Distinguished Clients'}
+            {language === "ar"
+              ? "عملاؤنا المميزون"
+              : "Our Distinguished Clients"}
           </h2>
 
           <p
             className={`text-lg md:text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed ${
-              language === 'ar' ? 'font-arabic text-center arabic-body' : 'font-barlow'
+              language === "ar"
+                ? "font-arabic text-center arabic-body"
+                : "font-barlow"
             }`}
           >
-            {language === 'ar'
-              ? 'نفخر بثقة العلامات التجارية الرائدة في المنطقة وشراكتنا الناجحة معها'
-              : 'We are proud of the trust from leading regional brands and our successful partnerships with them'}
+            {language === "ar"
+              ? "نفخر بثقة العلامات التجارية الرائدة في المنطقة وشراكتنا الناجحة معها"
+              : "We are proud of the trust from leading regional brands and our successful partnerships with them"}
           </p>
         </motion.div>
 
@@ -69,34 +77,38 @@ export function ClientShowcase() {
                 transition={{
                   duration: 40,
                   repeat: Infinity,
-                  ease: "linear"
+                  ease: "linear",
                 }}
                 className="flex gap-6 whitespace-nowrap overflow-x-auto scrollbar-hide touch-pan-x"
-                style={{ width: 'calc(200% + 2rem)' }}
+                style={{ width: "calc(200% + 2rem)" }}
               >
-                {[...clientLogos.slice(0, 7), ...clientLogos.slice(0, 7)].map((client, index) => (
-                  <div
-                    key={`row1-${index}`}
-                    className="bg-white rounded-2xl p-4 shadow-sm hover:shadow-lg transition-all duration-300 border border-gray-100 hover:border-jaded-green-200 h-20 flex items-center justify-center min-w-[160px] group/card cursor-pointer flex-shrink-0"
-                  >
-                    <div className="flex flex-col items-center justify-center w-full h-full">
-                      <img
-                        src={client.logo}
-                        alt={client.name}
-                        className="max-h-10 max-w-[120px] w-full object-contain grayscale group-hover/card:grayscale-0 transition-all duration-300 opacity-70 group-hover/card:opacity-100"
-                        loading="lazy"
-                        onError={(e) => {
-                          e.currentTarget.src = `https://via.placeholder.com/120x40/e5e7eb/6b7280?text=${encodeURIComponent(client.name)}`;
-                        }}
-                      />
-                      <span className={`text-xs text-gray-600 group-hover/card:text-jaded-green-600 transition-colors duration-300 text-center font-medium mt-1 ${
-                        language === 'ar' ? 'font-arabic' : 'font-barlow'
-                      }`}>
-                        {client.name}
-                      </span>
+                {[...clientLogos.slice(0, 7), ...clientLogos.slice(0, 7)].map(
+                  (client, index) => (
+                    <div
+                      key={`row1-${index}`}
+                      className="bg-white rounded-2xl p-4 shadow-sm hover:shadow-lg transition-all duration-300 border border-gray-100 hover:border-jaded-green-200 h-20 flex items-center justify-center min-w-[160px] group/card cursor-pointer flex-shrink-0"
+                    >
+                      <div className="flex flex-col items-center justify-center w-full h-full">
+                        <img
+                          src={client.logo}
+                          alt={client.name}
+                          className="max-h-10 max-w-[120px] w-full object-contain grayscale group-hover/card:grayscale-0 transition-all duration-300 opacity-70 group-hover/card:opacity-100"
+                          loading="lazy"
+                          onError={(e) => {
+                            e.currentTarget.src = `https://via.placeholder.com/120x40/e5e7eb/6b7280?text=${encodeURIComponent(client.name)}`;
+                          }}
+                        />
+                        <span
+                          className={`text-xs text-gray-600 group-hover/card:text-jaded-green-600 transition-colors duration-300 text-center font-medium mt-1 ${
+                            language === "ar" ? "font-arabic" : "font-barlow"
+                          }`}
+                        >
+                          {client.name}
+                        </span>
+                      </div>
                     </div>
-                  </div>
-                ))}
+                  ),
+                )}
               </motion.div>
             </div>
 
@@ -107,34 +119,38 @@ export function ClientShowcase() {
                 transition={{
                   duration: 40,
                   repeat: Infinity,
-                  ease: "linear"
+                  ease: "linear",
                 }}
                 className="flex gap-6 whitespace-nowrap overflow-x-auto scrollbar-hide touch-pan-x"
-                style={{ width: 'calc(200% + 2rem)' }}
+                style={{ width: "calc(200% + 2rem)" }}
               >
-                {[...clientLogos.slice(7), ...clientLogos.slice(7)].map((client, index) => (
-                  <div
-                    key={`row2-${index}`}
-                    className="bg-white rounded-2xl p-4 shadow-sm hover:shadow-lg transition-all duration-300 border border-gray-100 hover:border-jaded-green-200 h-20 flex items-center justify-center min-w-[160px] group/card cursor-pointer flex-shrink-0"
-                  >
-                    <div className="flex flex-col items-center justify-center w-full h-full">
-                      <img
-                        src={client.logo}
-                        alt={client.name}
-                        className="max-h-10 max-w-[120px] w-full object-contain grayscale group-hover/card:grayscale-0 transition-all duration-300 opacity-70 group-hover/card:opacity-100"
-                        loading="lazy"
-                        onError={(e) => {
-                          e.currentTarget.src = `https://via.placeholder.com/120x40/e5e7eb/6b7280?text=${encodeURIComponent(client.name)}`;
-                        }}
-                      />
-                      <span className={`text-xs text-gray-600 group-hover/card:text-jaded-green-600 transition-colors duration-300 text-center font-medium mt-1 ${
-                        language === 'ar' ? 'font-arabic' : 'font-barlow'
-                      }`}>
-                        {client.name}
-                      </span>
+                {[...clientLogos.slice(7), ...clientLogos.slice(7)].map(
+                  (client, index) => (
+                    <div
+                      key={`row2-${index}`}
+                      className="bg-white rounded-2xl p-4 shadow-sm hover:shadow-lg transition-all duration-300 border border-gray-100 hover:border-jaded-green-200 h-20 flex items-center justify-center min-w-[160px] group/card cursor-pointer flex-shrink-0"
+                    >
+                      <div className="flex flex-col items-center justify-center w-full h-full">
+                        <img
+                          src={client.logo}
+                          alt={client.name}
+                          className="max-h-10 max-w-[120px] w-full object-contain grayscale group-hover/card:grayscale-0 transition-all duration-300 opacity-70 group-hover/card:opacity-100"
+                          loading="lazy"
+                          onError={(e) => {
+                            e.currentTarget.src = `https://via.placeholder.com/120x40/e5e7eb/6b7280?text=${encodeURIComponent(client.name)}`;
+                          }}
+                        />
+                        <span
+                          className={`text-xs text-gray-600 group-hover/card:text-jaded-green-600 transition-colors duration-300 text-center font-medium mt-1 ${
+                            language === "ar" ? "font-arabic" : "font-barlow"
+                          }`}
+                        >
+                          {client.name}
+                        </span>
+                      </div>
                     </div>
-                  </div>
-                ))}
+                  ),
+                )}
               </motion.div>
             </div>
           </div>
@@ -143,31 +159,37 @@ export function ClientShowcase() {
         {/* Trust Indicators */}
         <motion.div
           initial={{ opacity: 0, y: 40 }}
-          animate={isIntersecting ? { opacity: 1, y: 0 } : { opacity: 0, y: 40 }}
+          animate={
+            isIntersecting ? { opacity: 1, y: 0 } : { opacity: 0, y: 40 }
+          }
           transition={{ duration: 0.8, delay: 0.6 }}
           className="grid grid-cols-1 md:grid-cols-3 gap-8 text-center"
         >
           {[
             {
-              number: '150+',
-              label: language === 'ar' ? 'مشروع مكتمل' : 'Projects Completed',
-              icon: Star
+              number: "150+",
+              label: language === "ar" ? "مشروع مكتمل" : "Projects Completed",
+              icon: Star,
             },
             {
-              number: '50+',
-              label: language === 'ar' ? 'عميل راضٍ' : 'Happy Clients',
-              icon: Quote
+              number: "50+",
+              label: language === "ar" ? "عميل راضٍ" : "Happy Clients",
+              icon: Quote,
             },
             {
-              number: '98%',
-              label: language === 'ar' ? 'معدل الرضا' : 'Satisfaction Rate',
-              icon: Star
+              number: "98%",
+              label: language === "ar" ? "معدل الرضا" : "Satisfaction Rate",
+              icon: Star,
             },
           ].map((stat, index) => (
             <motion.div
               key={index}
               initial={{ opacity: 0, scale: 0.9 }}
-              animate={isIntersecting ? { opacity: 1, scale: 1 } : { opacity: 0, scale: 0.9 }}
+              animate={
+                isIntersecting
+                  ? { opacity: 1, scale: 1 }
+                  : { opacity: 0, scale: 0.9 }
+              }
               transition={{
                 delay: 0.8 + index * 0.1,
                 duration: 0.6,
@@ -181,9 +203,11 @@ export function ClientShowcase() {
               <div className="text-3xl font-bold text-jaded-green-600 mb-2 font-barlow">
                 {stat.number}
               </div>
-              <div className={`text-gray-600 font-medium ${
-                language === 'ar' ? 'font-arabic' : 'font-barlow'
-              }`}>
+              <div
+                className={`text-gray-600 font-medium ${
+                  language === "ar" ? "font-arabic" : "font-barlow"
+                }`}
+              >
                 {stat.label}
               </div>
             </motion.div>
@@ -193,22 +217,26 @@ export function ClientShowcase() {
         {/* Call to Action */}
         <motion.div
           initial={{ opacity: 0, y: 40 }}
-          animate={isIntersecting ? { opacity: 1, y: 0 } : { opacity: 0, y: 40 }}
+          animate={
+            isIntersecting ? { opacity: 1, y: 0 } : { opacity: 0, y: 40 }
+          }
           transition={{ duration: 0.8, delay: 1 }}
           className="text-center mt-16"
         >
           <p
             className={`text-lg text-gray-600 mb-6 ${
-              language === 'ar' ? 'font-arabic' : 'font-barlow'
+              language === "ar" ? "font-arabic" : "font-barlow"
             }`}
           >
-            {language === 'ar'
-              ? 'انضم إلى قائمة عملائنا المميزين واكتشف الفرق'
-              : 'Join our distinguished client list and discover the difference'}
+            {language === "ar"
+              ? "انضم إلى قائمة عملائنا المميزين واكتشف الفرق"
+              : "Join our distinguished client list and discover the difference"}
           </p>
-          
+
           <button className="bg-jaded-green-600 hover:bg-jaded-green-700 text-white px-8 py-4 rounded-full font-semibold text-lg shadow-lg hover:shadow-xl transform hover:scale-105 transition-all duration-300 font-barlow">
-            {language === 'ar' ? 'ابدأ مشروعك معنا' : 'Start Your Project With Us'}
+            {language === "ar"
+              ? "ابدأ مشروعك معنا"
+              : "Start Your Project With Us"}
           </button>
         </motion.div>
       </div>

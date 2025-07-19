@@ -1,46 +1,59 @@
-import { motion } from 'framer-motion';
-import { useLanguage } from '@/hooks/use-language';
-import { Mail, Phone, MapPin, Facebook, Instagram, Linkedin, Twitter, Heart } from 'lucide-react';
-import { useState } from 'react';
+import { useLanguage } from "@/hooks/use-language";
+import { motion } from "framer-motion";
+import {
+    Facebook,
+    Instagram,
+    Linkedin, Mail
+} from "lucide-react";
+import { useState } from "react";
 
 export function EnhancedFooter() {
   const { language } = useLanguage();
-  const [phone, setPhone] = useState('');
+  const [phone, setPhone] = useState("");
   const [loading, setLoading] = useState(false);
 
   const socialLinks = [
-    { icon: Facebook, href: 'https://facebook.com/cactusmediajo', label: 'Facebook' },
-    { icon: Instagram, href: 'https://instagram.com/cactusmediajo', label: 'Instagram' },
-    { icon: Linkedin, href: 'https://www.linkedin.com/company/cactusmediajo', label: 'LinkedIn' },
+    {
+      icon: Facebook,
+      href: "https://facebook.com/cactusmediajo",
+      label: "Facebook",
+    },
+    {
+      icon: Instagram,
+      href: "https://instagram.com/cactusmediajo",
+      label: "Instagram",
+    },
+    {
+      icon: Linkedin,
+      href: "https://www.linkedin.com/company/cactusmediajo",
+      label: "LinkedIn",
+    },
   ];
 
-  const quickLinks = language === 'ar'
-    ? [
-        { label: 'من نحن', href: '#about' },
-        { label: 'خدماتنا', href: '#services' },
-        { label: 'أعمالنا', href: '#portfolio' },
-        { label: 'تواصل معنا', href: '#contact' },
-      ]
-    : [
-        { label: 'About Us', href: '#about' },
-        { label: 'Our Services', href: '#services' },
-        { label: 'Portfolio', href: '#portfolio' },
-        { label: 'Contact', href: '#contact' },
-      ];
+  const quickLinks =
+    language === "ar"
+      ? [
+          { label: "من نحن", href: "#about" },
+          { label: "خدماتنا", href: "#services" },
+          { label: "أعمالنا", href: "#portfolio" },
+          { label: "تواصل معنا", href: "#contact" },
+        ]
+      : [
+          { label: "About Us", href: "#about" },
+          { label: "Our Services", href: "#services" },
+          { label: "Portfolio", href: "#portfolio" },
+          { label: "Contact", href: "#contact" },
+        ];
 
-  const services = language === 'ar'
-    ? [
-        'تطوير المواقع',
-        'تصميم الهوية',
-        'التسويق الرقمي',
-        'التصوير والإنتاج',
-      ]
-    : [
-        'Web Development',
-        'Brand Design',
-        'Digital Marketing',
-        'Photography & Production',
-      ];
+  const services =
+    language === "ar"
+      ? ["تطوير المواقع", "تصميم الهوية", "التسويق الرقمي", "التصوير والإنتاج"]
+      : [
+          "Web Development",
+          "Brand Design",
+          "Digital Marketing",
+          "Photography & Production",
+        ];
 
   return (
     <footer className="relative bg-gradient-to-br from-gray-900 via-black to-gray-900 text-white overflow-hidden">
@@ -65,7 +78,7 @@ export function EnhancedFooter() {
           transition={{
             duration: 45,
             repeat: Infinity,
-            ease: "easeInOut"
+            ease: "easeInOut",
           }}
           className="absolute -top-1/2 -left-1/2 w-full h-full bg-gradient-to-br from-jaded-green-500/10 to-transparent rounded-full blur-3xl"
         />
@@ -79,7 +92,7 @@ export function EnhancedFooter() {
           transition={{
             duration: 50,
             repeat: Infinity,
-            ease: "easeInOut"
+            ease: "easeInOut",
           }}
           className="absolute -bottom-1/2 -right-1/2 w-full h-full bg-gradient-to-tl from-gold-500/10 to-transparent rounded-full blur-3xl"
         />
@@ -106,19 +119,27 @@ export function EnhancedFooter() {
                 className="w-12 h-12 object-contain"
               />
               <div>
-                <h3 className={`text-xl font-bold ${language === 'ar' ? 'font-arabic' : 'font-barlow'}`}>
-                  {language === 'ar' ? 'مجموعة كاكتوس الإعلامية' : 'Cactus Media Group'}
+                <h3
+                  className={`text-xl font-bold ${language === "ar" ? "font-arabic" : "font-barlow"}`}
+                >
+                  {language === "ar"
+                    ? "مجموعة كاكتوس الإعلامية"
+                    : "Cactus Media Group"}
                 </h3>
                 <p className="text-jaded-green-400 text-sm font-medium">
-                  {language === 'ar' ? 'في عالم مليء بالورود، كن صبارة!' : 'In a world full of flowers, be a cactus!'}
+                  {language === "ar"
+                    ? "في عالم مليء بالورود، كن صبارة!"
+                    : "In a world full of flowers, be a cactus!"}
                 </p>
               </div>
             </div>
 
-            <p className={`text-white/70 leading-relaxed mb-6 max-w-md ${language === 'ar' ? 'font-arabic text-center' : ''}`}>
-              {language === 'ar'
-                ? 'نحن نقدم حلولاً رقمية متميزة مصممة للصمود والنمو. نحول الأفكار الجريئة إلى تجارب رقمية استثنائية تدفع نمو الأعمال.'
-                : 'We provide premium digital solutions engineered for resilience and growth. Transforming bold ideas into exceptional digital experiences that drive business success.'}
+            <p
+              className={`text-white/70 leading-relaxed mb-6 max-w-md ${language === "ar" ? "font-arabic text-center" : ""}`}
+            >
+              {language === "ar"
+                ? "نحن نقدم حلولاً رقمية متميزة مصممة للصمود والنمو. نحول الأفكار الجريئة إلى تجارب رقمية استثنائية تدفع نمو الأعمال."
+                : "We provide premium digital solutions engineered for resilience and growth. Transforming bold ideas into exceptional digital experiences that drive business success."}
             </p>
 
             {/* Contact Info */}
@@ -142,8 +163,10 @@ export function EnhancedFooter() {
             viewport={{ once: true }}
             transition={{ duration: 0.6, delay: 0.1 }}
           >
-            <h4 className={`text-lg font-semibold mb-6 ${language === 'ar' ? 'font-arabic text-center' : ''}`}>
-              {language === 'ar' ? 'روابط سريعة' : 'Quick Links'}
+            <h4
+              className={`text-lg font-semibold mb-6 ${language === "ar" ? "font-arabic text-center" : ""}`}
+            >
+              {language === "ar" ? "روابط سريعة" : "Quick Links"}
             </h4>
             <ul className="space-y-3">
               {quickLinks.map((link, index) => (
@@ -151,7 +174,7 @@ export function EnhancedFooter() {
                   <a
                     href={link.href}
                     className={`text-white/70 hover:text-jaded-green-400 transition-colors duration-300 ${
-                      language === 'ar' ? 'font-arabic' : ''
+                      language === "ar" ? "font-arabic" : ""
                     }`}
                   >
                     {link.label}
@@ -168,13 +191,17 @@ export function EnhancedFooter() {
             viewport={{ once: true }}
             transition={{ duration: 0.6, delay: 0.2 }}
           >
-            <h4 className={`text-lg font-semibold mb-6 ${language === 'ar' ? 'font-arabic text-center' : ''}`}>
-              {language === 'ar' ? 'خدماتنا' : 'Our Services'}
+            <h4
+              className={`text-lg font-semibold mb-6 ${language === "ar" ? "font-arabic text-center" : ""}`}
+            >
+              {language === "ar" ? "خدماتنا" : "Our Services"}
             </h4>
             <ul className="space-y-3">
               {services.map((service, index) => (
                 <li key={index}>
-                  <span className={`text-white/70 ${language === 'ar' ? 'font-arabic' : ''}`}>
+                  <span
+                    className={`text-white/70 ${language === "ar" ? "font-arabic" : ""}`}
+                  >
                     {service}
                   </span>
                 </li>
@@ -194,8 +221,10 @@ export function EnhancedFooter() {
           <div className="flex flex-col md:flex-row justify-between items-center gap-6">
             {/* Social Links - Left Side */}
             <div className="flex items-center gap-4">
-              <span className={`text-white/70 mr-2 ${language === 'ar' ? 'font-arabic' : 'font-barlow'}`}>
-                {language === 'ar' ? 'تابعنا:' : 'Follow us:'}
+              <span
+                className={`text-white/70 mr-2 ${language === "ar" ? "font-arabic" : "font-barlow"}`}
+              >
+                {language === "ar" ? "تابعنا:" : "Follow us:"}
               </span>
               {socialLinks.map((social, index) => (
                 <motion.a
@@ -215,10 +244,14 @@ export function EnhancedFooter() {
               <input
                 type="tel"
                 value={phone}
-                onChange={e => setPhone(e.target.value)}
-                placeholder={language === 'ar' ? 'اترك رقمك للاتصال السريع' : 'Leave Number For Quick Call'}
+                onChange={(e) => setPhone(e.target.value)}
+                placeholder={
+                  language === "ar"
+                    ? "اترك رقمك للاتصال السريع"
+                    : "Leave Number For Quick Call"
+                }
                 className={`glass-premium px-4 py-2 rounded-lg bg-white/5 border border-white/10 text-white placeholder-white/50 focus:border-jaded-green-500/40 focus:outline-none transition-all duration-300 w-64 ${
-                  language === 'ar' ? 'text-center font-arabic' : ''
+                  language === "ar" ? "text-center font-arabic" : ""
                 }`}
               />
               <button
@@ -227,27 +260,43 @@ export function EnhancedFooter() {
                 onClick={async () => {
                   setLoading(true);
                   try {
-                    const res = await fetch('/api/quick-call', {
-                      method: 'POST',
-                      headers: { 'Content-Type': 'application/json' },
+                    const res = await fetch("/api/quick-call", {
+                      method: "POST",
+                      headers: { "Content-Type": "application/json" },
                       body: JSON.stringify({ phone }),
                     });
                     if (res.ok) {
-                      alert(language === 'ar' ? 'تم إرسال رقمك بنجاح!' : 'Your number has been sent!');
-                      setPhone('');
+                      alert(
+                        language === "ar"
+                          ? "تم إرسال رقمك بنجاح!"
+                          : "Your number has been sent!",
+                      );
+                      setPhone("");
                     } else {
                       const data = await res.json();
-                      alert((language === 'ar' ? 'حدث خطأ أثناء الإرسال: ' : 'Error sending number: ') + (data.error || ''));
+                      alert(
+                        (language === "ar"
+                          ? "حدث خطأ أثناء الإرسال: "
+                          : "Error sending number: ") + (data.error || ""),
+                      );
                     }
                   } catch {
-                    alert(language === 'ar' ? 'تعذر الاتصال بالخادم.' : 'Could not connect to server.');
+                    alert(
+                      language === "ar"
+                        ? "تعذر الاتصال بالخادم."
+                        : "Could not connect to server.",
+                    );
                   }
                   setLoading(false);
                 }}
               >
                 {loading
-                  ? (language === 'ar' ? 'جاري الإرسال...' : 'Sending...')
-                  : (language === 'ar' ? 'إرسال' : 'Submit')}
+                  ? language === "ar"
+                    ? "جاري الإرسال..."
+                    : "Sending..."
+                  : language === "ar"
+                    ? "إرسال"
+                    : "Submit"}
               </button>
             </div>
           </div>
@@ -262,12 +311,13 @@ export function EnhancedFooter() {
           className="border-t border-white/10 mt-8 pt-6 text-center"
         >
           <div className="flex flex-col md:flex-row justify-between items-center gap-4">
-            <p className={`text-white/60 text-sm text-center ${language === 'ar' ? 'font-arabic' : 'font-barlow'}`}>
-              {language === 'ar'
+            <p
+              className={`text-white/60 text-sm text-center ${language === "ar" ? "font-arabic" : "font-barlow"}`}
+            >
+              {language === "ar"
                 ? `© ${new Date().getFullYear()} مجموعة كاكتوس الإعلامية. جميع الحقوق محفوظة.`
                 : `© ${new Date().getFullYear()} Cactus Media Group. All rights reserved.`}
             </p>
-
           </div>
         </motion.div>
       </div>

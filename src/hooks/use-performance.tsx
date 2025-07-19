@@ -1,15 +1,18 @@
-import { useEffect, useCallback, useRef } from 'react';
-import { debounce, throttle } from '../utils/performance';
+import { useCallback, useEffect, useRef } from "react";
+import { debounce, throttle } from "../utils/performance";
 
 /**
  * Hook for performance-optimized scroll handling
  */
 export const useOptimizedScroll = (callback: () => void, delay = 16) => {
-  const throttledCallback = useCallback(throttle(callback, delay), [callback, delay]);
+  const throttledCallback = useCallback(throttle(callback, delay), [
+    callback,
+    delay,
+  ]);
 
   useEffect(() => {
-    window.addEventListener('scroll', throttledCallback, { passive: true });
-    return () => window.removeEventListener('scroll', throttledCallback);
+    window.addEventListener("scroll", throttledCallback, { passive: true });
+    return () => window.removeEventListener("scroll", throttledCallback);
   }, [throttledCallback]);
 };
 
@@ -17,11 +20,14 @@ export const useOptimizedScroll = (callback: () => void, delay = 16) => {
  * Hook for performance-optimized resize handling
  */
 export const useOptimizedResize = (callback: () => void, delay = 250) => {
-  const debouncedCallback = useCallback(debounce(callback, delay), [callback, delay]);
+  const debouncedCallback = useCallback(debounce(callback, delay), [
+    callback,
+    delay,
+  ]);
 
   useEffect(() => {
-    window.addEventListener('resize', debouncedCallback, { passive: true });
-    return () => window.removeEventListener('resize', debouncedCallback);
+    window.addEventListener("resize", debouncedCallback, { passive: true });
+    return () => window.removeEventListener("resize", debouncedCallback);
   }, [debouncedCallback]);
 };
 
@@ -29,29 +35,32 @@ export const useOptimizedResize = (callback: () => void, delay = 250) => {
  * Hook for intersection observer with performance optimizations
  */
 export const usePerformantIntersection = (
-  options?: IntersectionObserverInit
+  options?: IntersectionObserverInit,
 ) => {
   const ref = useRef<HTMLElement>(null);
   const observerRef = useRef<IntersectionObserver | null>(null);
 
-  const observe = useCallback((callback: IntersectionObserverCallback) => {
-    if (!ref.current) return;
+  const observe = useCallback(
+    (callback: IntersectionObserverCallback) => {
+      if (!ref.current) return;
 
-    const defaultOptions: IntersectionObserverInit = {
-      rootMargin: '50px',
-      threshold: 0.1,
-      ...options
-    };
+      const defaultOptions: IntersectionObserverInit = {
+        rootMargin: "50px",
+        threshold: 0.1,
+        ...options,
+      };
 
-    observerRef.current = new IntersectionObserver(callback, defaultOptions);
-    observerRef.current.observe(ref.current);
+      observerRef.current = new IntersectionObserver(callback, defaultOptions);
+      observerRef.current.observe(ref.current);
 
-    return () => {
-      if (observerRef.current) {
-        observerRef.current.disconnect();
-      }
-    };
-  }, [options]);
+      return () => {
+        if (observerRef.current) {
+          observerRef.current.disconnect();
+        }
+      };
+    },
+    [options],
+  );
 
   useEffect(() => {
     return () => {
@@ -69,21 +78,21 @@ export const usePerformantIntersection = (
  */
 export const usePreloadResources = (resources: string[]) => {
   useEffect(() => {
-    resources.forEach(resource => {
-      const link = document.createElement('link');
-      link.rel = 'preload';
-      
-      if (resource.endsWith('.mp4')) {
-        link.as = 'video';
-        link.type = 'video/mp4';
+    resources.forEach((resource) => {
+      const link = document.createElement("link");
+      link.rel = "preload";
+
+      if (resource.endsWith(".mp4")) {
+        link.as = "video";
+        link.type = "video/mp4";
       } else if (resource.match(/\.(jpg|jpeg|png|webp|avif)$/)) {
-        link.as = 'image';
-      } else if (resource.endsWith('.css')) {
-        link.as = 'style';
-      } else if (resource.endsWith('.js')) {
-        link.as = 'script';
+        link.as = "image";
+      } else if (resource.endsWith(".css")) {
+        link.as = "style";
+      } else if (resource.endsWith(".js")) {
+        link.as = "script";
       }
-      
+
       link.href = resource;
       document.head.appendChild(link);
     });
@@ -95,7 +104,8 @@ export const usePreloadResources = (resources: string[]) => {
  */
 export const useWebVitals = () => {
   useEffect(() => {
-    if (typeof window === 'undefined' || !('PerformanceObserver' in window)) return;
+    if (typeof window === "undefined" || !("PerformanceObserver" in window))
+      return;
 
     // Monitor Largest Contentful Paint (LCP)
     const lcpObserver = new PerformanceObserver((list) => {
@@ -131,9 +141,9 @@ export const useWebVitals = () => {
     });
 
     try {
-      lcpObserver.observe({ entryTypes: ['largest-contentful-paint'] });
-      fidObserver.observe({ entryTypes: ['first-input'] });
-      clsObserver.observe({ entryTypes: ['layout-shift'] });
+      lcpObserver.observe({ entryTypes: ["largest-contentful-paint"] });
+      fidObserver.observe({ entryTypes: ["first-input"] });
+      clsObserver.observe({ entryTypes: ["layout-shift"] });
     } catch (error) {
       // Performance observer not supported
     }

@@ -1,7 +1,9 @@
-import { motion, useScroll, useTransform, useSpring, useMotionValue } from 'framer-motion';
-import { useEffect, useRef, useState } from 'react';
-import { useLanguage } from '@/hooks/use-language';
-import { OptimizedImage } from './performance-wrapper';
+import { useLanguage } from "@/hooks/use-language";
+import {
+    motion, useMotionValue, useScroll, useSpring, useTransform
+} from "framer-motion";
+import { useEffect, useRef } from "react";
+import { OptimizedImage } from "./performance-wrapper";
 
 interface CinematicHeroProps {}
 
@@ -13,7 +15,7 @@ export function CinematicHero() {
 
   const { scrollYProgress } = useScroll({
     target: containerRef,
-    offset: ['start start', 'end start'],
+    offset: ["start start", "end start"],
   });
 
   // Prevent overscroll to top
@@ -24,18 +26,26 @@ export function CinematicHero() {
       }
     };
 
-    window.addEventListener('wheel', preventOverscroll, { passive: false });
-    return () => window.removeEventListener('wheel', preventOverscroll);
+    window.addEventListener("wheel", preventOverscroll, { passive: false });
+    return () => window.removeEventListener("wheel", preventOverscroll);
   }, []);
 
   // Enhanced parallax transforms with cinematic motion
-  const y = useTransform(scrollYProgress, [0, 1], ['0%', '30%']);
-  const opacity = useTransform(scrollYProgress, [0, 0.3, 0.7, 1], [1, 0.95, 0.8, 0]);
+  const y = useTransform(scrollYProgress, [0, 1], ["0%", "30%"]);
+  const opacity = useTransform(
+    scrollYProgress,
+    [0, 0.3, 0.7, 1],
+    [1, 0.95, 0.8, 0],
+  );
   const scale = useTransform(scrollYProgress, [0, 1], [1, 1.15]);
   const blur = useTransform(scrollYProgress, [0, 0.5, 1], [0, 2, 8]);
 
   // Ultra-smooth spring animations
-  const smoothY = useSpring(y, { stiffness: 60, damping: 40, restDelta: 0.001 });
+  const smoothY = useSpring(y, {
+    stiffness: 60,
+    damping: 40,
+    restDelta: 0.001,
+  });
   const smoothOpacity = useSpring(opacity, { stiffness: 80, damping: 35 });
   const smoothScale = useSpring(scale, { stiffness: 50, damping: 45 });
   const smoothBlur = useSpring(blur, { stiffness: 70, damping: 30 });
@@ -84,7 +94,6 @@ export function CinematicHero() {
         <div className="absolute inset-0 bg-radial-gradient from-transparent via-transparent to-black/50" />
       </motion.div>
 
-
       {/* Hero Content */}
       <motion.div
         style={{
@@ -101,21 +110,21 @@ export function CinematicHero() {
             opacity: 0,
             y: -100,
             rotateX: -45,
-            filter: 'blur(20px)'
+            filter: "blur(20px)",
           }}
           animate={{
             scale: 1,
             opacity: 1,
             y: 0,
             rotateX: 0,
-            filter: 'blur(0px)',
+            filter: "blur(0px)",
           }}
           transition={{
             duration: 2,
             delay: 0.5,
             ease: [0.16, 1, 0.3, 1],
             scale: {
-              type: 'spring',
+              type: "spring",
               stiffness: 200,
               damping: 20,
               delay: 0.8,
@@ -124,7 +133,7 @@ export function CinematicHero() {
           whileHover={{
             scale: 1.05,
             rotateY: 5,
-            transition: { duration: 0.6, ease: 'easeOut' },
+            transition: { duration: 0.6, ease: "easeOut" },
           }}
           className="mb-16 perspective-1000"
         >
@@ -138,14 +147,14 @@ export function CinematicHero() {
 
         {/* Tagline with Cinematic Typography */}
         <motion.div
-          initial={{ opacity: 0, y: 50, filter: 'blur(10px)' }}
-          animate={{ opacity: 1, y: 0, filter: 'blur(0px)' }}
+          initial={{ opacity: 0, y: 50, filter: "blur(10px)" }}
+          animate={{ opacity: 1, y: 0, filter: "blur(0px)" }}
           transition={{ delay: 1.5, duration: 1.2, ease: [0.16, 1, 0.3, 1] }}
           className="mb-12 space-y-6"
         >
           <h1
             className={`text-3xl md:text-4xl lg:text-5xl font-light text-white mb-6 ${
-              language === 'ar' ? 'font-arabic' : 'font-barlow'
+              language === "ar" ? "font-arabic" : "font-barlow"
             } text-shadow-strong leading-tight tracking-wide`}
           >
             <motion.span
@@ -154,7 +163,9 @@ export function CinematicHero() {
               transition={{ delay: 2, duration: 0.8 }}
               className="block"
             >
-              {language === 'ar' ? 'حلول رقمية متميزة' : 'Premium Digital Solutions'}
+              {language === "ar"
+                ? "حلول رقمية متميزة"
+                : "Premium Digital Solutions"}
             </motion.span>
           </h1>
 
@@ -163,12 +174,14 @@ export function CinematicHero() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 2.3, duration: 0.8 }}
             className={`text-xl md:text-2xl text-white/90 max-w-3xl mx-auto ${
-              language === 'ar' ? 'font-arabic leading-relaxed' : 'leading-relaxed'
+              language === "ar"
+                ? "font-arabic leading-relaxed"
+                : "leading-relaxed"
             } text-shadow-soft`}
           >
-            {language === 'ar'
-              ? 'في عالم مليء بالورود، كن صبارة!'
-              : 'In a world full of flowers, be a cactus!'}
+            {language === "ar"
+              ? "في عالم مليء بالورود، كن صبارة!"
+              : "In a world full of flowers, be a cactus!"}
           </motion.p>
         </motion.div>
 
@@ -183,15 +196,17 @@ export function CinematicHero() {
             whileHover={{
               scale: 1.08,
               y: -4,
-              boxShadow: '0 20px 40px rgba(90, 155, 131, 0.4)',
+              boxShadow: "0 20px 40px rgba(90, 155, 131, 0.4)",
             }}
             whileTap={{ scale: 0.95 }}
-            onClick={() => onModalOpen('services')}
+            onClick={() => onModalOpen("services")}
             className="group relative bg-gradient-to-r from-jaded-green-600 to-jaded-green-400 text-white font-semibold px-10 py-5 rounded-2xl shadow-2xl hover:shadow-jaded-green-500/40 transition-all duration-500 overflow-hidden"
           >
             <div className="absolute inset-0 bg-gradient-to-r from-jaded-green-400 to-jaded-green-300 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
-            <span className={`relative z-10 ${language === 'ar' ? 'font-arabic' : ''} text-lg`}>
-              {language === 'ar' ? 'اكتشف خدماتنا' : 'Discover Our Services'}
+            <span
+              className={`relative z-10 ${language === "ar" ? "font-arabic" : ""} text-lg`}
+            >
+              {language === "ar" ? "اكتشف خدماتنا" : "Discover Our Services"}
             </span>
           </motion.button>
 
@@ -199,19 +214,20 @@ export function CinematicHero() {
             whileHover={{
               scale: 1.08,
               y: -4,
-              backgroundColor: 'rgba(255, 255, 255, 0.15)',
+              backgroundColor: "rgba(255, 255, 255, 0.15)",
             }}
             whileTap={{ scale: 0.95 }}
-            onClick={() => onModalOpen('contact')}
+            onClick={() => onModalOpen("contact")}
             className="group glass-strong text-white font-semibold px-10 py-5 rounded-2xl backdrop-blur-xl border border-white/30 hover:border-white/50 transition-all duration-500"
           >
-            <span className={`${language === 'ar' ? 'font-arabic' : ''} text-lg`}>
-              {language === 'ar' ? 'تواصل معنا' : 'Contact Us'}
+            <span
+              className={`${language === "ar" ? "font-arabic" : ""} text-lg`}
+            >
+              {language === "ar" ? "تواصل معنا" : "Contact Us"}
             </span>
           </motion.button>
         </motion.div>
       </motion.div>
-
     </section>
   );
 }

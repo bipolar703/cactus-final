@@ -1,9 +1,16 @@
-import { motion, useScroll, useTransform, useMotionValue, useSpring } from 'framer-motion';
-import { useLanguage } from '@/hooks/use-language';
-import { useOptimizedIntersection } from '@/utils/cache-manager';
-import { ExternalLink, ChevronLeft, ChevronRight, ArrowUpRight } from 'lucide-react';
-import { useRef, useState, useEffect, useCallback } from 'react';
-import { portfolioProjects } from '@/data/portfolio';
+import { portfolioProjects } from "@/data/portfolio";
+import { useLanguage } from "@/hooks/use-language";
+import { useOptimizedIntersection } from "@/utils/cache-manager";
+import {
+    motion,
+    useScroll,
+    useTransform
+} from "framer-motion";
+import {
+    ArrowUpRight, ChevronLeft,
+    ChevronRight, ExternalLink
+} from "lucide-react";
+import { useCallback, useEffect, useRef, useState } from "react";
 
 export function ModernPortfolioSection() {
   const { language } = useLanguage();
@@ -17,10 +24,10 @@ export function ModernPortfolioSection() {
 
   const { scrollYProgress } = useScroll({
     target: containerRef,
-    offset: ['start end', 'end start'],
+    offset: ["start end", "end start"],
   });
 
-  const y = useTransform(scrollYProgress, [0, 1], ['0%', '-20%']);
+  const y = useTransform(scrollYProgress, [0, 1], ["0%", "-20%"]);
 
   // Use actual portfolio projects
   const projects = portfolioProjects;
@@ -54,7 +61,7 @@ export function ModernPortfolioSection() {
 
     container.scrollTo({
       left: targetScroll,
-      behavior: 'smooth'
+      behavior: "smooth",
     });
   };
 
@@ -72,9 +79,9 @@ export function ModernPortfolioSection() {
   useEffect(() => {
     const container = scrollContainerRef.current;
     if (container) {
-      container.addEventListener('scroll', handleScroll);
+      container.addEventListener("scroll", handleScroll);
       handleScroll(); // Initial check
-      return () => container.removeEventListener('scroll', handleScroll);
+      return () => container.removeEventListener("scroll", handleScroll);
     }
   }, [handleScroll]);
 
@@ -96,11 +103,16 @@ export function ModernPortfolioSection() {
         <div className="absolute bottom-20 right-10 w-48 h-48 bg-jaded-green-300 rounded-full blur-3xl" />
       </div>
 
-      <div className="max-w-7xl mx-auto relative" ref={ref as React.RefObject<HTMLDivElement>}>
+      <div
+        className="max-w-7xl mx-auto relative"
+        ref={ref as React.RefObject<HTMLDivElement>}
+      >
         {/* Section Header */}
         <motion.div
           initial={{ opacity: 0, y: 40 }}
-          animate={isIntersecting ? { opacity: 1, y: 0 } : { opacity: 0, y: 40 }}
+          animate={
+            isIntersecting ? { opacity: 1, y: 0 } : { opacity: 0, y: 40 }
+          }
           transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
           className="text-center mb-16"
         >
@@ -113,20 +125,22 @@ export function ModernPortfolioSection() {
 
           <h2
             className={`text-4xl md:text-5xl lg:text-6xl font-light text-gray-900 mb-6 ${
-              language === 'ar' ? 'font-arabic leading-tight' : 'font-barlow leading-tight'
+              language === "ar"
+                ? "font-arabic leading-tight"
+                : "font-barlow leading-tight"
             }`}
           >
-            {language === 'ar' ? 'معرض أعمالنا' : 'Our Portfolio'}
+            {language === "ar" ? "معرض أعمالنا" : "Our Portfolio"}
           </h2>
 
           <p
             className={`text-lg md:text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed text-center ${
-              language === 'ar' ? 'font-arabic' : ''
+              language === "ar" ? "font-arabic" : ""
             }`}
           >
-            {language === 'ar'
-              ? 'مجموعة مختارة من مشاريعنا المتميزة التي تعكس خبرتنا وإبداعنا'
-              : 'A curated selection of our exceptional projects showcasing our expertise and creativity'}
+            {language === "ar"
+              ? "مجموعة مختارة من مشاريعنا المتميزة التي تعكس خبرتنا وإبداعنا"
+              : "A curated selection of our exceptional projects showcasing our expertise and creativity"}
           </p>
         </motion.div>
 
@@ -157,31 +171,36 @@ export function ModernPortfolioSection() {
           <div
             ref={scrollContainerRef}
             className="flex gap-6 md:gap-8 overflow-x-auto pb-8 scrollbar-hide touch-pan-x px-4 scroll-smooth snap-x snap-mandatory"
-            style={{ scrollbarWidth: 'none' }}
+            style={{ scrollbarWidth: "none" }}
           >
             {projects.map((project, index) => (
               <motion.div
                 key={project.id}
                 initial={{ opacity: 0, y: 60, scale: 0.95 }}
-                animate={isIntersecting ? { opacity: 1, y: 0, scale: 1 } : { opacity: 0, y: 60, scale: 0.95 }}
+                animate={
+                  isIntersecting
+                    ? { opacity: 1, y: 0, scale: 1 }
+                    : { opacity: 0, y: 60, scale: 0.95 }
+                }
                 transition={{
                   delay: index * 0.15,
                   duration: 0.8,
                   ease: [0.16, 1, 0.3, 1],
                 }}
                 className="group/card cursor-pointer flex-shrink-0 snap-start"
-                onClick={() => window.open(project.url, '_blank')}
+                onClick={() => window.open(project.url, "_blank")}
                 onMouseEnter={() => setHoveredIndex(index)}
                 onMouseLeave={() => setHoveredIndex(null)}
               >
-                <div className={`relative bg-white rounded-3xl overflow-hidden shadow-xl border border-gray-100/50 w-80 sm:w-96 transition-all duration-700 ${hoveredIndex === index ? 'scale-[1.03] -translate-y-2 shadow-2xl' : ''}`}
+                <div
+                  className={`relative bg-white rounded-3xl overflow-hidden shadow-xl border border-gray-100/50 w-80 sm:w-96 transition-all duration-700 ${hoveredIndex === index ? "scale-[1.03] -translate-y-2 shadow-2xl" : ""}`}
                 >
                   {/* Project Image */}
                   <div className="relative h-56 sm:h-64 overflow-hidden">
                     <img
                       src={project.image}
                       alt={project.title}
-                      className={`w-full h-full object-cover transition-transform duration-1000 ${hoveredIndex === index ? 'scale-110' : ''}`}
+                      className={`w-full h-full object-cover transition-transform duration-1000 ${hoveredIndex === index ? "scale-110" : ""}`}
                       loading="lazy"
                     />
                     {/* Gradient Overlay */}
@@ -193,7 +212,9 @@ export function ModernPortfolioSection() {
                       </span>
                     </div>
                     {/* Visit Website Button (hidden on mobile) */}
-                    <div className={`absolute top-4 right-4 opacity-0 group-hover/card:opacity-100 transition-all duration-300 transform translate-y-2 group-hover/card:translate-y-0 hidden sm:block`}>
+                    <div
+                      className={`absolute top-4 right-4 opacity-0 group-hover/card:opacity-100 transition-all duration-300 transform translate-y-2 group-hover/card:translate-y-0 hidden sm:block`}
+                    >
                       <div className="bg-jaded-green-600 hover:bg-jaded-green-700 text-white p-2.5 rounded-full shadow-lg backdrop-blur-sm">
                         <ArrowUpRight className="w-4 h-4" />
                       </div>
@@ -211,8 +232,16 @@ export function ModernPortfolioSection() {
                         </span>
                       ))}
                     </div>
-                    <h3 className={`text-gray-900 text-xl font-bold mb-2 ${language === 'ar' ? 'font-arabic' : 'font-barlow'}`}>{project.title}</h3>
-                    <p className={`text-gray-600 text-sm leading-relaxed line-clamp-2 ${language === 'ar' ? 'font-arabic' : ''}`}>{project.description}</p>
+                    <h3
+                      className={`text-gray-900 text-xl font-bold mb-2 ${language === "ar" ? "font-arabic" : "font-barlow"}`}
+                    >
+                      {project.title}
+                    </h3>
+                    <p
+                      className={`text-gray-600 text-sm leading-relaxed line-clamp-2 ${language === "ar" ? "font-arabic" : ""}`}
+                    >
+                      {project.description}
+                    </p>
                   </div>
                 </div>
               </motion.div>
@@ -227,8 +256,8 @@ export function ModernPortfolioSection() {
                   onClick={() => scrollToProject(index)}
                   className={`relative transition-all duration-300 focus:outline-none ${
                     index === currentIndex
-                      ? 'w-8 h-2 bg-jaded-green-500 rounded-full'
-                      : 'w-2 h-2 bg-gray-300 hover:bg-gray-400 rounded-full hover:scale-125'
+                      ? "w-8 h-2 bg-jaded-green-500 rounded-full"
+                      : "w-2 h-2 bg-gray-300 hover:bg-gray-400 rounded-full hover:scale-125"
                   }`}
                   aria-label={`Go to project ${index + 1}: ${projects[index].title}`}
                 >
@@ -236,7 +265,11 @@ export function ModernPortfolioSection() {
                     <motion.div
                       layoutId="activeIndicator"
                       className="absolute inset-0 bg-jaded-green-500 rounded-full"
-                      transition={{ type: "spring", stiffness: 300, damping: 30 }}
+                      transition={{
+                        type: "spring",
+                        stiffness: 300,
+                        damping: 30,
+                      }}
                     />
                   )}
                 </button>
@@ -245,21 +278,31 @@ export function ModernPortfolioSection() {
           </div>
           {/* Scroll Hint (always visible) */}
           <div className="text-center mt-4">
-            <p className={`text-sm text-gray-400 ${language === 'ar' ? 'font-arabic' : 'font-barlow'}`}>{language === 'ar' ? 'اسحب أو استخدم الأسهم للتنقل' : 'Scroll or use arrows to navigate'}</p>
+            <p
+              className={`text-sm text-gray-400 ${language === "ar" ? "font-arabic" : "font-barlow"}`}
+            >
+              {language === "ar"
+                ? "اسحب أو استخدم الأسهم للتنقل"
+                : "Scroll or use arrows to navigate"}
+            </p>
           </div>
         </motion.div>
         {/* CTA Button (hidden on mobile) */}
         <motion.div
           initial={{ opacity: 0, y: 40 }}
-          animate={isIntersecting ? { opacity: 1, y: 0 } : { opacity: 0, y: 40 }}
+          animate={
+            isIntersecting ? { opacity: 1, y: 0 } : { opacity: 0, y: 40 }
+          }
           transition={{ delay: 0.8, duration: 0.8 }}
           className="hidden sm:block text-center mt-16"
         >
           <button
-            onClick={() => window.open(projects[currentIndex].url, '_blank')}
+            onClick={() => window.open(projects[currentIndex].url, "_blank")}
             className="bg-jaded-green-600 hover:bg-jaded-green-700 text-white px-8 py-4 rounded-full font-medium text-lg shadow-lg hover:shadow-xl transform hover:scale-105 transition-all duration-300"
           >
-            {language === 'ar' ? 'عرض المحفظة الكاملة' : 'View Complete Portfolio'}
+            {language === "ar"
+              ? "عرض المحفظة الكاملة"
+              : "View Complete Portfolio"}
             <ExternalLink className="w-5 h-5 ml-2 inline" />
           </button>
         </motion.div>

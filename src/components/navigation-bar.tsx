@@ -1,8 +1,8 @@
-import { Link, useLocation } from 'wouter';
-import { useState, useEffect } from 'react';
-import { Menu, X, Globe } from 'lucide-react';
-import { useLanguage } from '@/hooks/use-language';
-import { motion, AnimatePresence } from 'framer-motion';
+import { useLanguage } from "@/hooks/use-language";
+import { AnimatePresence, motion } from "framer-motion";
+import { Globe, Menu, X } from "lucide-react";
+import { useEffect, useState } from "react";
+import { Link, useLocation } from "wouter";
 
 export function NavigationBar() {
   const [location] = useLocation();
@@ -11,25 +11,25 @@ export function NavigationBar() {
   const [isVisible, setIsVisible] = useState(true);
   const [lastScrollY, setLastScrollY] = useState(0);
   const { language, toggleLanguage, isLoading } = useLanguage();
-  
+
   // Check if we're on the home page
-  const isHomePage = location === '/';
-  
+  const isHomePage = location === "/";
+
   const navLinks = [
-    { label: { en: 'Home', ar: 'الرئيسية' }, href: '/' },
-    { label: { en: 'About', ar: 'من نحن' }, href: '/about' },
-    { label: { en: 'Services', ar: 'خدماتنا' }, href: '/services' },
-    { label: { en: 'Portfolio', ar: 'أعمالنا' }, href: '/portfolio' },
-    { label: { en: 'Contact', ar: 'تواصل معنا' }, href: '/contact' },
+    { label: { en: "Home", ar: "الرئيسية" }, href: "/" },
+    { label: { en: "About", ar: "من نحن" }, href: "/about" },
+    { label: { en: "Services", ar: "خدماتنا" }, href: "/services" },
+    { label: { en: "Portfolio", ar: "أعمالنا" }, href: "/portfolio" },
+    { label: { en: "Contact", ar: "تواصل معنا" }, href: "/contact" },
   ];
 
   useEffect(() => {
     const handleScroll = () => {
       const currentScrollY = window.scrollY;
-      
+
       // Set scrolled state for background opacity
       setIsScrolled(currentScrollY > 100);
-      
+
       // Always show navbar, but with different opacity in hero
       if (currentScrollY < 100) {
         setIsVisible(true); // Show with transparent background in hero
@@ -42,48 +42,48 @@ export function NavigationBar() {
       else if (currentScrollY > lastScrollY && currentScrollY > 200) {
         setIsVisible(false);
       }
-      
+
       setLastScrollY(currentScrollY);
     };
 
-    window.addEventListener('scroll', handleScroll, { passive: true });
-    return () => window.removeEventListener('scroll', handleScroll);
+    window.addEventListener("scroll", handleScroll, { passive: true });
+    return () => window.removeEventListener("scroll", handleScroll);
   }, [lastScrollY]);
 
   return (
-    <motion.nav 
+    <motion.nav
       initial={{ y: -100, opacity: 0 }}
-      animate={{ 
+      animate={{
         y: isVisible ? 0 : -100,
-        opacity: isVisible ? 1 : 0
+        opacity: isVisible ? 1 : 0,
       }}
-      transition={{ 
-        duration: 0.4, 
+      transition={{
+        duration: 0.4,
         ease: [0.16, 1, 0.3, 1],
-        opacity: { duration: 0.3 }
+        opacity: { duration: 0.3 },
       }}
       className={`w-full fixed top-0 left-0 z-50 transition-all duration-500 ${
         isScrolled || !isHomePage
-          ? 'bg-white/95 backdrop-blur-xl border-b border-gray-200 shadow-lg' 
-          : 'bg-transparent backdrop-blur-sm border-b border-white/10'
+          ? "bg-white/95 backdrop-blur-xl border-b border-gray-200 shadow-lg"
+          : "bg-transparent backdrop-blur-sm border-b border-white/10"
       }`}
     >
       <div className="max-w-7xl mx-auto flex items-center justify-between px-4 lg:px-6 py-3">
         {/* Logo */}
         <Link href="/" className="flex items-center gap-3 shrink-0 group">
-          <motion.img 
-            src="/assets/Icon.png" 
-            alt="Cactus Media Group" 
-            className="w-10 h-10 object-contain transition-transform duration-300 group-hover:scale-110" 
+          <motion.img
+            src="/assets/Icon.png"
+            alt="Cactus Media Group"
+            className="w-10 h-10 object-contain transition-transform duration-300 group-hover:scale-110"
             whileHover={{ rotate: 5 }}
           />
-          <motion.span 
+          <motion.span
             className={`hidden sm:block text-xl font-bold transition-colors duration-300 ${
-              isScrolled || !isHomePage ? 'text-jaded-green-700' : 'text-white'
-            } ${language === 'ar' ? 'font-arabic' : 'font-barlow'}`}
+              isScrolled || !isHomePage ? "text-jaded-green-700" : "text-white"
+            } ${language === "ar" ? "font-arabic" : "font-barlow"}`}
             whileHover={{ scale: 1.05 }}
           >
-            {language === 'ar' ? 'كاكتوس ميديا' : 'Cactus Media'}
+            {language === "ar" ? "كاكتوس ميديا" : "Cactus Media"}
           </motion.span>
         </Link>
 
@@ -99,14 +99,14 @@ export function NavigationBar() {
               <Link
                 href={link.href}
                 className={`relative text-base font-medium px-4 py-2 rounded-xl transition-all duration-300 group ${
-                  location === link.href 
+                  location === link.href
                     ? isScrolled || !isHomePage
-                      ? 'bg-jaded-green-100 text-jaded-green-800 shadow-md' 
-                      : 'bg-white/20 text-white shadow-md'
+                      ? "bg-jaded-green-100 text-jaded-green-800 shadow-md"
+                      : "bg-white/20 text-white shadow-md"
                     : isScrolled || !isHomePage
-                      ? 'text-gray-700 hover:bg-jaded-green-50 hover:text-jaded-green-700'
-                      : 'text-white/90 hover:bg-white/10 hover:text-white'
-                } ${language === 'ar' ? 'font-arabic' : 'font-barlow'}`}
+                      ? "text-gray-700 hover:bg-jaded-green-50 hover:text-jaded-green-700"
+                      : "text-white/90 hover:bg-white/10 hover:text-white"
+                } ${language === "ar" ? "font-arabic" : "font-barlow"}`}
               >
                 {link.label[language]}
                 {location === link.href && (
@@ -131,13 +131,15 @@ export function NavigationBar() {
             whileTap={{ scale: 0.95 }}
             className={`hidden lg:flex items-center gap-2 px-3 py-2 rounded-xl font-medium text-sm transition-all duration-300 border ${
               isScrolled || !isHomePage
-                ? 'bg-white text-gray-800 border-gray-200 shadow-md hover:bg-jaded-green-50 hover:border-jaded-green-200' 
-                : 'bg-white/20 text-white border-white/30 hover:bg-white/30 hover:border-white/50'
-            } ${isLoading ? 'opacity-50 cursor-not-allowed' : 'cursor-pointer'}`}
+                ? "bg-white text-gray-800 border-gray-200 shadow-md hover:bg-jaded-green-50 hover:border-jaded-green-200"
+                : "bg-white/20 text-white border-white/30 hover:bg-white/30 hover:border-white/50"
+            } ${isLoading ? "opacity-50 cursor-not-allowed" : "cursor-pointer"}`}
           >
-            <Globe className={`w-4 h-4 ${isLoading ? 'animate-spin' : ''}`} />
-            <span className={`${language === 'ar' ? 'font-arabic' : 'font-barlow'}`}>
-              {language === 'ar' ? 'English' : 'العربية'}
+            <Globe className={`w-4 h-4 ${isLoading ? "animate-spin" : ""}`} />
+            <span
+              className={`${language === "ar" ? "font-arabic" : "font-barlow"}`}
+            >
+              {language === "ar" ? "English" : "العربية"}
             </span>
           </motion.button>
 
@@ -157,9 +159,13 @@ export function NavigationBar() {
                   exit={{ rotate: 90, opacity: 0 }}
                   transition={{ duration: 0.2 }}
                 >
-                  <X className={`w-6 h-6 transition-colors duration-300 ${
-                    isScrolled || !isHomePage ? 'text-jaded-green-700' : 'text-white'
-                  }`} />
+                  <X
+                    className={`w-6 h-6 transition-colors duration-300 ${
+                      isScrolled || !isHomePage
+                        ? "text-jaded-green-700"
+                        : "text-white"
+                    }`}
+                  />
                 </motion.div>
               ) : (
                 <motion.div
@@ -169,9 +175,13 @@ export function NavigationBar() {
                   exit={{ rotate: -90, opacity: 0 }}
                   transition={{ duration: 0.2 }}
                 >
-                  <Menu className={`w-6 h-6 transition-colors duration-300 ${
-                    isScrolled || !isHomePage ? 'text-jaded-green-700' : 'text-white'
-                  }`} />
+                  <Menu
+                    className={`w-6 h-6 transition-colors duration-300 ${
+                      isScrolled || !isHomePage
+                        ? "text-jaded-green-700"
+                        : "text-white"
+                    }`}
+                  />
                 </motion.div>
               )}
             </AnimatePresence>
@@ -184,7 +194,7 @@ export function NavigationBar() {
         {mobileOpen && (
           <motion.div
             initial={{ opacity: 0, height: 0 }}
-            animate={{ opacity: 1, height: 'auto' }}
+            animate={{ opacity: 1, height: "auto" }}
             exit={{ opacity: 0, height: 0 }}
             transition={{ duration: 0.3, ease: [0.16, 1, 0.3, 1] }}
             className="lg:hidden bg-slate-900 border-t border-gray-700 shadow-xl"
@@ -201,16 +211,16 @@ export function NavigationBar() {
                     href={link.href}
                     onClick={() => setMobileOpen(false)}
                     className={`block text-lg font-medium px-4 py-3 rounded-xl transition-all duration-300 ${
-                      location === link.href 
-                        ? 'bg-jaded-green-600 text-white shadow-md' 
-                        : 'text-white hover:bg-jaded-green-600/20 hover:text-jaded-green-400 active:bg-jaded-green-600/30'
-                    } ${language === 'ar' ? 'font-arabic text-center' : 'font-barlow text-left'}`}
+                      location === link.href
+                        ? "bg-jaded-green-600 text-white shadow-md"
+                        : "text-white hover:bg-jaded-green-600/20 hover:text-jaded-green-400 active:bg-jaded-green-600/30"
+                    } ${language === "ar" ? "font-arabic text-center" : "font-barlow text-left"}`}
                   >
                     {link.label[language]}
                   </Link>
                 </motion.div>
               ))}
-              
+
               {/* Mobile Language Toggle */}
               <motion.div
                 initial={{ opacity: 0, y: 20 }}
@@ -224,16 +234,22 @@ export function NavigationBar() {
                   whileHover={{ scale: 1.02 }}
                   whileTap={{ scale: 0.98 }}
                   className={`w-full flex items-center justify-center gap-3 px-4 py-3 rounded-xl font-medium text-lg transition-all duration-300 border ${
-                    isLoading ? 'opacity-50 cursor-not-allowed' : 'cursor-pointer'
+                    isLoading
+                      ? "opacity-50 cursor-not-allowed"
+                      : "cursor-pointer"
                   } bg-gray-800 text-white border-gray-600 hover:bg-jaded-green-600/20 hover:text-jaded-green-400 hover:border-jaded-green-500`}
                 >
-                  <Globe className={`w-5 h-5 ${isLoading ? 'animate-spin' : ''}`} />
-                  <span className={`${language === 'ar' ? 'font-arabic' : 'font-barlow'}`}>
-                    {language === 'ar' ? 'English' : 'العربية'}
+                  <Globe
+                    className={`w-5 h-5 ${isLoading ? "animate-spin" : ""}`}
+                  />
+                  <span
+                    className={`${language === "ar" ? "font-arabic" : "font-barlow"}`}
+                  >
+                    {language === "ar" ? "English" : "العربية"}
                   </span>
                 </motion.button>
               </motion.div>
-              
+
               {/* Mobile CTA */}
               <motion.div
                 initial={{ opacity: 0, y: 20 }}
@@ -246,7 +262,7 @@ export function NavigationBar() {
                   onClick={() => setMobileOpen(false)}
                   className="block w-full text-center bg-gradient-to-r from-jaded-green-600 to-jaded-green-500 text-white font-semibold py-3 px-6 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105"
                 >
-                  {language === 'ar' ? 'ابدأ مشروعك' : 'Start Your Project'}
+                  {language === "ar" ? "ابدأ مشروعك" : "Start Your Project"}
                 </Link>
               </motion.div>
             </div>
