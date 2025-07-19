@@ -46,9 +46,9 @@ export default function Home() {
 
   // Preload critical assets
   const criticalAssets = [
-    '/assets/Logo-Whirte-Png_1751779171310.png',
-    '/assets/Logo-Png_1751779171296.png',
-    '/assets/Webpage-Banner_1751779171234.png',
+    '/assets/Logo.png',
+    '/assets/wLogo.png',
+    '/assets/Webpage-Banner.png',
   ];
   const assetsLoaded = useResourcePreload(criticalAssets);
 

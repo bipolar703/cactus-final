@@ -1031,6 +1031,16 @@ html, body {
     background-clip: text;
   }
 
+  /* Dark gradient for white backgrounds */
+  .gradient-text-dark {
+    background: linear-gradient(135deg, #000000 0%, #00967d 50%, #000000 100%);
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-size: 200% 200%;
+    animation: gradient-shift 3s ease infinite;
+  }
+
   /* Keyframes */
   @keyframes fadeIn {
     0% {

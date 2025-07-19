@@ -42,7 +42,7 @@ export function ModernAboutSection() {
   ];
 
   return (
-    <section ref={containerRef} className="relative py-24 px-6 sm:px-8 bg-white overflow-hidden -mt-1">
+    <section ref={containerRef} className="relative py-24 px-6 sm:px-8 bg-white overflow-hidden -mt-1 text-black">
       {/* Subtle background pattern */}
       <div className="absolute inset-0 opacity-[0.02]">
         <div className="absolute inset-0" style={{
@@ -77,13 +77,13 @@ export function ModernAboutSection() {
             className="h-1 bg-gradient-to-r from-jaded-green-500 to-gold-500 rounded-full mx-auto mb-8"
           />
           
-          <h2 className={`text-5xl md:text-6xl lg:text-7xl font-bold gradient-text mb-6 ${
+          <h2 className={`text-5xl md:text-6xl lg:text-7xl font-bold gradient-text-dark mb-6 ${
             language === 'ar' ? 'font-arabic' : 'font-poppins'
           }`}>
             {language === 'ar' ? 'من نحن' : 'About Us'}
           </h2>
           
-          <p className={`text-xl md:text-2xl text-white/80 max-w-4xl mx-auto leading-relaxed ${
+          <p className={`text-xl md:text-2xl text-gray-700 max-w-4xl mx-auto leading-relaxed ${
             language === 'ar' ? 'font-arabic' : ''
           }`}>
             {language === 'ar'
@@ -111,11 +111,11 @@ export function ModernAboutSection() {
                 initial={{ scale: 0 }}
                 animate={isInView ? { scale: 1 } : { scale: 0 }}
                 transition={{ duration: 0.8, delay: 0.5 + index * 0.1, type: "spring" }}
-                className="text-4xl md:text-5xl font-bold gradient-text mb-2"
+                className="text-4xl md:text-5xl font-bold gradient-text-dark mb-2"
               >
                 {stat.number}
               </motion.div>
-              <p className={`text-white/70 font-medium ${language === 'ar' ? 'font-arabic' : ''}`}>
+              <p className={`text-gray-600 font-medium ${language === 'ar' ? 'font-arabic' : ''}`}>
                 {stat.label}
               </p>
             </motion.div>
@@ -133,13 +133,13 @@ export function ModernAboutSection() {
           >
             <div className="space-y-8">
               <div>
-                <h3 className={`text-3xl md:text-4xl font-bold text-white mb-6 ${
+                <h3 className={`text-3xl md:text-4xl font-bold text-gray-900 mb-6 ${
                   language === 'ar' ? 'font-arabic text-right' : 'font-poppins'
                 }`}>
                   {language === 'ar' ? 'رؤيتنا للمستقبل الرقمي' : 'Our Vision for Digital Future'}
                 </h3>
                 
-                <p className={`text-lg text-white/80 leading-relaxed mb-8 ${
+                <p className={`text-lg text-gray-700 leading-relaxed mb-8 ${
                   language === 'ar' ? 'font-arabic text-right' : ''
                 }`}>
                   {language === 'ar'
@@ -162,7 +162,7 @@ export function ModernAboutSection() {
                       className="flex items-center gap-3"
                     >
                       <CheckCircle className="w-6 h-6 text-jaded-green-400 flex-shrink-0" />
-                      <span className={`text-white/90 ${language === 'ar' ? 'font-arabic' : ''}`}>
+                      <span className={`text-gray-800 ${language === 'ar' ? 'font-arabic' : ''}`}>
                         {point}
                       </span>
                     </motion.div>
@@ -204,12 +204,12 @@ export function ModernAboutSection() {
                     </div>
                     
                     <div className="flex-1">
-                      <h4 className={`text-xl font-bold text-white mb-3 group-hover:text-jaded-green-400 transition-colors ${
+                      <h4 className={`text-xl font-bold text-gray-900 mb-3 group-hover:text-jaded-green-400 transition-colors ${
                         language === 'ar' ? 'font-arabic text-right' : 'font-poppins'
                       }`}>
                         {value.title}
                       </h4>
-                      <p className={`text-white/70 leading-relaxed ${
+                      <p className={`text-gray-600 leading-relaxed ${
                         language === 'ar' ? 'font-arabic text-right' : ''
                       }`}>
                         {value.desc}

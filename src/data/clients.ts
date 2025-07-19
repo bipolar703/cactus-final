@@ -14,13 +14,13 @@ export const clientLogos = [
   {
     id: 3,
     name: 'Bank of Jordan',
-    logo: 'https://www.bankofjourdan.com/sites/default/files/2023-03/BOJ%20Logo%20EN.png',
+    logo: 'https://upload.wikimedia.org/wikipedia/commons/thumb/a/a4/Bank_of_Jordan_logo.svg/200px-Bank_of_Jordan_logo.svg.png',
     category: 'Banking'
   },
   {
     id: 4,
     name: 'Jordan Tourism Board',
-    logo: 'https://international.visitjordan.com/Portals/0/logo.png',
+    logo: 'https://upload.wikimedia.org/wikipedia/commons/thumb/d/dd/Jordan_Tourism_Board_logo.svg/200px-Jordan_Tourism_Board_logo.svg.png',
     category: 'Tourism'
   },
   {
@@ -62,13 +62,13 @@ export const clientLogos = [
   {
     id: 11,
     name: 'Abdali Mall',
-    logo: 'https://www.abdalimall.jo/images/logo.png',
+    logo: 'https://upload.wikimedia.org/wikipedia/commons/thumb/2/2a/Abdali_Mall_logo.svg/200px-Abdali_Mall_logo.svg.png',
     category: 'Shopping'
   },
   {
     id: 12,
     name: 'Jordan University',
-    logo: 'https://www.ju.edu.jo/images/logo-en.png',
+    logo: 'https://upload.wikimedia.org/wikipedia/commons/thumb/1/1a/University_of_Jordan_logo.svg/200px-University_of_Jordan_logo.svg.png',
     category: 'Education'
   }
 ];
