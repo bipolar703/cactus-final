@@ -10,7 +10,7 @@ export const initializeVercelAnalytics = async () => {
       const { injectSpeedInsights } = await import('@vercel/speed-insights');
       injectSpeedInsights();
     } catch (error) {
-      console.warn('Vercel Speed Insights not available:', error);
+      // Vercel Speed Insights not available in development
     }
   }
 };
@@ -51,9 +51,9 @@ export const registerServiceWorker = async () => {
   if ('serviceWorker' in navigator && import.meta.env.PROD) {
     try {
       const registration = await navigator.serviceWorker.register('/sw.js');
-      console.log('Service Worker registered:', registration);
+      // Service Worker registered successfully
     } catch (error) {
-      console.warn('Service Worker registration failed:', error);
+      // Service Worker registration failed
     }
   }
 };

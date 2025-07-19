@@ -154,7 +154,7 @@ export const optimizeFontsForMobile = () => {
     
     // Add fallback for font loading
     link.onerror = () => {
-      console.warn(`Failed to load font: ${family}`);
+      // Font loading failed, using fallback
     };
     
     document.head.appendChild(link);

@@ -44,11 +44,12 @@ export function ModernAboutSection() {
   ];
 
   return (
-    <section ref={containerRef} className="relative py-24 px-6 sm:px-8 bg-white overflow-hidden -mt-1 text-black">
-      {/* Subtle background pattern */}
-      <div className="absolute inset-0 opacity-[0.02]">
+    <section ref={containerRef} className="relative py-24 px-6 sm:px-8 bg-gray-900 overflow-hidden -mt-1 text-white">
+      {/* Dark sophisticated background */}
+      <div className="absolute inset-0">
+        <div className="absolute inset-0 bg-gradient-to-br from-gray-900 via-gray-800 to-black" />
         <div className="absolute inset-0" style={{
-          backgroundImage: `url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23000000' fill-opacity='1'%3E%3Ccircle cx='30' cy='30' r='1'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E")`
+          backgroundImage: `url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.02'%3E%3Ccircle cx='30' cy='30' r='1'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E")`
         }} />
 
         <motion.div
@@ -60,7 +61,7 @@ export function ModernAboutSection() {
             rotate: { duration: 25, repeat: Infinity, ease: "linear" },
             y: { duration: 3, repeat: Infinity, ease: "easeInOut" }
           }}
-          className="absolute bottom-32 left-16 w-24 h-24 bg-gradient-to-br from-gold-500/10 to-gold-600/10 rounded-lg backdrop-blur-sm"
+          className="absolute bottom-32 left-16 w-24 h-24 bg-gradient-to-br from-jaded-green-500/10 to-jaded-green-600/10 rounded-lg backdrop-blur-sm"
         />
       </div>
 
@@ -79,13 +80,13 @@ export function ModernAboutSection() {
             className="h-1 bg-jaded-green-500 rounded-full mx-auto mb-8"
           />
 
-          <h2 className={`text-5xl md:text-6xl lg:text-7xl font-bold text-black mb-6 ${
+          <h2 className={`text-5xl md:text-6xl lg:text-7xl font-bold text-white mb-6 ${
             language === 'ar' ? 'font-arabic' : 'font-barlow'
           }`}>
             {language === 'ar' ? 'من نحن' : 'About Us'}
           </h2>
 
-          <p className={`text-xl md:text-2xl text-gray-700 max-w-4xl mx-auto leading-relaxed text-center ${
+          <p className={`text-xl md:text-2xl text-gray-300 max-w-4xl mx-auto leading-relaxed text-center ${
             language === 'ar' ? 'font-arabic' : ''
           }`}>
             {language === 'ar'
@@ -106,13 +107,13 @@ export function ModernAboutSection() {
           >
             <div className="space-y-8">
               <div>
-                <h3 className={`text-3xl md:text-4xl font-bold text-gray-900 mb-6 ${
+                <h3 className={`text-3xl md:text-4xl font-bold text-white mb-6 ${
                   language === 'ar' ? 'font-arabic text-center' : 'font-barlow'
                 }`}>
                   {language === 'ar' ? 'رؤيتنا للمستقبل الرقمي' : 'Our Vision for Digital Future'}
                 </h3>
 
-                <p className={`text-lg text-gray-700 leading-relaxed mb-8 ${
+                <p className={`text-lg text-gray-300 leading-relaxed mb-8 ${
                   language === 'ar' ? 'font-arabic text-center' : ''
                 }`}>
                   {language === 'ar'
@@ -135,7 +136,7 @@ export function ModernAboutSection() {
                       className="flex items-center gap-3"
                     >
                       <CheckCircle className="w-6 h-6 text-jaded-green-400 flex-shrink-0" />
-                      <span className={`text-gray-800 ${language === 'ar' ? 'font-arabic' : ''}`}>
+                      <span className={`text-gray-200 ${language === 'ar' ? 'font-arabic' : ''}`}>
                         {point}
                       </span>
                     </motion.div>
@@ -211,7 +212,7 @@ export function ModernAboutSection() {
             <h2 className="text-2xl font-bold text-gray-900">{language === 'ar' ? 'محفظة أعمالنا الكاملة' : 'Our Full Portfolio'}</h2>
           </div>
           {/* TODO: Insert full portfolio content here, or import the portfolio section/modal as needed */}
-          <div className="text-gray-700 text-lg font-barlow">{language === 'ar' ? 'سيتم عرض جميع المشاريع هنا...' : 'All projects will be shown here...'}</div>
+          <div className="text-gray-300 text-lg font-barlow">{language === 'ar' ? 'سيتم عرض جميع المشاريع هنا...' : 'All projects will be shown here...'}</div>
         </div>
       </ModalOverlay>
     </section>

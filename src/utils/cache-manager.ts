@@ -64,7 +64,7 @@ class CacheManager {
           } else {
             // Fallback to fetch for unknown/unsupported types
             link.as = 'fetch';
-            console.warn(`<link rel=preload> uses an unsupported 'as' value for ${url}, falling back to 'fetch'.`);
+            // Using fetch fallback for unsupported preload type
           }
           link.href = url;
           link.onload = () => {
@@ -86,7 +86,7 @@ class CacheManager {
         await cache.add(videoUrl);
         this.set(`video-${videoUrl}`, true);
       } catch (error) {
-        console.warn('Video caching failed:', error);
+        // Video caching not available
       }
     }
   }
@@ -106,7 +106,9 @@ export function useResourcePreload(resources: string[]) {
       .then(() => {
         if (mounted) setIsLoaded(true);
       })
-      .catch(console.warn);
+      .catch(() => {
+        // Resource preloading failed, continuing without cache
+      });
 
     return () => {
       mounted = false;

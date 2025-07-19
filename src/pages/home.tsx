@@ -1,15 +1,14 @@
 import { useState, useRef, useEffect } from 'react';
-import { ScrollAwareLanguageToggle } from '@/components/scroll-aware-language-toggle';
 import { EnhancedModalSystem } from '@/components/enhanced-modal-system';
 import { LoadingScreen } from '@/components/loading-screen';
-import { EnhancedHeroSection } from '@/components/enhanced-hero-section';
+import { ModernHeroSection } from '@/components/modern-hero-section';
+import { ProcessSection } from '@/components/sections/process-section';
 import { ModernAboutSection } from '@/components/sections/modern-about-section';
 import { ModernServicesSection } from '@/components/sections/modern-services-section';
 import { ModernPortfolioSection } from '@/components/sections/modern-portfolio-section';
 import { ModernContactSection } from '@/components/sections/modern-contact-section';
 import { ClientShowcase } from '@/components/client-showcase';
 import { useResourcePreload } from '@/utils/cache-manager';
-import { EnhancedFooter } from '@/components/enhanced-footer';
 import { motion, AnimatePresence } from 'framer-motion';
 
 export default function Home() {
@@ -52,14 +51,12 @@ export default function Home() {
   }, []);
 
   useEffect(() => {
-    const timer = setTimeout(() => {
-      setIsLoading(false);
-    }, 3000);
+    // Loading screen will handle its own timing and resource preloading
     const fallbackTimer = setTimeout(() => {
       setIsLoading(false);
-    }, 5000);
+    }, 3000); // Fallback in case loading screen doesn't complete
+    
     return () => {
-      clearTimeout(timer);
       clearTimeout(fallbackTimer);
     };
   }, []);
@@ -82,6 +79,7 @@ export default function Home() {
   return (
     <>
       <LoadingScreen isVisible={isLoading} onComplete={() => setIsLoading(false)} />
+      <EnhancedModalSystem />
       <div className="relative min-h-screen bg-slate-900">
         {/* Background Gradients for Non-Hero Sections */}
         <div className="fixed inset-0 z-0">
@@ -98,8 +96,6 @@ export default function Home() {
             )}
           </AnimatePresence>
         </div>
-        {/* Language Toggle */}
-        <ScrollAwareLanguageToggle />
         {/* Main Sectioned Content */}
         <main className="relative z-10">
           <motion.div
@@ -108,18 +104,19 @@ export default function Home() {
             animate={{ opacity: 1 }}
             transition={{ duration: 1.8, ease: [0.16, 1, 0.3, 1] }}
           >
-            <EnhancedHeroSection />
+            <ModernHeroSection />
           </motion.div>
+          
           <motion.div
-            ref={aboutRef}
             initial={{ opacity: 0, y: 60, scale: 0.95 }}
             whileInView={{ opacity: 1, y: 0, scale: 1 }}
             viewport={{ once: true, margin: "-150px" }}
             transition={{ duration: 1.5, ease: [0.16, 1, 0.3, 1] }}
             className="-mt-1"
           >
-            <ModernAboutSection />
+            <ProcessSection />
           </motion.div>
+          
           <motion.div
             ref={servicesRef}
             initial={{ opacity: 0, y: 60, rotateY: -5 }}
@@ -146,6 +143,18 @@ export default function Home() {
           >
             <ClientShowcase />
           </motion.div>
+          
+          <motion.div
+            ref={aboutRef}
+            initial={{ opacity: 0, y: 60, scale: 0.95 }}
+            whileInView={{ opacity: 1, y: 0, scale: 1 }}
+            viewport={{ once: true, margin: "-150px" }}
+            transition={{ duration: 1.5, ease: [0.16, 1, 0.3, 1] }}
+            className="-mt-1"
+          >
+            <ModernAboutSection />
+          </motion.div>
+          
           <motion.div
             ref={contactRef}
             initial={{ opacity: 0, y: 60, filter: 'blur(10px)' }}
@@ -156,8 +165,6 @@ export default function Home() {
             <ModernContactSection />
           </motion.div>
 
-          {/* Enhanced Footer */}
-          <EnhancedFooter />
         </main>
       </div>
     </>

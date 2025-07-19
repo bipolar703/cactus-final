@@ -102,7 +102,7 @@ export const useWebVitals = () => {
       const entries = list.getEntries();
       const lastEntry = entries[entries.length - 1];
       if (lastEntry && import.meta.env.DEV) {
-        console.log('LCP:', lastEntry.startTime);
+        // LCP measured
       }
     });
 
@@ -111,7 +111,7 @@ export const useWebVitals = () => {
       const entries = list.getEntries();
       entries.forEach((entry) => {
         if (import.meta.env.DEV) {
-          console.log('FID:', entry.processingStart - entry.startTime);
+          // FID measured
         }
       });
     });
@@ -126,7 +126,7 @@ export const useWebVitals = () => {
         }
       });
       if (import.meta.env.DEV && clsValue > 0) {
-        console.log('CLS:', clsValue);
+        // CLS measured
       }
     });
 
@@ -135,7 +135,7 @@ export const useWebVitals = () => {
       fidObserver.observe({ entryTypes: ['first-input'] });
       clsObserver.observe({ entryTypes: ['layout-shift'] });
     } catch (error) {
-      console.warn('Performance observer not supported:', error);
+      // Performance observer not supported
     }
 
     return () => {

@@ -1,222 +1,158 @@
-import { motion } from 'framer-motion';
+import { motion, AnimatePresence } from 'framer-motion';
 import { useEffect, useState } from 'react';
-import { useLanguage } from '@/hooks/use-language';
-import { OptimizedImage } from './performance-wrapper';
 
 interface LoadingScreenProps {
   isVisible?: boolean;
   onComplete?: () => void;
 }
 
-export function LoadingScreen({ isVisible, onComplete }: LoadingScreenProps) {
-  const { language } = useLanguage();
-  const [progress, setProgress] = useState(0);
-  const [loadingText, setLoadingText] = useState('');
-
-  const loadingSteps = language === 'ar'
-    ? ['تحميل الموارد...', 'إعداد التجربة...', 'تحسين الأداء...', 'جاهز للانطلاق!']
-    : ['Loading assets...', 'Preparing experience...', 'Optimizing performance...', 'Ready to launch!'];
+export function LoadingScreen({ isVisible = true, onComplete }: LoadingScreenProps) {
+  const [isLoaded, setIsLoaded] = useState(false);
 
   useEffect(() => {
-    // Always show when used as Suspense fallback
-    const visible = isVisible !== undefined ? isVisible : true;
-    if (visible) {
-      const timer = setInterval(() => {
-        setProgress((prev) => {
-          const newProgress = prev + 1.2;
-          if (newProgress < 25) setLoadingText(loadingSteps[0]);
-          else if (newProgress < 50) setLoadingText(loadingSteps[1]);
-          else if (newProgress < 75) setLoadingText(loadingSteps[2]);
-          else if (newProgress < 100) setLoadingText(loadingSteps[3]);
-          if (newProgress >= 100) {
-            clearInterval(timer);
-            if (onComplete) setTimeout(onComplete, 600);
-            return 100;
-          }
-          return newProgress;
-        });
-      }, 35);
-      return () => clearInterval(timer);
-    }
-  }, [isVisible, onComplete, loadingSteps]);
+    if (!isVisible) return;
 
-  if (isVisible === false) return null;
+    // Preload critical resources
+    const preloadResources = [
+      '/assets/Icon.png',
+      '/assets/Logo.png',
+      '/assets/animated/services/laptop.gif',
+      '/assets/animated/services/branding.gif',
+      '/assets/animated/services/marketing.gif',
+      '/assets/animated/services/content.gif',
+      '/assets/animated/services/photography.gif'
+    ];
+
+    const loadPromises = preloadResources.map(src => {
+      return new Promise((resolve, reject) => {
+        const img = new Image();
+        img.onload = resolve;
+        img.onerror = reject;
+        img.src = src;
+      });
+    });
+
+    // Minimum loading time of 1.5 seconds for smooth experience
+    const minLoadTime = new Promise(resolve => setTimeout(resolve, 1500));
+
+    Promise.all([...loadPromises, minLoadTime])
+      .then(() => {
+        setIsLoaded(true);
+        setTimeout(() => onComplete?.(), 300);
+      })
+      .catch(() => {
+        // Even if some resources fail, continue after minimum time
+        setTimeout(() => {
+          setIsLoaded(true);
+          onComplete?.();
+        }, 2000);
+      });
+  }, [isVisible, onComplete]);
 
   return (
-    <motion.div
-      initial={{ opacity: 1 }}
-      exit={{ 
-        opacity: 0,
-        scale: 1.05,
-        filter: 'blur(8px)'
-      }}
-      transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
-      className="fixed inset-0 z-[9999] overflow-hidden bg-slate-900"
-    >
-      {/* Oblique animated background */}
-      <div className="absolute inset-0 loading-background">
-        <div className="absolute inset-0 opacity-30">
-          {[...Array(8)].map((_, i) => (
-            <motion.div
-              key={i}
-              className="absolute h-full w-2 bg-gradient-to-b from-jaded-green-400/20 to-transparent"
-              style={{
-                left: `${i * 15}%`,
-                transform: 'skewX(-15deg)',
-              }}
-              initial={{ x: -100, opacity: 0 }}
-              animate={{ 
-                x: [null, 2000],
-                opacity: [0, 0.6, 0]
-              }}
-              transition={{
-                duration: 3,
-                repeat: Infinity,
-                delay: i * 0.4,
-                ease: 'easeInOut'
-              }}
-            />
-          ))}
-        </div>
-        
-        {/* Geometric patterns */}
-        <div className="absolute inset-0 opacity-10">
-          {[...Array(12)].map((_, i) => (
-            <motion.div
-              key={i}
-              className="absolute w-32 h-32 border border-jaded-green-400/30 rounded-lg"
-              style={{
-                left: `${Math.random() * 100}%`,
-                top: `${Math.random() * 100}%`,
-                transform: 'rotate(45deg)',
-              }}
-              animate={{
-                rotate: [45, 405],
-                scale: [1, 1.2, 1],
-                opacity: [0.1, 0.3, 0.1]
-              }}
-              transition={{
-                duration: 8,
-                repeat: Infinity,
-                delay: i * 0.5,
-                ease: 'easeInOut'
-              }}
-            />
-          ))}
-        </div>
-      </div>
-
-      <div className="relative z-10 flex items-center justify-center h-full">
-        {/* Animated particles */}
-        <div className="absolute inset-0">
-          {[...Array(15)].map((_, i) => (
-            <motion.div
-              key={i}
-              className="absolute w-1 h-1 bg-jaded-green-400/40 rounded-full"
-              initial={{ 
-                x: Math.random() * 1920,
-                y: Math.random() * 1080,
-                scale: 0
-              }}
-              animate={{
-                y: [null, -120],
-                scale: [0, 1, 0],
-                opacity: [0, 1, 0]
-              }}
-              transition={{
-                duration: 4,
-                repeat: Infinity,
-                delay: i * 0.3,
-                ease: 'easeOut'
-              }}
-            />
-          ))}
-        </div>
-
-        <div className="text-center relative z-10">
-          <motion.div
-            initial={{ scale: 0.2, opacity: 0, rotateY: -180, filter: 'blur(20px)' }}
-            animate={{ 
-              scale: 1, 
-              opacity: 1, 
-              rotateY: 0,
-              filter: 'blur(0px)'
-            }}
-            transition={{ 
-              duration: 1.5, 
-              ease: [0.16, 1, 0.3, 1],
-              scale: { type: 'spring', stiffness: 200, damping: 18 }
-            }}
-            className="mb-12"
-          >
-            <OptimizedImage
-              src="/assets/Logo-Whirte-Png_1751779171310.png"
-              alt="Cactus Media Group"
-              className="w-48 md:w-56 h-auto mx-auto drop-shadow-2xl"
-              priority={true}
-            />
-          </motion.div>
-
-          {/* Enhanced progress bar */}
-          <div className="relative mb-8">
-            <div className="w-80 h-2 bg-slate-700/40 rounded-full mx-auto overflow-hidden backdrop-blur-sm">
-              <motion.div
-                animate={{ width: `${progress}%` }}
-                transition={{ duration: 0.3, ease: 'easeOut' }}
-                className="h-full bg-gradient-to-r from-jaded-green-600 via-jaded-green-400 to-jaded-green-300 rounded-full relative"
-              >
-                <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/30 to-transparent animate-pulse" />
-              </motion.div>
-            </div>
-            
-            <motion.div
-              animate={{ 
-                boxShadow: `0 0 ${15 + progress/8}px rgba(90, 155, 131, ${0.2 + progress/300})` 
-              }}
-              className="absolute inset-0 rounded-full"
-            />
+    <AnimatePresence>
+      {isVisible && (
+        <motion.div
+          initial={{ opacity: 1 }}
+          exit={{ opacity: 0 }}
+          transition={{ duration: 0.5 }}
+          className="fixed inset-0 z-[9999] flex items-center justify-center"
+        >
+          {/* Full Opacity Background - Completely Opaque */}
+          <div className="absolute inset-0 bg-slate-900" />
+          
+          {/* Subtle ambient glow */}
+          <div className="absolute inset-0">
+            <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-jaded-green-500/8 rounded-full blur-3xl" />
           </div>
 
-          <motion.div
-            initial={{ opacity: 0, y: 15 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.8, duration: 0.6 }}
-            className="space-y-3"
-          >
-            <motion.p
-              key={loadingText}
-              initial={{ opacity: 0, y: 8 }}
-              animate={{ opacity: 1, y: 0 }}
-              className={`text-white/90 text-lg font-medium text-center ${
-                language === 'ar' ? 'font-arabic' : 'font-barlow'
-              }`}
+          <div className="relative z-10 text-center">
+            <motion.div
+              initial={{ scale: 0.8, opacity: 0 }}
+              animate={{ scale: 1, opacity: 1 }}
+              transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
+              className="relative"
             >
-              {loadingText}
-            </motion.p>
-            
-            <motion.p
-              animate={{ opacity: [0.6, 1, 0.6] }}
-              transition={{ duration: 2, repeat: Infinity }}
-              className="text-jaded-green-400 text-sm font-light"
-            >
-              {Math.round(progress)}%
-            </motion.p>
-          </motion.div>
+              {/* Static PNG Icon with Glowing Edges */}
+              <div className="relative mb-8">
+                {/* Animated glow layers around static icon */}
+                <motion.div
+                  className="absolute inset-0 w-24 h-24 mx-auto"
+                  animate={{
+                    scale: [1, 1.15, 1],
+                    opacity: [0.6, 1, 0.6],
+                  }}
+                  transition={{
+                    duration: 2.5,
+                    repeat: Infinity,
+                    ease: "easeInOut"
+                  }}
+                >
+                  {/* Outer glow */}
+                  <div className="absolute inset-0 bg-jaded-green-400/25 rounded-full blur-2xl scale-[2]" />
+                  {/* Middle glow */}
+                  <div className="absolute inset-0 bg-jaded-green-500/35 rounded-full blur-xl scale-[1.6]" />
+                  {/* Inner glow */}
+                  <div className="absolute inset-0 bg-jaded-green-600/45 rounded-full blur-lg scale-[1.3]" />
+                  {/* Core glow */}
+                  <div className="absolute inset-0 bg-jaded-green-700/25 rounded-full blur-md scale-110" />
+                </motion.div>
+                
+                <img 
+                  src="/assets/Icon.png" 
+                  alt="Cactus Media Group" 
+                  className="relative w-24 h-24 mx-auto object-contain"
+                  style={{
+                    filter: 'drop-shadow(0 0 15px rgba(0, 150, 125, 0.8)) drop-shadow(0 0 30px rgba(0, 150, 125, 0.5)) drop-shadow(0 0 45px rgba(0, 150, 125, 0.3))'
+                  }}
+                />
+              </div>
+              
+              <motion.h1 
+                className="text-2xl font-bold text-white mb-2 font-barlow"
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: 0.3, duration: 0.6 }}
+              >
+                Cactus Media Group
+              </motion.h1>
+              
+              <motion.p 
+                className="text-gray-300 text-lg"
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: 0.5, duration: 0.6 }}
+              >
+                {isLoaded ? 'Ready!' : 'Optimizing your experience...'}
+              </motion.p>
+            </motion.div>
 
-          <motion.p
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ delay: 1.2, duration: 0.8 }}
-            className={`text-white/50 text-sm mt-8 text-center ${
-              language === 'ar' ? 'font-arabic' : ''
-            }`}
-          >
-            {language === 'ar' 
-              ? 'في عالم مليء بالورود، كن صبارة'
-              : 'In a world full of flowers, be a cactus'}
-          </motion.p>
-        </div>
-      </div>
-    </motion.div>
+            {/* Pulsing dots */}
+            <motion.div 
+              className="flex justify-center space-x-2 mt-8"
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ delay: 0.7, duration: 0.6 }}
+            >
+              {[0, 1, 2].map((i) => (
+                <motion.div
+                  key={i}
+                  className="w-2 h-2 bg-jaded-green-400 rounded-full"
+                  animate={{
+                    scale: [1, 1.5, 1],
+                    opacity: [0.5, 1, 0.5],
+                  }}
+                  transition={{
+                    duration: 1.5,
+                    repeat: Infinity,
+                    delay: i * 0.2,
+                  }}
+                />
+              ))}
+            </motion.div>
+          </div>
+        </motion.div>
+      )}
+    </AnimatePresence>
   );
 }
