@@ -102,7 +102,7 @@ export function NavigationBar() {
                   location === link.href
                     ? isScrolled || !isHomePage
                       ? "bg-jaded-green-100 text-jaded-green-800 shadow-md"
-                      : "bg-white/20 text-white shadow-md"
+                      : "bg-[#3f7c6a] text-white shadow-md"
                     : isScrolled || !isHomePage
                       ? "text-gray-700 hover:bg-jaded-green-50 hover:text-jaded-green-700"
                       : "text-white/90 hover:bg-white/10 hover:text-white"
@@ -112,7 +112,11 @@ export function NavigationBar() {
                 {location === link.href && (
                   <motion.div
                     layoutId="activeTab"
-                    className="absolute inset-0 bg-jaded-green-100 rounded-xl -z-10"
+                    className={`absolute inset-0 rounded-xl -z-10 ${
+                      isScrolled || !isHomePage
+                        ? "bg-jaded-green-100"
+                        : "bg-[#3f7c6a]"
+                    }`}
                     transition={{ type: "spring", bounce: 0.2, duration: 0.6 }}
                   />
                 )}

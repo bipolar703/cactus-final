@@ -101,8 +101,8 @@ export default function Home() {
             )}
           </AnimatePresence>
         </div>
-        {/* Main Sectioned Content */}
-        <main className="relative z-10">
+        {/* Main Sectioned Content - Centered Layout */}
+        <main className="relative z-10 w-full max-w-none mx-auto">
           <motion.div
             ref={heroRef}
             initial={{ opacity: 0 }}

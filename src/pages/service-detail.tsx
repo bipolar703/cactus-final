@@ -1,7 +1,7 @@
 import { services } from "@/data/services";
 import { useLanguage } from "@/hooks/use-language";
 import { motion } from "framer-motion";
-import { ArrowLeft, Award, CheckCircle, Star, Users, Zap } from "lucide-react";
+import { ArrowLeft, CheckCircle, Zap } from "lucide-react";
 import { Link, useRoute } from "wouter";
 
 export default function ServiceDetailPage() {
@@ -41,20 +41,25 @@ export default function ServiceDetailPage() {
       <meta property="og:title" content={pageTitle} />
       <meta property="og:description" content={pageDescription} />
       <meta property="og:type" content="website" />
-      <meta property="og:url" content={`/services/${service.slug}`} />
+      <meta property="og:url" content={`https://cactusmediajo.com/services/${service.slug}`} />
+      <meta property="og:image" content={`https://cactusmediajo.com${service.icon}`} />
       <meta name="twitter:card" content="summary_large_image" />
       <meta name="twitter:title" content={pageTitle} />
       <meta name="twitter:description" content={pageDescription} />
+      <meta name="twitter:image" content={`https://cactusmediajo.com${service.icon}`} />
+      <meta name="robots" content="index, follow" />
+      <meta name="author" content="Cactus Media Group" />
+      <link rel="canonical" href={`https://cactusmediajo.com/services/${service.slug}`} />
 
-      <main className="min-h-screen bg-gradient-to-br from-slate-50 via-white to-jaded-green-50">
-        {/* Background Elements */}
+      <main className="min-h-screen bg-white">
+        {/* Subtle Background Elements */}
         <div className="absolute inset-0 pointer-events-none overflow-hidden">
-          <div className="absolute top-20 left-10 w-96 h-96 bg-jaded-green-100/20 rounded-full blur-3xl" />
-          <div className="absolute bottom-20 right-10 w-80 h-80 bg-gold-100/15 rounded-full blur-3xl" />
+          <div className="absolute top-20 left-10 w-96 h-96 bg-[#3f7c6a]/5 rounded-full blur-3xl" />
+          <div className="absolute bottom-20 right-10 w-80 h-80 bg-[#3f7c6a]/3 rounded-full blur-3xl" />
         </div>
 
         <div className="relative z-10 pt-32 pb-20">
-          <div className="max-w-6xl mx-auto px-6 sm:px-8">
+          <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
             {/* Breadcrumb */}
             <motion.div
               initial={{ opacity: 0, x: -20 }}
@@ -79,17 +84,17 @@ export default function ServiceDetailPage() {
                 transition={{ duration: 0.8 }}
               >
                 <div className="mb-6">
-                  <div className="w-24 h-24 bg-gradient-to-br from-jaded-green-100 to-jaded-green-50 rounded-3xl flex items-center justify-center mb-6">
+                  <div className="w-24 h-24 bg-[#3f7c6a] rounded-3xl flex items-center justify-center mb-6 shadow-lg">
                     <img
                       src={service.icon}
                       alt={service.title[language]}
-                      className="w-16 h-16"
+                      className="w-full h-full object-cover rounded-3xl"
                     />
                   </div>
                 </div>
 
                 <h1
-                  className={`text-4xl md:text-5xl lg:text-6xl font-bold mb-6 bg-gradient-to-r from-gray-900 via-jaded-green-800 to-gray-900 bg-clip-text text-transparent ${
+                  className={`text-4xl md:text-5xl lg:text-6xl font-bold mb-6 text-[#3f7c6a] ${
                     language === "ar" ? "font-arabic" : "font-barlow"
                   }`}
                 >
@@ -97,7 +102,7 @@ export default function ServiceDetailPage() {
                 </h1>
 
                 <p
-                  className={`text-xl md:text-2xl text-gray-600 mb-8 leading-relaxed ${
+                  className={`text-xl md:text-2xl text-[#3f7c6a] mb-8 leading-relaxed ${
                     language === "ar" ? "font-arabic" : ""
                   }`}
                 >
@@ -108,7 +113,7 @@ export default function ServiceDetailPage() {
                   <motion.button
                     whileHover={{ scale: 1.05 }}
                     whileTap={{ scale: 0.95 }}
-                    className="bg-gradient-to-r from-jaded-green-600 to-jaded-green-500 text-white font-bold py-4 px-8 rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 flex items-center gap-3"
+                    className="bg-[#3f7c6a] hover:bg-[#3f7c6a]/90 text-white font-bold py-4 px-8 rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 flex items-center gap-3"
                   >
                     <span
                       className={
@@ -128,9 +133,9 @@ export default function ServiceDetailPage() {
                 transition={{ duration: 0.8, delay: 0.2 }}
                 className="relative"
               >
-                <div className="bg-white/80 backdrop-blur-xl rounded-3xl p-8 shadow-2xl border border-gray-100/50">
+                <div className="bg-[#3f7c6a] rounded-3xl p-8 shadow-2xl">
                   <h3
-                    className={`text-2xl font-bold mb-6 text-gray-900 ${
+                    className={`text-2xl font-bold mb-6 text-white ${
                       language === "ar"
                         ? "font-arabic text-center"
                         : "font-barlow"
@@ -148,11 +153,11 @@ export default function ServiceDetailPage() {
                         transition={{ delay: 0.4 + index * 0.1, duration: 0.5 }}
                         className={`flex items-center gap-4 ${language === "ar" ? "flex-row-reverse" : ""}`}
                       >
-                        <div className="w-8 h-8 bg-jaded-green-100 rounded-full flex items-center justify-center flex-shrink-0">
-                          <CheckCircle className="w-5 h-5 text-jaded-green-600" />
+                        <div className="w-8 h-8 bg-white rounded-full flex items-center justify-center flex-shrink-0">
+                          <CheckCircle className="w-5 h-5 text-[#3f7c6a]" />
                         </div>
                         <span
-                          className={`text-gray-700 font-medium ${language === "ar" ? "font-arabic" : ""}`}
+                          className={`text-white font-medium ${language === "ar" ? "font-arabic" : ""}`}
                         >
                           {feature}
                         </span>
@@ -170,17 +175,17 @@ export default function ServiceDetailPage() {
               transition={{ duration: 0.8, delay: 0.4 }}
               className="mb-20"
             >
-              <div className="bg-white/80 backdrop-blur-xl rounded-3xl p-12 shadow-xl border border-gray-100/50">
+              <div className="bg-white rounded-3xl p-12 shadow-xl border border-gray-100">
                 <h2
-                  className={`text-3xl md:text-4xl font-bold mb-8 text-center text-gray-900 ${
+                  className={`text-3xl md:text-4xl font-bold mb-8 text-center text-[#3f7c6a] ${
                     language === "ar" ? "font-arabic" : "font-barlow"
                   }`}
                 >
-                  {language === "ar" ? "تفاصيل الخدمة" : "Service Details"}
+                  {language === "ar" ? "تفاصيل الخدمة" : "Service Overview"}
                 </h2>
 
                 <p
-                  className={`text-lg md:text-xl text-gray-700 leading-relaxed text-center max-w-4xl mx-auto ${
+                  className={`text-lg md:text-xl text-[#3f7c6a] leading-relaxed text-center max-w-4xl mx-auto ${
                     language === "ar" ? "font-arabic" : ""
                   }`}
                 >
@@ -189,68 +194,138 @@ export default function ServiceDetailPage() {
               </div>
             </motion.div>
 
-            {/* Stats Section */}
+            {/* Benefits Section */}
+            {service.benefits && (
+              <motion.div
+                initial={{ opacity: 0, y: 40 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.8, delay: 0.6 }}
+                className="mb-20"
+              >
+                <div className="text-center mb-12">
+                  <h2
+                    className={`text-3xl md:text-4xl font-bold mb-6 text-[#3f7c6a] ${
+                      language === "ar" ? "font-arabic" : "font-barlow"
+                    }`}
+                  >
+                    {language === "ar" ? "الفوائد الرئيسية" : "Key Benefits"}
+                  </h2>
+                  <p
+                    className={`text-lg text-gray-600 max-w-2xl mx-auto ${
+                      language === "ar" ? "font-arabic" : ""
+                    }`}
+                  >
+                    {language === "ar"
+                      ? "اكتشف كيف يمكن لخدماتنا أن تحول أعمالك وتحقق نتائج استثنائية"
+                      : "Discover how our services can transform your business and deliver exceptional results"}
+                  </p>
+                </div>
+
+                <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+                  {service.benefits[language].map((benefit, index) => (
+                    <motion.div
+                      key={index}
+                      initial={{ opacity: 0, y: 20 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      transition={{ delay: 0.8 + index * 0.1, duration: 0.5 }}
+                      className="bg-[#3f7c6a] rounded-2xl p-6 text-white hover:shadow-xl transition-shadow duration-300"
+                    >
+                      <div className="flex items-start gap-4">
+                        <div className="w-8 h-8 bg-white rounded-full flex items-center justify-center flex-shrink-0 mt-1">
+                          <CheckCircle className="w-5 h-5 text-[#3f7c6a]" />
+                        </div>
+                        <p
+                          className={`text-white leading-relaxed ${
+                            language === "ar" ? "font-arabic" : ""
+                          }`}
+                        >
+                          {benefit}
+                        </p>
+                      </div>
+                    </motion.div>
+                  ))}
+                </div>
+              </motion.div>
+            )}
+
+            {/* Process Section */}
+            {service.process && (
+              <motion.div
+                initial={{ opacity: 0, y: 40 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.8, delay: 0.8 }}
+                className="mb-20"
+              >
+                <div className="text-center mb-12">
+                  <h2
+                    className={`text-3xl md:text-4xl font-bold mb-6 text-[#3f7c6a] ${
+                      language === "ar" ? "font-arabic" : "font-barlow"
+                    }`}
+                  >
+                    {language === "ar" ? "عمليتنا" : "Our Process"}
+                  </h2>
+                  <p
+                    className={`text-lg text-gray-600 max-w-2xl mx-auto ${
+                      language === "ar" ? "font-arabic" : ""
+                    }`}
+                  >
+                    {language === "ar"
+                      ? "نهج منظم ومثبت لضمان نجاح مشروعك من البداية إلى النهاية"
+                      : "A structured, proven approach to ensure your project's success from start to finish"}
+                  </p>
+                </div>
+
+                <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+                  {service.process[language].map((step, index) => (
+                    <motion.div
+                      key={index}
+                      initial={{ opacity: 0, y: 20 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      transition={{ delay: 1.0 + index * 0.1, duration: 0.5 }}
+                      className="bg-white rounded-2xl p-6 shadow-lg border border-gray-100 hover:shadow-xl transition-shadow duration-300"
+                    >
+                      <div className="flex items-center gap-4 mb-4">
+                        <div className="w-10 h-10 bg-[#3f7c6a] rounded-full flex items-center justify-center text-white font-bold">
+                          {index + 1}
+                        </div>
+                        <h3
+                          className={`text-lg font-bold text-[#3f7c6a] ${
+                            language === "ar" ? "font-arabic" : "font-barlow"
+                          }`}
+                        >
+                          {step.step}
+                        </h3>
+                      </div>
+                      <p
+                        className={`text-gray-600 leading-relaxed ${
+                          language === "ar" ? "font-arabic" : ""
+                        }`}
+                      >
+                        {step.description}
+                      </p>
+                    </motion.div>
+                  ))}
+                </div>
+              </motion.div>
+            )}
+
+
+            {/* Custom CTA Section */}
             <motion.div
               initial={{ opacity: 0, y: 40 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.6 }}
-              className="mb-20"
-            >
-              <div className="grid md:grid-cols-3 gap-8">
-                {[
-                  {
-                    icon: Users,
-                    number: "100+",
-                    label: language === "ar" ? "عميل راضٍ" : "Happy Clients",
-                  },
-                  {
-                    icon: Award,
-                    number: "50+",
-                    label:
-                      language === "ar" ? "مشروع مكتمل" : "Projects Completed",
-                  },
-                  {
-                    icon: Star,
-                    number: "5.0",
-                    label:
-                      language === "ar" ? "تقييم العملاء" : "Client Rating",
-                  },
-                ].map((stat, index) => (
-                  <motion.div
-                    key={index}
-                    whileHover={{ scale: 1.05 }}
-                    className="bg-white/80 backdrop-blur-xl rounded-2xl p-8 text-center shadow-xl border border-gray-100/50"
-                  >
-                    <div className="w-16 h-16 bg-jaded-green-100 rounded-2xl flex items-center justify-center mx-auto mb-4">
-                      <stat.icon className="w-8 h-8 text-jaded-green-600" />
-                    </div>
-                    <div className="text-3xl font-bold text-gray-900 mb-2">
-                      {stat.number}
-                    </div>
-                    <div
-                      className={`text-gray-600 font-medium ${language === "ar" ? "font-arabic" : ""}`}
-                    >
-                      {stat.label}
-                    </div>
-                  </motion.div>
-                ))}
-              </div>
-            </motion.div>
-
-            {/* CTA Section */}
-            <motion.div
-              initial={{ opacity: 0, y: 40 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8, delay: 0.8 }}
               className="text-center"
             >
-              <div className="bg-gradient-to-r from-jaded-green-600 to-jaded-green-500 rounded-3xl p-12 text-white shadow-2xl">
+              <div className="bg-[#3f7c6a] rounded-3xl p-12 text-white shadow-2xl">
                 <h3
                   className={`text-3xl md:text-4xl font-bold mb-6 ${
                     language === "ar" ? "font-arabic" : "font-barlow"
                   }`}
                 >
-                  {language === "ar" ? "جاهز للبدء؟" : "Ready to Get Started?"}
+                  {language === "ar" 
+                    ? `جاهز لبدء مشروع ${service.title[language]}؟` 
+                    : `Ready to Start Your ${service.title[language]} Project?`}
                 </h3>
                 <p
                   className={`text-xl mb-8 opacity-90 max-w-2xl mx-auto ${
@@ -258,17 +333,17 @@ export default function ServiceDetailPage() {
                   }`}
                 >
                   {language === "ar"
-                    ? "دعنا نناقش مشروعك ونحوله إلى واقع رقمي مذهل"
-                    : "Let's discuss your project and turn it into stunning digital reality"}
+                    ? `دعنا نناقش احتياجاتك في ${service.title[language]} ونحولها إلى حلول رقمية متميزة`
+                    : `Let's discuss your ${service.title[language]} needs and transform them into exceptional digital solutions`}
                 </p>
                 <div className="flex flex-col sm:flex-row gap-4 justify-center">
-                  <Link href="/contact">
+                  <Link href={`/contact?service=${service.slug}`}>
                     <motion.button
                       whileHover={{ scale: 1.05 }}
                       whileTap={{ scale: 0.95 }}
-                      className="bg-white text-jaded-green-600 font-bold py-4 px-8 rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300"
+                      className="bg-white text-[#3f7c6a] font-bold py-4 px-8 rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300"
                     >
-                      {language === "ar" ? "تواصل معنا" : "Contact Us"}
+                      {language === "ar" ? "احصل على استشارة مجانية" : "Get Free Consultation"}
                     </motion.button>
                   </Link>
                   <Link href="/portfolio">
@@ -277,7 +352,7 @@ export default function ServiceDetailPage() {
                       whileTap={{ scale: 0.95 }}
                       className="border-2 border-white text-white font-bold py-4 px-8 rounded-2xl hover:bg-white/10 transition-all duration-300"
                     >
-                      {language === "ar" ? "شاهد أعمالنا" : "View Our Work"}
+                      {language === "ar" ? "شاهد أعمالنا السابقة" : "View Previous Work"}
                     </motion.button>
                   </Link>
                 </div>

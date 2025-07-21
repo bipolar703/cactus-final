@@ -3,7 +3,7 @@ import { motion } from "framer-motion";
 import {
     Globe, Heart,
     Lightbulb,
-    Shield, Target, Users
+    Shield, Target
 } from "lucide-react";
 
 export default function About() {
@@ -19,35 +19,6 @@ export default function About() {
       ? "تعرف على قصتنا وفريقنا وقيمنا. نحن شركة رائدة في مجال الحلول الرقمية المبتكرة والتسويق الإلكتروني المتطور."
       : "Learn about our story, team, and values. We are a leading company in innovative digital solutions and advanced digital marketing.";
 
-  const teamMembers = [
-    {
-      name: { en: "Ahmed Al-Rashid", ar: "أحمد الراشد" },
-      role: { en: "CEO & Founder", ar: "الرئيس التنفيذي والمؤسس" },
-      image: "/assets/team/ceo.jpg",
-      bio: {
-        en: "Visionary leader with 10+ years in digital innovation",
-        ar: "قائد ذو رؤية مع أكثر من 10 سنوات في الابتكار الرقمي",
-      },
-    },
-    {
-      name: { en: "Sarah Johnson", ar: "سارة جونسون" },
-      role: { en: "Creative Director", ar: "مديرة الإبداع" },
-      image: "/assets/team/creative.jpg",
-      bio: {
-        en: "Award-winning designer specializing in brand identity",
-        ar: "مصممة حائزة على جوائز متخصصة في هوية العلامة التجارية",
-      },
-    },
-    {
-      name: { en: "Omar Hassan", ar: "عمر حسان" },
-      role: { en: "Lead Developer", ar: "مطور رئيسي" },
-      image: "/assets/team/developer.jpg",
-      bio: {
-        en: "Full-stack expert in modern web technologies",
-        ar: "خبير تطوير شامل في تقنيات الويب الحديثة",
-      },
-    },
-  ];
 
   const values = [
     {
@@ -88,7 +59,7 @@ export default function About() {
     { number: "100+", label: { en: "Happy Clients", ar: "عميل راضٍ" } },
     { number: "250+", label: { en: "Projects Completed", ar: "مشروع مكتمل" } },
     { number: "5+", label: { en: "Years Experience", ar: "سنوات خبرة" } },
-    { number: "15+", label: { en: "Team Members", ar: "عضو فريق" } },
+    { number: "98%", label: { en: "Client Satisfaction", ar: "رضا العملاء" } },
   ];
 
   return (
@@ -112,13 +83,33 @@ export default function About() {
       <meta name="twitter:title" content={pageTitle} />
       <meta name="twitter:description" content={pageDescription} />
 
-      <main className="relative min-h-screen bg-gradient-to-br from-slate-50 via-white to-jaded-green-50 overflow-hidden">
-        {/* Background Elements */}
+      <main className="relative min-h-screen bg-white overflow-hidden">
+        {/* Subtle Background Elements */}
         <div className="absolute inset-0 pointer-events-none">
-          <div className="absolute top-20 left-10 w-96 h-96 bg-jaded-green-100/20 rounded-full blur-3xl animate-pulse" />
-          <div
-            className="absolute bottom-20 right-10 w-80 h-80 bg-gold-100/15 rounded-full blur-3xl animate-pulse"
-            style={{ animationDelay: "1s" }}
+          <motion.div 
+            className="absolute top-20 left-10 w-96 h-96 bg-[#3f7c6a]/5 rounded-full blur-3xl"
+            animate={{
+              scale: [1, 1.1, 1],
+              opacity: [0.2, 0.4, 0.2],
+            }}
+            transition={{
+              duration: 8,
+              repeat: Infinity,
+              ease: "easeInOut",
+            }}
+          />
+          <motion.div
+            className="absolute bottom-20 right-10 w-80 h-80 bg-[#3f7c6a]/4 rounded-full blur-3xl"
+            animate={{
+              scale: [1.1, 0.9, 1.1],
+              opacity: [0.1, 0.3, 0.1],
+            }}
+            transition={{
+              duration: 10,
+              repeat: Infinity,
+              ease: "easeInOut",
+              delay: 2,
+            }}
           />
         </div>
 
@@ -129,7 +120,7 @@ export default function About() {
               initial={{ opacity: 0, y: 40 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8 }}
-              className={`text-5xl md:text-6xl lg:text-7xl font-bold mb-6 bg-gradient-to-r from-white via-jaded-green-800 to-white bg-clip-text text-transparent ${
+              className={`text-5xl md:text-6xl lg:text-7xl font-bold mb-6 text-[#3f7c6a] ${
                 language === "ar" ? "font-arabic" : "font-barlow"
               }`}
             >
@@ -140,7 +131,7 @@ export default function About() {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.2 }}
-              className={`text-xl md:text-2xl text-jaded-green-600 max-w-4xl mx-auto leading-relaxed mb-12 ${
+              className={`text-xl md:text-2xl text-[#3f7c6a] max-w-4xl mx-auto leading-relaxed mb-12 ${
                 language === "ar" ? "font-arabic" : ""
               }`}
             >
@@ -158,11 +149,11 @@ export default function About() {
             >
               {stats.map((stat, index) => (
                 <div key={index} className="text-center">
-                  <div className="text-4xl md:text-5xl font-bold text-jaded-green-600 mb-2">
+                  <div className="text-4xl md:text-5xl font-bold text-[#3f7c6a] mb-2">
                     {stat.number}
                   </div>
                   <div
-                    className={`text-jaded-green-600 font-medium ${language === "ar" ? "font-arabic" : ""}`}
+                    className={`text-[#3f7c6a] font-medium ${language === "ar" ? "font-arabic" : ""}`}
                   >
                     {stat.label[language]}
                   </div>
@@ -178,7 +169,7 @@ export default function About() {
             transition={{ duration: 0.8, delay: 0.6 }}
             className="max-w-6xl mx-auto mb-20"
           >
-            <div className="bg-white/80 backdrop-blur-xl rounded-3xl p-12 shadow-xl border border-gray-100/50">
+            <div className="bg-[#3f7c6a] rounded-3xl p-12 shadow-xl">
               <h2
                 className={`text-3xl md:text-4xl font-bold mb-8 text-center text-white ${
                   language === "ar" ? "font-arabic" : "font-barlow"
@@ -190,7 +181,7 @@ export default function About() {
               <div className="grid md:grid-cols-2 gap-12 items-center">
                 <div>
                   <p
-                    className={`text-lg text-jaded-green-600 leading-relaxed mb-6 ${
+                    className={`text-lg text-white leading-relaxed mb-6 ${
                       language === "ar" ? "font-arabic" : ""
                     }`}
                   >
@@ -199,7 +190,7 @@ export default function About() {
                       : "Our journey began with a simple vision: helping businesses excel in the digital world. Since our founding, we have grown to become a trusted partner for many companies in the region."}
                   </p>
                   <p
-                    className={`text-lg text-jaded-green-600 leading-relaxed ${
+                    className={`text-lg text-white leading-relaxed ${
                       language === "ar" ? "font-arabic" : ""
                     }`}
                   >
@@ -209,17 +200,17 @@ export default function About() {
                   </p>
                 </div>
                 <div className="relative">
-                  <div className="bg-gradient-to-br from-jaded-green-100 to-jaded-green-50 rounded-2xl p-8 text-center">
-                    <Target className="w-16 h-16 text-jaded-green-600 mx-auto mb-4" />
+                  <div className="bg-white rounded-2xl p-8 text-center shadow-lg">
+                    <Target className="w-16 h-16 text-[#3f7c6a] mx-auto mb-4" />
                     <h3
-                      className={`text-xl font-bold text-white mb-2 ${
+                      className={`text-xl font-bold text-[#3f7c6a] mb-2 ${
                         language === "ar" ? "font-arabic" : "font-barlow"
                       }`}
                     >
                       {language === "ar" ? "رؤيتنا" : "Our Vision"}
                     </h3>
                     <p
-                      className={`text-jaded-green-600 ${language === "ar" ? "font-arabic" : ""}`}
+                      className={`text-[#3f7c6a] ${language === "ar" ? "font-arabic" : ""}`}
                     >
                       {language === "ar"
                         ? "أن نكون الشريك الأول للشركات في رحلتها الرقمية"
@@ -239,7 +230,7 @@ export default function About() {
             className="max-w-6xl mx-auto mb-20"
           >
             <h2
-              className={`text-3xl md:text-4xl font-bold mb-12 text-center text-white ${
+              className={`text-3xl md:text-4xl font-bold mb-12 text-center text-[#3f7c6a] ${
                 language === "ar" ? "font-arabic" : "font-barlow"
               }`}
             >
@@ -251,10 +242,10 @@ export default function About() {
                 <motion.div
                   key={index}
                   whileHover={{ y: -8 }}
-                  className="bg-white/80 backdrop-blur-xl rounded-2xl p-8 text-center shadow-xl border border-gray-100/50 hover:shadow-2xl hover:bg-jaded-green-600 hover:text-white transition-all duration-300"
+                  className="bg-[#3f7c6a] rounded-2xl p-8 text-center shadow-xl hover:shadow-2xl transition-all duration-300"
                 >
-                  <div className="w-16 h-16 bg-jaded-green-100 rounded-2xl flex items-center justify-center mx-auto mb-6">
-                    <value.icon className="w-8 h-8 text-jaded-green-600" />
+                  <div className="w-16 h-16 bg-white rounded-2xl flex items-center justify-center mx-auto mb-6">
+                    <value.icon className="w-8 h-8 text-[#3f7c6a]" />
                   </div>
                   <h3
                     className={`text-xl font-bold text-white mb-4 ${
@@ -264,7 +255,7 @@ export default function About() {
                     {value.title[language]}
                   </h3>
                   <p
-                    className={`text-jaded-green-600 leading-relaxed hover:text-white ${
+                    className={`text-white leading-relaxed ${
                       language === "ar" ? "font-arabic" : ""
                     }`}
                   >
@@ -275,56 +266,6 @@ export default function About() {
             </div>
           </motion.div>
 
-          {/* Team */}
-          <motion.div
-            initial={{ opacity: 0, y: 40 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 1 }}
-            className="max-w-6xl mx-auto mb-20"
-          >
-            <h2
-              className={`text-3xl md:text-4xl font-bold mb-12 text-center text-white ${
-                language === "ar" ? "font-arabic" : "font-barlow"
-              }`}
-            >
-              {language === "ar" ? "فريقنا" : "Our Team"}
-            </h2>
-
-            <div className="grid md:grid-cols-3 gap-8">
-              {teamMembers.map((member, index) => (
-                <motion.div
-                  key={index}
-                  whileHover={{ y: -8 }}
-                  className="bg-white/80 backdrop-blur-xl rounded-2xl p-8 text-center shadow-xl border border-gray-100/50 hover:shadow-2xl hover:bg-jaded-green-600 hover:text-white transition-all duration-300"
-                >
-                  <div className="w-24 h-24 bg-gradient-to-br from-jaded-green-100 to-jaded-green-50 rounded-full mx-auto mb-6 flex items-center justify-center">
-                    <Users className="w-12 h-12 text-jaded-green-600" />
-                  </div>
-                  <h3
-                    className={`text-xl font-bold text-white mb-2 ${
-                      language === "ar" ? "font-arabic" : "font-barlow"
-                    }`}
-                  >
-                    {member.name[language]}
-                  </h3>
-                  <p
-                    className={`text-jaded-green-600 font-semibold mb-4 hover:text-white ${
-                      language === "ar" ? "font-arabic" : ""
-                    }`}
-                  >
-                    {member.role[language]}
-                  </p>
-                  <p
-                    className={`text-jaded-green-600 hover:text-white ${
-                      language === "ar" ? "font-arabic" : ""
-                    }`}
-                  >
-                    {member.bio[language]}
-                  </p>
-                </motion.div>
-              ))}
-            </div>
-          </motion.div>
 
           {/* CTA */}
           <motion.div

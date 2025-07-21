@@ -105,7 +105,7 @@ export default function Services() {
                   >
                     {/* Latest Badge for AI & Automations */}
                     {service.label === "latest" && (
-                      <span className="absolute top-4 left-4 bg-gold-500 text-white text-xs font-bold px-4 py-2 rounded-full shadow-lg z-10">
+                      <span className="absolute top-4 left-4 bg-white text-[#3f7c6a] text-xs font-bold px-4 py-2 rounded-full shadow-lg z-10">
                         {language === "ar" ? "الأحدث" : "LATEST"}
                       </span>
                     )}
@@ -149,7 +149,7 @@ export default function Services() {
                             className={`flex items-center gap-3 text-sm ${service.label === "latest" ? "text-white/80" : "text-gray-700"} ${language === "ar" ? "flex-row-reverse" : ""}`}
                           >
                             <div
-                              className={`w-2 h-2 rounded-full flex-shrink-0 ${service.label === "latest" ? "bg-gold-400" : "bg-jaded-green-500"}`}
+                              className={`w-2 h-2 rounded-full flex-shrink-0 ${service.label === "latest" ? "bg-white" : "bg-jaded-green-500"}`}
                             />
                             <span
                               className={language === "ar" ? "font-arabic" : ""}

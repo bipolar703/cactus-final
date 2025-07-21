@@ -35,8 +35,8 @@ export function LoadingScreen({
       });
     });
 
-    // Minimum loading time of 1.5 seconds for smooth experience
-    const minLoadTime = new Promise((resolve) => setTimeout(resolve, 1500));
+    // Minimum loading time of 2 seconds for smooth experience and proper resource loading
+    const minLoadTime = new Promise((resolve) => setTimeout(resolve, 2000));
 
     Promise.all([...loadPromises, minLoadTime])
       .then(() => {
@@ -66,7 +66,18 @@ export function LoadingScreen({
 
           {/* Subtle ambient glow */}
           <div className="absolute inset-0">
-            <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-jaded-green-500/8 rounded-full blur-3xl" />
+            <motion.div 
+              className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-[#3f7c6a]/6 rounded-full blur-3xl"
+              animate={{
+                scale: [1, 1.1, 1],
+                opacity: [0.3, 0.6, 0.3],
+              }}
+              transition={{
+                duration: 4,
+                repeat: Infinity,
+                ease: "easeInOut",
+              }}
+            />
           </div>
 
           <div className="relative z-10 text-center">
@@ -78,27 +89,25 @@ export function LoadingScreen({
             >
               {/* Static PNG Icon with Glowing Edges */}
               <div className="relative mb-8">
-                {/* Animated glow layers around static icon */}
+                {/* Subtle animated glow layers around static icon */}
                 <motion.div
                   className="absolute inset-0 w-24 h-24 mx-auto"
                   animate={{
-                    scale: [1, 1.15, 1],
-                    opacity: [0.6, 1, 0.6],
+                    scale: [1, 1.08, 1],
+                    opacity: [0.4, 0.7, 0.4],
                   }}
                   transition={{
-                    duration: 2.5,
+                    duration: 3,
                     repeat: Infinity,
                     ease: "easeInOut",
                   }}
                 >
-                  {/* Outer glow */}
-                  <div className="absolute inset-0 bg-jaded-green-400/25 rounded-full blur-2xl scale-[2]" />
-                  {/* Middle glow */}
-                  <div className="absolute inset-0 bg-jaded-green-500/35 rounded-full blur-xl scale-[1.6]" />
-                  {/* Inner glow */}
-                  <div className="absolute inset-0 bg-jaded-green-600/45 rounded-full blur-lg scale-[1.3]" />
+                  {/* Subtle outer glow */}
+                  <div className="absolute inset-0 bg-[#3f7c6a]/12 rounded-full blur-xl scale-[1.8]" />
+                  {/* Gentle inner glow */}
+                  <div className="absolute inset-0 bg-[#3f7c6a]/15 rounded-full blur-lg scale-[1.4]" />
                   {/* Core glow */}
-                  <div className="absolute inset-0 bg-jaded-green-700/25 rounded-full blur-md scale-110" />
+                  <div className="absolute inset-0 bg-[#3f7c6a]/10 rounded-full blur-md scale-110" />
                 </motion.div>
 
                 <img
@@ -106,8 +115,7 @@ export function LoadingScreen({
                   alt="Cactus Media Group"
                   className="relative w-24 h-24 mx-auto object-contain"
                   style={{
-                    filter:
-                      "drop-shadow(0 0 15px rgba(0, 150, 125, 0.8)) drop-shadow(0 0 30px rgba(0, 150, 125, 0.5)) drop-shadow(0 0 45px rgba(0, 150, 125, 0.3))",
+                    filter: "drop-shadow(0 0 8px rgba(63, 124, 106, 0.4)) drop-shadow(0 0 16px rgba(63, 124, 106, 0.2))",
                   }}
                 />
               </div>
@@ -141,15 +149,16 @@ export function LoadingScreen({
               {[0, 1, 2].map((i) => (
                 <motion.div
                   key={i}
-                  className="w-2 h-2 bg-jaded-green-400 rounded-full"
+                  className="w-2 h-2 bg-[#3f7c6a] rounded-full"
                   animate={{
-                    scale: [1, 1.5, 1],
-                    opacity: [0.5, 1, 0.5],
+                    scale: [1, 1.4, 1],
+                    opacity: [0.4, 0.9, 0.4],
                   }}
                   transition={{
-                    duration: 1.5,
+                    duration: 1.8,
                     repeat: Infinity,
-                    delay: i * 0.2,
+                    delay: i * 0.3,
+                    ease: "easeInOut",
                   }}
                 />
               ))}

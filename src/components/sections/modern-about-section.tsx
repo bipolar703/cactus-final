@@ -60,7 +60,7 @@ export function ModernAboutSection() {
   return (
     <section
       ref={containerRef}
-      className="relative py-24 px-6 sm:px-8 bg-gray-900 overflow-hidden -mt-1 text-white"
+      className="relative py-16 sm:py-20 lg:py-24 px-4 sm:px-6 lg:px-8 bg-gray-900 overflow-hidden -mt-1 text-white w-full"
     >
       {/* Dark sophisticated background */}
       <div className="absolute inset-0">
@@ -72,26 +72,67 @@ export function ModernAboutSection() {
           }}
         />
 
+        {/* Floating Icon with Glow Effect */}
         <motion.div
           animate={{
-            rotate: -360,
+            scale: [1, 1.1, 1],
             y: [0, -20, 0],
           }}
           transition={{
-            rotate: { duration: 25, repeat: Infinity, ease: "linear" },
-            y: { duration: 3, repeat: Infinity, ease: "easeInOut" },
+            scale: { duration: 4, repeat: Infinity, ease: "easeInOut" },
+            y: { duration: 6, repeat: Infinity, ease: "easeInOut" },
           }}
-          className="absolute bottom-32 left-16 w-24 h-24 bg-gradient-to-br from-jaded-green-500/10 to-jaded-green-600/10 rounded-lg backdrop-blur-sm"
-        />
+          className="absolute bottom-16 sm:bottom-32 left-4 sm:left-16 w-24 h-24 sm:w-32 sm:h-32 flex items-center justify-center"
+        >
+          <div className="relative">
+            {/* Glow Effect */}
+            <div className="absolute inset-0 bg-jaded-green-400/12 rounded-full blur-xl animate-pulse" />
+            <div className="absolute inset-0 bg-jaded-green-300/6 rounded-full blur-2xl" />
+            {/* Icon */}
+            <img
+              src="/assets/Icon.png"
+              alt="Cactus Media Group"
+              className="relative w-16 h-16 sm:w-24 sm:h-24 object-contain opacity-25 drop-shadow-2xl"
+              style={{
+                filter: "drop-shadow(0 0 15px rgba(34, 197, 94, 0.2))"
+              }}
+            />
+          </div>
+        </motion.div>
+
+        {/* Additional Floating Icons */}
+        <motion.div
+          animate={{
+            scale: [1, 1.05, 1],
+            x: [0, -10, 0],
+          }}
+          transition={{
+            scale: { duration: 5, repeat: Infinity, ease: "easeInOut" },
+            x: { duration: 8, repeat: Infinity, ease: "easeInOut" },
+          }}
+          className="absolute top-16 sm:top-32 right-4 sm:right-20 w-16 h-16 sm:w-20 sm:h-20 flex items-center justify-center"
+        >
+          <div className="relative">
+            <div className="absolute inset-0 bg-jaded-green-400/8 rounded-full blur-lg animate-pulse" />
+            <img
+              src="/assets/Icon.png"
+              alt="Cactus Media Group"
+              className="relative w-12 h-12 sm:w-16 sm:h-16 object-contain opacity-15"
+              style={{
+                filter: "drop-shadow(0 0 10px rgba(34, 197, 94, 0.15))"
+              }}
+            />
+          </div>
+        </motion.div>
       </div>
 
-      <div className="relative z-10 max-w-7xl mx-auto px-6">
+      <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
         {/* Section Header */}
         <motion.div
           initial={{ opacity: 0, y: 60 }}
           animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 60 }}
           transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
-          className="text-center mb-20"
+          className="text-center mb-12 sm:mb-16 lg:mb-20 w-full flex flex-col items-center"
         >
           <motion.div
             initial={{ width: 0 }}
@@ -101,7 +142,7 @@ export function ModernAboutSection() {
           />
 
           <h2
-            className={`text-5xl md:text-6xl lg:text-7xl font-bold text-white mb-6 ${
+            className={`text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold text-white mb-4 sm:mb-6 text-center w-full ${
               language === "ar" ? "font-arabic" : "font-barlow"
             }`}
           >
@@ -109,7 +150,7 @@ export function ModernAboutSection() {
           </h2>
 
           <p
-            className={`text-xl md:text-2xl text-gray-300 max-w-4xl mx-auto leading-relaxed text-center ${
+            className={`text-lg sm:text-xl lg:text-2xl text-gray-300 max-w-4xl mx-auto leading-relaxed text-center w-full ${
               language === "ar" ? "font-arabic" : ""
             }`}
           >
@@ -120,21 +161,21 @@ export function ModernAboutSection() {
         </motion.div>
 
         {/* Main Content Grid */}
-        <div className="grid lg:grid-cols-2 gap-16 items-center">
+        <div className="grid lg:grid-cols-2 gap-8 sm:gap-12 lg:gap-16 items-center justify-center w-full">
           {/* Left Content */}
           <motion.div
             initial={{ opacity: 0, x: -60 }}
             animate={isInView ? { opacity: 1, x: 0 } : { opacity: 0, x: -60 }}
             transition={{ duration: 0.8, delay: 0.4 }}
-            className={language === "ar" ? "order-2 lg:order-1" : ""}
+            className={`w-full flex flex-col ${language === "ar" ? "order-2 lg:order-1 items-center text-center" : "items-start"}`}
           >
-            <div className="space-y-8">
-              <div>
+            <div className="space-y-6 sm:space-y-8 w-full">
+              <div className="w-full">
                 <h3
-                  className={`text-3xl md:text-4xl font-bold text-white mb-6 ${
+                  className={`text-2xl sm:text-3xl lg:text-4xl font-bold text-white mb-4 sm:mb-6 w-full ${
                     language === "ar"
                       ? "font-arabic text-center"
-                      : "font-barlow"
+                      : "font-barlow text-left"
                   }`}
                 >
                   {language === "ar"
@@ -143,8 +184,8 @@ export function ModernAboutSection() {
                 </h3>
 
                 <p
-                  className={`text-lg text-gray-300 leading-relaxed mb-8 ${
-                    language === "ar" ? "font-arabic text-center" : ""
+                  className={`text-base sm:text-lg text-gray-300 leading-relaxed mb-6 sm:mb-8 w-full ${
+                    language === "ar" ? "font-arabic text-center" : "text-left"
                   }`}
                 >
                   {language === "ar"
@@ -153,7 +194,7 @@ export function ModernAboutSection() {
                 </p>
 
                 {/* Key Points */}
-                <div className="space-y-4">
+                <div className={`space-y-3 sm:space-y-4 w-full ${language === "ar" ? "flex flex-col items-center" : ""}`}>
                   {[
                     language === "ar"
                       ? "تصميم يركز على المستخدم"
@@ -172,11 +213,11 @@ export function ModernAboutSection() {
                         isInView ? { opacity: 1, x: 0 } : { opacity: 0, x: -20 }
                       }
                       transition={{ duration: 0.6, delay: 0.6 + index * 0.1 }}
-                      className="flex items-center gap-3"
+                      className={`flex items-center gap-3 ${language === "ar" ? "justify-center" : "justify-start"} w-full max-w-md ${language === "ar" ? "mx-auto" : ""}`}
                     >
-                      <CheckCircle className="w-6 h-6 text-jaded-green-400 flex-shrink-0" />
+                      <CheckCircle className="w-5 h-5 sm:w-6 sm:h-6 text-jaded-green-400 flex-shrink-0" />
                       <span
-                        className={`text-gray-200 ${language === "ar" ? "font-arabic" : ""}`}
+                        className={`text-sm sm:text-base text-gray-200 ${language === "ar" ? "font-arabic" : ""}`}
                       >
                         {point}
                       </span>
@@ -191,11 +232,11 @@ export function ModernAboutSection() {
                   isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }
                 }
                 transition={{ duration: 0.6, delay: 0.8 }}
-                className="modern-btn group"
+                className={`modern-btn group w-full sm:w-auto ${language === "ar" ? "mx-auto" : ""}`}
                 onClick={() => setShowPortfolio(true)}
               >
                 {language === "ar" ? "اكتشف المزيد" : "Discover More"}
-                <ArrowRight className="w-5 h-5 ml-2 group-hover:translate-x-1 transition-transform inline" />
+                <ArrowRight className={`w-4 h-4 sm:w-5 sm:h-5 ${language === "ar" ? "mr-2" : "ml-2"} group-hover:${language === "ar" ? "-translate-x-1" : "translate-x-1"} transition-transform inline`} />
               </motion.button>
             </div>
           </motion.div>
@@ -205,9 +246,9 @@ export function ModernAboutSection() {
             initial={{ opacity: 0, x: 60 }}
             animate={isInView ? { opacity: 1, x: 0 } : { opacity: 0, x: 60 }}
             transition={{ duration: 0.8, delay: 0.6 }}
-            className={language === "ar" ? "order-1 lg:order-2" : ""}
+            className={`w-full ${language === "ar" ? "order-1 lg:order-2" : ""}`}
           >
-            <div className="space-y-6">
+            <div className="space-y-4 sm:space-y-6 w-full">
               {values.map((value, index) => (
                 <motion.div
                   key={index}
@@ -216,23 +257,23 @@ export function ModernAboutSection() {
                     isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }
                   }
                   transition={{ duration: 0.6, delay: 0.8 + index * 0.1 }}
-                  className="modern-card p-8 group cursor-pointer"
+                  className="modern-card p-4 sm:p-6 lg:p-8 group cursor-pointer w-full"
                 >
-                  <div className="flex items-start gap-4">
-                    <div className="w-14 h-14 rounded-2xl flex items-center justify-center group-hover:scale-110 transition-transform duration-300 bg-jaded-green-50">
+                  <div className={`flex items-start gap-3 sm:gap-4 ${language === "ar" ? "flex-col items-center text-center" : ""}`}>
+                    <div className="w-12 h-12 sm:w-14 sm:h-14 rounded-2xl flex items-center justify-center group-hover:scale-110 transition-transform duration-300 bg-jaded-green-50 flex-shrink-0">
                       <img
                         src={value.icon}
                         alt={value.title}
-                        className="w-12 h-12 object-contain"
+                        className="w-10 h-10 sm:w-12 sm:h-12 object-contain"
                         loading="lazy"
                         decoding="async"
                         style={{ maxWidth: "100%", height: "auto" }}
                       />
                     </div>
 
-                    <div className="flex-1">
+                    <div className={`flex-1 w-full ${language === "ar" ? "text-center" : ""}`}>
                       <h4
-                        className={`text-xl font-bold text-gray-900 mb-3 group-hover:text-jaded-green-400 transition-colors ${
+                        className={`text-lg sm:text-xl font-bold text-white mb-2 sm:mb-3 group-hover:text-jaded-green-400 transition-colors ${
                           language === "ar"
                             ? "font-arabic text-center"
                             : "font-barlow"
@@ -241,7 +282,7 @@ export function ModernAboutSection() {
                         {value.title}
                       </h4>
                       <p
-                        className={`text-gray-600 leading-relaxed ${
+                        className={`text-sm sm:text-base text-gray-200 leading-relaxed ${
                           language === "ar" ? "font-arabic text-center" : ""
                         }`}
                       >

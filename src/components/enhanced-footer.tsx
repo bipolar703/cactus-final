@@ -6,6 +6,7 @@ import {
     Linkedin, Mail
 } from "lucide-react";
 import { useState } from "react";
+import { Link } from "wouter";
 
 export function EnhancedFooter() {
   const { language } = useLanguage();
@@ -33,26 +34,31 @@ export function EnhancedFooter() {
   const quickLinks =
     language === "ar"
       ? [
-          { label: "من نحن", href: "#about" },
-          { label: "خدماتنا", href: "#services" },
-          { label: "أعمالنا", href: "#portfolio" },
-          { label: "تواصل معنا", href: "#contact" },
+          { label: "من نحن", href: "/about" },
+          { label: "خدماتنا", href: "/services" },
+          { label: "أعمالنا", href: "/portfolio" },
+          { label: "تواصل معنا", href: "/contact" },
         ]
       : [
-          { label: "About Us", href: "#about" },
-          { label: "Our Services", href: "#services" },
-          { label: "Portfolio", href: "#portfolio" },
-          { label: "Contact", href: "#contact" },
+          { label: "About Us", href: "/about" },
+          { label: "Our Services", href: "/services" },
+          { label: "Portfolio", href: "/portfolio" },
+          { label: "Contact", href: "/contact" },
         ];
 
   const services =
     language === "ar"
-      ? ["تطوير المواقع", "تصميم الهوية", "التسويق الرقمي", "التصوير والإنتاج"]
+      ? [
+          { label: "تطوير المواقع", href: "/services/web-development" },
+          { label: "الهوية البصرية", href: "/services/branding" },
+          { label: "التسويق الرقمي", href: "/services/digital-marketing" },
+          { label: "التصوير والإنتاج", href: "/services/photography" },
+        ]
       : [
-          "Web Development",
-          "Brand Design",
-          "Digital Marketing",
-          "Photography & Production",
+          { label: "Web Development", href: "/services/web-development" },
+          { label: "Brand Identity", href: "/services/branding" },
+          { label: "Digital Marketing", href: "/services/digital-marketing" },
+          { label: "Photography & Production", href: "/services/photography" },
         ];
 
   return (
@@ -171,14 +177,15 @@ export function EnhancedFooter() {
             <ul className="space-y-3">
               {quickLinks.map((link, index) => (
                 <li key={index}>
-                  <a
-                    href={link.href}
-                    className={`text-white/70 hover:text-jaded-green-400 transition-colors duration-300 ${
-                      language === "ar" ? "font-arabic" : ""
-                    }`}
-                  >
-                    {link.label}
-                  </a>
+                  <Link href={link.href}>
+                    <a
+                      className={`text-white/70 hover:text-jaded-green-400 transition-colors duration-300 cursor-pointer ${
+                        language === "ar" ? "font-arabic" : ""
+                      }`}
+                    >
+                      {link.label}
+                    </a>
+                  </Link>
                 </li>
               ))}
             </ul>
@@ -199,11 +206,15 @@ export function EnhancedFooter() {
             <ul className="space-y-3">
               {services.map((service, index) => (
                 <li key={index}>
-                  <span
-                    className={`text-white/70 ${language === "ar" ? "font-arabic" : ""}`}
-                  >
-                    {service}
-                  </span>
+                  <Link href={service.href}>
+                    <a
+                      className={`text-white/70 hover:text-jaded-green-400 transition-colors duration-300 cursor-pointer ${
+                        language === "ar" ? "font-arabic" : ""
+                      }`}
+                    >
+                      {service.label}
+                    </a>
+                  </Link>
                 </li>
               ))}
             </ul>

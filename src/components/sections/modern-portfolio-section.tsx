@@ -277,15 +277,7 @@ export function ModernPortfolioSection() {
             </div>
           </div>
           {/* Scroll Hint (always visible) */}
-          <div className="text-center mt-4">
-            <p
-              className={`text-sm text-gray-400 ${language === "ar" ? "font-arabic" : "font-barlow"}`}
-            >
-              {language === "ar"
-                ? "اسحب أو استخدم الأسهم للتنقل"
-                : "Scroll or use arrows to navigate"}
-            </p>
-          </div>
+          {/* Removed scroll/arrows hint for cleaner UI */}
         </motion.div>
         {/* CTA Button (hidden on mobile) */}
         <motion.div
@@ -294,17 +286,17 @@ export function ModernPortfolioSection() {
             isIntersecting ? { opacity: 1, y: 0 } : { opacity: 0, y: 40 }
           }
           transition={{ delay: 0.8, duration: 0.8 }}
-          className="hidden sm:block text-center mt-16"
+          className="text-center mt-16"
         >
-          <button
-            onClick={() => window.open(projects[currentIndex].url, "_blank")}
-            className="bg-jaded-green-600 hover:bg-jaded-green-700 text-white px-8 py-4 rounded-full font-medium text-lg shadow-lg hover:shadow-xl transform hover:scale-105 transition-all duration-300"
+          <a
+            href="/portfolio"
+            className="bg-jaded-green-600 hover:bg-jaded-green-700 text-white px-8 py-4 rounded-full font-medium text-lg shadow-lg hover:shadow-xl transform hover:scale-105 transition-all duration-300 inline-flex items-center justify-center"
           >
             {language === "ar"
               ? "عرض المحفظة الكاملة"
               : "View Complete Portfolio"}
             <ExternalLink className="w-5 h-5 ml-2 inline" />
-          </button>
+          </a>
         </motion.div>
       </div>
     </section>

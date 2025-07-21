@@ -173,7 +173,7 @@ export function ModernServicesSection() {
         {aiService && (
           <div className="mb-12 w-full flex flex-col md:flex-row items-center bg-jaded-green-700 rounded-3xl shadow-2xl p-8 md:p-12 border-2 border-jaded-green-400/40 relative overflow-hidden">
             {/* LATEST label on the card */}
-            <span className="absolute top-4 left-4 bg-gold-500 text-white text-xs font-bold px-4 py-2 rounded-full shadow-lg z-10">
+            <span className="absolute top-4 left-4 bg-white text-[#3f7c6a] text-xs font-bold px-4 py-2 rounded-full shadow-lg z-10">
               {language === "ar" ? "الأحدث" : "LATEST"}
             </span>
             <div className="flex-shrink-0 mb-6 md:mb-0 md:mr-10 flex flex-col items-center">

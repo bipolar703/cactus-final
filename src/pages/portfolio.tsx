@@ -1,7 +1,7 @@
 import { portfolioProjects } from "@/data/portfolio";
 import { useLanguage } from "@/hooks/use-language";
 import { motion } from "framer-motion";
-import { ExternalLink, Eye, Sparkles } from "lucide-react";
+import { ExternalLink, Eye } from "lucide-react";
 import { Link } from "wouter";
 
 export default function Portfolio() {
@@ -52,16 +52,6 @@ export default function Portfolio() {
         <div className="relative z-10 pt-32 pb-20 px-6 sm:px-8">
           {/* Header Section */}
           <div className="max-w-7xl mx-auto text-center mb-20">
-            <motion.div
-              initial={{ opacity: 0, y: -20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6 }}
-              className="flex justify-center mb-6"
-            >
-              <div className="p-3 rounded-2xl bg-jaded-green-100/50 backdrop-blur-sm">
-                <Sparkles className="w-8 h-8 text-jaded-green-600" />
-              </div>
-            </motion.div>
 
             <motion.h1
               initial={{ opacity: 0, y: 40 }}
