@@ -11,10 +11,11 @@ pnpm install
 # Run database migrations if needed
 echo "🗄️ Setting up database..."
 if [ ! -z "$DATABASE_URL" ]; then
-  echo "Database URL found, running migrations..."
+  echo "Database URL found, generating migration files..."
+  pnpm db:generate
+  echo "Migration files generated. Pushing schema to database..."
   export DRIZZLE_NON_INTERACTIVE=1
-  echo "DRIZZLE_NON_INTERACTIVE is set to $DRIZZLE_NON_INTERACTIVE"
-  pnpm db:migrate
+  pnpm db:push
 else
   echo "⚠️ No DATABASE_URL found, skipping database setup"
 fi
