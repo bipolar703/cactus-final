@@ -1,4 +1,3 @@
--- Initial schema for Cactus Media Group database
 
 CREATE TABLE IF NOT EXISTS "contact_submissions" (
 	"id" serial PRIMARY KEY NOT NULL,
@@ -30,7 +29,11 @@ CREATE TABLE IF NOT EXISTS "newsletter_subscriptions" (
 	CONSTRAINT "newsletter_subscriptions_email_unique" UNIQUE("email")
 );
 
--- Create indexes for better performance
+CREATE INDEX IF NOT EXISTS "idx_contact_submissions_email" ON "contact_submissions" ("email");
+CREATE INDEX IF NOT EXISTS "idx_contact_submissions_created_at" ON "contact_submissions" ("created_at");
+CREATE INDEX IF NOT EXISTS "idx_error_logs_timestamp" ON "error_logs" ("timestamp");
+CREATE INDEX IF NOT EXISTS "idx_newsletter_subscriptions_email" ON "newsletter_subscriptions" ("email");
+CREATE INDEX IF NOT EXISTS "idx_newsletter_subscriptions_status" ON "newsletter_subscriptions" ("status");
 CREATE INDEX IF NOT EXISTS "idx_contact_submissions_email" ON "contact_submissions" ("email");
 CREATE INDEX IF NOT EXISTS "idx_contact_submissions_created_at" ON "contact_submissions" ("created_at");
 CREATE INDEX IF NOT EXISTS "idx_error_logs_timestamp" ON "error_logs" ("timestamp");
