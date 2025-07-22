@@ -1,0 +1,7 @@
+ignoredBuiltDependencies:
+  - '@swc/core'
+  - '@tailwindcss/oxide'
+  - '@vercel/speed-insights'
+  - bufferutil
+  - esbuild
+  - unrs-resolver
