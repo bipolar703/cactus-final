@@ -12,6 +12,7 @@ pnpm install
 echo "🗄️ Setting up database..."
 if [ ! -z "$DATABASE_URL" ]; then
   echo "Database URL found, running migrations..."
+  export DRIZZLE_NON_INTERACTIVE=1
   pnpm db:push
 else
   echo "⚠️ No DATABASE_URL found, skipping database setup"
