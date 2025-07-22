@@ -55,7 +55,7 @@ export function ClientShowcase() {
           animate={
             isIntersecting ? { opacity: 1, y: 0 } : { opacity: 0, y: 40 }
           }
-          transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
+          transition={{ duration: 0.8 }}
           className="text-center mb-16"
         >
           <motion.div
@@ -105,7 +105,6 @@ export function ClientShowcase() {
                 transition={{
                   duration: 35,
                   repeat: Infinity,
-                  ease: "linear",
                 }}
                 className="flex gap-6 sm:gap-8 whitespace-nowrap overflow-x-auto scrollbar-hide touch-pan-x"
                 style={{ width: "calc(200% + 3rem)" }}
@@ -147,7 +146,6 @@ export function ClientShowcase() {
                 transition={{
                   duration: 40,
                   repeat: Infinity,
-                  ease: "linear",
                 }}
                 className="flex gap-6 sm:gap-8 whitespace-nowrap overflow-x-auto scrollbar-hide touch-pan-x"
                 style={{ width: "calc(200% + 3rem)" }}

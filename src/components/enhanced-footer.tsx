@@ -80,7 +80,6 @@ export function EnhancedFooter() {
           transition={{
             duration: 45,
             repeat: Infinity,
-            ease: "easeInOut",
           }}
           className="absolute -top-1/2 -left-1/2 w-full h-full bg-gradient-to-br from-jaded-green-500/10 to-transparent rounded-full blur-3xl"
         />
@@ -94,7 +93,6 @@ export function EnhancedFooter() {
           transition={{
             duration: 50,
             repeat: Infinity,
-            ease: "easeInOut",
           }}
           className="absolute -bottom-1/2 -right-1/2 w-full h-full bg-gradient-to-tl from-gold-500/10 to-transparent rounded-full blur-3xl"
         />
@@ -109,8 +107,7 @@ export function EnhancedFooter() {
           {/* Company Info */}
           <motion.div
             initial={{ opacity: 0, y: 40 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
+            animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6 }}
             className="lg:col-span-2"
           >
@@ -161,8 +158,7 @@ export function EnhancedFooter() {
           {/* Quick Links */}
           <motion.div
             initial={{ opacity: 0, y: 40 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
+            animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.1 }}
           >
             <h4
@@ -190,8 +186,7 @@ export function EnhancedFooter() {
           {/* Services */}
           <motion.div
             initial={{ opacity: 0, y: 40 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
+            animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.2 }}
           >
             <h4
@@ -220,8 +215,7 @@ export function EnhancedFooter() {
         {/* Social Links & Quick Call */}
         <motion.div
           initial={{ opacity: 0, y: 40 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
+          animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.3 }}
           className="border-t border-white/10 pt-8"
         >
@@ -237,8 +231,8 @@ export function EnhancedFooter() {
                 <motion.a
                   key={index}
                   href={social.href}
-                  whileHover={{ scale: 1.1, y: -2 }}
-                  whileTap={{ scale: 0.95 }}
+                  // Removed unsupported while prop
+                  // tap animation not supported, remove
                   className="w-10 h-10 glass-premium rounded-lg flex items-center justify-center hover:border-jaded-green-500/40 transition-all duration-300 group"
                 >
                   <social.icon className="w-5 h-5 text-white/70 group-hover:text-jaded-green-400 transition-colors" />
@@ -312,8 +306,7 @@ export function EnhancedFooter() {
         {/* Bottom Bar */}
         <motion.div
           initial={{ opacity: 0 }}
-          whileInView={{ opacity: 1 }}
-          viewport={{ once: true }}
+          animate={{ opacity: 1 }}
           transition={{ duration: 0.6, delay: 0.4 }}
           className="border-t border-white/10 mt-8 pt-6 text-center"
         >
