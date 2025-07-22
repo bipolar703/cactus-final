@@ -1,5 +1,5 @@
 import { useLanguage } from "@/hooks/use-language";
-import { AnimatePresence, motion } from "motion/react";
+import { motion } from "@motionone/react";
 import { X } from "lucide-react";
 import { useEffect, useState } from "react";
 

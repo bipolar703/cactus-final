@@ -1,4 +1,4 @@
-import { AnimatePresence, motion } from "motion/react";
+import { motion } from "@motionone/react";
 import { useEffect, useState } from "react";
 
 interface LoadingScreenProps {

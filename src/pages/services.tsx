@@ -1,6 +1,6 @@
 import { services } from "@/data/services";
 import { useLanguage } from "@/hooks/use-language";
-import { motion } from "motion/react";
+import { motion } from "@motionone/react";
 import { ArrowRight, Sparkles } from "lucide-react";
 import { Link } from "wouter";
 

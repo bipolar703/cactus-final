@@ -21,7 +21,7 @@ import {
   FormMessage,
 } from "@/components/ui/form";
 import { useToast } from "@/hooks/use-toast";
-import { motion } from "motion/react";
+import { motion } from "@motionone/react";
 
 const formSchema = z.object({
   firstName: z.string().min(1, "First name is required"),

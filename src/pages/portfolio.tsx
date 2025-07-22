@@ -1,6 +1,6 @@
 import { portfolioProjects } from "@/data/portfolio";
 import { useLanguage } from "@/hooks/use-language";
-import { motion } from "motion/react";
+import { motion } from "@motionone/react";
 import { ExternalLink, Eye } from "lucide-react";
 import { Link } from "wouter";
 

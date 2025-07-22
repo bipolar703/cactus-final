@@ -1,5 +1,5 @@
 import { useLanguage } from "@/hooks/use-language";
-import { motion } from "motion/react";
+import { motion } from "@motionone/react";
 import { ContactForm } from "@/components/contact/contact-form";
 import { ContactInfo } from "@/components/contact/contact-info";
 

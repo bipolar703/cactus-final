@@ -1,5 +1,5 @@
 import { useLanguage } from "@/hooks/use-language";
-import { motion } from "motion/react";
+import { motion } from "@motionone/react";
 import { Rocket, Search, TrendingUp, Zap } from "lucide-react";
 
 export function ProcessSection() {

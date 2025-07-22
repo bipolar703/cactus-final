@@ -1,5 +1,5 @@
 import { useLanguage } from "@/hooks/use-language";
-import { motion, useInView, useScroll, useTransform } from "motion/react";
+import { motion } from "@motionone/react";
 import { ArrowRight, CheckCircle } from "lucide-react";
 import { useRef, useState } from "react";
 import { ModalOverlay } from "../modal-overlay";

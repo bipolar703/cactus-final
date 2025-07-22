@@ -1,5 +1,5 @@
 import { useLanguage } from "@/hooks/use-language";
-import { motion } from "motion/react";
+import { motion } from "@motionone/react";
 import { Facebook, Instagram, Linkedin, Mail } from "lucide-react";
 import { useState } from "react";
 import { Link } from "wouter";

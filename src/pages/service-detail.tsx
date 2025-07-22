@@ -1,6 +1,6 @@
 import { services } from "@/data/services";
 import { useLanguage } from "@/hooks/use-language";
-import { motion } from "motion/react";
+import { motion } from "@motionone/react";
 import { ArrowLeft, CheckCircle, Zap } from "lucide-react";
 import { Link, useRoute } from "wouter";
 

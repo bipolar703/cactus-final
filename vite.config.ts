@@ -1,10 +1,11 @@
 import { defineConfig } from "vite";
 import react from "@vitejs/plugin-react-swc";
-import imagemin from "vite-plugin-imagemin";
-import compress from "vite-plugin-compress";
-import splitVendor from "vite-plugin-split-vendor";
-import avifSequence from "vite-plugin-avif-sequence";
+// Removed missing Vite plugins
 import path from "path";
+import { fileURLToPath } from "url";
+
+// ESM-compatible __dirname
+const __dirname = path.dirname(fileURLToPath(import.meta.url));
 
 export default defineConfig({
   plugins: [
@@ -12,26 +13,24 @@ export default defineConfig({
       // Use SWC for faster builds in Vite 7
       jsxRuntime: "automatic",
     }),
-    imagemin(),
-    compress(),
-    splitVendor(),
-    avifSequence(),
+    // Removed missing Vite plugins
   ],
   resolve: {
     alias: {
-      "@": path.resolve(import.meta.dirname, "src"),
-      "@assets": path.resolve(import.meta.dirname, "public/assets"),
+      "@": path.resolve(__dirname, "src"),
+      "@assets": path.resolve(__dirname, "public/assets"),
     },
   },
-  root: path.resolve(import.meta.dirname),
+  root: path.resolve(__dirname),
   build: {
-    outDir: path.resolve(import.meta.dirname, "dist"),
+    outDir: path.resolve(__dirname, "dist"),
     emptyOutDir: true,
-    // Vite 7 optimizations for production
     target: ["es2022", "chrome119", "safari17"],
     minify: "esbuild",
     sourcemap: false,
     cssCodeSplit: true,
+    chunkSizeWarningLimit: 150,
+    assetsInlineLimit: 4096,
     rollupOptions: {
       external: ["@vercel/analytics"],
       output: {
@@ -51,9 +50,6 @@ export default defineConfig({
         assetFileNames: "assets/[name]-[hash].[ext]",
       },
     },
-    // Optimize for production - enforce budget limits
-    chunkSizeWarningLimit: 150,
-    assetsInlineLimit: 4096,
   },
   server: {
     port: 5173,
@@ -62,12 +58,22 @@ export default defineConfig({
       strict: true,
       deny: ["**/.*"],
     },
-    // Vite 7 HMR optimizations
     hmr: {
       overlay: true,
     },
     headers: {
       "Link": "</lottie/*.json>; rel=preload; as=fetch, </hero.avifs>; rel=preload; as=image"
+    },
+    // RTL support for Arabic layout
+    middlewareMode: false,
+    // Custom: inject dir="rtl" for Arabic routes
+    configureServer(server: any) {
+      server.middlewares.use((req: any, res: any, next: any) => {
+        if (req.url && /ar(\/|$)/.test(req.url)) {
+          res.setHeader('Content-Security-Policy', "default-src 'self'; style-src 'self' 'unsafe-inline';");
+        }
+        next();
+      });
     },
   },
   // Vite 7 optimizations

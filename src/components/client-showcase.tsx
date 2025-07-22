@@ -2,7 +2,7 @@ import { clientLogos } from "@/data/clients";
 import { useLanguage } from "@/hooks/use-language";
 import { usePerformantIntersection } from "@/hooks/use-performance";
 import { useState, useEffect, useRef } from "react";
-import { motion } from "motion/react";
+import { motion } from "@motionone/react";
 
 interface StatItem {
   number: string;

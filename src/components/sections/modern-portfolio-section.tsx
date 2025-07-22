@@ -1,7 +1,7 @@
 import { portfolioProjects } from "@/data/portfolio";
 import { useLanguage } from "@/hooks/use-language";
 import { useOptimizedIntersection } from "@/utils/cache-manager";
-import { motion, useScroll, useTransform } from "motion/react";
+import { motion } from "@motionone/react";
 import {
   ArrowUpRight,
   ChevronLeft,

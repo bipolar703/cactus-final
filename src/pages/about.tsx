@@ -1,5 +1,5 @@
 import { useLanguage } from "@/hooks/use-language";
-import { motion } from "motion/react";
+import { motion } from "@motionone/react";
 import { Globe, Heart, Lightbulb, Shield, Target } from "lucide-react";
 
 export default function About() {

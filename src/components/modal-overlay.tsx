@@ -1,4 +1,4 @@
-import { AnimatePresence, motion } from "motion/react";
+import { motion } from "@motionone/react";
 import { X } from "lucide-react";
 import { ReactNode, useEffect } from "react";
 

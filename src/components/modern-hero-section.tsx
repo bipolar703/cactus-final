@@ -1,5 +1,5 @@
 import { useLanguage } from "@/hooks/use-language";
-import { motion, useScroll, useTransform } from "motion/react";
+import { motion } from "@motionone/react";
 import { ArrowDown, Play } from "lucide-react";
 import { useRef } from "react";
 import { Link } from "wouter";

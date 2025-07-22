@@ -1,4 +1,4 @@
-import { motion, AnimatePresence } from "motion/react";
+import { motion } from "@motionone/react";
 import { useLocation } from "wouter";
 import { ReactNode } from "react";
 
