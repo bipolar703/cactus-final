@@ -13,6 +13,7 @@ echo "🗄️ Setting up database..."
 if [ ! -z "$DATABASE_URL" ]; then
   echo "Database URL found, running migrations..."
   export DRIZZLE_NON_INTERACTIVE=1
+  echo "DRIZZLE_NON_INTERACTIVE is set to $DRIZZLE_NON_INTERACTIVE"
   pnpm db:push
 else
   echo "⚠️ No DATABASE_URL found, skipping database setup"
