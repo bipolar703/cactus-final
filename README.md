@@ -234,38 +234,37 @@ cactus-media-group/
 - **Container**: Max width with responsive padding
 - **Component Gaps**: Consistent spacing between related elements
 
-## 🌐 Deployment
 
-### Development Deployment (Replit)
+## 🌐 Deployment & Automation (2025 Best Practices)
 
-The project is configured for Replit deployment:
+### Vercel (Recommended)
 
-- Push changes to trigger automatic redeployment
-- Environment variables managed through Replit Secrets
-- Database hosted on Neon (PostgreSQL)
+1. **Connect GitHub repository**
+2. **Set environment variables** (see below)
+3. **Automated Deploy on Push**: Vercel builds and deploys automatically
+4. **Node & pnpm Version Pinning**: `package.json` pins Node to `20.12.x` and pnpm to `10.13.1` for reproducible builds
+5. **Automated Database Migrations**: All schema and index creation is idempotent and safe for CI/CD (see `drizzle/0001_initial_schema.sql`)
+6. **Error Handling**: Migration scripts use `IF NOT EXISTS` for tables and indexes to prevent common errors
+7. **Build Cache**: Vercel uses build cache for faster subsequent builds
+8. **Security Audit**: Add `pnpm audit` and `npm-audit-ci` to CI pipeline for vulnerability checks
+9. **Monitoring**: Vercel Speed Insights and error logs enabled
 
-### Production Deployment Options
+### Netlify
 
-#### Replit (Recommended)
+1. Connect repository
+2. Build command: `npm run build`
+3. Publish directory: `dist`
+
+### Replit
 
 1. Connect repository
 2. Set environment variables
 3. Deploy automatically on push
 4. Use Replit's built-in hosting features
 
-#### Vercel
-
-1. Connect GitHub repository
-2. Set environment variables
-3. Deploy automatically on push
-
-#### Netlify
-
-1. Connect repository
-2. Build command: `npm run build`
-3. Publish directory: `dist`
 
 ## 🔐 Environment Variables
+
 
 ### Required
 
@@ -278,6 +277,20 @@ NODE_ENV=production
 ```
 DATABASE_URL=postgresql://user:pass@host:port/db
 ```
+
+### Automated Error Handling & Migration
+
+- All database migrations are idempotent and safe for CI/CD
+- Tables and indexes use `IF NOT EXISTS` to prevent duplicate errors
+- See `drizzle/0001_initial_schema.sql` for latest schema
+
+### Build & Deploy Steps (Vercel)
+
+1. `pnpm install --lockfile-only` (ensures lockfile matches pnpm version)
+2. `pnpm run build` (builds client and server)
+3. `pnpm run db:push` (automated migration)
+4. `pnpm audit` and `npm-audit-ci` (security checks)
+5. Vercel deploys and monitors automatically
 
 ## 📞 Support & Contact
 

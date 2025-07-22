@@ -1,4 +1,6 @@
 
+
+-- Automated error handling: All table and index creation is idempotent and safe for CI/CD
 CREATE TABLE IF NOT EXISTS "contact_submissions" (
 	"id" serial PRIMARY KEY NOT NULL,
 	"first_name" varchar(100) NOT NULL,
@@ -29,11 +31,7 @@ CREATE TABLE IF NOT EXISTS "newsletter_subscriptions" (
 	CONSTRAINT "newsletter_subscriptions_email_unique" UNIQUE("email")
 );
 
-CREATE INDEX IF NOT EXISTS "idx_contact_submissions_email" ON "contact_submissions" ("email");
-CREATE INDEX IF NOT EXISTS "idx_contact_submissions_created_at" ON "contact_submissions" ("created_at");
-CREATE INDEX IF NOT EXISTS "idx_error_logs_timestamp" ON "error_logs" ("timestamp");
-CREATE INDEX IF NOT EXISTS "idx_newsletter_subscriptions_email" ON "newsletter_subscriptions" ("email");
-CREATE INDEX IF NOT EXISTS "idx_newsletter_subscriptions_status" ON "newsletter_subscriptions" ("status");
+-- Indexes are created only if not present, avoiding migration errors
 CREATE INDEX IF NOT EXISTS "idx_contact_submissions_email" ON "contact_submissions" ("email");
 CREATE INDEX IF NOT EXISTS "idx_contact_submissions_created_at" ON "contact_submissions" ("created_at");
 CREATE INDEX IF NOT EXISTS "idx_error_logs_timestamp" ON "error_logs" ("timestamp");
