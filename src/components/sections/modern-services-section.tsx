@@ -1,10 +1,8 @@
 import { services } from "@/data/services";
 import { useLanguage } from "@/hooks/use-language";
 import { useOptimizedIntersection } from "@/utils/cache-manager";
-import { motion } from "framer-motion";
-import {
-    Brain, Code, Cpu, Database, Megaphone, Palette
-} from "lucide-react";
+import { motion } from "motion/react";
+import { Brain, Code, Cpu, Database, Megaphone, Palette } from "lucide-react";
 
 export function ModernServicesSection() {
   const { language } = useLanguage();

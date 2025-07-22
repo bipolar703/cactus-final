@@ -1,6 +1,6 @@
 import { services } from "@/data/services";
 import { useLanguage } from "@/hooks/use-language";
-import { motion } from "framer-motion";
+import { motion } from "motion/react";
 import { ArrowLeft, CheckCircle, Zap } from "lucide-react";
 import { Link, useRoute } from "wouter";
 
@@ -41,15 +41,27 @@ export default function ServiceDetailPage() {
       <meta property="og:title" content={pageTitle} />
       <meta property="og:description" content={pageDescription} />
       <meta property="og:type" content="website" />
-      <meta property="og:url" content={`https://cactusmediajo.com/services/${service.slug}`} />
-      <meta property="og:image" content={`https://cactusmediajo.com${service.icon}`} />
+      <meta
+        property="og:url"
+        content={`https://cactusmediajo.com/services/${service.slug}`}
+      />
+      <meta
+        property="og:image"
+        content={`https://cactusmediajo.com${service.icon}`}
+      />
       <meta name="twitter:card" content="summary_large_image" />
       <meta name="twitter:title" content={pageTitle} />
       <meta name="twitter:description" content={pageDescription} />
-      <meta name="twitter:image" content={`https://cactusmediajo.com${service.icon}`} />
+      <meta
+        name="twitter:image"
+        content={`https://cactusmediajo.com${service.icon}`}
+      />
       <meta name="robots" content="index, follow" />
       <meta name="author" content="Cactus Media Group" />
-      <link rel="canonical" href={`https://cactusmediajo.com/services/${service.slug}`} />
+      <link
+        rel="canonical"
+        href={`https://cactusmediajo.com/services/${service.slug}`}
+      />
 
       <main className="min-h-screen bg-white">
         {/* Subtle Background Elements */}
@@ -309,7 +321,6 @@ export default function ServiceDetailPage() {
               </motion.div>
             )}
 
-
             {/* Custom CTA Section */}
             <motion.div
               initial={{ opacity: 0, y: 40 }}
@@ -323,8 +334,8 @@ export default function ServiceDetailPage() {
                     language === "ar" ? "font-arabic" : "font-barlow"
                   }`}
                 >
-                  {language === "ar" 
-                    ? `جاهز لبدء مشروع ${service.title[language]}؟` 
+                  {language === "ar"
+                    ? `جاهز لبدء مشروع ${service.title[language]}؟`
                     : `Ready to Start Your ${service.title[language]} Project?`}
                 </h3>
                 <p
@@ -343,7 +354,9 @@ export default function ServiceDetailPage() {
                       whileTap={{ scale: 0.95 }}
                       className="bg-white text-[#3f7c6a] font-bold py-4 px-8 rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300"
                     >
-                      {language === "ar" ? "احصل على استشارة مجانية" : "Get Free Consultation"}
+                      {language === "ar"
+                        ? "احصل على استشارة مجانية"
+                        : "Get Free Consultation"}
                     </motion.button>
                   </Link>
                   <Link href="/portfolio">
@@ -352,7 +365,9 @@ export default function ServiceDetailPage() {
                       whileTap={{ scale: 0.95 }}
                       className="border-2 border-white text-white font-bold py-4 px-8 rounded-2xl hover:bg-white/10 transition-all duration-300"
                     >
-                      {language === "ar" ? "شاهد أعمالنا السابقة" : "View Previous Work"}
+                      {language === "ar"
+                        ? "شاهد أعمالنا السابقة"
+                        : "View Previous Work"}
                     </motion.button>
                   </Link>
                 </div>

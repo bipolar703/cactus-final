@@ -1,14 +1,12 @@
 import { portfolioProjects } from "@/data/portfolio";
 import { useLanguage } from "@/hooks/use-language";
 import { useOptimizedIntersection } from "@/utils/cache-manager";
+import { motion, useScroll, useTransform } from "motion/react";
 import {
-    motion,
-    useScroll,
-    useTransform
-} from "framer-motion";
-import {
-    ArrowUpRight, ChevronLeft,
-    ChevronRight, ExternalLink
+  ArrowUpRight,
+  ChevronLeft,
+  ChevronRight,
+  ExternalLink,
 } from "lucide-react";
 import { useCallback, useEffect, useRef, useState } from "react";
 

@@ -2,34 +2,37 @@ import { clientLogos } from "@/data/clients";
 import { useLanguage } from "@/hooks/use-language";
 import { usePerformantIntersection } from "@/hooks/use-performance";
 import { useState, useEffect, useRef } from "react";
-import { motion } from "framer-motion";
+import { motion } from "motion/react";
 
 interface StatItem {
   number: string;
   label: string;
-  icon: 'star' | 'quote';
+  icon: "star" | "quote";
 }
 
 export function ClientShowcase() {
   const { language } = useLanguage();
   const { ref, observe } = usePerformantIntersection({
     threshold: 0.1,
-    rootMargin: '0px 0px -50px 0px'
-  }) as { ref: React.RefObject<HTMLDivElement>, observe: (callback: IntersectionObserverCallback) => () => void };
+    rootMargin: "0px 0px -50px 0px",
+  }) as {
+    ref: React.RefObject<HTMLDivElement>;
+    observe: (callback: IntersectionObserverCallback) => () => void;
+  };
   const [isIntersecting, setIsIntersecting] = useState(false);
-  
+
   useEffect(() => {
     const handleIntersection = (entries: IntersectionObserverEntry[]) => {
       setIsIntersecting(entries[0]?.isIntersecting ?? false);
     };
-    
+
     const cleanup = observe(handleIntersection);
-    
+
     // Return cleanup function if observe returned one
     if (cleanup) {
       return cleanup;
     }
-    
+
     // Fallback cleanup if observe didn't return one
     return () => {};
   }, [observe]);
@@ -49,7 +52,9 @@ export function ClientShowcase() {
         {/* Section Header */}
         <motion.div
           initial={{ opacity: 0, y: 40 }}
-          animate={isIntersecting ? { opacity: 1, y: 0 } : { opacity: 0, y: 40 }}
+          animate={
+            isIntersecting ? { opacity: 1, y: 0 } : { opacity: 0, y: 40 }
+          }
           transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
           className="text-center mb-16"
         >
@@ -59,7 +64,7 @@ export function ClientShowcase() {
             transition={{ delay: 0.5, duration: 1 }}
             className="h-0.5 bg-jaded-green-600 mx-auto mb-8"
           />
-          <h2 
+          <h2
             className={`text-3xl md:text-4xl lg:text-5xl font-light text-gray-900 mb-6 ${
               language === "ar"
                 ? "font-arabic leading-tight arabic-heading"
@@ -178,7 +183,6 @@ export function ClientShowcase() {
             </div>
           </div>
         </motion.div>
-
 
         {/* Call to Action */}
         <motion.div

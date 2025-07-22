@@ -1,6 +1,6 @@
 import { portfolioProjects } from "@/data/portfolio";
 import { useLanguage } from "@/hooks/use-language";
-import { motion } from "framer-motion";
+import { motion } from "motion/react";
 import { ExternalLink, Eye } from "lucide-react";
 import { Link } from "wouter";
 
@@ -52,7 +52,6 @@ export default function Portfolio() {
         <div className="relative z-10 pt-32 pb-20 px-6 sm:px-8">
           {/* Header Section */}
           <div className="max-w-7xl mx-auto text-center mb-20">
-
             <motion.h1
               initial={{ opacity: 0, y: 40 }}
               animate={{ opacity: 1, y: 0 }}

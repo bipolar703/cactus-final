@@ -1,7 +1,7 @@
 import { useLanguage } from "@/hooks/use-language";
 import {
     motion, useMotionValue, useScroll, useSpring, useTransform
-} from "framer-motion";
+} from "motion/react";
 import { useEffect, useRef } from "react";
 import { OptimizedImage } from "./performance-wrapper";
 

@@ -1,5 +1,9 @@
 import {
-    createContext, ReactNode, useContext, useEffect, useState
+  createContext,
+  ReactNode,
+  useContext,
+  useEffect,
+  useState,
 } from "react";
 
 type Language = "en" | "ar";

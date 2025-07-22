@@ -1,5 +1,9 @@
 import { defineConfig } from "vite";
-import react from "@vitejs/plugin-react";
+import react from "@vitejs/plugin-react-swc";
+import imagemin from "vite-plugin-imagemin";
+import compress from "vite-plugin-compress";
+import splitVendor from "vite-plugin-split-vendor";
+import avifSequence from "vite-plugin-avif-sequence";
 import path from "path";
 
 export default defineConfig({
@@ -8,6 +12,10 @@ export default defineConfig({
       // Use SWC for faster builds in Vite 7
       jsxRuntime: "automatic",
     }),
+    imagemin(),
+    compress(),
+    splitVendor(),
+    avifSequence(),
   ],
   resolve: {
     alias: {
@@ -20,7 +28,7 @@ export default defineConfig({
     outDir: path.resolve(import.meta.dirname, "dist"),
     emptyOutDir: true,
     // Vite 7 optimizations for production
-    target: "esnext",
+    target: ["es2022", "chrome119", "safari17"],
     minify: "esbuild",
     sourcemap: false,
     cssCodeSplit: true,
@@ -29,7 +37,7 @@ export default defineConfig({
       output: {
         manualChunks: {
           vendor: ["react", "react-dom"],
-          motion: ["framer-motion"],
+          motion: ["motion"],
           ui: [
             "@radix-ui/react-dialog",
             "@radix-ui/react-dropdown-menu",
@@ -43,8 +51,8 @@ export default defineConfig({
         assetFileNames: "assets/[name]-[hash].[ext]",
       },
     },
-    // Optimize for production
-    chunkSizeWarningLimit: 1000,
+    // Optimize for production - enforce budget limits
+    chunkSizeWarningLimit: 150,
     assetsInlineLimit: 4096,
   },
   server: {
@@ -58,13 +66,16 @@ export default defineConfig({
     hmr: {
       overlay: true,
     },
+    headers: {
+      "Link": "</lottie/*.json>; rel=preload; as=fetch, </hero.avifs>; rel=preload; as=image"
+    },
   },
   // Vite 7 optimizations
   optimizeDeps: {
     include: [
       "react",
       "react-dom",
-      "framer-motion",
+      "motion",
       "lucide-react",
       "@radix-ui/react-dialog",
     ],

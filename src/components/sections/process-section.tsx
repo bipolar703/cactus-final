@@ -1,5 +1,5 @@
 import { useLanguage } from "@/hooks/use-language";
-import { motion } from "framer-motion";
+import { motion } from "motion/react";
 import { Rocket, Search, TrendingUp, Zap } from "lucide-react";
 
 export function ProcessSection() {
@@ -125,7 +125,12 @@ export function ProcessSection() {
                 duration: 0.8,
                 ease: [0.16, 1, 0.3, 1],
               }}
-              whileHover={{ y: -8, scale: 1.03, boxShadow: "0 8px 32px 0 rgba(60, 180, 120, 0.15)", transition: { duration: 0.3 } }}
+              whileHover={{
+                y: -8,
+                scale: 1.03,
+                boxShadow: "0 8px 32px 0 rgba(60, 180, 120, 0.15)",
+                transition: { duration: 0.3 },
+              }}
               className="relative group"
             >
               {/* Connection Line (Desktop) */}
@@ -151,7 +156,9 @@ export function ProcessSection() {
                   <div
                     className={`w-16 h-16 rounded-2xl ${step.bgColor} flex items-center justify-center group-hover:scale-110 transition-transform duration-300 shadow-lg`}
                   >
-                    <step.icon className={`w-8 h-8 ${step.iconColor} group-hover:animate-pulse`} />
+                    <step.icon
+                      className={`w-8 h-8 ${step.iconColor} group-hover:animate-pulse`}
+                    />
                   </div>
                   <div
                     className={`text-6xl font-bold bg-gradient-to-br ${step.color} bg-clip-text text-transparent opacity-20 group-hover:opacity-40 transition-opacity duration-300`}

@@ -1,9 +1,6 @@
 import { useLanguage } from "@/hooks/use-language";
-import { motion, useInView, useScroll, useTransform } from "framer-motion";
-import {
-    ArrowRight,
-    CheckCircle
-} from "lucide-react";
+import { motion, useInView, useScroll, useTransform } from "motion/react";
+import { ArrowRight, CheckCircle } from "lucide-react";
 import { useRef, useState } from "react";
 import { ModalOverlay } from "../modal-overlay";
 
@@ -94,7 +91,7 @@ export function ModernAboutSection() {
               alt="Cactus Media Group"
               className="relative w-16 h-16 sm:w-24 sm:h-24 object-contain opacity-25 drop-shadow-2xl"
               style={{
-                filter: "drop-shadow(0 0 15px rgba(34, 197, 94, 0.2))"
+                filter: "drop-shadow(0 0 15px rgba(34, 197, 94, 0.2))",
               }}
             />
           </div>
@@ -119,7 +116,7 @@ export function ModernAboutSection() {
               alt="Cactus Media Group"
               className="relative w-12 h-12 sm:w-16 sm:h-16 object-contain opacity-15"
               style={{
-                filter: "drop-shadow(0 0 10px rgba(34, 197, 94, 0.15))"
+                filter: "drop-shadow(0 0 10px rgba(34, 197, 94, 0.15))",
               }}
             />
           </div>
@@ -194,7 +191,9 @@ export function ModernAboutSection() {
                 </p>
 
                 {/* Key Points */}
-                <div className={`space-y-3 sm:space-y-4 w-full ${language === "ar" ? "flex flex-col items-center" : ""}`}>
+                <div
+                  className={`space-y-3 sm:space-y-4 w-full ${language === "ar" ? "flex flex-col items-center" : ""}`}
+                >
                   {[
                     language === "ar"
                       ? "تصميم يركز على المستخدم"
@@ -236,7 +235,9 @@ export function ModernAboutSection() {
                 onClick={() => setShowPortfolio(true)}
               >
                 {language === "ar" ? "اكتشف المزيد" : "Discover More"}
-                <ArrowRight className={`w-4 h-4 sm:w-5 sm:h-5 ${language === "ar" ? "mr-2" : "ml-2"} group-hover:${language === "ar" ? "-translate-x-1" : "translate-x-1"} transition-transform inline`} />
+                <ArrowRight
+                  className={`w-4 h-4 sm:w-5 sm:h-5 ${language === "ar" ? "mr-2" : "ml-2"} group-hover:${language === "ar" ? "-translate-x-1" : "translate-x-1"} transition-transform inline`}
+                />
               </motion.button>
             </div>
           </motion.div>
@@ -259,7 +260,9 @@ export function ModernAboutSection() {
                   transition={{ duration: 0.6, delay: 0.8 + index * 0.1 }}
                   className="modern-card p-4 sm:p-6 lg:p-8 group cursor-pointer w-full"
                 >
-                  <div className={`flex items-start gap-3 sm:gap-4 ${language === "ar" ? "flex-col items-center text-center" : ""}`}>
+                  <div
+                    className={`flex items-start gap-3 sm:gap-4 ${language === "ar" ? "flex-col items-center text-center" : ""}`}
+                  >
                     <div className="w-12 h-12 sm:w-14 sm:h-14 rounded-2xl flex items-center justify-center group-hover:scale-110 transition-transform duration-300 bg-jaded-green-50 flex-shrink-0">
                       <img
                         src={value.icon}
@@ -271,7 +274,9 @@ export function ModernAboutSection() {
                       />
                     </div>
 
-                    <div className={`flex-1 w-full ${language === "ar" ? "text-center" : ""}`}>
+                    <div
+                      className={`flex-1 w-full ${language === "ar" ? "text-center" : ""}`}
+                    >
                       <h4
                         className={`text-lg sm:text-xl font-bold text-white mb-2 sm:mb-3 group-hover:text-jaded-green-400 transition-colors ${
                           language === "ar"
@@ -314,7 +319,6 @@ export function ModernAboutSection() {
                 : "Our Full Portfolio"}
             </h2>
           </div>
-          {/* TODO: Insert full portfolio content here, or import the portfolio section/modal as needed */}
           <div className="text-gray-300 text-lg font-barlow">
             {language === "ar"
               ? "سيتم عرض جميع المشاريع هنا..."

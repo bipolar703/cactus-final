@@ -8,14 +8,14 @@ type IntersectionCallback = (entries: IntersectionObserverEntry[]) => void;
  * to prevent unnecessary re-renders and improve performance.
  */
 export const useOptimizedIntersection = (
-  options?: IntersectionObserverInit
+  options?: IntersectionObserverInit,
 ) => {
   const [isIntersecting, setIsIntersecting] = useState(false);
   const observerRef = useRef<IntersectionObserver | null>(null);
   const { ref, observe } = usePerformantIntersection({
     threshold: 0.1,
-    rootMargin: '0px',
-    ...options
+    rootMargin: "0px",
+    ...options,
   });
 
   // Memoize the callback to prevent unnecessary re-renders
@@ -59,12 +59,12 @@ class SimpleCache<T> {
   get(key: string): T | null {
     const item = this.cache[key];
     if (!item) return null;
-    
+
     if (Date.now() > item.timestamp) {
       delete this.cache[key];
       return null;
     }
-    
+
     return item.data;
   }
 

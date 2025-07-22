@@ -1,10 +1,6 @@
 import { useLanguage } from "@/hooks/use-language";
-import { motion } from "framer-motion";
-import {
-    Globe, Heart,
-    Lightbulb,
-    Shield, Target
-} from "lucide-react";
+import { motion } from "motion/react";
+import { Globe, Heart, Lightbulb, Shield, Target } from "lucide-react";
 
 export default function About() {
   const { language } = useLanguage();
@@ -18,7 +14,6 @@ export default function About() {
     language === "ar"
       ? "تعرف على قصتنا وفريقنا وقيمنا. نحن شركة رائدة في مجال الحلول الرقمية المبتكرة والتسويق الإلكتروني المتطور."
       : "Learn about our story, team, and values. We are a leading company in innovative digital solutions and advanced digital marketing.";
-
 
   const values = [
     {
@@ -86,7 +81,7 @@ export default function About() {
       <main className="relative min-h-screen bg-white overflow-hidden">
         {/* Subtle Background Elements */}
         <div className="absolute inset-0 pointer-events-none">
-          <motion.div 
+          <motion.div
             className="absolute top-20 left-10 w-96 h-96 bg-[#3f7c6a]/5 rounded-full blur-3xl"
             animate={{
               scale: [1, 1.1, 1],
@@ -265,7 +260,6 @@ export default function About() {
               ))}
             </div>
           </motion.div>
-
 
           {/* CTA */}
           <motion.div

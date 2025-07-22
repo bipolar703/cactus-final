@@ -7,7 +7,7 @@ import { ModernContactSection } from "@/components/sections/modern-contact-secti
 import { ModernPortfolioSection } from "@/components/sections/modern-portfolio-section";
 import { ModernServicesSection } from "@/components/sections/modern-services-section";
 import { ProcessSection } from "@/components/sections/process-section";
-import { AnimatePresence, motion } from "framer-motion";
+import { AnimatePresence, motion } from "motion/react";
 import { useEffect, useRef, useState } from "react";
 
 export default function Home() {

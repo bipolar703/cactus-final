@@ -1,5 +1,5 @@
 import { useLanguage } from "@/hooks/use-language";
-import { motion, useScroll, useTransform } from "framer-motion";
+import { motion, useScroll, useTransform } from "motion/react";
 import { ArrowDown, Play } from "lucide-react";
 import { useRef } from "react";
 import { Link } from "wouter";
@@ -20,7 +20,7 @@ export function ModernHeroSection() {
     const heroHeight = window.innerHeight;
     window.scrollTo({
       top: heroHeight,
-      behavior: "smooth"
+      behavior: "smooth",
     });
   };
 
@@ -44,7 +44,7 @@ export function ModernHeroSection() {
             ease: "easeInOut",
           }}
         />
-        
+
         {/* Secondary Flow Layer */}
         <motion.div
           className="absolute bottom-0 left-0 right-0 h-3/4 bg-gradient-to-t from-[#3f7c6a]/12 via-[#3f7c6a]/6 to-transparent blur-xl"
@@ -78,7 +78,7 @@ export function ModernHeroSection() {
             ease: "easeInOut",
           }}
         />
-        
+
         {/* Secondary Aurora Layer */}
         <motion.div
           className="absolute inset-0 bg-gradient-to-tl from-transparent via-[#4a8a75]/6 to-[#3f7c6a]/8 blur-2xl"
@@ -95,7 +95,7 @@ export function ModernHeroSection() {
             delay: 5,
           }}
         />
-        
+
         {/* Flowing Bottom Aurora */}
         <motion.div
           className="absolute bottom-0 left-0 right-0 h-96 bg-gradient-to-t from-[#3f7c6a]/15 via-[#4a8a75]/8 to-transparent blur-2xl"
@@ -111,7 +111,7 @@ export function ModernHeroSection() {
             ease: "easeInOut",
           }}
         />
-        
+
         {/* Top Aurora Accent */}
         <motion.div
           className="absolute top-0 left-0 right-0 h-64 bg-gradient-to-b from-[#5a9d88]/8 via-[#4a8a75]/4 to-transparent blur-xl"
@@ -186,8 +186,7 @@ export function ModernHeroSection() {
           className={`text-lg sm:text-xl md:text-2xl lg:text-3xl text-gray-300 mb-6 sm:mb-8 max-w-3xl mx-auto leading-relaxed text-center font-light ${
             language === "ar" ? "font-arabic" : "font-barlow"
           }`}
-        >
-        </motion.p>
+        ></motion.p>
 
         {/* Subtitle */}
         <motion.p
@@ -241,7 +240,7 @@ export function ModernHeroSection() {
           transition={{ delay: 2, duration: 1 }}
           className="flex flex-col items-center"
         >
-          <motion.p 
+          <motion.p
             className={`text-gray-300 text-base mb-6 font-medium ${
               language === "ar" ? "font-arabic" : "font-barlow"
             }`}
@@ -250,12 +249,12 @@ export function ModernHeroSection() {
           >
             {language === "ar" ? "اكتشف المزيد" : "Discover More"}
           </motion.p>
-          
+
           <motion.button
             onClick={scrollToNextSection}
-            whileHover={{ 
+            whileHover={{
               scale: 1.1,
-              boxShadow: "0 10px 30px rgba(63, 124, 106, 0.3)"
+              boxShadow: "0 10px 30px rgba(63, 124, 106, 0.3)",
             }}
             whileTap={{ scale: 0.95 }}
             className="relative group p-3 sm:p-4 rounded-full bg-[#3f7c6a]/20 border-2 border-[#3f7c6a]/40 hover:border-[#3f7c6a] backdrop-blur-sm transition-all duration-300"
@@ -266,7 +265,7 @@ export function ModernHeroSection() {
               animate={{ scale: [1, 1.5, 1], opacity: [0.5, 0, 0.5] }}
               transition={{ duration: 2, repeat: Infinity }}
             />
-            
+
             {/* Bouncing arrow */}
             <motion.div
               animate={{ y: [0, 8, 0] }}
@@ -275,7 +274,7 @@ export function ModernHeroSection() {
               <ArrowDown className="w-5 h-5 sm:w-6 sm:h-6 text-white group-hover:text-[#3f7c6a] transition-colors duration-300 relative z-10" />
             </motion.div>
           </motion.button>
-          
+
           {/* Scroll hint line */}
           <motion.div
             className="w-px h-16 bg-gradient-to-b from-[#3f7c6a]/50 to-transparent mt-4"

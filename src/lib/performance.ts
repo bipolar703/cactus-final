@@ -3,9 +3,12 @@
 /**
  * Creates a debounced function that delays invoking the callback until after wait milliseconds have elapsed.
  */
-export function debounce<T extends (...args: any[]) => void>(func: T, wait: number) {
+export function debounce<T extends (...args: any[]) => void>(
+  func: T,
+  wait: number,
+) {
   let timeout: ReturnType<typeof setTimeout>;
-  return function(this: any, ...args: Parameters<T>) {
+  return function (this: any, ...args: Parameters<T>) {
     clearTimeout(timeout);
     timeout = setTimeout(() => func.apply(this, args), wait);
   };
@@ -14,10 +17,13 @@ export function debounce<T extends (...args: any[]) => void>(func: T, wait: numb
 /**
  * Creates a throttled function that only invokes the callback at most once per every wait milliseconds.
  */
-export function throttle<T extends (...args: any[]) => void>(func: T, wait: number) {
+export function throttle<T extends (...args: any[]) => void>(
+  func: T,
+  wait: number,
+) {
   let lastCall = 0;
   let timeout: ReturnType<typeof setTimeout> | null = null;
-  return function(this: any, ...args: Parameters<T>) {
+  return function (this: any, ...args: Parameters<T>) {
     const now = Date.now();
     const remaining = wait - (now - lastCall);
     if (remaining <= 0) {

@@ -1,5 +1,5 @@
 import { useLanguage } from "@/hooks/use-language";
-import { AnimatePresence, motion } from "framer-motion";
+import { AnimatePresence, motion } from "motion/react";
 import { X } from "lucide-react";
 import { useEffect, useState } from "react";
 
@@ -88,10 +88,10 @@ export function EnhancedModalSystem() {
       setActiveModal(customEvent.detail);
     };
 
-    window.addEventListener('open-modal', handleOpenModal);
+    window.addEventListener("open-modal", handleOpenModal);
 
     return () => {
-      window.removeEventListener('open-modal', handleOpenModal);
+      window.removeEventListener("open-modal", handleOpenModal);
     };
   }, []);
 

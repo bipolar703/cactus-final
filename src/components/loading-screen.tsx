@@ -1,4 +1,4 @@
-import { AnimatePresence, motion } from "framer-motion";
+import { AnimatePresence, motion } from "motion/react";
 import { useEffect, useState } from "react";
 
 interface LoadingScreenProps {
@@ -66,7 +66,7 @@ export function LoadingScreen({
 
           {/* Subtle ambient glow */}
           <div className="absolute inset-0">
-            <motion.div 
+            <motion.div
               className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-[#3f7c6a]/6 rounded-full blur-3xl"
               animate={{
                 scale: [1, 1.1, 1],
@@ -115,7 +115,8 @@ export function LoadingScreen({
                   alt="Cactus Media Group"
                   className="relative w-24 h-24 mx-auto object-contain"
                   style={{
-                    filter: "drop-shadow(0 0 8px rgba(63, 124, 106, 0.4)) drop-shadow(0 0 16px rgba(63, 124, 106, 0.2))",
+                    filter:
+                      "drop-shadow(0 0 8px rgba(63, 124, 106, 0.4)) drop-shadow(0 0 16px rgba(63, 124, 106, 0.2))",
                   }}
                 />
               </div>

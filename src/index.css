@@ -1,3 +1,6 @@
+@starting-style { .fade-in { opacity:0; transform:translateY(4px); } }
+@media (prefers-reduced-motion:reduce){ *,*::before,*::after{transition:none!important;animation:none!important} }
+
 @import url("https://fonts.googleapis.com/css2?family=Barlow:wght@100;200;300;400;500;600;700;800;900&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;500;600;700&display=swap");
@@ -114,9 +117,9 @@ body {
 
 /* Enhanced Arabic sections */
 .arabic-section {
-  font-family: "Dubai", "Cairo", sans-serif;
+  font-family: "Tajawal", "Cairo", sans-serif;
   direction: rtl;
-  text-align: right;
+  text-align: center;
 }
 
 .arabic-section h1,
@@ -498,7 +501,7 @@ body {
   }
 
   html[lang="ar"] {
-    font-family: "Dubai", sans-serif;
+    font-family: "Tajawal", sans-serif;
   }
 
   .font-poppins {
@@ -506,7 +509,7 @@ body {
   }
 
   .font-arabic {
-    font-family: "Dubai", sans-serif;
+    font-family: "Tajawal", sans-serif;
   }
 }
 
@@ -898,7 +901,7 @@ body {
 
   /* Enhanced Typography */
   .font-arabic {
-    font-family: "Dubai", "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+    font-family: "Tajawal", "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
     font-feature-settings:
       "kern" 1,
       "liga" 1;

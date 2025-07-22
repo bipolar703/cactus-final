@@ -128,7 +128,7 @@ export const translations = {
     // Form placeholders
     fullNamePlaceholder: "Your full name",
     emailPlaceholder: "your@email.com",
-    phonePlaceholder: "+962 XX XXX XXXX",
+    phonePlaceholder: "+962 7X XXX XXXX",
     messagePlaceholder: "Tell us about your project...",
   },
 
@@ -260,7 +260,7 @@ export const translations = {
     // Form placeholders
     fullNamePlaceholder: "اسمك الكامل",
     emailPlaceholder: "your@email.com",
-    phonePlaceholder: "+962 XX XXX XXXX",
+    phonePlaceholder: "+962 7X XXX XXXX",
     messagePlaceholder: "أخبرنا عن مشروعك...",
   },
 };

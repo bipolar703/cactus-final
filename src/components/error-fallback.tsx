@@ -1,6 +1,12 @@
-import { Button } from '@/components/ui/button';
+import { Button } from "@/components/ui/button";
 
-export const ErrorFallback = ({ error, resetErrorBoundary }: { error: Error; resetErrorBoundary: () => void }) => (
+export const ErrorFallback = ({
+  error,
+  resetErrorBoundary,
+}: {
+  error: Error;
+  resetErrorBoundary: () => void;
+}) => (
   <div className="min-h-screen flex items-center justify-center bg-slate-900 text-white">
     <div className="text-center p-8 max-w-md">
       <h2 className="text-2xl font-bold mb-4">Something went wrong</h2>

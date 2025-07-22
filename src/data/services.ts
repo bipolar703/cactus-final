@@ -40,7 +40,7 @@ export const services = [
         "Make data-driven decisions with predictive analytics",
         "Scale your business without proportional staff increases",
         "Gain competitive advantage with cutting-edge technology",
-        "Improve accuracy and reduce human error in critical processes"
+        "Improve accuracy and reduce human error in critical processes",
       ],
       ar: [
         "تقليل التكاليف التشغيلية بنسبة تصل إلى 40% من خلال الأتمتة الذكية",
@@ -48,26 +48,68 @@ export const services = [
         "اتخاذ قرارات مدفوعة بالبيانات مع التحليلات التنبؤية",
         "توسيع أعمالك دون زيادات متناسبة في الموظفين",
         "الحصول على ميزة تنافسية بالتكنولوجيا المتطورة",
-        "تحسين الدقة وتقليل الأخطاء البشرية في العمليات الحرجة"
-      ]
+        "تحسين الدقة وتقليل الأخطاء البشرية في العمليات الحرجة",
+      ],
     },
     process: {
       en: [
-        { step: "Discovery & Analysis", description: "We analyze your current workflows and identify automation opportunities" },
-        { step: "AI Strategy Development", description: "Create a customized AI roadmap aligned with your business goals" },
-        { step: "Solution Design", description: "Design intelligent systems tailored to your specific needs" },
-        { step: "Implementation", description: "Deploy and integrate AI solutions with your existing systems" },
-        { step: "Training & Optimization", description: "Train your team and continuously optimize AI performance" },
-        { step: "Ongoing Support", description: "Provide 24/7 monitoring and continuous improvement" }
+        {
+          step: "Discovery & Analysis",
+          description:
+            "We analyze your current workflows and identify automation opportunities",
+        },
+        {
+          step: "AI Strategy Development",
+          description:
+            "Create a customized AI roadmap aligned with your business goals",
+        },
+        {
+          step: "Solution Design",
+          description:
+            "Design intelligent systems tailored to your specific needs",
+        },
+        {
+          step: "Implementation",
+          description:
+            "Deploy and integrate AI solutions with your existing systems",
+        },
+        {
+          step: "Training & Optimization",
+          description:
+            "Train your team and continuously optimize AI performance",
+        },
+        {
+          step: "Ongoing Support",
+          description: "Provide 24/7 monitoring and continuous improvement",
+        },
       ],
       ar: [
-        { step: "الاستكشاف والتحليل", description: "نحلل سير العمل الحالي ونحدد فرص الأتمتة" },
-        { step: "تطوير استراتيجية الذكاء الاصطناعي", description: "إنشاء خارطة طريق مخصصة للذكاء الاصطناعي متماشية مع أهداف أعمالك" },
-        { step: "تصميم الحلول", description: "تصميم أنظمة ذكية مخصصة لاحتياجاتك المحددة" },
-        { step: "التنفيذ", description: "نشر ودمج حلول الذكاء الاصطناعي مع أنظمتك الحالية" },
-        { step: "التدريب والتحسين", description: "تدريب فريقك وتحسين أداء الذكاء الاصطناعي باستمرار" },
-        { step: "الدعم المستمر", description: "توفير مراقبة على مدار الساعة وتحسين مستمر" }
-      ]
+        {
+          step: "الاستكشاف والتحليل",
+          description: "نحلل سير العمل الحالي ونحدد فرص الأتمتة",
+        },
+        {
+          step: "تطوير استراتيجية الذكاء الاصطناعي",
+          description:
+            "إنشاء خارطة طريق مخصصة للذكاء الاصطناعي متماشية مع أهداف أعمالك",
+        },
+        {
+          step: "تصميم الحلول",
+          description: "تصميم أنظمة ذكية مخصصة لاحتياجاتك المحددة",
+        },
+        {
+          step: "التنفيذ",
+          description: "نشر ودمج حلول الذكاء الاصطناعي مع أنظمتك الحالية",
+        },
+        {
+          step: "التدريب والتحسين",
+          description: "تدريب فريقك وتحسين أداء الذكاء الاصطناعي باستمرار",
+        },
+        {
+          step: "الدعم المستمر",
+          description: "توفير مراقبة على مدار الساعة وتحسين مستمر",
+        },
+      ],
     },
     meta: {
       en: {
@@ -120,7 +162,7 @@ export const services = [
         "SEO-optimized architecture for higher Google rankings",
         "Scalable solutions that grow with your business",
         "Advanced security features to protect your data and users",
-        "Modern, conversion-focused design that drives results"
+        "Modern, conversion-focused design that drives results",
       ],
       ar: [
         "سرعات تحميل فائقة (أقل من 3 ثوان) لتجربة مستخدم أفضل",
@@ -128,26 +170,66 @@ export const services = [
         "هيكلية محسنة لمحركات البحث لترتيب أعلى في جوجل",
         "حلول قابلة للتوسع تنمو مع أعمالك",
         "ميزات أمان متقدمة لحماية بياناتك ومستخدميك",
-        "تصميم حديث يركز على التحويل يحقق النتائج"
-      ]
+        "تصميم حديث يركز على التحويل يحقق النتائج",
+      ],
     },
     process: {
       en: [
-        { step: "Discovery & Planning", description: "Understand your goals, target audience, and technical requirements" },
-        { step: "Design & Prototyping", description: "Create wireframes and interactive prototypes for optimal user experience" },
-        { step: "Development", description: "Build your website using modern frameworks and best practices" },
-        { step: "Testing & Optimization", description: "Rigorous testing across devices and performance optimization" },
-        { step: "Launch & Deployment", description: "Seamless deployment with minimal downtime" },
-        { step: "Maintenance & Support", description: "Ongoing updates, security patches, and technical support" }
+        {
+          step: "Discovery & Planning",
+          description:
+            "Understand your goals, target audience, and technical requirements",
+        },
+        {
+          step: "Design & Prototyping",
+          description:
+            "Create wireframes and interactive prototypes for optimal user experience",
+        },
+        {
+          step: "Development",
+          description:
+            "Build your website using modern frameworks and best practices",
+        },
+        {
+          step: "Testing & Optimization",
+          description:
+            "Rigorous testing across devices and performance optimization",
+        },
+        {
+          step: "Launch & Deployment",
+          description: "Seamless deployment with minimal downtime",
+        },
+        {
+          step: "Maintenance & Support",
+          description:
+            "Ongoing updates, security patches, and technical support",
+        },
       ],
       ar: [
-        { step: "الاستكشاف والتخطيط", description: "فهم أهدافك والجمهور المستهدف والمتطلبات التقنية" },
-        { step: "التصميم والنماذج الأولية", description: "إنشاء إطارات سلكية ونماذج أولية تفاعلية لتجربة مستخدم مثلى" },
-        { step: "التطوير", description: "بناء موقعك الإلكتروني باستخدام أطر عمل حديثة وأفضل الممارسات" },
-        { step: "الاختبار والتحسين", description: "اختبار صارم عبر الأجهزة وتحسين الأداء" },
+        {
+          step: "الاستكشاف والتخطيط",
+          description: "فهم أهدافك والجمهور المستهدف والمتطلبات التقنية",
+        },
+        {
+          step: "التصميم والنماذج الأولية",
+          description:
+            "إنشاء إطارات سلكية ونماذج أولية تفاعلية لتجربة مستخدم مثلى",
+        },
+        {
+          step: "التطوير",
+          description:
+            "بناء موقعك الإلكتروني باستخدام أطر عمل حديثة وأفضل الممارسات",
+        },
+        {
+          step: "الاختبار والتحسين",
+          description: "اختبار صارم عبر الأجهزة وتحسين الأداء",
+        },
         { step: "الإطلاق والنشر", description: "نشر سلس مع أقل وقت توقف ممكن" },
-        { step: "الصيانة والدعم", description: "تحديثات مستمرة وتصحيحات أمنية ودعم تقني" }
-      ]
+        {
+          step: "الصيانة والدعم",
+          description: "تحديثات مستمرة وتصحيحات أمنية ودعم تقني",
+        },
+      ],
     },
     meta: {
       en: {
@@ -202,7 +284,7 @@ export const services = [
         "Stand out from competitors with unique, memorable design",
         "Improve marketing effectiveness across all channels",
         "Create emotional connections with your target audience",
-        "Establish premium positioning in your market"
+        "Establish premium positioning in your market",
       ],
       ar: [
         "زيادة التعرف على العلامة التجارية بنسبة تصل إلى 80% مع الهوية البصرية المتسقة",
@@ -210,26 +292,68 @@ export const services = [
         "التميز عن المنافسين بتصميم فريد لا يُنسى",
         "تحسين فعالية التسويق عبر جميع القنوات",
         "إنشاء اتصالات عاطفية مع جمهورك المستهدف",
-        "إنشاء موقع متميز في السوق"
-      ]
+        "إنشاء موقع متميز في السوق",
+      ],
     },
     process: {
       en: [
-        { step: "Brand Discovery", description: "Deep dive into your business, values, and target audience" },
-        { step: "Strategy Development", description: "Create comprehensive brand strategy and positioning" },
-        { step: "Visual Identity Design", description: "Design logo, color palette, typography, and visual elements" },
-        { step: "Brand Guidelines", description: "Develop comprehensive style guide for consistent application" },
-        { step: "Implementation", description: "Apply branding across all marketing materials and touchpoints" },
-        { step: "Brand Management", description: "Ongoing support to maintain brand consistency and evolution" }
+        {
+          step: "Brand Discovery",
+          description:
+            "Deep dive into your business, values, and target audience",
+        },
+        {
+          step: "Strategy Development",
+          description: "Create comprehensive brand strategy and positioning",
+        },
+        {
+          step: "Visual Identity Design",
+          description:
+            "Design logo, color palette, typography, and visual elements",
+        },
+        {
+          step: "Brand Guidelines",
+          description:
+            "Develop comprehensive style guide for consistent application",
+        },
+        {
+          step: "Implementation",
+          description:
+            "Apply branding across all marketing materials and touchpoints",
+        },
+        {
+          step: "Brand Management",
+          description:
+            "Ongoing support to maintain brand consistency and evolution",
+        },
       ],
       ar: [
-        { step: "اكتشاف العلامة التجارية", description: "غوص عميق في أعمالك وقيمك وجمهورك المستهدف" },
-        { step: "تطوير الاستراتيجية", description: "إنشاء استراتيجية شاملة للعلامة التجارية وتموضعها" },
-        { step: "تصميم الهوية البصرية", description: "تصميم الشعار ولوحة الألوان والطباعة والعناصر البصرية" },
-        { step: "إرشادات العلامة التجارية", description: "تطوير دليل أسلوب شامل للتطبيق المتسق" },
-        { step: "التنفيذ", description: "تطبيق العلامة التجارية عبر جميع المواد التسويقية ونقاط الاتصال" },
-        { step: "إدارة العلامة التجارية", description: "دعم مستمر للحفاظ على اتساق العلامة التجارية وتطورها" }
-      ]
+        {
+          step: "اكتشاف العلامة التجارية",
+          description: "غوص عميق في أعمالك وقيمك وجمهورك المستهدف",
+        },
+        {
+          step: "تطوير الاستراتيجية",
+          description: "إنشاء استراتيجية شاملة للعلامة التجارية وتموضعها",
+        },
+        {
+          step: "تصميم الهوية البصرية",
+          description: "تصميم الشعار ولوحة الألوان والطباعة والعناصر البصرية",
+        },
+        {
+          step: "إرشادات العلامة التجارية",
+          description: "تطوير دليل أسلوب شامل للتطبيق المتسق",
+        },
+        {
+          step: "التنفيذ",
+          description:
+            "تطبيق العلامة التجارية عبر جميع المواد التسويقية ونقاط الاتصال",
+        },
+        {
+          step: "إدارة العلامة التجارية",
+          description: "دعم مستمر للحفاظ على اتساق العلامة التجارية وتطورها",
+        },
+      ],
     },
     meta: {
       en: {
@@ -281,7 +405,7 @@ export const services = [
         "Reduce customer acquisition costs through efficient targeting",
         "Build brand awareness across multiple digital channels",
         "Track ROI with detailed analytics and performance reports",
-        "Stay ahead of competitors with cutting-edge marketing tactics"
+        "Stay ahead of competitors with cutting-edge marketing tactics",
       ],
       ar: [
         "زيادة حركة المرور على الموقع بنسبة 300% باستراتيجيات SEO المستهدفة",
@@ -289,26 +413,66 @@ export const services = [
         "تقليل تكاليف اكتساب العملاء من خلال الاستهداف الفعال",
         "بناء الوعي بالعلامة التجارية عبر قنوات رقمية متعددة",
         "تتبع العائد على الاستثمار بتحليلات مفصلة وتقارير أداء",
-        "البقاء في المقدمة أمام المنافسين بتكتيكات تسويقية متطورة"
-      ]
+        "البقاء في المقدمة أمام المنافسين بتكتيكات تسويقية متطورة",
+      ],
     },
     process: {
       en: [
-        { step: "Market Research", description: "Analyze your market, competitors, and target audience behavior" },
-        { step: "Strategy Planning", description: "Develop comprehensive digital marketing strategy and goals" },
-        { step: "Campaign Setup", description: "Create and launch targeted campaigns across chosen channels" },
-        { step: "Content Creation", description: "Produce engaging content optimized for each platform" },
-        { step: "Monitoring & Optimization", description: "Continuously track performance and optimize for better results" },
-        { step: "Reporting & Analysis", description: "Provide detailed reports and strategic recommendations" }
+        {
+          step: "Market Research",
+          description:
+            "Analyze your market, competitors, and target audience behavior",
+        },
+        {
+          step: "Strategy Planning",
+          description:
+            "Develop comprehensive digital marketing strategy and goals",
+        },
+        {
+          step: "Campaign Setup",
+          description:
+            "Create and launch targeted campaigns across chosen channels",
+        },
+        {
+          step: "Content Creation",
+          description: "Produce engaging content optimized for each platform",
+        },
+        {
+          step: "Monitoring & Optimization",
+          description:
+            "Continuously track performance and optimize for better results",
+        },
+        {
+          step: "Reporting & Analysis",
+          description: "Provide detailed reports and strategic recommendations",
+        },
       ],
       ar: [
-        { step: "بحث السوق", description: "تحليل السوق والمنافسين وسلوك الجمهور المستهدف" },
-        { step: "تخطيط الاستراتيجية", description: "تطوير استراتيجية تسويق رقمي شاملة وأهداف" },
-        { step: "إعداد الحملات", description: "إنشاء وإطلاق حملات مستهدفة عبر القنوات المختارة" },
-        { step: "إنشاء المحتوى", description: "إنتاج محتوى جذاب محسن لكل منصة" },
-        { step: "المراقبة والتحسين", description: "تتبع الأداء باستمرار والتحسين للحصول على نتائج أفضل" },
-        { step: "التقارير والتحليل", description: "توفير تقارير مفصلة وتوصيات استراتيجية" }
-      ]
+        {
+          step: "بحث السوق",
+          description: "تحليل السوق والمنافسين وسلوك الجمهور المستهدف",
+        },
+        {
+          step: "تخطيط الاستراتيجية",
+          description: "تطوير استراتيجية تسويق رقمي شاملة وأهداف",
+        },
+        {
+          step: "إعداد الحملات",
+          description: "إنشاء وإطلاق حملات مستهدفة عبر القنوات المختارة",
+        },
+        {
+          step: "إنشاء المحتوى",
+          description: "إنتاج محتوى جذاب محسن لكل منصة",
+        },
+        {
+          step: "المراقبة والتحسين",
+          description: "تتبع الأداء باستمرار والتحسين للحصول على نتائج أفضل",
+        },
+        {
+          step: "التقارير والتحليل",
+          description: "توفير تقارير مفصلة وتوصيات استراتيجية",
+        },
+      ],
     },
     meta: {
       en: {
@@ -363,7 +527,7 @@ export const services = [
         "Drive organic traffic with SEO-optimized blog content",
         "Boost social media following with viral-worthy content",
         "Improve conversion rates with persuasive copywriting",
-        "Establish thought leadership in your industry"
+        "Establish thought leadership in your industry",
       ],
       ar: [
         "زيادة معدلات التفاعل بنسبة 400% بالمحتوى البصري المقنع",
@@ -371,26 +535,65 @@ export const services = [
         "جذب حركة مرور عضوية بمحتوى المدونة المحسن لمحركات البحث",
         "تعزيز متابعة وسائل التواصل الاجتماعي بمحتوى يستحق الانتشار",
         "تحسين معدلات التحويل بالكتابة الإقناعية",
-        "إنشاء قيادة فكرية في صناعتك"
-      ]
+        "إنشاء قيادة فكرية في صناعتك",
+      ],
     },
     process: {
       en: [
-        { step: "Content Strategy", description: "Develop comprehensive content strategy aligned with your goals" },
-        { step: "Creative Planning", description: "Plan content calendar and creative concepts" },
-        { step: "Content Production", description: "Create high-quality written, visual, and video content" },
-        { step: "Optimization", description: "Optimize content for SEO and platform-specific requirements" },
-        { step: "Distribution", description: "Publish and distribute content across relevant channels" },
-        { step: "Performance Analysis", description: "Track performance and optimize future content" }
+        {
+          step: "Content Strategy",
+          description:
+            "Develop comprehensive content strategy aligned with your goals",
+        },
+        {
+          step: "Creative Planning",
+          description: "Plan content calendar and creative concepts",
+        },
+        {
+          step: "Content Production",
+          description: "Create high-quality written, visual, and video content",
+        },
+        {
+          step: "Optimization",
+          description:
+            "Optimize content for SEO and platform-specific requirements",
+        },
+        {
+          step: "Distribution",
+          description:
+            "Publish and distribute content across relevant channels",
+        },
+        {
+          step: "Performance Analysis",
+          description: "Track performance and optimize future content",
+        },
       ],
       ar: [
-        { step: "استراتيجية المحتوى", description: "تطوير استراتيجية محتوى شاملة متماشية مع أهدافك" },
-        { step: "التخطيط الإبداعي", description: "تخطيط تقويم المحتوى والمفاهيم الإبداعية" },
-        { step: "إنتاج المحتوى", description: "إنشاء محتوى مكتوب ومرئي وفيديو عالي الجودة" },
-        { step: "التحسين", description: "تحسين المحتوى لمحركات البحث ومتطلبات المنصة المحددة" },
-        { step: "التوزيع", description: "نشر وتوزيع المحتوى عبر القنوات ذات الصلة" },
-        { step: "تحليل الأداء", description: "تتبع الأداء وتحسين المحتوى المستقبلي" }
-      ]
+        {
+          step: "استراتيجية المحتوى",
+          description: "تطوير استراتيجية محتوى شاملة متماشية مع أهدافك",
+        },
+        {
+          step: "التخطيط الإبداعي",
+          description: "تخطيط تقويم المحتوى والمفاهيم الإبداعية",
+        },
+        {
+          step: "إنتاج المحتوى",
+          description: "إنشاء محتوى مكتوب ومرئي وفيديو عالي الجودة",
+        },
+        {
+          step: "التحسين",
+          description: "تحسين المحتوى لمحركات البحث ومتطلبات المنصة المحددة",
+        },
+        {
+          step: "التوزيع",
+          description: "نشر وتوزيع المحتوى عبر القنوات ذات الصلة",
+        },
+        {
+          step: "تحليل الأداء",
+          description: "تتبع الأداء وتحسين المحتوى المستقبلي",
+        },
+      ],
     },
     meta: {
       en: {
@@ -444,7 +647,7 @@ export const services = [
         "Improve social media engagement with stunning visuals",
         "Create lasting impressions with cinematic brand videos",
         "Showcase products and services in their best light",
-        "Stand out from competitors with premium visual content"
+        "Stand out from competitors with premium visual content",
       ],
       ar: [
         "زيادة مبيعات المنتجات بنسبة 67% بالتصوير الاحترافي للمنتجات",
@@ -452,26 +655,63 @@ export const services = [
         "تحسين التفاعل على وسائل التواصل الاجتماعي بالمرئيات المذهلة",
         "إنشاء انطباعات دائمة بفيديوهات العلامة التجارية السينمائية",
         "عرض المنتجات والخدمات في أفضل ضوء",
-        "التميز عن المنافسين بالمحتوى البصري المتميز"
-      ]
+        "التميز عن المنافسين بالمحتوى البصري المتميز",
+      ],
     },
     process: {
       en: [
-        { step: "Creative Consultation", description: "Understand your vision, goals, and brand requirements" },
-        { step: "Pre-Production Planning", description: "Plan shoots, locations, equipment, and creative concepts" },
-        { step: "Professional Shooting", description: "Execute high-quality photography and video production" },
-        { step: "Post-Production", description: "Professional editing, color grading, and enhancement" },
-        { step: "Review & Refinement", description: "Client review and final adjustments" },
-        { step: "Delivery & Usage Rights", description: "Deliver final assets with appropriate usage rights" }
+        {
+          step: "Creative Consultation",
+          description: "Understand your vision, goals, and brand requirements",
+        },
+        {
+          step: "Pre-Production Planning",
+          description:
+            "Plan shoots, locations, equipment, and creative concepts",
+        },
+        {
+          step: "Professional Shooting",
+          description: "Execute high-quality photography and video production",
+        },
+        {
+          step: "Post-Production",
+          description: "Professional editing, color grading, and enhancement",
+        },
+        {
+          step: "Review & Refinement",
+          description: "Client review and final adjustments",
+        },
+        {
+          step: "Delivery & Usage Rights",
+          description: "Deliver final assets with appropriate usage rights",
+        },
       ],
       ar: [
-        { step: "استشارة إبداعية", description: "فهم رؤيتك وأهدافك ومتطلبات علامتك التجارية" },
-        { step: "تخطيط ما قبل الإنتاج", description: "تخطيط الجلسات والمواقع والمعدات والمفاهيم الإبداعية" },
-        { step: "التصوير المحترف", description: "تنفيذ التصوير وإنتاج الفيديو عالي الجودة" },
-        { step: "ما بعد الإنتاج", description: "التحرير المحترف وتدرج الألوان والتحسين" },
-        { step: "المراجعة والتنقيح", description: "مراجعة العميل والتعديلات النهائية" },
-        { step: "التسليم وحقوق الاستخدام", description: "تسليم الأصول النهائية مع حقوق الاستخدام المناسبة" }
-      ]
+        {
+          step: "استشارة إبداعية",
+          description: "فهم رؤيتك وأهدافك ومتطلبات علامتك التجارية",
+        },
+        {
+          step: "تخطيط ما قبل الإنتاج",
+          description: "تخطيط الجلسات والمواقع والمعدات والمفاهيم الإبداعية",
+        },
+        {
+          step: "التصوير المحترف",
+          description: "تنفيذ التصوير وإنتاج الفيديو عالي الجودة",
+        },
+        {
+          step: "ما بعد الإنتاج",
+          description: "التحرير المحترف وتدرج الألوان والتحسين",
+        },
+        {
+          step: "المراجعة والتنقيح",
+          description: "مراجعة العميل والتعديلات النهائية",
+        },
+        {
+          step: "التسليم وحقوق الاستخدام",
+          description: "تسليم الأصول النهائية مع حقوق الاستخدام المناسبة",
+        },
+      ],
     },
     meta: {
       en: {

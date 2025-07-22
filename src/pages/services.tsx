@@ -1,6 +1,6 @@
 import { services } from "@/data/services";
 import { useLanguage } from "@/hooks/use-language";
-import { motion } from "framer-motion";
+import { motion } from "motion/react";
 import { ArrowRight, Sparkles } from "lucide-react";
 import { Link } from "wouter";
 
@@ -54,8 +54,7 @@ export default function Services() {
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6 }}
               className="flex justify-center mb-6"
-            >
-            </motion.div>
+            ></motion.div>
 
             <motion.h1
               initial={{ opacity: 0, y: 40 }}

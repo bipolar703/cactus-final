@@ -1,6 +1,6 @@
 import { useLanguage } from "@/hooks/use-language";
 import { usePerformantIntersection } from "@/hooks/use-performance";
-import { motion } from "framer-motion";
+import { motion } from "motion/react";
 import { Send } from "lucide-react";
 import { useState, useEffect } from "react";
 
