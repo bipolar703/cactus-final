@@ -7,13 +7,7 @@ import { Link } from "wouter";
 export function ModernHeroSection() {
   const { language } = useLanguage();
   const containerRef = useRef<HTMLDivElement>(null);
-  const { scrollYProgress } = useScroll({
-    target: containerRef,
-    offset: ["start start", "end start"],
-  });
-
-  const y = useTransform(scrollYProgress, [0, 1], [0, -200]);
-  const opacity = useTransform(scrollYProgress, [0, 0.8], [1, 0]);
+  // Removed useScroll and useTransform (not supported in @motionone/react)
 
   // Scroll to next section (about section)
   const scrollToNextSection = () => {
@@ -41,7 +35,6 @@ export function ModernHeroSection() {
           transition={{
             duration: 10,
             repeat: Infinity,
-            ease: "easeInOut",
           }}
         />
 
@@ -55,7 +48,6 @@ export function ModernHeroSection() {
           transition={{
             duration: 8,
             repeat: Infinity,
-            ease: "easeInOut",
             delay: 2,
           }}
         />
@@ -75,7 +67,6 @@ export function ModernHeroSection() {
           transition={{
             duration: 20,
             repeat: Infinity,
-            ease: "easeInOut",
           }}
         />
 
@@ -91,7 +82,6 @@ export function ModernHeroSection() {
           transition={{
             duration: 25,
             repeat: Infinity,
-            ease: "easeInOut",
             delay: 5,
           }}
         />
@@ -108,7 +98,6 @@ export function ModernHeroSection() {
           transition={{
             duration: 15,
             repeat: Infinity,
-            ease: "easeInOut",
           }}
         />
 
@@ -123,7 +112,6 @@ export function ModernHeroSection() {
           transition={{
             duration: 18,
             repeat: Infinity,
-            ease: "easeInOut",
             delay: 3,
           }}
         />
@@ -131,14 +119,14 @@ export function ModernHeroSection() {
 
       {/* Main Content */}
       <motion.div
-        style={{ y, opacity }}
+        // Removed dynamic style for y, opacity (useScroll/useTransform not supported)
         className="relative z-10 text-center px-4 sm:px-6 max-w-6xl mx-auto h-full flex flex-col justify-center items-center min-h-screen"
       >
         {/* Main Slogan - Hero Title with Glowing Effect */}
         <motion.div
           initial={{ opacity: 0, scale: 0.9 }}
           animate={{ opacity: 1, scale: 1 }}
-          transition={{ delay: 0.6, duration: 1.5, ease: [0.16, 1, 0.3, 1] }}
+          transition={{ delay: 0.6, duration: 1.5 }}
           className="relative mb-6 sm:mb-8 mt-24 sm:mt-28 lg:mt-32"
         >
           <motion.h1
@@ -155,7 +143,6 @@ export function ModernHeroSection() {
             transition={{
               duration: 7,
               repeat: Infinity,
-              ease: "easeInOut",
             }}
           >
             {language === "ar"
@@ -173,7 +160,6 @@ export function ModernHeroSection() {
             transition={{
               duration: 8,
               repeat: Infinity,
-              ease: "easeInOut",
             }}
           />
         </motion.div>
@@ -182,7 +168,7 @@ export function ModernHeroSection() {
         <motion.p
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 1.2, duration: 1, ease: [0.16, 1, 0.3, 1] }}
+          transition={{ delay: 1.2, duration: 1 }}
           className={`text-lg sm:text-xl md:text-2xl lg:text-3xl text-gray-300 mb-6 sm:mb-8 max-w-3xl mx-auto leading-relaxed text-center font-light ${
             language === "ar" ? "font-arabic" : "font-barlow"
           }`}
@@ -192,7 +178,7 @@ export function ModernHeroSection() {
         <motion.p
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 1.4, duration: 1, ease: [0.16, 1, 0.3, 1] }}
+          transition={{ delay: 1.4, duration: 1 }}
           className={`text-xs sm:text-sm md:text-base lg:text-lg text-gray-400 mb-6 sm:mb-12 max-w-4xl mx-auto leading-relaxed ${
             language === "ar" ? "font-arabic text-center" : "text-center"
           }`}
@@ -206,16 +192,11 @@ export function ModernHeroSection() {
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 1.6, duration: 1, ease: [0.16, 1, 0.3, 1] }}
+          transition={{ delay: 1.6, duration: 1 }}
           className="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center items-center mb-8 sm:mb-16"
         >
           <Link href="/services">
             <motion.button
-              whileHover={{
-                scale: 1.05,
-                boxShadow: "0 20px 40px rgba(63, 124, 106, 0.3)",
-              }}
-              whileTap={{ scale: 0.95 }}
               className="bg-gradient-to-r from-jaded-green-600 to-jaded-green-500 text-white font-semibold py-3 sm:py-4 px-6 sm:px-8 rounded-2xl shadow-xl hover:shadow-2xl transition-all duration-300 flex items-center gap-3 text-sm sm:text-base"
             >
               <Play className="w-5 h-5" />
@@ -225,8 +206,6 @@ export function ModernHeroSection() {
 
           <motion.a
             href="/contact"
-            whileHover={{ scale: 1.05 }}
-            whileTap={{ scale: 0.95 }}
             className="border-2 border-white/30 text-white font-semibold py-3 sm:py-4 px-6 sm:px-8 rounded-2xl backdrop-blur-sm hover:bg-white/10 transition-all duration-300 text-sm sm:text-base"
           >
             {language === "ar" ? "ابدأ مشروعك" : "Start Your Project"}
@@ -252,11 +231,6 @@ export function ModernHeroSection() {
 
           <motion.button
             onClick={scrollToNextSection}
-            whileHover={{
-              scale: 1.1,
-              boxShadow: "0 10px 30px rgba(63, 124, 106, 0.3)",
-            }}
-            whileTap={{ scale: 0.95 }}
             className="relative group p-3 sm:p-4 rounded-full bg-[#3f7c6a]/20 border-2 border-[#3f7c6a]/40 hover:border-[#3f7c6a] backdrop-blur-sm transition-all duration-300"
           >
             {/* Pulsing background effect */}
@@ -269,7 +243,7 @@ export function ModernHeroSection() {
             {/* Bouncing arrow */}
             <motion.div
               animate={{ y: [0, 8, 0] }}
-              transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
+              transition={{ duration: 2, repeat: Infinity }}
             >
               <ArrowDown className="w-5 h-5 sm:w-6 sm:h-6 text-white group-hover:text-[#3f7c6a] transition-colors duration-300 relative z-10" />
             </motion.div>
