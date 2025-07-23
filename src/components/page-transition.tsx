@@ -9,21 +9,16 @@ interface PageTransitionProps {
 export function PageTransition({ children }: PageTransitionProps) {
   const [location] = useLocation();
 
+  // Defensive: fallback key if location is undefined
   return (
-    {/* AnimatePresence removed for @motionone/react migration */}
-      <motion.div
-        key={location}
-        initial={{ opacity: 0, y: 20 }}
-        animate={{ opacity: 1, y: 0 }}
-        exit={{ opacity: 0, y: -20 }}
-        transition={{
-          duration: 0.4,
-          ease: [0.16, 1, 0.3, 1],
-        }}
-        className="w-full"
-      >
-        {children}
-      </motion.div>
-    {/* AnimatePresence removed for @motionone/react migration */}
+    <motion.div
+      key={location || "page"}
+      initial={{ opacity: 0, y: 20 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.4 }}
+      className="w-full"
+    >
+      {children}
+    </motion.div>
   );
 }
