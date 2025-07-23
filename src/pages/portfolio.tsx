@@ -120,9 +120,9 @@ export default function Portfolio() {
                   transition={{
                     delay: 0.1 * idx,
                     duration: 0.8,
-                    ease: [0.16, 1, 0.3, 1],
+                    easing: [0.16, 1, 0.3, 1],
                   }}
-                  whileHover={{ y: -12, transition: { duration: 0.3 } }}
+                  // whileHover removed for @motionone/react compatibility
                   className="group"
                 >
                   <motion.a
@@ -130,7 +130,7 @@ export default function Portfolio() {
                     target="_blank"
                     rel="noopener noreferrer"
                     className="block relative bg-white/80 backdrop-blur-xl rounded-3xl overflow-hidden shadow-xl border border-gray-100/50 hover:shadow-2xl hover:border-jaded-green-200/50 transition-all duration-500 h-full"
-                    whileHover={{ scale: 1.02 }}
+                    // whileHover removed for @motionone/react compatibility
                   >
                     {/* Project Image */}
                     <div className="relative overflow-hidden">
@@ -184,8 +184,8 @@ export default function Portfolio() {
                           <div className="w-2 h-2 bg-green-500 rounded-full"></div>
                           {language === "ar" ? "مكتمل" : "Completed"}
                         </span>
-                        <span>{project.year || "2024"}</span>
-                        <span>{project.duration || "4 weeks"}</span>
+                        {/* project.year removed: not in data */}
+                        {/* project.duration removed: not in data */}
                       </div>
 
                       {/* Tags */}
@@ -292,8 +292,7 @@ export default function Portfolio() {
               <div className="flex flex-col sm:flex-row gap-4 justify-center">
                 <Link href="/contact">
                   <motion.button
-                    whileHover={{ scale: 1.05 }}
-                    whileTap={{ scale: 0.95 }}
+                    // whileHover/whileTap removed for @motionone/react compatibility
                     className="bg-white text-jaded-green-600 font-bold py-4 px-8 rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300"
                   >
                     {language === "ar" ? "ابدأ مشروعك" : "Start Your Project"}
@@ -301,8 +300,7 @@ export default function Portfolio() {
                 </Link>
                 <Link href="/services">
                   <motion.button
-                    whileHover={{ scale: 1.05 }}
-                    whileTap={{ scale: 0.95 }}
+                    // whileHover/whileTap removed for @motionone/react compatibility
                     className="border-2 border-white text-white font-bold py-4 px-8 rounded-2xl hover:bg-white/10 transition-all duration-300"
                   >
                     {language === "ar"

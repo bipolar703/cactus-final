@@ -94,9 +94,8 @@ export default function Services() {
                   transition={{
                     delay: 0.1 * idx,
                     duration: 0.8,
-                    ease: [0.16, 1, 0.3, 1],
+                    // 'ease' is not a valid prop for @motionone/react, removed for compatibility
                   }}
-                  whileHover={{ y: -8, transition: { duration: 0.3 } }}
                   className="group"
                 >
                   <div
@@ -164,8 +163,7 @@ export default function Services() {
                         className="mt-auto group/btn"
                       >
                         <motion.div
-                          whileHover={{ scale: 1.02 }}
-                          whileTap={{ scale: 0.98 }}
+                          // whileHover/whileTap removed for @motionone/react compatibility
                           className={`w-full font-semibold py-4 px-6 rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 flex items-center justify-center gap-3 group-hover/btn:from-jaded-green-700 group-hover/btn:to-jaded-green-600 ${service.label === "latest" ? "bg-white text-jaded-green-600" : "bg-gradient-to-r from-jaded-green-600 to-jaded-green-500 text-white"}`}
                         >
                           <span
@@ -213,8 +211,7 @@ export default function Services() {
               </p>
               <Link href="/contact">
                 <motion.button
-                  whileHover={{ scale: 1.05 }}
-                  whileTap={{ scale: 0.95 }}
+                  // whileHover/whileTap removed for @motionone/react compatibility
                   className="bg-white text-jaded-green-600 font-bold py-4 px-8 rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300"
                 >
                   {language === "ar" ? "تواصل معنا الآن" : "Contact Us Now"}

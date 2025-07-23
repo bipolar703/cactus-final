@@ -26,55 +26,52 @@ function Modal({ isOpen, onClose, title, children }: ModalProps) {
   }, [isOpen]);
 
   return (
-    {/* AnimatePresence removed for @motionone/react migration */}
-      {isOpen && (
+    // AnimatePresence removed for @motionone/react migration
+    isOpen && (
+      <motion.div
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        className="fixed inset-0 z-50 flex items-center justify-center p-4"
+      >
+        {/* Backdrop */}
         <motion.div
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
-          exit={{ opacity: 0 }}
-          className="fixed inset-0 z-50 flex items-center justify-center p-4"
+          className="absolute inset-0 bg-black/80 backdrop-blur-sm"
+          onClick={onClose}
+        />
+
+        {/* Modal Content */}
+        <motion.div
+          initial={{ opacity: 0, scale: 0.9, y: 20 }}
+          animate={{ opacity: 1, scale: 1, y: 0 }}
+          className="relative bg-white dark:bg-gray-900 rounded-2xl shadow-2xl max-w-4xl w-full max-h-[90vh] overflow-hidden"
         >
-          {/* Backdrop */}
-          <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
-            className="absolute inset-0 bg-black/80 backdrop-blur-sm"
-            onClick={onClose}
-          />
+          {/* Header */}
+          <div className="flex items-center justify-between p-6 border-b border-gray-200 dark:border-gray-700">
+            <h2
+              className={`text-2xl font-semibold text-gray-900 dark:text-white ${
+                language === "ar" ? "font-arabic" : "font-barlow"
+              }`}
+            >
+              {title}
+            </h2>
+            <button
+              onClick={onClose}
+              className="p-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors"
+            >
+              <X className="w-6 h-6 text-gray-500 dark:text-gray-400" />
+            </button>
+          </div>
 
-          {/* Modal Content */}
-          <motion.div
-            initial={{ opacity: 0, scale: 0.9, y: 20 }}
-            animate={{ opacity: 1, scale: 1, y: 0 }}
-            exit={{ opacity: 0, scale: 0.9, y: 20 }}
-            className="relative bg-white dark:bg-gray-900 rounded-2xl shadow-2xl max-w-4xl w-full max-h-[90vh] overflow-hidden"
-          >
-            {/* Header */}
-            <div className="flex items-center justify-between p-6 border-b border-gray-200 dark:border-gray-700">
-              <h2
-                className={`text-2xl font-semibold text-gray-900 dark:text-white ${
-                  language === "ar" ? "font-arabic" : "font-barlow"
-                }`}
-              >
-                {title}
-              </h2>
-              <button
-                onClick={onClose}
-                className="p-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors"
-              >
-                <X className="w-6 h-6 text-gray-500 dark:text-gray-400" />
-              </button>
-            </div>
-
-            {/* Content */}
-            <div className="p-6 overflow-y-auto max-h-[calc(90vh-120px)]">
-              {children}
-            </div>
-          </motion.div>
+          {/* Content */}
+          <div className="p-6 overflow-y-auto max-h-[calc(90vh-120px)]">
+            {children}
+          </div>
         </motion.div>
-      )}
-    {/* AnimatePresence removed for @motionone/react migration */}
+      </motion.div>
+    )
+    // AnimatePresence removed for @motionone/react migration
   );
 }
 

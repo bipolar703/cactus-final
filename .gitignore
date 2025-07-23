@@ -8,5 +8,6 @@ acli.exe
 .rovodev
 .agent.md
 .cursor
-
 .vercel
+log.log
+.pytest_cache

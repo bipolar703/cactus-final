@@ -21,7 +21,7 @@ export default function Home() {
   const portfolioRef = useRef<HTMLDivElement>(null);
   const contactRef = useRef<HTMLDivElement>(null);
 
-  // Removed useInView logic for @motionone/react compatibility
+// useInView and framer-motion logic removed for @motionone/react compatibility
 
   // Intersection Observer logic
   useEffect(() => {

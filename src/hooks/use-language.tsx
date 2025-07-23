@@ -35,7 +35,7 @@ export function LanguageProvider({ children }: { children: ReactNode }) {
     document.body.classList.add("language-switching");
 
     // Smooth transition with loading delay
-    document.documentElement.style.transition = "all 0.3s ease";
+    document.documentElement.style.transition = "all 0.3s cubic-bezier(0.42, 0, 0.58, 1)";
 
     setTimeout(() => {
       setLanguage(newLang);

@@ -90,7 +90,7 @@ export default function About() {
             transition={{
               duration: 8,
               repeat: Infinity,
-              ease: "easeInOut",
+              easing: [0.42, 0, 0.58, 1], // cubic-bezier for smooth in/out
             }}
           />
           <motion.div
@@ -102,7 +102,7 @@ export default function About() {
             transition={{
               duration: 10,
               repeat: Infinity,
-              ease: "easeInOut",
+              easing: [0.42, 0, 0.58, 1],
               delay: 2,
             }}
           />
@@ -236,7 +236,7 @@ export default function About() {
               {values.map((value, index) => (
                 <motion.div
                   key={index}
-                  whileHover={{ y: -8 }}
+                  // whileHover removed for @motionone/react compatibility
                   className="bg-[#3f7c6a] rounded-2xl p-8 text-center shadow-xl hover:shadow-2xl transition-all duration-300"
                 >
                   <div className="w-16 h-16 bg-white rounded-2xl flex items-center justify-center mx-auto mb-6">
@@ -288,8 +288,7 @@ export default function About() {
                   : "Let us help you achieve your digital goals and build a strong online presence"}
               </p>
               <motion.button
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.95 }}
+                // whileHover/whileTap removed for @motionone/react compatibility
                 className="bg-white text-jaded-green-600 font-bold py-4 px-8 rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300"
               >
                 <a href="/contact">

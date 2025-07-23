@@ -9,10 +9,7 @@ const __dirname = path.dirname(fileURLToPath(import.meta.url));
 
 export default defineConfig({
   plugins: [
-    react({
-      // Use SWC for faster builds in Vite 7
-      jsxRuntime: "automatic",
-    }),
+    react(),
     // Removed missing Vite plugins
   ],
   resolve: {
@@ -67,14 +64,7 @@ export default defineConfig({
     // RTL support for Arabic layout
     middlewareMode: false,
     // Custom: inject dir="rtl" for Arabic routes
-    configureServer(server: any) {
-      server.middlewares.use((req: any, res: any, next: any) => {
-        if (req.url && /ar(\/|$)/.test(req.url)) {
-          res.setHeader('Content-Security-Policy', "default-src 'self'; style-src 'self' 'unsafe-inline';");
-        }
-        next();
-      });
-    },
+    // configureServer removed for Vite 7 compatibility
   },
   // Vite 7 optimizations
   optimizeDeps: {

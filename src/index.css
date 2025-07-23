@@ -137,7 +137,7 @@ body {
 /* Language switching loading */
 .language-switching {
   opacity: 0.7;
-  transition: opacity 0.3s ease;
+  transition: opacity 0.3s cubic-bezier(0.42, 0, 0.58, 1);
   pointer-events: none;
 }
 

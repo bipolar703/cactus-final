@@ -59,8 +59,8 @@ export function NavigationBar() {
       }}
       transition={{
         duration: 0.4,
-        ease: [0.16, 1, 0.3, 1],
-        opacity: { duration: 0.3 },
+        // 'ease' is not supported by @motionone/react, removed for compatibility
+        // opacity: { duration: 0.3 },
       }}
       className={`w-full fixed top-0 left-0 z-50 transition-all duration-500 ${
         isScrolled || !isHomePage
@@ -75,13 +75,11 @@ export function NavigationBar() {
             src="/assets/Icon.png"
             alt="Cactus Media Group"
             className="w-10 h-10 object-contain transition-transform duration-300 group-hover:scale-110"
-            whileHover={{ rotate: 5 }}
           />
           <motion.span
             className={`hidden sm:block text-xl font-bold transition-colors duration-300 ${
               isScrolled || !isHomePage ? "text-jaded-green-700" : "text-white"
             } ${language === "ar" ? "font-arabic" : "font-barlow"}`}
-            whileHover={{ scale: 1.05 }}
           >
             {language === "ar" ? "كاكتوس ميديا" : "Cactus Media"}
           </motion.span>
@@ -111,13 +109,12 @@ export function NavigationBar() {
                 {link.label[language]}
                 {location === link.href && (
                   <motion.div
-                    layoutId="activeTab"
                     className={`absolute inset-0 rounded-xl -z-10 ${
                       isScrolled || !isHomePage
                         ? "bg-jaded-green-100"
                         : "bg-[#3f7c6a]"
                     }`}
-                    transition={{ type: "spring", bounce: 0.2, duration: 0.6 }}
+                    transition={{ duration: 0.6 }}
                   />
                 )}
               </Link>
@@ -131,8 +128,6 @@ export function NavigationBar() {
           <motion.button
             onClick={toggleLanguage}
             disabled={isLoading}
-            whileHover={{ scale: 1.05 }}
-            whileTap={{ scale: 0.95 }}
             className={`hidden lg:flex items-center gap-2 px-3 py-2 rounded-xl font-medium text-sm transition-all duration-300 border ${
               isScrolled || !isHomePage
                 ? "bg-white text-gray-800 border-gray-200 shadow-md hover:bg-jaded-green-50 hover:border-jaded-green-200"
@@ -152,7 +147,6 @@ export function NavigationBar() {
             className="lg:hidden p-2 rounded-xl hover:bg-jaded-green-50 focus:outline-none focus:ring-2 focus:ring-jaded-green-400 transition-colors duration-200"
             aria-label="Toggle menu"
             onClick={() => setMobileOpen(!mobileOpen)}
-            whileTap={{ scale: 0.95 }}
           >
             {/* AnimatePresence removed for @motionone/react migration */}
               {mobileOpen ? (
@@ -160,7 +154,6 @@ export function NavigationBar() {
                   key="close"
                   initial={{ rotate: -90, opacity: 0 }}
                   animate={{ rotate: 0, opacity: 1 }}
-                  exit={{ rotate: 90, opacity: 0 }}
                   transition={{ duration: 0.2 }}
                 >
                   <X
@@ -176,7 +169,6 @@ export function NavigationBar() {
                   key="menu"
                   initial={{ rotate: 90, opacity: 0 }}
                   animate={{ rotate: 0, opacity: 1 }}
-                  exit={{ rotate: -90, opacity: 0 }}
                   transition={{ duration: 0.2 }}
                 >
                   <Menu
@@ -199,8 +191,6 @@ export function NavigationBar() {
           <motion.div
             initial={{ opacity: 0, height: 0 }}
             animate={{ opacity: 1, height: "auto" }}
-            exit={{ opacity: 0, height: 0 }}
-            transition={{ duration: 0.3, ease: [0.16, 1, 0.3, 1] }}
             className="lg:hidden bg-slate-900 border-t border-gray-700 shadow-xl"
           >
             <div className="px-4 py-6 space-y-2">
@@ -229,14 +219,11 @@ export function NavigationBar() {
               <motion.div
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: 0.4, duration: 0.3 }}
                 className="pt-2"
               >
                 <motion.button
                   onClick={toggleLanguage}
                   disabled={isLoading}
-                  whileHover={{ scale: 1.02 }}
-                  whileTap={{ scale: 0.98 }}
                   className={`w-full flex items-center justify-center gap-3 px-4 py-3 rounded-xl font-medium text-lg transition-all duration-300 border ${
                     isLoading
                       ? "opacity-50 cursor-not-allowed"
