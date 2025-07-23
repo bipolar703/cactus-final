@@ -7,19 +7,26 @@ import { ModernContactSection } from "@/components/sections/modern-contact-secti
 import { ModernPortfolioSection } from "@/components/sections/modern-portfolio-section";
 import { ModernServicesSection } from "@/components/sections/modern-services-section";
 import { ProcessSection } from "@/components/sections/process-section";
-import { motion } from "@motionone/react";
+import { motion, useInView } from "@motionone/react";
 import { useEffect, useRef, useState } from "react";
 
 export default function Home() {
   const [isLoading, setIsLoading] = useState(true);
   const [activeSection, setActiveSection] = useState("hero");
 
-  // Section refs for intersection tracking
+  // Section refs for intersection tracking and in-view animation
   const heroRef = useRef<HTMLDivElement>(null);
   const aboutRef = useRef<HTMLDivElement>(null);
   const servicesRef = useRef<HTMLDivElement>(null);
   const portfolioRef = useRef<HTMLDivElement>(null);
   const contactRef = useRef<HTMLDivElement>(null);
+
+  // In-view states for each section
+  const heroInView = useInView(heroRef, { amount: 0.3, once: true });
+  const aboutInView = useInView(aboutRef, { amount: 0.3, once: true });
+  const servicesInView = useInView(servicesRef, { amount: 0.3, once: true });
+  const portfolioInView = useInView(portfolioRef, { amount: 0.3, once: true });
+  const contactInView = useInView(contactRef, { amount: 0.3, once: true });
 
   // Intersection Observer logic
   useEffect(() => {
@@ -88,18 +95,17 @@ export default function Home() {
       <div className="relative min-h-screen bg-slate-900">
         {/* Background Gradients for Non-Hero Sections */}
         <div className="fixed inset-0 z-0">
-          <AnimatePresence mode="wait">
+          {/* AnimatePresence removed for @motionone/react migration */}
             {activeSection !== "hero" && (
               <motion.div
                 key={activeSection}
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
-                exit={{ opacity: 0 }}
-                transition={{ duration: 2, ease: [0.16, 1, 0.3, 1] }}
+                transition={{ duration: 2 }}
                 className={`absolute inset-0 ${getSectionBackground(activeSection)}`}
               />
             )}
-          </AnimatePresence>
+          {/* AnimatePresence removed for @motionone/react migration */}
         </div>
         {/* Main Sectioned Content - Centered Layout */}
         <main className="relative z-10 w-full max-w-none mx-auto">
@@ -107,65 +113,61 @@ export default function Home() {
             ref={heroRef}
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
-            transition={{ duration: 1.8, ease: [0.16, 1, 0.3, 1] }}
+            transition={{ duration: 1.8 }}
           >
             <ModernHeroSection />
           </motion.div>
 
           <motion.div
             initial={{ opacity: 0, y: 60, scale: 0.95 }}
-            whileInView={{ opacity: 1, y: 0, scale: 1 }}
-            viewport={{ once: true, margin: "-150px" }}
-            transition={{ duration: 1.5, ease: [0.16, 1, 0.3, 1] }}
+            animate={heroInView ? { opacity: 1, y: 0, scale: 1 } : undefined}
+            transition={{ duration: 1.5 }}
             className="-mt-1"
+            ref={heroRef}
           >
             <ProcessSection />
           </motion.div>
 
           <motion.div
             ref={servicesRef}
-            initial={{ opacity: 0, y: 60, rotateY: -5 }}
-            whileInView={{ opacity: 1, y: 0, rotateY: 0 }}
-            viewport={{ once: true, margin: "-150px" }}
-            transition={{ duration: 1.5, ease: [0.16, 1, 0.3, 1] }}
+            initial={{ opacity: 0, y: 60 }}
+            animate={servicesInView ? { opacity: 1, y: 0 } : undefined}
+            transition={{ duration: 1.5 }}
           >
             <ModernServicesSection />
           </motion.div>
           <motion.div
             ref={portfolioRef}
-            initial={{ opacity: 0, y: 60, rotateX: -10 }}
-            whileInView={{ opacity: 1, y: 0, rotateX: 0 }}
-            viewport={{ once: true, margin: "-150px" }}
-            transition={{ duration: 1.5, ease: [0.16, 1, 0.3, 1] }}
+            initial={{ opacity: 0, y: 60 }}
+            animate={portfolioInView ? { opacity: 1, y: 0 } : undefined}
+            transition={{ duration: 1.5 }}
           >
             <ModernPortfolioSection />
           </motion.div>
           <motion.div
             initial={{ opacity: 0, y: 60, scale: 0.95 }}
-            whileInView={{ opacity: 1, y: 0, scale: 1 }}
-            viewport={{ once: true, margin: "-150px" }}
-            transition={{ duration: 1.5, ease: [0.16, 1, 0.3, 1] }}
+            animate={aboutInView ? { opacity: 1, y: 0, scale: 1 } : undefined}
+            transition={{ duration: 1.5 }}
+            ref={aboutRef}
           >
             <ClientShowcase />
           </motion.div>
 
           <motion.div
-            ref={aboutRef}
             initial={{ opacity: 0, y: 60, scale: 0.95 }}
-            whileInView={{ opacity: 1, y: 0, scale: 1 }}
-            viewport={{ once: true, margin: "-150px" }}
-            transition={{ duration: 1.5, ease: [0.16, 1, 0.3, 1] }}
+            animate={aboutInView ? { opacity: 1, y: 0, scale: 1 } : undefined}
+            transition={{ duration: 1.5 }}
             className="-mt-1"
+            ref={aboutRef}
           >
             <ModernAboutSection />
           </motion.div>
 
           <motion.div
             ref={contactRef}
-            initial={{ opacity: 0, y: 60, filter: "blur(10px)" }}
-            whileInView={{ opacity: 1, y: 0, filter: "blur(0px)" }}
-            viewport={{ once: true, margin: "-150px" }}
-            transition={{ duration: 1.5, ease: [0.16, 1, 0.3, 1] }}
+            initial={{ opacity: 0, y: 60 }}
+            animate={contactInView ? { opacity: 1, y: 0 } : undefined}
+            transition={{ duration: 1.5 }}
           >
             <ModernContactSection />
           </motion.div>

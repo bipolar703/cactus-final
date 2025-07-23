@@ -154,7 +154,7 @@ export function NavigationBar() {
             onClick={() => setMobileOpen(!mobileOpen)}
             whileTap={{ scale: 0.95 }}
           >
-            <AnimatePresence mode="wait">
+            {/* AnimatePresence removed for @motionone/react migration */}
               {mobileOpen ? (
                 <motion.div
                   key="close"
@@ -188,13 +188,13 @@ export function NavigationBar() {
                   />
                 </motion.div>
               )}
-            </AnimatePresence>
+            {/* AnimatePresence removed for @motionone/react migration */}
           </motion.button>
         </div>
       </div>
 
       {/* Enhanced Mobile Menu */}
-      <AnimatePresence>
+      {/* AnimatePresence removed for @motionone/react migration */}
         {mobileOpen && (
           <motion.div
             initial={{ opacity: 0, height: 0 }}
@@ -272,7 +272,7 @@ export function NavigationBar() {
             </div>
           </motion.div>
         )}
-      </AnimatePresence>
+      {/* AnimatePresence removed for @motionone/react migration */}
     </motion.nav>
   );
 }

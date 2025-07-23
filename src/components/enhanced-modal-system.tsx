@@ -26,7 +26,7 @@ function Modal({ isOpen, onClose, title, children }: ModalProps) {
   }, [isOpen]);
 
   return (
-    <AnimatePresence>
+    {/* AnimatePresence removed for @motionone/react migration */}
       {isOpen && (
         <motion.div
           initial={{ opacity: 0 }}
@@ -74,7 +74,7 @@ function Modal({ isOpen, onClose, title, children }: ModalProps) {
           </motion.div>
         </motion.div>
       )}
-    </AnimatePresence>
+    {/* AnimatePresence removed for @motionone/react migration */}
   );
 }
 

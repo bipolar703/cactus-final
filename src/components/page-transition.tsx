@@ -10,7 +10,7 @@ export function PageTransition({ children }: PageTransitionProps) {
   const [location] = useLocation();
 
   return (
-    <AnimatePresence mode="wait">
+    {/* AnimatePresence removed for @motionone/react migration */}
       <motion.div
         key={location}
         initial={{ opacity: 0, y: 20 }}
@@ -24,6 +24,6 @@ export function PageTransition({ children }: PageTransitionProps) {
       >
         {children}
       </motion.div>
-    </AnimatePresence>
+    {/* AnimatePresence removed for @motionone/react migration */}
   );
 }

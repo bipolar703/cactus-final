@@ -21,7 +21,7 @@ export function ModalOverlay({ isOpen, onClose, children }: ModalOverlayProps) {
   }, [isOpen, onClose]);
 
   return (
-    <AnimatePresence>
+    {/* AnimatePresence removed for @motionone/react migration */}
       {isOpen && (
         <>
           <motion.div
@@ -83,6 +83,6 @@ export function ModalOverlay({ isOpen, onClose, children }: ModalOverlayProps) {
           </div>
         </>
       )}
-    </AnimatePresence>
+    {/* AnimatePresence removed for @motionone/react migration */}
   );
 }

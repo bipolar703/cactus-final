@@ -53,7 +53,7 @@ export function LoadingScreen({
   }, [isVisible, onComplete]);
 
   return (
-    <AnimatePresence>
+    {/* AnimatePresence removed for @motionone/react migration */}
       {isVisible && (
         <motion.div
           initial={{ opacity: 1 }}
@@ -167,6 +167,6 @@ export function LoadingScreen({
           </div>
         </motion.div>
       )}
-    </AnimatePresence>
+    {/* AnimatePresence removed for @motionone/react migration */}
   );
 }
