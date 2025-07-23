@@ -1,8 +1,7 @@
 import { useLanguage } from "@/hooks/use-language";
-import {
-    motion, useMotionValue, useScroll, useSpring, useTransform
-} from "motion/react";
-import { useEffect, useRef } from "react";
+import { motion } from "@motionone/react";
+// Removed useMotionValue, useScroll, useSpring, useTransform (framer-motion only)
+import { useEffect, useRef, useState } from "react";
 import { OptimizedImage } from "./performance-wrapper";
 
 interface CinematicHeroProps {}
@@ -10,57 +9,11 @@ interface CinematicHeroProps {}
 export function CinematicHero() {
   const { language } = useLanguage();
   const containerRef = useRef<HTMLDivElement>(null);
-  const mouseX = useMotionValue(0);
-  const mouseY = useMotionValue(0);
-
-  const { scrollYProgress } = useScroll({
-    target: containerRef,
-    offset: ["start start", "end start"],
-  });
-
-  // Prevent overscroll to top
-  useEffect(() => {
-    const preventOverscroll = (e: WheelEvent) => {
-      if (window.scrollY <= 0 && e.deltaY < 0) {
-        e.preventDefault();
-      }
-    };
-
-    window.addEventListener("wheel", preventOverscroll, { passive: false });
-    return () => window.removeEventListener("wheel", preventOverscroll);
-  }, []);
-
-  // Enhanced parallax transforms with cinematic motion
-  const y = useTransform(scrollYProgress, [0, 1], ["0%", "30%"]);
-  const opacity = useTransform(
-    scrollYProgress,
-    [0, 0.3, 0.7, 1],
-    [1, 0.95, 0.8, 0],
-  );
-  const scale = useTransform(scrollYProgress, [0, 1], [1, 1.15]);
-  const blur = useTransform(scrollYProgress, [0, 0.5, 1], [0, 2, 8]);
-
-  // Ultra-smooth spring animations
-  const smoothY = useSpring(y, {
-    stiffness: 60,
-    damping: 40,
-    restDelta: 0.001,
-  });
-  const smoothOpacity = useSpring(opacity, { stiffness: 80, damping: 35 });
-  const smoothScale = useSpring(scale, { stiffness: 50, damping: 45 });
-  const smoothBlur = useSpring(blur, { stiffness: 70, damping: 30 });
-
-  // Mouse parallax for subtle interactivity
-  const rotateX = useTransform(mouseY, [-300, 300], [5, -5]);
-  const rotateY = useTransform(mouseX, [-300, 300], [-5, 5]);
-
-  const handleMouseMove = (event: React.MouseEvent) => {
-    const rect = containerRef.current?.getBoundingClientRect();
-    if (rect) {
-      mouseX.set(event.clientX - rect.left - rect.width / 2);
-      mouseY.set(event.clientY - rect.top - rect.height / 2);
-    }
-  };
+  // Removed all framer-motion hooks and scroll-based animation
+  // Fallback: static animation only
+  const [hovered, setHovered] = useState(false);
+  // No mouse parallax or scroll-based transforms
+  const handleMouseMove = () => {};
 
   return (
     <section
@@ -70,11 +23,6 @@ export function CinematicHero() {
     >
       {/* Cinematic Video Background */}
       <motion.div
-        style={{
-          y: smoothY,
-          scale: smoothScale,
-          filter: `blur(${smoothBlur}px) contrast(1.1) saturate(1.2)`,
-        }}
         className="absolute inset-0 w-full h-full"
       >
         {/* Enhanced Cinematic Overlays */}
@@ -96,11 +44,6 @@ export function CinematicHero() {
 
       {/* Hero Content */}
       <motion.div
-        style={{
-          opacity: smoothOpacity,
-          rotateX,
-          rotateY,
-        }}
         className="relative z-10 text-center max-w-7xl mx-auto px-4 sm:px-6 perspective-1000"
       >
         {/* Logo with Advanced Animation */}
@@ -109,40 +52,26 @@ export function CinematicHero() {
             scale: 0.3,
             opacity: 0,
             y: -100,
-            rotateX: -45,
-            filter: "blur(20px)",
+            rotateX: -45
           }}
           animate={{
             scale: 1,
             opacity: 1,
             y: 0,
-            rotateX: 0,
-            filter: "blur(0px)",
+            rotateX: 0
           }}
           transition={{
             duration: 2,
-            delay: 0.5,
-            ease: [0.16, 1, 0.3, 1],
-            scale: {
-              type: "spring",
-              stiffness: 200,
-              damping: 20,
-              delay: 0.8,
-            },
-          }}
-          whileHover={{
-            scale: 1.05,
-            rotateY: 5,
-            transition: { duration: 0.6, ease: "easeOut" },
+            delay: 0.5
           }}
           className="mb-16 perspective-1000"
-   
+        />
 
         {/* Tagline with Cinematic Typography */}
         <motion.div
-          initial={{ opacity: 0, y: 50, filter: "blur(10px)" }}
-          animate={{ opacity: 1, y: 0, filter: "blur(0px)" }}
-          transition={{ delay: 1.5, duration: 1.2, ease: [0.16, 1, 0.3, 1] }}
+          initial={{ opacity: 0, y: 50 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ delay: 1.5, duration: 1.2 }}
           className="mb-12 space-y-6"
         >
           <h1
@@ -182,17 +111,10 @@ export function CinematicHero() {
         <motion.div
           initial={{ opacity: 0, y: 40, scale: 0.9 }}
           animate={{ opacity: 1, y: 0, scale: 1 }}
-          transition={{ delay: 2.8, duration: 1, ease: [0.16, 1, 0.3, 1] }}
+          transition={{ delay: 2.8, duration: 1 }}
           className="flex flex-col sm:flex-row gap-6 justify-center items-center"
         >
-          <motion.button
-            whileHover={{
-              scale: 1.08,
-              y: -4,
-              boxShadow: "0 20px 40px rgba(90, 155, 131, 0.4)",
-            }}
-            whileTap={{ scale: 0.95 }}
-            onClick={() => onModalOpen("services")}
+          <button
             className="group relative bg-gradient-to-r from-jaded-green-600 to-jaded-green-400 text-white font-semibold px-10 py-5 rounded-2xl shadow-2xl hover:shadow-jaded-green-500/40 transition-all duration-500 overflow-hidden"
           >
             <div className="absolute inset-0 bg-gradient-to-r from-jaded-green-400 to-jaded-green-300 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
@@ -201,16 +123,9 @@ export function CinematicHero() {
             >
               {language === "ar" ? "اكتشف خدماتنا" : "Discover Our Services"}
             </span>
-          </motion.button>
+          </button>
 
-          <motion.button
-            whileHover={{
-              scale: 1.08,
-              y: -4,
-              backgroundColor: "rgba(255, 255, 255, 0.15)",
-            }}
-            whileTap={{ scale: 0.95 }}
-            onClick={() => onModalOpen("contact")}
+          <button
             className="group glass-strong text-white font-semibold px-10 py-5 rounded-2xl backdrop-blur-xl border border-white/30 hover:border-white/50 transition-all duration-500"
           >
             <span
@@ -218,7 +133,7 @@ export function CinematicHero() {
             >
               {language === "ar" ? "تواصل معنا" : "Contact Us"}
             </span>
-          </motion.button>
+          </button>
         </motion.div>
       </motion.div>
     </section>

@@ -7,16 +7,10 @@ import { ModalOverlay } from "../modal-overlay";
 export function ModernAboutSection() {
   const { language } = useLanguage();
   const containerRef = useRef<HTMLDivElement>(null);
-  const isInView = useInView(containerRef, { once: true, margin: "-100px" });
+  // Removed useInView, useScroll, useTransform (framer-motion only)
   const [showPortfolio, setShowPortfolio] = useState(false);
-
-  const { scrollYProgress } = useScroll({
-    target: containerRef,
-    offset: ["start end", "end start"],
-  });
-
-  const y = useTransform(scrollYProgress, [0, 1], [100, -100]);
-  const opacity = useTransform(scrollYProgress, [0, 0.2, 0.8, 1], [0, 1, 1, 0]);
+  // Fallback for isInView: always true for static animation
+  const isInView = true;
 
   // Animated icon sources
   const animatedIcons = [
@@ -71,14 +65,8 @@ export function ModernAboutSection() {
 
         {/* Floating Icon with Glow Effect */}
         <motion.div
-          animate={{
-            scale: [1, 1.1, 1],
-            y: [0, -20, 0],
-          }}
-          transition={{
-            scale: { duration: 4, repeat: Infinity, ease: "easeInOut" },
-            y: { duration: 6, repeat: Infinity, ease: "easeInOut" },
-          }}
+          animate={{ scale: [1, 1.1, 1], y: [0, -20, 0] }}
+          transition={{ duration: 4, repeat: Infinity }}
           className="absolute bottom-16 sm:bottom-32 left-4 sm:left-16 w-24 h-24 sm:w-32 sm:h-32 flex items-center justify-center"
         >
           <div className="relative">
@@ -99,14 +87,8 @@ export function ModernAboutSection() {
 
         {/* Additional Floating Icons */}
         <motion.div
-          animate={{
-            scale: [1, 1.05, 1],
-            x: [0, -10, 0],
-          }}
-          transition={{
-            scale: { duration: 5, repeat: Infinity, ease: "easeInOut" },
-            x: { duration: 8, repeat: Infinity, ease: "easeInOut" },
-          }}
+          animate={{ scale: [1, 1.05, 1], x: [0, -10, 0] }}
+          transition={{ duration: 5, repeat: Infinity }}
           className="absolute top-16 sm:top-32 right-4 sm:right-20 w-16 h-16 sm:w-20 sm:h-20 flex items-center justify-center"
         >
           <div className="relative">
@@ -127,14 +109,14 @@ export function ModernAboutSection() {
         {/* Section Header */}
         <motion.div
           initial={{ opacity: 0, y: 60 }}
-          animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 60 }}
-          transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8 }}
           className="text-center mb-12 sm:mb-16 lg:mb-20 w-full flex flex-col items-center"
         >
           <motion.div
             initial={{ width: 0 }}
-            animate={isInView ? { width: 120 } : { width: 0 }}
-            transition={{ delay: 0.5, duration: 1 }}
+            animate={{ width: 120 }}
+            transition={{ duration: 1 }}
             className="h-1 bg-jaded-green-500 rounded-full mx-auto mb-8"
           />
 
@@ -162,8 +144,8 @@ export function ModernAboutSection() {
           {/* Left Content */}
           <motion.div
             initial={{ opacity: 0, x: -60 }}
-            animate={isInView ? { opacity: 1, x: 0 } : { opacity: 0, x: -60 }}
-            transition={{ duration: 0.8, delay: 0.4 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.8 }}
             className={`w-full flex flex-col ${language === "ar" ? "order-2 lg:order-1 items-center text-center" : "items-start"}`}
           >
             <div className="space-y-6 sm:space-y-8 w-full">
@@ -208,10 +190,8 @@ export function ModernAboutSection() {
                     <motion.div
                       key={index}
                       initial={{ opacity: 0, x: -20 }}
-                      animate={
-                        isInView ? { opacity: 1, x: 0 } : { opacity: 0, x: -20 }
-                      }
-                      transition={{ duration: 0.6, delay: 0.6 + index * 0.1 }}
+                      animate={{ opacity: 1, x: 0 }}
+                      transition={{ duration: 0.6 }}
                       className={`flex items-center gap-3 ${language === "ar" ? "justify-center" : "justify-start"} w-full max-w-md ${language === "ar" ? "mx-auto" : ""}`}
                     >
                       <CheckCircle className="w-5 h-5 sm:w-6 sm:h-6 text-jaded-green-400 flex-shrink-0" />
@@ -227,10 +207,8 @@ export function ModernAboutSection() {
 
               <motion.button
                 initial={{ opacity: 0, y: 20 }}
-                animate={
-                  isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }
-                }
-                transition={{ duration: 0.6, delay: 0.8 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.6 }}
                 className={`modern-btn group w-full sm:w-auto ${language === "ar" ? "mx-auto" : ""}`}
                 onClick={() => setShowPortfolio(true)}
               >
@@ -245,8 +223,8 @@ export function ModernAboutSection() {
           {/* Right Content - Values */}
           <motion.div
             initial={{ opacity: 0, x: 60 }}
-            animate={isInView ? { opacity: 1, x: 0 } : { opacity: 0, x: 60 }}
-            transition={{ duration: 0.8, delay: 0.6 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.8 }}
             className={`w-full ${language === "ar" ? "order-1 lg:order-2" : ""}`}
           >
             <div className="space-y-4 sm:space-y-6 w-full">
@@ -254,10 +232,8 @@ export function ModernAboutSection() {
                 <motion.div
                   key={index}
                   initial={{ opacity: 0, y: 30 }}
-                  animate={
-                    isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }
-                  }
-                  transition={{ duration: 0.6, delay: 0.8 + index * 0.1 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.6 }}
                   className="modern-card p-4 sm:p-6 lg:p-8 group cursor-pointer w-full"
                 >
                   <div

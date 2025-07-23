@@ -20,12 +20,9 @@ export function ModernPortfolioSection() {
   const [canScrollRight, setCanScrollRight] = useState(true);
   const [hoveredIndex, setHoveredIndex] = useState<number | null>(null);
 
-  const { scrollYProgress } = useScroll({
-    target: containerRef,
-    offset: ["start end", "end start"],
-  });
-
-  const y = useTransform(scrollYProgress, [0, 1], ["0%", "-20%"]);
+  // Removed useScroll and useTransform (framer-motion only)
+  // Use static y for parallax effect fallback
+  const y = "0%";
 
   // Use actual portfolio projects
   const projects = portfolioProjects;
@@ -91,7 +88,6 @@ export function ModernPortfolioSection() {
     >
       {/* Parallax Background */}
       <motion.div
-        style={{ y }}
         className="absolute inset-0 bg-gradient-to-br from-slate-100 via-white to-slate-50"
       />
 
@@ -108,16 +104,14 @@ export function ModernPortfolioSection() {
         {/* Section Header */}
         <motion.div
           initial={{ opacity: 0, y: 40 }}
-          animate={
-            isIntersecting ? { opacity: 1, y: 0 } : { opacity: 0, y: 40 }
-          }
-          transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8 }}
           className="text-center mb-16"
         >
           <motion.div
             initial={{ width: 0 }}
-            animate={isIntersecting ? { width: 80 } : { width: 0 }}
-            transition={{ delay: 0.5, duration: 1 }}
+            animate={{ width: 80 }}
+            transition={{ duration: 1 }}
             className="h-0.5 bg-jaded-green-600 mx-auto mb-8"
           />
 
@@ -145,8 +139,8 @@ export function ModernPortfolioSection() {
         {/* Enhanced Portfolio Carousel */}
         <motion.div
           initial={{ opacity: 0 }}
-          animate={isIntersecting ? { opacity: 1 } : { opacity: 0 }}
-          transition={{ duration: 1, delay: 0.3 }}
+          animate={{ opacity: 1 }}
+          transition={{ duration: 1 }}
           className="relative group"
         >
           {/* Navigation Arrows (hidden on mobile) */}
@@ -175,16 +169,8 @@ export function ModernPortfolioSection() {
               <motion.div
                 key={project.id}
                 initial={{ opacity: 0, y: 60, scale: 0.95 }}
-                animate={
-                  isIntersecting
-                    ? { opacity: 1, y: 0, scale: 1 }
-                    : { opacity: 0, y: 60, scale: 0.95 }
-                }
-                transition={{
-                  delay: index * 0.15,
-                  duration: 0.8,
-                  ease: [0.16, 1, 0.3, 1],
-                }}
+                animate={{ opacity: 1, y: 0, scale: 1 }}
+                transition={{ duration: 0.8 }}
                 className="group/card cursor-pointer flex-shrink-0 snap-start"
                 onClick={() => window.open(project.url, "_blank")}
                 onMouseEnter={() => setHoveredIndex(index)}
@@ -261,13 +247,8 @@ export function ModernPortfolioSection() {
                 >
                   {index === currentIndex && (
                     <motion.div
-                      layoutId="activeIndicator"
                       className="absolute inset-0 bg-jaded-green-500 rounded-full"
-                      transition={{
-                        type: "spring",
-                        stiffness: 300,
-                        damping: 30,
-                      }}
+                      transition={{ duration: 0.4 }}
                     />
                   )}
                 </button>
@@ -280,10 +261,8 @@ export function ModernPortfolioSection() {
         {/* CTA Button (hidden on mobile) */}
         <motion.div
           initial={{ opacity: 0, y: 40 }}
-          animate={
-            isIntersecting ? { opacity: 1, y: 0 } : { opacity: 0, y: 40 }
-          }
-          transition={{ delay: 0.8, duration: 0.8 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8 }}
           className="text-center mt-16"
         >
           <a
