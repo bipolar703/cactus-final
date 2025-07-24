@@ -1,5 +1,4 @@
-import { createContext, useContext } from "react";
-import { useReducedMotion as useMotionReducedMotion } from "@motionone/react";
+import { createContext, useContext, useEffect, useState } from "react";
 
 interface ReducedMotionContextType {
   prefersReducedMotion: boolean;
@@ -18,7 +17,20 @@ interface ReducedMotionProviderProps {
 }
 
 export function ReducedMotionProvider({ children }: ReducedMotionProviderProps) {
-  const prefersReducedMotion = useMotionReducedMotion();
+  const [prefersReducedMotion, setPrefersReducedMotion] = useState(false);
+
+  useEffect(() => {
+    const mediaQuery = window.matchMedia("(prefers-reduced-motion: reduce)");
+    setPrefersReducedMotion(mediaQuery.matches);
+
+    const handleChange = (event: MediaQueryListEvent) => {
+      setPrefersReducedMotion(event.matches);
+    };
+
+    mediaQuery.addEventListener("change", handleChange);
+    return () => mediaQuery.removeEventListener("change", handleChange);
+  }, []);
+
   const shouldAnimate = !prefersReducedMotion;
 
   return (
