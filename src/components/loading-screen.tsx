@@ -55,7 +55,9 @@ export function LoadingScreen({
   if (!isVisible) return null;
   return (
     <motion.div
+      key="loading-screen"
       initial={{ opacity: 1 }}
+      animate={{ opacity: isLoaded ? 0 : 1 }}
       transition={{ duration: 0.5 }}
       className="fixed inset-0 z-[9999] flex items-center justify-center"
     >
