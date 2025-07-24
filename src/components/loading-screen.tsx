@@ -53,13 +53,20 @@ export function LoadingScreen({
   }, [isVisible, onComplete]);
 
   if (!isVisible) return null;
+  
   return (
     <motion.div
       key="loading-screen"
       initial={{ opacity: 1 }}
       animate={{ opacity: isLoaded ? 0 : 1 }}
+      exit={{ opacity: 0 }}
       transition={{ duration: 0.5 }}
       className="fixed inset-0 z-[9999] flex items-center justify-center"
+      onAnimationComplete={() => {
+        if (isLoaded) {
+          onComplete?.();
+        }
+      }}
     >
       {/* Full Opacity Background - Completely Opaque */}
       <div className="absolute inset-0 bg-slate-900" />

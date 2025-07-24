@@ -82,13 +82,10 @@ export default function Home() {
 
   return (
     <>
-      {/* Only render LoadingScreen if it returns a valid React node */}
-      {typeof LoadingScreen === 'function' ? (
-        <LoadingScreen
-          isVisible={isLoading}
-          onComplete={() => setIsLoading(false)}
-        />
-      ) : null}
+      <LoadingScreen
+        isVisible={isLoading}
+        onComplete={() => setIsLoading(false)}
+      />
       <EnhancedModalSystem />
       <div className="relative min-h-screen bg-slate-900">
         {/* Background Gradients for Non-Hero Sections */}

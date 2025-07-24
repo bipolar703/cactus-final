@@ -4,9 +4,13 @@ set -e
 # Vercel build script for Cactus Media Group
 echo "🌵 Starting Cactus Media Group build process..."
 
+# Clear any existing cache to prevent stale builds
+echo "🧹 Clearing build cache..."
+rm -rf dist node_modules/.cache .vercel/cache
+
 # Install dependencies
 echo "📦 Installing dependencies with pnpm..."
-pnpm install
+pnpm install --frozen-lockfile
 
 # Run database migrations if needed
 echo "🗄️ Setting up database..."

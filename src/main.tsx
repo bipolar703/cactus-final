@@ -1,35 +1,34 @@
-import { StrictMode, Suspense } from "react";
+import { StrictMode, Suspense, useState, useEffect } from "react";
 import { createRoot } from "react-dom/client";
 import App from "./App";
 import "./index.css";
 import { ReducedMotionProvider } from "./providers/ReducedMotionProvider";
 
-// Lazy load SpeedInsights to prevent blocking
-const SpeedInsightsLazy = () => {
+// SpeedInsights component with proper error handling
+const SpeedInsightsComponent = () => {
+  const [mounted, setMounted] = useState(false);
+
+  useEffect(() => {
+    setMounted(true);
+  }, []);
+
+  if (!mounted) return null;
+
   try {
-    // Use dynamic import for better error handling
-    import("@vercel/speed-insights/react").then(({ SpeedInsights }) => {
-      // Create and mount SpeedInsights component
-      const container = document.createElement('div');
-      container.id = 'speed-insights';
-      document.body.appendChild(container);
-      const root = createRoot(container);
-      root.render(<SpeedInsights />);
-    }).catch(() => {
-      // Silently fail if SpeedInsights can't load
-      console.warn('SpeedInsights failed to load');
-    });
-  } catch {
-    // Fallback for any other errors
+    const { SpeedInsights } = require("@vercel/speed-insights/react");
+    return <SpeedInsights />;
+  } catch (error) {
+    // Silently fail if SpeedInsights can't load
+    console.warn('SpeedInsights failed to load:', error);
+    return null;
   }
-  return null;
 };
 
 createRoot(document.getElementById("root")!).render(
   <StrictMode>
     <ReducedMotionProvider>
       <App />
-      <SpeedInsightsLazy />
+      <SpeedInsightsComponent />
     </ReducedMotionProvider>
   </StrictMode>,
 );
