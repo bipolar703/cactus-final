@@ -7,7 +7,7 @@ import { ModalOverlay } from "../modal-overlay";
 export function ModernAboutSection() {
   const { language } = useLanguage();
   const containerRef = useRef<HTMLDivElement>(null);
-  // Removed useInView, useScroll, useTransform (framer-motion only)
+  // Removed useInView, useScroll, useTransform
   const [showPortfolio, setShowPortfolio] = useState(false);
   // Fallback for isInView: always true for static animation
   const isInView = true;
@@ -115,7 +115,7 @@ export function ModernAboutSection() {
         >
           <motion.div
             initial={{ width: 0 }}
-            animate={{ width: 120 }}
+            animate={{ width: '120px' }}
             transition={{ duration: 1 }}
             className="h-1 bg-jaded-green-500 rounded-full mx-auto mb-8"
           />

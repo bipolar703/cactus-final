@@ -20,7 +20,7 @@ export function ModernPortfolioSection() {
   const [canScrollRight, setCanScrollRight] = useState(true);
   const [hoveredIndex, setHoveredIndex] = useState<number | null>(null);
 
-  // Removed useScroll and useTransform (framer-motion only)
+  // Removed useScroll and useTransform
   // Use static y for parallax effect fallback
   const y = "0%";
 
@@ -110,7 +110,7 @@ export function ModernPortfolioSection() {
         >
           <motion.div
             initial={{ width: 0 }}
-            animate={{ width: 80 }}
+            animate={{ width: '80px' }}
             transition={{ duration: 1 }}
             className="h-0.5 bg-jaded-green-600 mx-auto mb-8"
           />

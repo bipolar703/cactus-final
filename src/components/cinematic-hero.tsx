@@ -1,6 +1,6 @@
 import { useLanguage } from "@/hooks/use-language";
 import { motion } from "@motionone/react";
-// Removed useMotionValue, useScroll, useSpring, useTransform (framer-motion only)
+// Removed useMotionValue, useScroll, useSpring, useTransform
 import { useEffect, useRef, useState } from "react";
 import { OptimizedImage } from "./performance-wrapper";
 
@@ -9,7 +9,7 @@ interface CinematicHeroProps {}
 export function CinematicHero() {
   const { language } = useLanguage();
   const containerRef = useRef<HTMLDivElement>(null);
-  // Removed all framer-motion hooks and scroll-based animation
+  // Removed all legacy animation hooks and scroll-based animation
   // Fallback: static animation only
   const [hovered, setHovered] = useState(false);
   // No mouse parallax or scroll-based transforms

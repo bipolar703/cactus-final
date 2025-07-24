@@ -21,7 +21,7 @@ export default function Home() {
   const portfolioRef = useRef<HTMLDivElement>(null);
   const contactRef = useRef<HTMLDivElement>(null);
 
-// useInView and framer-motion logic removed for @motionone/react compatibility
+// All legacy animation logic removed for @motionone/react compatibility
 
   // Intersection Observer logic
   useEffect(() => {
@@ -93,7 +93,6 @@ export default function Home() {
       <div className="relative min-h-screen bg-slate-900">
         {/* Background Gradients for Non-Hero Sections */}
         <div className="fixed inset-0 z-0">
-          {/* AnimatePresence removed for @motionone/react migration */}
             {activeSection !== "hero" && (
               <motion.div
                 key={activeSection}

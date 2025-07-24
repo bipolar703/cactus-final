@@ -123,8 +123,6 @@ export default function ServiceDetailPage() {
 
                 <Link href="/contact">
                   <motion.button
-                    whileHover={{ scale: 1.05 }}
-                    whileTap={{ scale: 0.95 }}
                     className="bg-[#3f7c6a] hover:bg-[#3f7c6a]/90 text-white font-bold py-4 px-8 rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 flex items-center gap-3"
                   >
                     <span
@@ -350,8 +348,7 @@ export default function ServiceDetailPage() {
                 <div className="flex flex-col sm:flex-row gap-4 justify-center">
                   <Link href={`/contact?service=${service.slug}`}>
                     <motion.button
-                      whileHover={{ scale: 1.05 }}
-                      whileTap={{ scale: 0.95 }}
+                      
                       className="bg-white text-[#3f7c6a] font-bold py-4 px-8 rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300"
                     >
                       {language === "ar"
@@ -361,8 +358,7 @@ export default function ServiceDetailPage() {
                   </Link>
                   <Link href="/portfolio">
                     <motion.button
-                      whileHover={{ scale: 1.05 }}
-                      whileTap={{ scale: 0.95 }}
+                      
                       className="border-2 border-white text-white font-bold py-4 px-8 rounded-2xl hover:bg-white/10 transition-all duration-300"
                     >
                       {language === "ar"
