@@ -52,6 +52,11 @@ function App() {
   // Monitor Core Web Vitals in development
   useWebVitals();
 
+  // Set browser title for Vercel deployment
+  useEffect(() => {
+    document.title = "Cactus Media Group";
+  }, []);
+
   return (
     <QueryClientProvider client={queryClient}>
       <LanguageProvider>
