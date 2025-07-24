@@ -84,8 +84,8 @@ export function ModernContactSection() {
           className="text-center mb-16"
         >
           <motion.div
-            initial={{ width: 0 }}
-            animate={isIntersecting ? { width: 60 } : { width: 0 }}
+            initial={{ width: "0%" }}
+            animate={isIntersecting ? { width: "60px" } : { width: "0%" }}
             transition={{ delay: 0.5, duration: 1 }}
             className="h-0.5 bg-jaded-green-600 mx-auto mb-8"
           />

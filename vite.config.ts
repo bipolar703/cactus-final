@@ -33,7 +33,7 @@ export default defineConfig({
       output: {
         manualChunks: {
           vendor: ["react", "react-dom"],
-          motion: ["motion"],
+          motion: ["@motionone/react"],
           ui: [
             "@radix-ui/react-dialog",
             "@radix-ui/react-dropdown-menu",
@@ -71,7 +71,7 @@ export default defineConfig({
     include: [
       "react",
       "react-dom",
-      "motion",
+      "@motionone/react",
       "lucide-react",
       "@radix-ui/react-dialog",
     ],

@@ -59,8 +59,8 @@ export function ClientShowcase() {
           className="text-center mb-16"
         >
           <motion.div
-            initial={{ width: 0 }}
-            animate={isIntersecting ? { width: 100 } : { width: 0 }}
+            initial={{ width: "0%" }}
+            animate={isIntersecting ? { width: "100px" } : { width: "0%" }}
             transition={{ delay: 0.5, duration: 1 }}
             className="h-0.5 bg-jaded-green-600 mx-auto mb-8"
           />
